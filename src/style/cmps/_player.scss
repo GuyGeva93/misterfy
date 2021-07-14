@@ -1,0 +1,12 @@
+.player {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    --plyr-color-main: gold;
+    --plyr-audio-control-background-hover: green;
+    // --plyr-menu-color: #5e5e5e;
+    // --plyr-audio-range-track-background: gold;
+    --plyr-audio-range-thumb-active-shadow-color: #3e3e3e;
+    // --plyr-progress-loading-background: white;
+    --plyr-audio-controls-background: #1e1e1e
+}

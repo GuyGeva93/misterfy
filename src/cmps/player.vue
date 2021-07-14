@@ -1,0 +1,54 @@
+<template>
+  <section class="player">
+    <vue-plyr ref="plyr">
+      <audio controls crossorigin playsinline autoplay=false >
+        <source src="/path/to/audio.mp3" type="audio/mp3" />
+        <source src="/path/to/audio.ogg" type="audio/ogg" />
+      </audio>
+    </vue-plyr>
+    
+  </section>
+</template>
+
+<script>
+export default {
+  mounted() {
+    //   TODO: fetch media
+    //   TODO: figure out how to use autoplay and when to turn it to true
+    this.$refs.plyr.player.on("event", () => console.log("event fired"));
+    console.log(this.$refs.plyr.player.elements.controls);
+    this.$refs.plyr.player.on("ready", (event) => {
+      const instance = event.detail.plyr;
+      console.log(instance);
+    });
+    this.$refs.plyr.player.on("play", () => {
+        
+        console.log('pressed play');
+    //   const instance = event.detail.plyr;
+    //   console.log(instance);
+    });
+    this.$refs.plyr.player.on("pause", () => {
+        console.log('pressed pause');
+   
+    });
+    this.$refs.plyr.player.on("volumechange", () => {
+        console.log('changed volume');
+    });
+    this.$refs.plyr.player.on("ratechange", () => {
+        console.log('changed playback speed');
+    });
+
+  },
+//   created () {
+//       document.createElement('script');;
+//   },
+//   methods: {
+//      onPlayerReady(event) {
+//         event.target.playVideo();
+//       }
+//   }
+};
+</script>
+
+<style>
+</style>
