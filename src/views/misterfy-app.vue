@@ -1,6 +1,6 @@
 <template>
   <main class="misterfy-app">
-
+<!-- <station-list/> -->
   </main>
 </template>
 
