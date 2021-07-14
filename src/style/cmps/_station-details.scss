@@ -1,29 +1,40 @@
 .station-details {
-  display: flex;
-  padding-top: 10px;
-  gap: 30px;
-
-  
-  img{
-    width: 200px;
-    height: 150px;
-  }
+    display: flex;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    .station-details-conatiner {
+        background-color: blueviolet;
+        width: 100%;
+        padding-left: 1rem;
+        img {
+            // margin-top: 20px;
+            width: 150px;
+            // height: 150px;
+        }
+        .station-tags-container {
+            display: flex;
+            gap: 15px;
+            // width: 200px;
+            .tag {
+                background-color: #333030;
+                border: 1px solid #333030;
+                padding: 10px;
+                border-radius: 10px;
+            }
+        }
+    }
 }
 
-.station-details-chat{
-  width: 400px;
-  height: 600px;
-  border: 1px solid white;
+.station-details-chat {
+    width: 400px;
+    // height: 600px;
+    border: 1px solid white;
 }
 
-.station-details-conatiner{
-  display: flex;
-  gap: 5px;
-}
-
-.station-details-info{
-  display: flex;
-  flex-direction: column;
-  height: 150px;
-  justify-content: space-between;
+.station-details-info {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // height: 150px;
+    gap: 20px;
 }

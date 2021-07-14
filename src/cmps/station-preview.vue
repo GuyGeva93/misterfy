@@ -16,16 +16,19 @@ export default {
   props: {
     station: {
       type: Object,
-    },
+    }
   },
-
-  methods: {
-    play() {
-      console.log('Play station')
-    },
-    details(stationId) {
-      this.$router.push(`/details/${stationId}`)
-    },
+  created(){
+console.log('this.station',this.station);
   },
-}
+    methods: {
+      play() {
+        console.log("Play station");
+      },
+      // details(stationId) {
+      //   this.$router.push(`/details/${stationId}`);
+      // },
+    
+  },
+};
 </script>
