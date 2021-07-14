@@ -1,0 +1,15 @@
+.songs-list {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    .song-preview-container {
+        display: flex;
+        align-items: center;
+        &:hover {
+            background-color: rgb(46, 9, 80);
+        }
+    }
+}

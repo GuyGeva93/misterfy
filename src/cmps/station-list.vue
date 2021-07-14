@@ -3,8 +3,7 @@
     <div
       class="station-list-conatiner"
       v-for="station in stations"
-      :key="station._id"
-    >
+      :key="station._id">
       <station-preview :station="station" />
     </div>
   </section>
@@ -45,7 +44,6 @@ export default {
     };
   },
   created () {
-    console.log(this.stations);
   },
 
   components: {
