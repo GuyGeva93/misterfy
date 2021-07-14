@@ -5,7 +5,7 @@
           <h3> <img src=""> Guy Geva</h3>
           <h3> <img src="">Tal Ben David</h3>
           <h3> <img src="">Gilead Gafni</h3>
-         <h4 class="copy-rights"> Coffee rights 3021  &copy;</h4>
+         <h4 class="copy-rights"> &copy; 2021</h4>
         </section>
          
       </footer>
