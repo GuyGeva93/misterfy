@@ -2,11 +2,11 @@
   <section>
       <footer>
         <section class="names-container">
-          <h3>Guy Geva</h3>
-          <h3>Tal Ben David</h3>
-          <h3>Gilead Gafni</h3>
-        </section>
+          <h3> <img src=""> Guy Geva</h3>
+          <h3> <img src="">Tal Ben David</h3>
+          <h3> <img src="">Gilead Gafni</h3>
          <h4 class="copy-rights"> Coffee rights 3021  &copy;</h4>
+        </section>
          
       </footer>
   </section>

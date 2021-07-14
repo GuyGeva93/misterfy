@@ -8,7 +8,7 @@ export const stationStore = {
         sortBy: { tags: [] }
     },
     getters: {
-        stationToDisplay(state) {
+        stationsToDisplay(state) {
             let stations = state.stations
             return stations
         },

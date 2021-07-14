@@ -1,5 +1,6 @@
 <template>
-  <section class="explore">
+<main class="explore-container">
+  <section class="explore main">
    <ul class="tags-list">
      <li class="tag-preview">
 All
@@ -9,6 +10,7 @@ All
 </li>
    </ul>
   </section>
+</main>
 </template>
 
 <script>

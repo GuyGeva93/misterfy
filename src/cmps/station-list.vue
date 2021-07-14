@@ -11,37 +11,45 @@
 </template>
 
 <script>
-import stationPreview from './station-preview.vue'
+import stationPreview from "./station-preview.vue";
 export default {
+  props:{
+    stations:{
+      type: Array
+    }
+  },
   data() {
     return {
-      stations: [
-        {
-          _id: 's101',
-          name: 'Hip Hop',
-        },
-        {
-          _id: 's102',
-          name: 'Israeli',
-        },
-        {
-          _id: 's103',
-          name: 'Rock',
-        },
-        {
-          _id: 's104',
-          name: 'Chill',
-        },
-        {
-          _id: 's105',
-          name: 'Relax',
-        },
-      ],
-    }
+      // stations: [
+      //   {
+      //     _id: 's101',
+      //     name: 'Hip Hop',
+      //   },
+      //   {
+      //     _id: 's102',
+      //     name: 'Israeli',
+      //   },
+      //   {
+      //     _id: 's103',
+      //     name: 'Rock',
+      //   },
+      //   {
+      //     _id: 's104',
+      //     name: 'Chill',
+      //   },
+      //   {
+      //     _id: 's105',
+      //     name: 'Relax',
+      //   },
+      // ],
+    };
+  },
+  created () {
+    console.log(this.stations);
   },
 
   components: {
     stationPreview,
   },
-}
+};
 </script>

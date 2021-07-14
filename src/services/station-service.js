@@ -80,7 +80,7 @@ function query() {
         stations = gStations
         storageService.post(STATION_KEY, stations)
     }
-    return stations
+    return Promise.resolve(stations)
 
     // return axios.get(STATION_URL, { params: { filterBy, sortBy } }).then(res => res.data)
     // return httpService.get(`station`, { filterBy, sortBy })

@@ -2,6 +2,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    background-color: #2e2e2e;
     .logo {
         color: white;
         text-transform: uppercase;
@@ -16,7 +17,7 @@ header {
             font-weight: bold;
             color: white;
             &.router-link-exact-active {
-                color: #42b983;
+                color: gold;
             }
         }
     }
