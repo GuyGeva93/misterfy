@@ -1,18 +1,23 @@
 <template>
   <section class="player">
-    <vue-plyr id=player ref="plyr">
-      <audio controls crossorigin playsinline autoplay=false >
+    <vue-plyr id="player" ref="plyr">
+      <audio controls crossorigin playsinline autoplay="false">
         <source src="/path/to/audio.mp3" type="audio/mp3" />
         <source src="/path/to/audio.ogg" type="audio/ogg" />
       </audio>
     </vue-plyr>
-    
   </section>
 </template>
 
 <script>
 export default {
-  // YT_API_KEY = AIzaSyCMj38_kYcY6ulLi9FWA5qlYkgUxWUnkoQ
+  data() {
+    return {
+      player: "",
+      done: false,
+      tag: "",
+    };
+  },
   mounted() {
     //   TODO: fetch media
     //   TODO: figure out how to use autoplay and when to turn it to true
@@ -23,40 +28,26 @@ export default {
       console.log(instance);
     });
     this.$refs.plyr.player.on("play", () => {
-        
-        console.log('pressed play');
-    //   const instance = event.detail.plyr;
-    //   console.log(instance);
+      console.log("pressed play");
+      //   const instance = event.detail.plyr;
+      //   console.log(instance);
     });
     this.$refs.plyr.player.on("pause", () => {
-        console.log('pressed pause');
-   
+      console.log("pressed pause");
     });
     this.$refs.plyr.player.on("volumechange", () => {
-        console.log('changed volume');
+      console.log("changed volume");
     });
     this.$refs.plyr.player.on("ratechange", () => {
-        console.log('changed playback speed');
+      console.log("changed playback speed");
     });
-
   },
-  // created () {
-  //     document.createElement('script');
-  // },
-  // methods: {
-  //    onPlayerReady(event) {
-  //       event.target.playVideo();
-  //     },
-  //     onPlayerStateChange(event) {
-  //       if (event.data == YT.PlayerState.PLAYING && !done) {
-  //         setTimeout(stopVideo, 6000);
-  //         done = true;
-  //       }
-  //     },
-  //     stopVideo() {
-  //       player.stopVideo();
-  //     }
-  // }
+  created() {
+    
+  },
+  methods: {
+   
+  },
 };
 </script>
 

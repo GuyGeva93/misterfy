@@ -9,15 +9,18 @@ Vue.config.productionTip = false
 import VuePlyr from 'vue-plyr'
 import 'vue-plyr/dist/vue-plyr.css'
 
+
+Vue.config.productionTip = false
+
 Vue.use(VuePlyr, {
     plyr: {}
 })
 
-// window.onYouTubeIframeAPIReady = () => {
-//     console.log("onYouTubeIframeAPIReady")
-//     App.initYoutube()
+window.onYouTubeIframeAPIReady = () => {
+    console.log("onYouTubeIframeAPIReady")
+    App.initYoutube()
 
-// }
+}
 new Vue({
     router,
     store,
