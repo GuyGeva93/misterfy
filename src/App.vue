@@ -5,18 +5,21 @@
       <router-view/>
    </main>
     <app-footer/>
+    <player/>
   </div>
 </template>
 
 <script>
 import appHeader from "@/cmps/app-header";
 import appFooter from "@/cmps/app-footer";
+  import player from '@/cmps/player'
 export default {
   components: {
     appHeader,
     appFooter,
-  },
-};
+    player
+}
+}
 </script>
 
 <style lang="scss">

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import explore from '../views/explore.vue';
 import dashboard from '../views/dashboard.vue';
+import stationList from '../cmps/station-list.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,10 @@ const routes = [{
     {
         path: '/dashboard',
         component: dashboard
+    },
+    {
+        path: '/list',
+        component: stationList
     }
 ]
 
