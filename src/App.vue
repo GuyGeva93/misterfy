@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <app-header/>
+    <player/>
     <router-view/>
   </div>
 </template>
 
 <script>
 import appHeader from '@/cmps/app-header'
+import player from '@/cmps/player'
 export default {
   components: {
     appHeader,
+    player
   },
 }
 </script>
