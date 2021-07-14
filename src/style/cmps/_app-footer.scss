@@ -1,0 +1,20 @@
+footer {
+    color: #fff;
+    background-color: #5b3a7b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    ;
+    .names-container {
+        display: flex;
+        justify-content: center;
+        gap: 22px;
+    }
+    //Should be in main:h1,h2,h3,h4,h5,h6
+    h3 {
+        margin: 1rem 0 1rem;
+    }
+    h4 {
+        margin: 1rem 0 1rem;
+    }
+}

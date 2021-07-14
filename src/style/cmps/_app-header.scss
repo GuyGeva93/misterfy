@@ -1,10 +1,23 @@
-.main-nav {
-    padding: 30px;
-    a {
-        font-weight: bold;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .logo {
         color: white;
-        &.router-link-exact-active {
-            color: #42b983;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .filter-search-container {
+        align-self: center;
+    }
+    .main-nav {
+        padding: 30px;
+        a {
+            font-weight: bold;
+            color: white;
+            &.router-link-exact-active {
+                color: #42b983;
+            }
         }
     }
 }

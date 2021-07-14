@@ -1,9 +1,21 @@
 * {
     box-sizing: border-box;
+    //SHOULD IT BE HERE?
+    color: white;
 }
 
 body {
     margin: 0;
     background-color: #3e3e3e;
     color: white;
+    #app {
+        display: flex;
+        flex-direction: column;
+        main {
+            flex: 1;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
 }
