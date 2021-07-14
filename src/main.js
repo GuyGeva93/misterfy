@@ -12,6 +12,12 @@ import 'vue-plyr/dist/vue-plyr.css'
 Vue.use(VuePlyr, {
     plyr: {}
 })
+
+// window.onYouTubeIframeAPIReady = () => {
+//     console.log("onYouTubeIframeAPIReady")
+//     App.initYoutube()
+
+// }
 new Vue({
     router,
     store,
