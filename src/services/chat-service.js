@@ -1,6 +1,6 @@
 import { storageService } from './async-storage-service.js'
-// import { stationService } from './station-service.js';
 import { socketService } from './socket-service.js';
+import { botService } from './bot-service.js';
 const CHAT_KEY = "chatMsgs";
 
 // let gWatchedStation;
@@ -8,19 +8,52 @@ const CHAT_KEY = "chatMsgs";
 export const chatService = {
     query,
     add,
+    botReply,
     getEmptyMsg
 }
 
-function query() {
-    return storageService.query(CHAT_KEY);
+async function query(stationId) {
+    const msgs = await storageService.query(CHAT_KEY);
+    return msgs.filter(msg => msg.stationId === stationId);
 }
-async function add(msg) {
-    msg.sentAt = Date.now();
-    storageService.post(CHAT_KEY, msg);
+async function add(newMsg) {
+    newMsg.sentAt = Date.now();
+
+    const msgs = await storageService.query(CHAT_KEY);
+    //Is this his first msg?
+    const existMsgSender = msgs.find(msg => !!msg.from._id)
+    newMsg.from._id = (existMsgSender) ? existMsgSender.from._id : _getId();
+    storageService.post(CHAT_KEY, newMsg);
+
+
+}
+
+function botReply(newMsg) {
+    return new Promise((resolve) => {
+
+        setTimeout(() => {
+            const reply = {
+                stationId: newMsg.stationId,
+                sentAt: Date.now(),
+                txt: botService.sendMsg(newMsg),
+                from: {
+                    name: 'Botify',
+                    _id: '',
+                }
+            };
+            storageService.post(CHAT_KEY, reply);
+            resolve(reply);
+        }, 1500);
+    })
 }
 
 function getEmptyMsg() {
-    return { from: "Guest", txt: "" }
+    return {
+        from: {
+            name: 'guest',
+        },
+        txt: ""
+    }
 }
 
 (async() => {
@@ -41,3 +74,7 @@ function getEmptyMsg() {
         // gWatchedUser = watchedStation
     })
 })();
+
+function _getId() {
+    return Date.now() % 1000;
+}

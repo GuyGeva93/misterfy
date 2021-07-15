@@ -1,8 +1,8 @@
 <template>
   <section class="songs-list-container">
     <ul class="songs-list">
-      <li v-for="song in songs" :key="song._id">
-        <song-preview :song="song" />
+      <li v-for="(song, idx) in songs" :key="song._id">
+        <song-preview :song="song" :idx="idx" />
       </li>
     </ul>
   </section>
