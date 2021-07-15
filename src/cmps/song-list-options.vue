@@ -16,7 +16,7 @@ export default {
 
   methods: {
     toggleSearch() {
-      this.isSearch = !this.isSearch;
+      this.isSearch = !this.isSearch
     },
   },
 };
