@@ -1,7 +1,7 @@
 <template>
   <section class="station-details" v-if="station">
     <aside class="station-details-chat">
-     <chat/>
+     <chat :stationId="stationId"/>
     </aside>
     <section class="station-details-conatiner">
       <img

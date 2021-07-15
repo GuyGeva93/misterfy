@@ -14,16 +14,39 @@
 </template>
 
 <script>
-// import { chatService } from "@/services/chat-service.js";
+import { chatService } from "@/services/chat-service.js";
+import {socketService} from '@/services/socket-service.js';
 export default {
+  props:{
+    stationId:{
+      type:String
+    }
+  },
+    async created(){
+          socketService.emit('chat topic', this.stationId)
+          socketService.on('new msg',this.loadMsgs);
+        if(!this.msgs.length){
+          this.loadMsgs();
+        }
+    },
   data() {
     return {
       msgs: [],
-      msg: { from: "me", txt: "" },
+      msg: chatService.getEmptyMsg(),
     };
   },
-  created(){
-    //   this.msgs = chatService.query();
+  methods:{
+  async  sendMsg(){
+     await chatService.add(this.msg);
+     this.msgs.push(this.msg);
+     this.msg=chatService.getEmptyMsg();
+    },
+    loadMsgs(msgs){
+      this.msgs=msgs;
+    }
+  },
+  destroyed(){
+     socketService.off('new msg',this.loadMsgs);
   }
 };
 </script>
