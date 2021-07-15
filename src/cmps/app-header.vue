@@ -35,7 +35,13 @@ export default {
      if(!name)name='*';
      let url="/explore/" + name;
      if(this.tag)url+='/'+this.tag;
-      this.$router.push(url);
+      this.$router.push(url)
+      .catch(err=>{
+        //When same route appears
+         if (err.name != "NavigationDuplicated") {
+    throw err;
+  }
+      });
 
       //   const res = await youtubeService.name(name);
       //   res.items.map((item) => {

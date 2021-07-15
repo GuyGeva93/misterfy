@@ -1,10 +1,12 @@
 const repliments = [
     'Hi',
     'Sure, sounds good',
-    'good, you?',
+    'Good, you?',
     'Nope, just you',
-    'what is that? I didn\'t understand you.. ',
-];
+    'Good morning!',
+    'Good night!',
+    'YEESSS!',
+]
 export const botService = {
     sendMsg
 }
@@ -19,6 +21,12 @@ function sendMsg(msg) {
     }
     if (msgText.includes('hi')) {
         return repliments[0]
+    }
+    if (msgText.includes('good morning')) {
+        return repliments[4]
+    }
+    if (msgText.includes('good night')) {
+        return repliments[5]
     }
     if (msgText.includes('anyone here?')) {
         return repliments[3]
