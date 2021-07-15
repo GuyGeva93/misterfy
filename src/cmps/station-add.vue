@@ -11,7 +11,7 @@
       <input
         type="text"
         placeholder="Station genre"
-        v-model="newStation.tags"
+        v-model="newStation.tags[0]"
       />
       <button>Add</button>
     </form>
@@ -29,8 +29,8 @@ export default {
     };
   },
   methods: {
-    createStation() {
-      stationService.save(this.newStation);
+    async createStation() {
+      await stationService.save(this.newStation);
       // console.log("this.newStation", this.newStation);
       this.$emit("closeModal");
       this.$router.push(`/details/${this.newStation._id}`);
