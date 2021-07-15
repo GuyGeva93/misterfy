@@ -28,13 +28,7 @@ export default {
       type: String,
     },
   },
-  // async created() {
-  //   socketService.emit("chat topic", this.stationId);
-  //   socketService.on("new msg", this.loadMsgs);
-  //   if (!this.msgs.length) {
-  //     this.msgs = await chatService.query();
-  //   }
-  // },
+
   async created() {
     socketService.emit("chat topic", this.stationId);
     socketService.on("new msg", this.loadMsgs);
