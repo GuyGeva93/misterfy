@@ -1,59 +1,45 @@
 .station-details {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 1fr 60px 1fr 1fr;
-
-  .section-details-img {
-    grid-column: 2/4;
-    background-color: blue;
-  }
-  .station-details-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  .station-list-container {
-    grid-row: 3/-1;
-    grid-column: 3/-1;
-    // background-color: green;
-    .song-list-container {
-      background-color: #2e2e2e;
-    }
-  }
-  .song-list-options {
-    grid-column: 3;
-    grid-row: 2/-1;
     display: grid;
-    grid-template-columns: repeat(3, 50px);
-    grid-template-rows: 60px 1fr;
-    font-size: x-large;
-    margin-bottom: 20px;
-  }
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr 60px 1fr 1fr;
+    .section-details-img {
+        grid-column: 2/4;
+        background-color: blue;
+    }
+    .station-details-info {
+        grid-column: 4/6;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .station-list-container {
+        grid-row: 3/-1;
+        grid-column: 3/-1;
+        &.open {
+            grid-column: 6/-1;
+        }
+        // background-color: green;
+        .song-list-container {
+            background-color: #2e2e2e;
+        }
+    }
+    .song-list-options {
+        grid-column: 3/5;
+        grid-row: 2/-1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 60px 30px 1fr;
+        font-size: x-large;
+        // margin-bottom: 20px;
+        .song-results {
+            grid-column: 1/-1;
+            grid-row: 3/4;
+            font-size: 0.95rem;
+            &>* {
+                background-color: black;
+                margin-bottom: 2px;
+                padding: 5px;
+            }
+        }
+    }
 }
-
-
-
-// .station-details {
-//   display: flex;
-//   padding-top: 10px;
-//   gap: 30px;
-//   img {
-//     width: 200px;
-//     height: 150px;
-//   }
-// }
-// .station-details-chat {
-//   width: 400px;
-//   height: 600px;
-//   border: 1px solid white;
-// }
-// .station-details-conatiner {
-//   display: flex;
-//   gap: 5px;
-// }
-// .station-details-info {
-//   display: flex;
-//   flex-direction: column;
-//   height: 150px;
-//   justify-content: space-between;
-// }

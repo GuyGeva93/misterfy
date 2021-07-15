@@ -10,25 +10,27 @@ Vue.config.productionTip = false
 import VuePlyr from 'vue-plyr'
 import 'vue-plyr/dist/vue-plyr.css'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUserSecret)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
+Vue.config.productionTip = false
 Vue.use(vueDebounce, {
-  defaultTime: '700ms'
+    defaultTime: '700ms'
 })
 Vue.use(VuePlyr, {
-  plyr: {}
+    plyr: {}
 })
-
-// window.onYouTubeIframeAPIReady = () => {
-//     console.log("onYouTubeIframeAPIReady")
-//     App.initYoutube()
-
-// }
 
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')

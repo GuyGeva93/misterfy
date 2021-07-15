@@ -1,13 +1,13 @@
 .song-preview {
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  &:hover {
-    background-color: rgb(46, 9, 80);
-  }
-  .like-song {
-    background-color: transparent;
-    border: none;
-  }
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &:hover {
+        background-color: rgb(46, 9, 80);
+    }
+    .like-song {
+        background-color: transparent;
+        border: none;
+    }
 }
