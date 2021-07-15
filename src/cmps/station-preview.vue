@@ -1,6 +1,5 @@
 <template>
   <section class="station-preview">
-    {{station.tags}}
     <router-link :to="'/details/' + station._id">
       <div class="station-preview-card" @click="play">
         <span class="station-preview-name">{{ station.name }}</span>

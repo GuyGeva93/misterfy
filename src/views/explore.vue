@@ -1,73 +1,77 @@
 <template>
   <main class="explore-container">
-    <section class="explore ">
+    <section class="explore">
       <ul class="tags-list">
         <li class="tag-preview">
-          <router-link :to="'/explore/'+this.query">All</router-link>
+          <router-link :to="'/explore/' + this.name">All</router-link>
         </li>
-        <li v-for="(tag, idx) in tags" :key="idx" class="tag-preview">
-         <router-link :to="getUrl(tag)"> {{ tag }}</router-link>
+        <li v-for="(tag, idx) in setTags" :key="idx" class="tag-preview">
+          <router-link :to="getUrl(tag)"> {{ tag }}</router-link>
         </li>
       </ul>
     </section>
-    <section v-if="stations">
-       <station-list :stations="stations"/>
+   <template v-if="!isLoading">
+      <section v-if="stations">
+      <station-list :stations="stations" />
     </section>
+    <h2 v-else>No stations found</h2>
+   </template>
+   <h2 v-else>Loading...</h2>
   </main>
 </template>
 
 <script>
-import stationList from '@/cmps/station-list';
+import stationList from "@/cmps/station-list";
 export default {
   created() {
- const tags=new Set();
- console.log(this.stations);
- this.stations.map(station => {
-   tags.add(...station.tags);
- console.log(...tags,'1');
- });
+    const tags = this.stations.reduce((acc, station) => {
+      acc.push(...station.tags);
+      return acc;
+    }, []);
+    this.setTags = new Set(tags);
   },
   data() {
     return {
-      tags: [
-        "Easy",
-        "Pop",
-        "Punk",
-        "Israeli",
-        "hip-hop",
-        "electronic",
-        "latin",
-        "classic",
-        "blues",
-        "disco",
-      ],
+      setTags: [],
+      isLoading:false
     };
   },
-  methods:{
-getUrl(tag){
-  let url='/explore/';
+  methods: {
+    getUrl(tag) {
+      let url = "/explore/";
 
-   if (this.query) {
-      url+=this.query;
-   }
-   else url+='*';
- url+='/'+tag;
+      if (this.name) {
+        url += this.name;
+      } else url += "*";
+      url += "/" + tag;
 
-
-  return url;
-}
+      return url;
+    },
   },
   computed: {
-    query() {
-      return this.$route.params.query;
+    name() {
+      return this.$route.params.name;
     },
-    stations(){
-     return this.$store.getters.stationsToDisplay;
-    }
-   
+    stations() {
+      return this.$store.getters.stationsToDisplay;
+    },
   },
-  components:{
-    stationList
-  }
+  components: {
+    stationList,
+  },
+  watch: {
+    "$route.params": {
+      immediate: true,
+      async handler() {
+        const { name, tag = "" } = this.$route.params;
+        const filterBy = {
+          name,
+          tag,
+        };
+        if (!name || name === "*") filterBy.name = "";
+        this.$store.commit({ type: "setFilter", filterBy });
+      },
+    },
+  },
 };
 </script>

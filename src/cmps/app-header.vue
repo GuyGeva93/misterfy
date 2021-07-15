@@ -28,16 +28,16 @@ export default {
     goHome() {
       this.$router.push("/");
     },
-    search(query) {
+    search(name) {
       //Preventing duplicated route error
-      const currQuery=this.$route.params.query;
-     if((currQuery && currQuery===query))return;
-     if(!query)query='*';
-     let url="/explore/" + query;
+      const currName=this.$route.params.name;
+     if((currName && currName===name))return;
+     if(!name)name='*';
+     let url="/explore/" + name;
      if(this.tag)url+='/'+this.tag;
       this.$router.push(url);
 
-      //   const res = await youtubeService.query(query);
+      //   const res = await youtubeService.name(name);
       //   res.items.map((item) => {
       //     console.log("video id:", item.id.videoId);
       //     console.log("video snippet:", item.snippet.title);
