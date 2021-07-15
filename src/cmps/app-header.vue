@@ -16,7 +16,7 @@
 
 <script>
 import filterTextSearch from "@/cmps/filter-text-search";
-import { youtubeService } from "@/services/youtube-service.js";
+// import { youtubeService } from "@/services/youtube-service.js";
 import stationAdd from "@/cmps/station-add.vue";
 export default {
   data() {
@@ -28,14 +28,15 @@ export default {
     goHome() {
       this.$router.push("/");
     },
-    async search(query) {
-      const res = await youtubeService.query(query);
-      res.items.map((item) => {
-        console.log("video id:", item.id.videoId);
-        console.log("video snippet:", item.snippet.title);
-        console.log("video thumbnail:", item.snippet.thumbnails.default);
-        console.log("video publishedAt:", item.snippet.publishedAt);
-      });
+    async search() {
+      //NOTICE: ASYNC FUNC!
+    //   const res = await youtubeService.query(query);
+    //   res.items.map((item) => {
+    //     console.log("video id:", item.id.videoId);
+    //     console.log("video snippet:", item.snippet.title);
+    //     console.log("video thumbnail:", item.snippet.thumbnails.default);
+    //     console.log("video publishedAt:", item.snippet.publishedAt);
+    //   });
     },
 
     toggleCreating() {

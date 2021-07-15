@@ -12,7 +12,7 @@
       <h4>Tags: {{getTags}}</h4>
     </section>
     <section class="station-list-container">
-    <song-list-options class="song-list-options"/>
+    <song-list-options class="song-list-options" @search="search"/>
     <song-list :songs="station.songs" class="song-list-container"/>
     </section>
   </section>
@@ -20,6 +20,8 @@
 
 <script>
 import { stationService } from "@/services/station-service.js";
+import { youtubeService } from "@/services/youtube-service.js";
+
 import songListOptions from "@/cmps/song-list-options.vue";
 
 import songList from "@/cmps/song-list";
@@ -47,6 +49,15 @@ export default {
 
   methods: {
     addSong() {},
+    async search(query) {
+      const res = await youtubeService.query(query);
+      res.items.map((item) => {
+        console.log("video id:", item.id.videoId);
+        console.log("video snippet:", item.snippet.title);
+        console.log("video thumbnail:", item.snippet.thumbnails.default.url);
+        console.log("video publishedAt:", item.snippet.publishedAt);
+      });
+    },
   },
 
   components: {
