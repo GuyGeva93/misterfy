@@ -23,7 +23,7 @@ const routes = [{
             import ( /* webpackChunkName: "about" */ '../views/About.vue')
     },
     {
-        path: '/explore',
+        path: '/explore/:query?/:tag?',
         component: explore
     },
     {

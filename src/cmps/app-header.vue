@@ -28,20 +28,32 @@ export default {
     goHome() {
       this.$router.push("/");
     },
-    async search() {
-      //NOTICE: ASYNC FUNC!
-    //   const res = await youtubeService.query(query);
-    //   res.items.map((item) => {
-    //     console.log("video id:", item.id.videoId);
-    //     console.log("video snippet:", item.snippet.title);
-    //     console.log("video thumbnail:", item.snippet.thumbnails.default);
-    //     console.log("video publishedAt:", item.snippet.publishedAt);
-    //   });
+    search(query) {
+      //Preventing duplicated route error
+      const currQuery=this.$route.params.query;
+     if((currQuery && currQuery===query))return;
+     if(!query)query='*';
+     let url="/explore/" + query;
+     if(this.tag)url+='/'+this.tag;
+      this.$router.push(url);
+
+      //   const res = await youtubeService.query(query);
+      //   res.items.map((item) => {
+      //     console.log("video id:", item.id.videoId);
+      //     console.log("video snippet:", item.snippet.title);
+      //     console.log("video thumbnail:", item.snippet.thumbnails.default);
+      //     console.log("video publishedAt:", item.snippet.publishedAt);
+      //   });
     },
 
     toggleCreating() {
       return (this.isCreating = !this.isCreating);
     },
+  },
+  computed:{
+    tag(){
+    return this.$route.params.tag;  
+    }
   },
 
   components: {
