@@ -1,7 +1,7 @@
 <template>
-  <section class="station-details"  v-if="station">
+  <section class="station-details" v-if="station">
     <aside class="station-details-chat">
-      <span>This is chat</span>
+     <chat/>
     </aside>
     <section class="station-details-conatiner">
       <img
@@ -15,7 +15,7 @@
             {{ tag }}
           </h4>
         </section>
-         <section class="station-songs-container">
+        <section class="station-songs-container">
           <song-list :songs="station.songs" />
         </section>
       </section>
@@ -25,14 +25,15 @@
 
 <script>
 import { stationService } from "@/services/station-service.js";
+
 import songList from "@/cmps/song-list";
+import chat from '@/cmps/chat';
 export default {
   async created() {
     const { stationId } = this.$route.params;
     this.station = await stationService.getById(stationId);
-    console.log("station", this.station);
+    
   },
-
   data() {
     return {
       station: null,
@@ -44,8 +45,11 @@ export default {
       return this.$route.params.stationId;
     },
   },
+
+
   components: {
     songList,
+    chat
   },
 };
 </script>
