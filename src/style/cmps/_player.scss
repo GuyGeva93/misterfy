@@ -8,5 +8,36 @@
     // --plyr-audio-range-track-background: gold;
     --plyr-audio-range-thumb-active-shadow-color: #3e3e3e;
     // --plyr-progress-loading-background: white;
-    --plyr-audio-controls-background: #1e1e1e
+    --plyr-audio-controls-background: #1e1e1e;
+}
+
+.plyr__video-wrapper.plyr__video-embed {
+    padding-bottom: 60px !important;
+}
+
+iframe {
+    display: none !important;
+}
+
+.plyr__poster {
+    display: none !important;
+}
+
+.ytp-cued-thumbnail-overlay {
+    display: none !important;
+}
+
+.plyr__control.plyr__control--overlaid {
+    display: none !important;
+}
+
+.plyr--video.plyr--hide-controls .plyr__controls {
+    opacity: 1 !important;
+    pointer-events: visible !important;
+    transform: translateY(0%) !important;
+}
+
+.plyr__tooltip {
+    display: none !important;
+    z-index: 100 !important;
 }

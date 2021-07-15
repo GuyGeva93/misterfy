@@ -10,25 +10,29 @@
         <section class="msg-text">
           {{ msg.txt }}
         </section>
-    
       </li>
-  <section class="msg-form">
-      <form @submit.prevent="sendMsg">
-      <input type="text" v-model="msg.txt" placeholder="Your msg" />
-      <button>Send</button>
-    </form>
-  </section>
     </ul>
+      <form @submit.prevent="sendMsg" class="msg-form">
+        <input type="text" v-model="msg.txt" placeholder="Your msg" />
+        <button>Send</button>
+      </form>
   </section>
 </template>
 
 <script>
 import { chatService } from "@/services/chat-service.js";
-import {socketService} from '@/services/socket-service.js';
+import { socketService } from "@/services/socket-service.js";
 export default {
-  props:{
-    stationId:{
-      type:String
+  props: {
+    stationId: {
+      type: String,
+    },
+  },
+  async created() {
+    socketService.emit("chat topic", this.stationId);
+    socketService.on("new msg", this.loadMsgs);
+    if (!this.msgs.length) {
+      this.msgs = await chatService.query();
     }
   },
     async created(){
@@ -57,13 +61,13 @@ export default {
       this.msgs=msgs;
       // this.msgs=msgs.filter(msg=>msg.station===this.stationId);
     },
-    formatDate(timeStamp){
+    formatDate(timeStamp) {
       return new Date(timeStamp).toLocaleString();
-    }
+    },
   },
-  destroyed(){
-     socketService.off('new msg',this.loadMsgs);
-  }
+  destroyed() {
+    socketService.off("new msg", this.loadMsgs);
+  },
 };
 </script>
 

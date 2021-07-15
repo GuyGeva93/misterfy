@@ -7,14 +7,14 @@
       />
     </section>
     <section class="station-details-info">
-      <h2>{{ station._id }}</h2>
-      <h3>{{ station.name }}</h3>
-      <h4 v-for="(tag, idx) in station.tags" class="tag" :key="idx">
-        {{ tag }}
-      </h4>
+      <!-- <h2>{{ station._id }}</h2> -->
+     <h3>Title: {{ station.name }}</h3>
+      <h4>Tags: {{getTags}}</h4>
     </section>
-    <song-list-options />
-    <song-list :songs="station.songs" />
+    <section class="station-list-container">
+    <song-list-options class="song-list-options"/>
+    <song-list :songs="station.songs" class="song-list-container"/>
+    </section>
   </section>
 </template>
 
@@ -40,6 +40,9 @@ export default {
     stationId() {
       return this.$route.params.stationId;
     },
+    getTags(){
+      return this.station.tags.join(',')
+    }
   },
 
   methods: {

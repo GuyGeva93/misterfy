@@ -37,8 +37,8 @@ function botReply(newMsg) {
                 sentAt: Date.now(),
                 txt: botService.sendMsg(newMsg),
                 from: {
-                    name: 'Guest',
-                    _id: _getId(),
+                    name: 'Botify',
+                    _id: '',
                 }
             };
             storageService.post(CHAT_KEY, reply);
