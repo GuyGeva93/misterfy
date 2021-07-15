@@ -1,5 +1,9 @@
 .station-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  .song-list-container {
+    grid-column: 6/-1;
+  }
 }

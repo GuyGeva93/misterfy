@@ -1,35 +1,31 @@
 .songs-list {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  li {
     display: flex;
-    list-style: none;
-    flex-direction: column;
-    gap: 5px;
-    margin: 0;
-    padding: 0;
-    li {
-        display: flex;
-        border-bottom: goldenrod 1px solid;
-        border-top: goldenrod 1px solid;
-        height: 70px;
-        align-items: center;
-        img {
-            object-fit: cover;
-            object-position: center;
-            border-radius: 10px;
-            height: 60px;
-            width: 60px;
-        }
+    border-bottom: goldenrod 1px solid;
+    border-top: goldenrod 1px solid;
+    height: 70px;
+    align-items: center;
+    img {
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      height: 60px;
+      width: 60px;
     }
-    .song-preview-container {
-        width: 100%;
-        justify-content: space-around;
-        display: flex;
-        align-items: center;
-        &:hover {
-            background-color: rgb(46, 9, 80);
-        }
-        .like-song {
-            background-color: transparent;
-            border: none;
-        }
-    }
+  }
+}
+
+.song-list-search.open input {
+  // grid-row: 3/4;
+  grid-column: 4/5;
+  // width: 300px;
+}
+.station-list-container.open {
+  grid-column: 6/-1;
 }

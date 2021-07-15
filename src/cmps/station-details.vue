@@ -7,13 +7,12 @@
       />
     </section>
     <section class="station-details-info">
-      <!-- <h2>{{ station._id }}</h2> -->
-     <h3>Title: {{ station.name }}</h3>
-      <h4>Tags: {{getTags}}</h4>
+      <h3>Title: {{ station.name }}</h3>
+      <h4>Tags: {{ getTags }}</h4>
     </section>
-    <section class="station-list-container">
-    <song-list-options class="song-list-options" @search="search"/>
-    <song-list :songs="station.songs" class="song-list-container"/>
+    <song-list-options @search="search" @opened="opened"/>
+    <section class="station-list-container" :class="{open: isOpen}">
+      <song-list :songs="station.songs" />
     </section>
   </section>
 </template>
@@ -35,6 +34,7 @@ export default {
     return {
       station: null,
       isSearch: false,
+      isOpen: false
     };
   },
 
@@ -42,13 +42,13 @@ export default {
     stationId() {
       return this.$route.params.stationId;
     },
-    getTags(){
+    getTags() {
       return this.station.tags.join(',')
     }
   },
 
   methods: {
-    addSong() {},
+    addSong() { },
     async search(query) {
       const res = await youtubeService.query(query);
       res.items.map((item) => {
@@ -58,6 +58,10 @@ export default {
         console.log("video publishedAt:", item.snippet.publishedAt);
       });
     },
+
+    opened(){
+      this.isOpen = !this.isOpen
+    }
   },
 
   components: {
