@@ -11,16 +11,16 @@ export const chatService = {
     getEmptyMsg
 }
 
-async function query() {
-    const msgs = await storageService.query(CHAT_KEY);
-    return msgs;
+function query() {
+    return storageService.query(CHAT_KEY);
 }
 async function add(msg) {
+    msg.sentAt = Date.now();
     storageService.post(CHAT_KEY, msg);
 }
 
 function getEmptyMsg() {
-    return { from: "me", txt: "" }
+    return { from: "Guest", txt: "" }
 }
 
 (async() => {

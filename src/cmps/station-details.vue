@@ -1,33 +1,29 @@
 <template>
   <section class="station-details" v-if="station">
-    <aside class="station-details-chat">
-     <chat :stationId="stationId"/>
-    </aside>
-    <section class="station-details-conatiner">
+    <chat :stationId="stationId" class="section-details-chat" />
+    <section class="station-details-img">
       <img
         src="https://is4-ssl.mzstatic.com/image/thumb/Purple124/v4/6a/e4/59/6ae45956-8b3d-0ff2-81f8-587c7c65b515/source/256x256bb.jpg"
       />
-      <section class="station-details-info">
-        <h2>{{ station._id }}</h2>
-        <h3>{{ station.name }}</h3>
-        <section class="station-tags-container">
-          <h4 v-for="(tag, idx) in station.tags" class="tag" :key="idx">
-            {{ tag }}
-          </h4>
-        </section>
-        <section class="station-songs-container">
-          <song-list :songs="station.songs" />
-        </section>
-      </section>
     </section>
+    <section class="station-details-info">
+      <h2>{{ station._id }}</h2>
+      <h3>{{ station.name }}</h3>
+      <h4 v-for="(tag, idx) in station.tags" class="tag" :key="idx">
+        {{ tag }}
+      </h4>
+    </section>
+    <song-list-options />
+    <song-list :songs="station.songs" />
   </section>
 </template>
 
 <script>
 import { stationService } from "@/services/station-service.js";
+import songListOptions from "@/cmps/song-list-options.vue";
 
 import songList from "@/cmps/song-list";
-import chat from '@/cmps/chat';
+import chat from "@/cmps/chat";
 export default {
   async created() {
     const { stationId } = this.$route.params;
@@ -36,6 +32,7 @@ export default {
   data() {
     return {
       station: null,
+      isSearch: false,
     };
   },
 
@@ -46,15 +43,13 @@ export default {
   },
 
   methods: {
-    addSong() {
-      
-    }
+    addSong() {},
   },
-
 
   components: {
     songList,
-    chat
+    chat,
+    songListOptions,
   },
 };
 </script>
