@@ -6,7 +6,6 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/explore">Explore</router-link> |
       <router-link to="/dashboard">Dashboard</router-link> |
-      <router-link to="/misterfy">Misterfy</router-link> |
       <router-link to="/about">About</router-link>
     </nav>
   </header>
