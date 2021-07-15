@@ -1,15 +1,25 @@
 <template>
-  <section v-if="msg">
-    <ul>
+  <section v-if="msgs" class="chat-container">
+    <h2>The wall</h2>
+    <ul class="clear-list msg-list">
       <li v-for="(msg, idx) in msgs" :key="idx">
-        <span>{{ msg.from }}:</span>{{ msg.txt }}
+        <section class="msg-info">
+<h3>{{msg.from}}</h3>
+             <h4> {{formatDate(msg.sentAt)}}</h4>
+        </section>
+        <section class="msg-text">
+          {{ msg.txt }}
+        </section>
+    
       </li>
     </ul>
     <hr />
-    <form @submit.prevent="sendMsg">
+  <section class="msg-form">
+      <form @submit.prevent="sendMsg">
       <input type="text" v-model="msg.txt" placeholder="Your msg" />
       <button>Send</button>
     </form>
+  </section>
   </section>
 </template>
 
@@ -26,7 +36,7 @@ export default {
           socketService.emit('chat topic', this.stationId)
           socketService.on('new msg',this.loadMsgs);
         if(!this.msgs.length){
-          this.loadMsgs();
+          this.msgs=await chatService.query();
         }
     },
   data() {
@@ -43,6 +53,9 @@ export default {
     },
     loadMsgs(msgs){
       this.msgs=msgs;
+    },
+    formatDate(timeStamp){
+      return new Date(timeStamp).toLocaleString();
     }
   },
   destroyed(){
