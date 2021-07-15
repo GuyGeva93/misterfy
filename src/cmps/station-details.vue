@@ -32,7 +32,6 @@ export default {
   async created() {
     const { stationId } = this.$route.params;
     this.station = await stationService.getById(stationId);
-    
   },
   data() {
     return {
@@ -44,6 +43,12 @@ export default {
     stationId() {
       return this.$route.params.stationId;
     },
+  },
+
+  methods: {
+    addSong() {
+      
+    }
   },
 
 

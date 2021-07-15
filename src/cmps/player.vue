@@ -22,11 +22,11 @@ export default {
     //   TODO: fetch media
     //   TODO: figure out how to use autoplay and when to turn it to true
     this.$refs.plyr.player.on("event", () => console.log("event fired"));
-    console.log(this.$refs.plyr.player.elements.controls);
-    this.$refs.plyr.player.on("ready", (event) => {
-      const instance = event.detail.plyr;
-      console.log(instance);
-    });
+    // console.log(this.$refs.plyr.player.elements.controls);
+    // this.$refs.plyr.player.on("ready", (event) => {
+      // const instance = event.detail.plyr;
+      // console.log(instance);
+    // });
     this.$refs.plyr.player.on("play", () => {
       console.log("pressed play");
       //   const instance = event.detail.plyr;

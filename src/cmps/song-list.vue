@@ -2,7 +2,7 @@
   <section class="songs-list-container">
       <ul class="songs-list">
 <li v-for="song in songs" :key="song._id">
-    <song-preview :song="song"  />
+    <song-preview :song="song" />
 </li>
       </ul>
   </section>

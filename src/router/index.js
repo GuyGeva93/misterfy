@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import explore from '../views/explore.vue';
 import dashboard from '../views/dashboard.vue';
 import stationDetails from '../cmps/station-details.vue';
+import stationAdd from '../cmps/station-add.vue';
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,10 @@ const routes = [{
     {
         path: '/details/:stationId',
         component: stationDetails
+    },
+    {
+        path: '/add',
+        component: stationAdd
     },
 ]
 
