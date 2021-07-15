@@ -6,14 +6,14 @@
     </div>
     <h2>TOP 10</h2>
     <station-list :stations="stations" />
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
     <h2>YOUR PICKS</h2>
     <station-list :stations="stations" />
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
     <h2>RECOMENDED FOR YOU</h2>
     <station-list :stations="stations" />
   </div>
@@ -31,8 +31,8 @@ export default {
       return this.$store.getters.stationsToDisplay;
     },
   },
-  mounted () {
-    console.log(this.$store.getters);
+  mounted() {
+    // console.log(this.$store.getters);
   },
 };
 </script>
