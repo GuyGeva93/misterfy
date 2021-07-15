@@ -3,6 +3,7 @@
     <div>♥</div>
     <div @click.stop="toggleSearch">➕</div>
     <input type="search" placeholder="Search for a song" v-if="isSearch" />
+    <div>🚮</div>
   </section>
 </template>
 

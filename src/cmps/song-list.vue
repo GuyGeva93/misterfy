@@ -1,24 +1,24 @@
 <template>
   <section class="songs-list-container">
-      <ul class="songs-list">
-<li v-for="song in songs" :key="song._id">
-    <song-preview :song="song" />
-</li>
-      </ul>
+    <ul class="songs-list">
+      <li v-for="(song,idx) in songs" :key="song._id">
+        <song-preview :song="song" :idx="idx" />
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
-    import songPreview from '@/cmps/song-preview';
+import songPreview from "@/cmps/song-preview";
 export default {
   props: {
     songs: {
       type: Array,
     },
   },
-  components:{
-      songPreview
-  }
+  components: {
+    songPreview,
+  },
 };
 </script>
 

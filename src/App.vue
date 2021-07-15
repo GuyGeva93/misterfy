@@ -4,19 +4,19 @@
    <main>
       <router-view/>
    </main>
-    <app-footer/>
+    <!-- <app-footer/> -->
     <player/>
   </div>
 </template>
 
 <script>
 import appHeader from "@/cmps/app-header";
-import appFooter from "@/cmps/app-footer";
+// import appFooter from "@/cmps/app-footer";
   import player from '@/cmps/player'
 export default {
   components: {
     appHeader,
-    appFooter,
+    // appFooter,
     player
 },
 created () {

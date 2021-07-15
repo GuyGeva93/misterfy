@@ -1,4 +1,8 @@
 .chat-container {
+    display: flex;
+    flex-direction: column;
+    grid-row: 1/4;
+    border: 1px solid white;
     margin: 10px;
     height: 100%;
     >h2 {
@@ -10,7 +14,7 @@
     }
     .msg-list {
         overflow-y: auto;
-        height: 100%
+        flex: 1
     }
     .msg-info {
         display: flex;
@@ -26,5 +30,12 @@
         margin: 10px auto;
         padding: 10px;
     }
-    .msg-form {}
+    .msg-form {
+        display: flex;
+        input {
+            flex: 1;
+            height: 40px;
+            font-size: large;
+        }
+    }
 }
