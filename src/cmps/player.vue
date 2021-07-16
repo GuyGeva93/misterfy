@@ -22,13 +22,6 @@ export default {
       // isPlaying: false,
     };
   },
-  methods: {
-    // pause() {
-    //   this.$refs.plyr.player.on("playing", () => {
-    //     this.$refs.plyr.player.pause();
-    //   });
-    // },
-  },
   mounted() {
     if (!this.$refs.plyr) return;
 
@@ -40,11 +33,10 @@ export default {
     this.$refs.plyr.player.on("ended", (event) => {
       console.log(event);
       // console.log(this.$refs);
+      this.$store.commit({type:'nextSong'})
       this.$refs.plyr.player.play();
     });
-
   },
-
   computed: {
     songId() {
       return this.$store.getters.currSongId;
