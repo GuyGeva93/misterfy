@@ -1,5 +1,6 @@
 <template>
   <section class="station-add">
+    <button class="close" @click="closeModal">✖</button>
     <form @submit.prevent="createStation">
       <input type="file" />
       <input type="text" placeholder="Station name" v-model="newStation.name" />
@@ -35,6 +36,9 @@ export default {
       this.$emit("closeModal");
       this.$router.push(`/details/${this.newStation._id}`);
     },
+    closeModal(){
+      this.$emit("closeModal");
+    }
   },
 };
 </script>

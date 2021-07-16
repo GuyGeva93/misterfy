@@ -22,7 +22,7 @@
 <script>
 import stationList from "@/cmps/station-list";
 export default {
-  name: "Home",
+  name: "home",
   components: {
     stationList,
   },
