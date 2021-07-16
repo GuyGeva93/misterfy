@@ -1,7 +1,7 @@
 <template>
-  <section class="station-preview">
+  <section class="station-preview" v-if="station">
     <router-link :to="'/details/' + station._id">
-      <div class="station-preview-card" @click="play">
+      <div class="station-preview-card">
         <span class="station-preview-name">{{ station.name }}</span>
         <img
           :src="station.imgUrl"
