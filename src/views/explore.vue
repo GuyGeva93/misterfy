@@ -2,38 +2,44 @@
   <main class="explore-container">
     <section class="explore">
       <ul class="tags-list">
-        <li class="tag-preview">
-          <router-link :to="'/explore/' + this.name">All</router-link>
-        </li>
+        <!-- <li class="tag-preview">
+          <router-link :to="'/explore/' + this.name" >All</router-link>
+        </li> -->
         <li v-for="(tag, idx) in setTags" :key="idx" class="tag-preview">
-          <router-link :to="getUrl(tag)"> {{ tag }}</router-link>
+          <router-link :to="getUrl(tag)">
+            <station-tag :tag="tag" />
+          </router-link>
         </li>
       </ul>
     </section>
-   <template v-if="!isLoading">
+    <template v-if="!isLoading">
       <section v-if="stations">
-      <station-list :stations="stations" />
-    </section>
-    <h2 v-else>No stations found</h2>
-   </template>
-   <h2 v-else>Loading...</h2>
+        <station-list :stations="stations" />
+      </section>
+      <h2 v-else>No stations found</h2>
+    </template>
+    <h2 v-else>Loading...</h2>
   </main>
 </template>
 
 <script>
 import stationList from "@/cmps/station-list";
+import stationTag from "@/cmps/station-tag";
 export default {
   created() {
-    const tags = this.stations.reduce((acc, station) => {
-      acc.push(...station.tags);
-      return acc;
-    }, []);
+    const tags = this.stations.reduce(
+      (acc, station) => {
+        acc.push(...station.tags);
+        return acc;
+      },
+      ["All"]
+    );
     this.setTags = new Set(tags);
   },
   data() {
     return {
       setTags: [],
-      isLoading:false
+      isLoading: false,
     };
   },
   methods: {
@@ -43,6 +49,7 @@ export default {
       if (this.name) {
         url += this.name;
       } else url += "*";
+      if (tag === "All") tag = "";
       url += "/" + tag;
 
       return url;
@@ -58,12 +65,14 @@ export default {
   },
   components: {
     stationList,
+    stationTag,
   },
   watch: {
     "$route.params": {
       immediate: true,
       async handler() {
         const { name, tag = "" } = this.$route.params;
+
         const filterBy = {
           name,
           tag,

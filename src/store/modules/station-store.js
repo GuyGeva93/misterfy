@@ -83,7 +83,6 @@ export const stationStore = {
                 })
         },
         saveStation({ commit }, payload) {
-            console.log(payload.station);
             const type = (payload.station._id) ? 'updateStation' : 'addStation'
             return stationService.save(payload.station)
                 .then(savedStation => {
