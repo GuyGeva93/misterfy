@@ -57,8 +57,7 @@ export default {
       if (!this.newStation.imgUrl && this.imgUrl) {
         this.newStation.imgUrl = this.imgUrl;
       }
-      await stationService.save(this.newStation);
-      // console.log("this.newStation", this.newStation);
+      this.newStation=await this.$store.dispatch({type:'saveStation',station:this.newStation});
       this.$emit("closeModal");
       this.$router.push(`/details/${this.newStation._id}`);
     },

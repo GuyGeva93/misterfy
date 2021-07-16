@@ -53,8 +53,8 @@ export const stationStore = {
             state.currStation = currStation
         },
         addStation(state, { station }) {
-            console.log(station);
             state.stations.push(station)
+            state.currStation = station;
         },
 
 
@@ -82,12 +82,11 @@ export const stationStore = {
                     commit({ type: 'removeStation', stationId })
                 })
         },
-        saveStation({ commit }, payload) {
+        async saveStation({ commit }, payload) {
             const type = (payload.station._id) ? 'updateStation' : 'addStation'
-            return stationService.save(payload.station)
-                .then(savedStation => {
-                    commit({ type, station: savedStation })
-                })
+            const station = await stationService.save(payload.station)
+            commit({ type, station })
+            return station;
         },
         setFilter({ commit }, { sortBy, filterBy }) {
             // console.log(sortBy);
