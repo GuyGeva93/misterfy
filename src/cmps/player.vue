@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// import { eventBusService } from "@/services/eventBus-service.js";
 export default {
   data() {
     return {
@@ -28,8 +27,6 @@ export default {
     if (!this.$refs.plyr) return;
 
     this.$refs.plyr.player.on("ready", () => {
-      // console.log();
-      // console.log(this.$refs);
       this.$refs.plyr.player.play();
     });
     this.$refs.plyr.player.on("ended", () => {
