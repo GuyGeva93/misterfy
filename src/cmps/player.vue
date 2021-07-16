@@ -16,25 +16,31 @@
 <script>
 // import { eventBusService } from "@/services/eventBus-service.js";
 export default {
-  methods: {
-    playSong() {
-      this.$refs.plyr.player.play();
-    },
-  },
-  mounted() {
-    if(!this.$refs.plyr) return
-    this.$refs.plyr.player.on('ready', event => {
-      console.log(event);
-      console.log(this.$refs);
-      this.$refs.plyr.player.play();
-      // this.$refs.plyr.player.pause();   
-});
-  },
   data() {
     return {
       currSongId: "",
-      // bTqVqk7FSmY
+      // isPlaying: false,
     };
+  },
+  methods: {
+    // pause() {
+    //   this.$refs.plyr.player.on("playing", () => {
+    //     this.$refs.plyr.player.pause();
+    //   });
+    // },
+  },
+  mounted() {
+    if (!this.$refs.plyr) return;
+
+    this.$refs.plyr.player.on("ready", () => {
+      // console.log();
+      // console.log(this.$refs);
+      this.$refs.plyr.player.play();
+    });
+    this.$refs.plyr.player.on("ended", () => {
+      this.$refs.plyr.player.play();
+    });
+
   },
 
   computed: {
