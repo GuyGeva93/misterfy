@@ -9,11 +9,6 @@
           allow="autoplay"
         ></iframe>
       </div>
-      <!-- <div
-        ref="plyr"
-        data-plyr-provider="youtube"
-        :data-plyr-embed-id="songId"
-      ></div> -->
     </vue-plyr>
   </section>
 </template>
