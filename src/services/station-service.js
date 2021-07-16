@@ -6,6 +6,7 @@ const STATION_KEY = 'station'
 const gStations = [{
     _id: '5c09',
     name: 'Funky Monks',
+    imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUK1LaBaummJfuW6GIM_kt3R9egIlpqVpEKw&usqp=CAU',
     tags: [
         'Funk',
         'Happy'
@@ -35,6 +36,7 @@ const gStations = [{
 }, {
     _id: '5c10',
     name: 'Junky Funks',
+    imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlby2ptcAwN49-xSziIMYE8SxChaVDPSGXjg&usqp=CAU',
     tags: [
         'Funk',
         'Pop',
@@ -111,6 +113,9 @@ async function save(station) {
         const updatedStation = await storageService.put(STATION_KEY, station)
         return updatedStation
     }
+    if (!station.imgUrl) {
+        station.imgUrl = 'https://is4-ssl.mzstatic.com/image/thumb/Purple124/v4/6a/e4/59/6ae45956-8b3d-0ff2-81f8-587c7c65b515/source/256x256bb.jpg';
+    }
     const addedStation = await storageService.post(STATION_KEY, station)
     return addedStation
         // station = JSON.parse(JSON.stringify(station))
@@ -130,6 +135,7 @@ function getEmptyStation() {
     const station = {
         _id: '',
         name: '',
+        imgUrl: '',
         description: '',
         tags: [],
         createdAt: Date.now(),
