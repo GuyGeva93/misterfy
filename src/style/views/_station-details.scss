@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1fr 60px 1fr 1fr;
+    min-height: 90vh;
     .section-details-img {
         grid-column: 2/4;
         background-color: blue;
@@ -30,6 +31,7 @@
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 60px 30px 1fr;
         font-size: x-large;
+        text-align: center;
         // margin-bottom: 20px;
         .song-results {
             grid-column: 1/-1;

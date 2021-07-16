@@ -10,13 +10,16 @@ Vue.config.productionTip = false
 import VuePlyr from 'vue-plyr'
 import 'vue-plyr/dist/vue-plyr.css'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faUserSecret)
+// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+// import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+// library.add(faUserSecret)
+// library.add(faHeart)
+
+// Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 

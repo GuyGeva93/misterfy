@@ -31,7 +31,7 @@
         placeholder="Search for a song"
       />
     </form>
-    <song-results :results="results.items" />
+    <song-results :results="results.items" v-if="isSearch" />
   </section>
 </template>
 
@@ -53,6 +53,8 @@ export default {
     toggleSearch() {
       this.$emit("opened");
       this.isSearch = !this.isSearch;
+      this.txt = ''
+      this.results=[]
     },
     async search(query) {
       if (!query) {
@@ -61,9 +63,12 @@ export default {
       }
       this.results = await youtubeService.query(query);
       console.log("this.results", this.results);
+            
+
     },
     toggleStationLike() {
       this.isLiked = !this.isLiked;
+
     },
   },
   components: {
