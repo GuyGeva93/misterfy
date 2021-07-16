@@ -2,16 +2,16 @@
   <section class="station-details" v-if="currStation">
     <chat :stationId="stationId" class="section-details-chat" />
     <section class="station-details-img">
-      <img
-        :src="currStation.imgUrl"
-      />
+      <img :src="currStation.imgUrl" />
     </section>
     <section class="station-details-info">
       <h3>Title: {{ currStation.name }}</h3>
       <!-- <h4>Tags: {{ getTags }}</h4> -->
     </section>
-    <song-list-options @search="search" @opened="opened"/>
-    <section class="station-list-container" :class="{open: isOpen}">
+    <song-list-options @search="search" @opened="opened" />
+    <button @click.stop="nextSong">Next</button>
+    <button @click.stop="prevSong">Prev</button>
+    <section class="station-list-container" :class="{ open: isOpen }">
       <song-list :songs="currStation.songs" />
     </section>
   </section>
@@ -28,7 +28,7 @@ import chat from "@/cmps/chat";
 export default {
   async created() {
     const { stationId } = this.$route.params;
-    this.$store.dispatch({type: 'currStation', stationId})
+    this.$store.dispatch({ type: 'currStation', stationId })
     // this.station = await stationService.getById(stationId);
   },
   data() {
@@ -38,7 +38,7 @@ export default {
       isOpen: false
     };
   },
-  
+
 
   computed: {
     stationId() {
@@ -47,8 +47,8 @@ export default {
     // getTags() {
     //   return this.station.tags.join(',')
     // },
-     currStation(){
-       return this.$store.getters.currStation 
+    currStation() {
+      return this.$store.getters.currStation
     }
   },
 
@@ -64,8 +64,15 @@ export default {
       });
     },
 
-    opened(){
+    opened() {
       this.isOpen = !this.isOpen
+    },
+
+    nextSong() {
+      this.$store.commit({ type: 'nextSong' })
+    },
+    prevSong() {
+      this.$store.commit({ type: 'prevSong' })
     }
   },
 

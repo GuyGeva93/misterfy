@@ -16,10 +16,17 @@ export const playerStore = {
       state.currSongId = songId
     },
     nextSong(state) {
-      const currStation = this.$store.getters.currStation
+      const currStation = this.getters.currStation
       let idx = currStation.songs.findIndex(song => song.id === state.currSongId)
       if (idx === currStation.songs.length - 1) idx = -1
       const nextSong = currStation.songs[idx + 1]
+      state.currSongId = nextSong.id
+    },
+    prevSong(state) {
+      const currStation = this.getters.currStation
+      let idx = currStation.songs.findIndex(song => song.id === state.currSongId)
+      if (!idx) idx = 1
+      const nextSong = currStation.songs[idx - 1]
       state.currSongId = nextSong.id
     }
   },

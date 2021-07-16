@@ -2,7 +2,7 @@
   <section class="song-preview" @click.stop="play(song.id)">
     <button @click.stop="play(song.id)">▶</button>
     <!-- <button v-else @click.stop="play(song.id)">⏸</button> -->
-    <h3 v-if="!isPlaying">{{ idx + 1 }}</h3>
+    <h3>{{ idx + 1 }}</h3>
     <img :src="song.imgUrl" />
     <h3>{{ song.title }}</h3>
     <h3>352,587</h3>

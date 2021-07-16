@@ -33,6 +33,7 @@ export default {
     this.$refs.plyr.player.on("ended", (event) => {
       console.log(event);
       // console.log(this.$refs);
+      this.$store.commit({type:'nextSong'})
       this.$refs.plyr.player.play();
     });
   },
