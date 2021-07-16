@@ -5,7 +5,7 @@
       <img src="@/assets/hero.png" alt="" />
     </div>
     <h2>TOP 10</h2>
-    <station-list :stations="stations" />
+    <station-list :stations="stations" v-if="stations" />
     <br />
     <br />
     <br />
@@ -31,8 +31,19 @@ export default {
       return this.$store.getters.stationsToDisplay;
     },
   },
+  
+
   mounted() {
     // console.log(this.$store.getters);
   },
+  watch:{
+    '$route':{
+      immediate:true,
+      handler(){
+       //reset filter when coming home page
+         this.$store.commit({type:'setFilter'});
+      }
+    }
+  }
 };
 </script>

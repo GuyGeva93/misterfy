@@ -1,9 +1,14 @@
 .station-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-
-  .song-list-container {
-    grid-column: 6/-1;
-  }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: auto;
+    .btn-next,
+    .btn-prev {
+        background-color: black;
+        color: white;
+    }
+    .song-list-container {
+        grid-column: 6/-1;
+    }
 }

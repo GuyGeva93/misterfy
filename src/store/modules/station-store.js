@@ -37,7 +37,7 @@ export const stationStore = {
             // console.log(stations);
             state.stations = stations;
         },
-        setFilter(state, { filterBy }) {
+        setFilter(state, { filterBy = { name: '', tag: '' } }) {
             state.filterBy = filterBy
         },
         removeStation(state, { stationId }) {
