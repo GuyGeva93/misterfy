@@ -7,6 +7,10 @@ header {
         color: white;
         text-transform: uppercase;
         cursor: pointer;
+        transition: color 1s;
+        &:hover {
+            color: gold;
+        }
     }
     .filter-search-container {
         align-self: center;
@@ -19,6 +23,15 @@ header {
             &.router-link-exact-active {
                 color: gold;
             }
+        }
+        .creatify-btn {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+            font-family: Avenir, Helvetica, Arial, sans-serif;
         }
     }
 }
