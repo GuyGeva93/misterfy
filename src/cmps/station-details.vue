@@ -1,5 +1,5 @@
 <template>
-  <section class="station-details" v-if="station">
+  <section class="station-details" v-if="currStation">
     <chat :stationId="stationId" class="section-details-chat" />
     <section class="station-details-img">
       <img
@@ -7,18 +7,18 @@
       />
     </section>
     <section class="station-details-info">
-      <h3>Title: {{ station.name }}</h3>
-      <h4>Tags: {{ getTags }}</h4>
+      <h3>Title: {{ currStation.name }}</h3>
+      <!-- <h4>Tags: {{ getTags }}</h4> -->
     </section>
     <song-list-options @search="search" @opened="opened"/>
     <section class="station-list-container" :class="{open: isOpen}">
-      <song-list :songs="station.songs" />
+      <song-list :songs="currStation.songs" />
     </section>
   </section>
 </template>
 
 <script>
-import { stationService } from "@/services/station-service.js";
+// import { stationService } from "@/services/station-service.js";
 import { youtubeService } from "@/services/youtube-service.js";
 
 import songListOptions from "@/cmps/song-list-options.vue";
@@ -28,7 +28,8 @@ import chat from "@/cmps/chat";
 export default {
   async created() {
     const { stationId } = this.$route.params;
-    this.station = await stationService.getById(stationId);
+    this.$store.dispatch({type: 'currStation', stationId})
+    // this.station = await stationService.getById(stationId);
   },
   data() {
     return {
@@ -42,11 +43,11 @@ export default {
     stationId() {
       return this.$route.params.stationId;
     },
-    getTags() {
-      return this.station.tags.join(',')
-    },
-     station(){
-       return 
+    // getTags() {
+    //   return this.station.tags.join(',')
+    // },
+     currStation(){
+       return this.$store.getters.currStation 
     }
   },
 

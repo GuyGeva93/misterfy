@@ -1,58 +1,45 @@
 <template>
-  <section class="player">
-    <!-- <vue-plyr id="player" ref="plyr">
-      <audio  controls crossorigin playsinline autoplay="false">
-        <source src="https://www.youtube.com/embed/r9JTtQOyZVo" type="audio/mp3" />
-      </audio>
-    </vue-plyr> -->
+  <section class="player" v-if="songId" >
     <vue-plyr>
-  <div  ref="plyr" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" ></div>
-</vue-plyr>
+      <div class="plyr__video-embed" id="player">
+        <iframe
+          :src="src"
+          allowfullscreen
+          allowtransparency
+          allow="autoplay"
+        ></iframe>
+      </div>
+      <!-- <div
+        ref="plyr"
+        data-plyr-provider="youtube"
+        :data-plyr-embed-id="songId"
+      ></div> -->
+    </vue-plyr>
   </section>
 </template>
 
 <script>
 
 export default {
+  // created() {
+  //   console.log(this.$store.getters.currSongId)
+  // },
   data() {
     return {
-      // player: "",
-      // done: false,
-      // tag: "",
-    };
+      // currSongId: ''
+      // bTqVqk7FSmY
+    }
   },
-  mounted() {
 
-    // //   TODO: fetch media
-    // //   TODO: figure out how to use autoplay and when to turn it to true
-    // this.$refs.plyr.player.on("event", () => console.log("event fired"));
-    // // console.log(this.$refs.plyr.player.elements.controls);
-    // // this.$refs.plyr.player.on("ready", (event) => {
-    //   // const instance = event.detail.plyr;
-    //   // console.log(instance);
-    // // });
-    // this.$refs.plyr.player.on("play", () => {
-    //   console.log("pressed play");
+  computed: {
+    songId() {
+      return this.$store.getters.currSongId
+    },
+    src() {
+      return `https://www.youtube.com/embed/${this.songId}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1`
+    }
+  },
 
-    //   //   const instance = event.detail.plyr;
-    //   //   console.log(instance);
-    // });
-    // this.$refs.plyr.player.on("pause", () => {
-    //   console.log("pressed pause");
-    // });
-    // this.$refs.plyr.player.on("volumechange", () => {
-    //   console.log("changed volume");
-    // });
-    // this.$refs.plyr.player.on("ratechange", () => {
-    //   console.log("changed playback speed");
-    // });
-  },
-  created() {
-    
-  },
-  methods: {
-   
-  },
 };
 </script>
 

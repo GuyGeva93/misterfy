@@ -17,7 +17,7 @@ export default {
     addSong(song) {
       const {stationId} = this.$route.params;
       this.$store.dispatch({ type: "addSong", song, stationId });
-      // this.$emit('addSong', song)
+      
     },
   },
 };

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import home from '../views/home.vue'
 import explore from '../views/explore.vue';
 import dashboard from '../views/dashboard.vue';
 import stationDetails from '../cmps/station-details.vue';
@@ -10,8 +10,8 @@ Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
-        name: 'Home',
-        component: Home
+        name: 'home',
+        component: home
     },
     {
         path: '/about',

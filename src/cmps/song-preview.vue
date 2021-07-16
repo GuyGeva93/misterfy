@@ -1,5 +1,6 @@
 <template>
   <section class="song-preview">
+    <button @click.stop="play(song.id)">Play</button>
     <h3 v-if="!isPlaying">{{ idx + 1 }}</h3>
     <img :src="song.imgUrl" />
     <h3>{{ song.title }}</h3>
@@ -10,11 +11,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isPlaying: false
-    }
-  },
   props: {
     song: {
       type: Object,
@@ -22,6 +18,16 @@ export default {
     idx: {
       type: Number,
     },
+  },
+  data() {
+    return {
+      isPlaying: false
+    }
+  },
+  methods: {
+    play(songId) {
+      this.$store.commit({type:'playSong', songId})
+    }
   },
 };
 </script>
