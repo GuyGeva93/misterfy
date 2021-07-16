@@ -40,6 +40,11 @@ export const stationStore = {
             const idx = state.stations.findIndex(station => station._id === stationId)
             state.stations.splice(idx, 1)
         },
+        saveSong(state, { updatedStation }) {
+            const idx = state.stations.findIndex(station => station._id === updatedStation._id)
+            state.stations.splice(idx, 1, updatedStation)
+            console.log(state.stations);
+        },
         // updateStation(state, payload) {
         //     console.log(payload.station);
         //     const idx = state.stations.findIndex(stations => stations._id === payload.station._id)
@@ -85,6 +90,10 @@ export const stationStore = {
                     commit({ type: 'setStations', stations })
                 })
 
+        },
+        async addSong({ commit }, { song, stationId }) {
+            const updatedStation = await stationService.saveSong(song, stationId)
+            commit({ type: 'saveSong', updatedStation })
         }
     }
 };

@@ -70,6 +70,7 @@ export const stationService = {
     remove,
     save,
     getEmptyStation,
+    saveSong
 }
 
 // const STATION_URL = 'http://127.0.0.1:3030/api/station/'
@@ -106,6 +107,10 @@ function remove(stationId) {
 }
 
 async function save(station) {
+    if (station._id) {
+        const updatedStation = await storageService.put(STATION_KEY, station)
+        return updatedStation
+    }
     const addedStation = await storageService.post(STATION_KEY, station)
     return addedStation
         // station = JSON.parse(JSON.stringify(station))
@@ -134,3 +139,28 @@ function getEmptyStation() {
     }
     return station
 }
+
+async function saveSong(song, stationId) {
+    const station = await getById(stationId)
+    station.songs.push({
+        id: song.id.videoId,
+        title: song.snippet.title,
+        imgUrl: song.snippet.thumbnails.default.url,
+        addedBy: ''
+            // url: ,
+
+    })
+    const updatedStation = await save(station)
+    return updatedStation
+}
+// async function removeSong(song, stationId) {
+//     const station = await getById(stationId)
+//     station.songs.push({
+//         id: song.id.videoId,
+//         title: song.snippet.title,
+//         imgUrl: song.snippet.thumbnail.default,
+//         addedBy: ''
+//             // url: ,
+
+//     })
+// }

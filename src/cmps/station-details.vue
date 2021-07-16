@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      station: null,
+      // station: null,
       isSearch: false,
       isOpen: false
     };
@@ -44,6 +44,9 @@ export default {
     },
     getTags() {
       return this.station.tags.join(',')
+    },
+     station(){
+       return 
     }
   },
 

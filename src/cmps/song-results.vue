@@ -1,7 +1,7 @@
 <template>
   <section class="song-results">
     <div v-for="song in results" :key="song.id.videoId">
-      <div>{{song.snippet.title}}</div>
+      <div @click.stop="addSong(song)">{{ song.snippet.title }}</div>
     </div>
   </section>
 </template>
@@ -13,6 +13,12 @@ export default {
       type: Array,
     },
   },
-
-}
+  methods: {
+    addSong(song) {
+      const {stationId} = this.$route.params;
+      this.$store.dispatch({ type: "addSong", song, stationId });
+      // this.$emit('addSong', song)
+    },
+  },
+};
 </script>
