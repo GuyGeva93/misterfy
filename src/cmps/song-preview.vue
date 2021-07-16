@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      // isPlaying: false,
+      isPlaying: false,
     };
   },
   methods: {
