@@ -1,6 +1,7 @@
 <template>
   <section class="station-add">
     <h2>Adding a new station</h2>
+    <button class="close" @click="closeModal">✖</button>
     <form @submit.prevent="createStation">
      <label class="choose-file">
        <div>Choose image</div>
@@ -62,6 +63,9 @@ export default {
       this.$emit("closeModal");
       this.$router.push(`/details/${this.newStation._id}`);
     },
+    closeModal(){
+      this.$emit("closeModal");
+    }
   },
 };
 </script>

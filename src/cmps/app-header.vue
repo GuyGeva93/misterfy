@@ -4,7 +4,6 @@
     <filter-text-search @search="search" />
     <nav class="main-nav">
       <router-link to="/">Home</router-link> |
-      <!-- <router-link to="/add">Creatify</router-link> | -->
       <button @click.stop="toggleCreating">Creatify</button> |
       <router-link to="/explore">Explore</router-link> |
       <router-link to="/dashboard">Dashboard</router-link> |
