@@ -1,6 +1,6 @@
 <template>
   <section class="song-preview" @click.stop="play(song.id)">
-    <button v-if="!isPlaying" @click.stop="play(song.id)">▶</button>
+    <button @click.stop="play(song.id)">▶</button>
     <!-- <button v-else @click.stop="play(song.id)">⏸</button> -->
     <h3 v-if="!isPlaying">{{ idx + 1 }}</h3>
     <img :src="song.imgUrl" />
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {eventBusService} from '@/services/eventBus-service.js'
+import { eventBusService } from '@/services/eventBus-service.js'
 
 export default {
   props: {
@@ -24,14 +24,14 @@ export default {
   },
   data() {
     return {
-      // isPlaying: false,
+      isPlaying: false,
     };
   },
   methods: {
     play(songId) {
       this.$store.commit({ type: "loadSongToPlayer", songId });
       eventBusService.$emit("playSong");
-      // this.isPlaying = true
+      this.isPlaying = true
       // this.$refs.plyr.player.on('play', () => console.log('pressed Play'))
     },
   },

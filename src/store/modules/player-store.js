@@ -2,24 +2,28 @@
 // import { RegExp } from 'core-js/web';
 
 export const playerStore = {
-    strict: true,
-    state: {
-        currSongId: '',
+  strict: true,
+  state: {
+    currSongId: '',
+  },
+  getters: {
+    currSongId(state) {
+      return state.currSongId
+    }
+  },
+  mutations: {
+    loadSongToPlayer(state, { songId }) {
+      state.currSongId = songId
     },
-    getters: {
-        currSongId(state) {
-            return state.currSongId
-        }
-    },
-    mutations: {
-        loadSongToPlayer(state, { songId }) {
-            state.currSongId = songId
-        },
-        playSong() {
-
-        }
-    },
-    actions: {}
+    nextSong(state) {
+      const currStation = this.$store.getters.currStation
+      let idx = currStation.songs.findIndex(song => song.id === state.currSongId)
+      if (idx === currStation.songs.length - 1) idx = -1
+      const nextSong = currStation.songs[idx + 1]
+      state.currSongId = nextSong.id
+    }
+  },
+  actions: {}
 };
 
 // export const stationStore = new Vuex.Store(options)

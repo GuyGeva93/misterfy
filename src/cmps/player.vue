@@ -15,21 +15,11 @@
 
 <script>
 export default {
-  // created() {
-  //   console.log(this.$store.getters.currSongId)
-  // },
   data() {
     return {
       currSongId: "",
       // isPlaying: false,
     };
-  },
-  methods: {
-    // pause() {
-    //   this.$refs.plyr.player.on("playing", () => {
-    //     this.$refs.plyr.player.pause();
-    //   });
-    // },
   },
   mounted() {
     if (!this.$refs.plyr) return;
@@ -40,9 +30,7 @@ export default {
     this.$refs.plyr.player.on("ended", () => {
       this.$refs.plyr.player.play();
     });
-
   },
-
   computed: {
     songId() {
       return this.$store.getters.currSongId
