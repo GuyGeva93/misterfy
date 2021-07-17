@@ -1,29 +1,38 @@
 .song-preview {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 5fr 3fr 1fr;
-    justify-content: space-around;
-    align-items: center;
-    background-color: darken($clr1, 6%);
-    justify-items: center;
-    .thumbnail {
-        object-fit: cover;
-        object-position: center;
-        border-radius: 10px;
-        height: 60px;
-        width: 60px;
-    }
-    .song-preview-play-btn {
-        cursor: pointer;
-        &:hover {
-            background-color: gold;
-        }
-    }
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 5fr 3fr 1fr 1fr;
+  justify-content: space-around;
+  align-items: center;
+  background-color: darken($clr1, 6%);
+  justify-items: center;
+  .thumbnail {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+  }
+  .song-preview-play-btn {
+    cursor: pointer;
     &:hover {
-        background-color: $clr2;
+      background-color: gold;
     }
-    .like-song {
-        background-color: transparent;
-        border: none;
+  }
+  &:hover {
+    background-color: $clr2;
+  }
+  .like-song {
+    background-color: transparent;
+    border: none;
+  }
+
+  .song-preview-remove-btn {
+    cursor: pointer;
+    fill: white;
+
+    &:hover {
+      fill: red;
     }
+  }
 }

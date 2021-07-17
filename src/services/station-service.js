@@ -196,6 +196,7 @@ export const stationService = {
   save,
   getEmptyStation,
   saveSong,
+  removeSong,
   saveSongList
 }
 
@@ -278,22 +279,18 @@ async function saveSong(song, stationId) {
     imgUrl: song.snippet.thumbnails.default.url,
     addedBy: ''
     // url: ,
-
   })
   const updatedStation = await save(station)
   return updatedStation
 }
-// async function removeSong(song, stationId) {
-//     const station = await getById(stationId)
-//     station.songs.push({
-//         id: song.id.videoId,
-//         title: song.snippet.title,
-//         imgUrl: song.snippet.thumbnail.default,
-//         addedBy: ''
-//             // url: ,
 
-//     })
-// }
+async function removeSong(songId, stationId) {
+  const station = await getById(stationId)
+  const idx = station.songs.findIndex(song => song.id === songId)
+  station.songs.splice(idx, 1)
+  const updatedStation = await save(station)
+  return updatedStation
+}
 
 async function saveSongList(list, stationId) {
   const station = await getById(stationId)

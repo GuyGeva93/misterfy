@@ -58,6 +58,14 @@ export const stationStore = {
       state.stations.splice(idx, 1, updatedStation)
       state.currStation = updatedStation
     },
+    removeSong(state, { updatedStation }) {
+      const idx = state.stations.findIndex(station => station._id === updatedStation._id)
+      state.stations.splice(idx, 1, updatedStation)
+      state.currStation = updatedStation
+      // const idx = state.currStation.songs.findIdx(song => song.id === songId)
+      // const updatedStation = state.currStation.songs.splice(idx, 1)
+      // state.currStation = updatedStation
+    },
     setCurrStation(state, { currStation }) {
       state.currStation = currStation
     },
@@ -102,8 +110,6 @@ export const stationStore = {
       return station;
     },
     setFilter({ commit }, { sortBy, filterBy }) {
-      // console.log(sortBy);
-      // console.log(filterBy);
       return stationService.query(filterBy, sortBy)
         .then(stations => {
           commit({ type: 'setFilter', sortBy, filterBy, stations })
@@ -115,6 +121,10 @@ export const stationStore = {
       const updatedStation = await stationService.saveSong(song, stationId)
       commit({ type: 'saveSong', updatedStation })
     },
+    async removeSong({ commit, state }, { songId }) {
+      const updatedStation = await stationService.removeSong(songId, state.currStation._id)
+      commit({ type: 'removeSong', updatedStation })
+    },
     async currStation({ commit }, { stationId }) {
       const currStation = await stationService.getById(stationId)
       commit({ type: 'setCurrStation', currStation })
@@ -125,5 +135,3 @@ export const stationStore = {
     }
   }
 };
-
-// export const stationStore = new Vuex.Store(options)
