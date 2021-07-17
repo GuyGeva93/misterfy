@@ -1,20 +1,16 @@
 <template>
-  <section
-    class="station-details"
-    v-if="currStation"
-  >
+  <section class="station-details" v-if="currStation">
     <chat :stationId="stationId" class="section-details-chat" />
-
-    <section ref="img" >
-      <img class="station-details-img" :src="currStation.imgUrl" />
-    </section>
-    <section class="station-details-info">
-      <h3>Title: {{ currStation.name }}</h3>
-      <!-- <h4>Tags: {{ getTags }}</h4> -->
+    <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
+    <section v-if="getStation" class="station-details-info">
+      <h2>Title: {{ currStation.name }}</h2>
+      <h4>Tags: {{ getTags }}</h4>
+      <h4>Station Author: <span>{{ currStation.createdBy.fullname }}</span></h4>
+      <h4>Listeners: 14,532</h4>
     </section>
     <song-list-options @search="search" @opened="opened" />
-    <button @click.stop="nextSong">Next</button>
-    <button @click.stop="prevSong">Prev</button>
+    <!-- <button @click.stop="nextSong">Next</button>
+    <button @click.stop="prevSong">Prev</button> -->
     <section class="station-list-container" :class="{ open: isOpen }">
       <song-list :songs="currStation.songs" />
     </section>
@@ -47,18 +43,20 @@ export default {
     stationId() {
       return this.$route.params.stationId;
     },
-    // getTags() {
-    //   return this.station.tags.join(',')
-    // },
+    getStation() {
+      return this.$store.getters.currStation;
+    },
+    getTags() {
+      return this.getStation.tags.join(",");
+    },
     currStation() {
       return this.$store.getters.currStation;
     },
-     mainImg() {
-       return this.$store.getters.currStation.imgUrl
-       
+    mainImg() {
+      return this.$store.getters.currStation.imgUrl;
     },
     getMainColor() {
-      return this.mainColor
+      return this.mainColor;
     },
   },
 
@@ -78,15 +76,14 @@ export default {
       this.isOpen = !this.isOpen;
     },
 
-    nextSong() {
-      this.$store.commit({ type: "nextSong" });
-    },
-    prevSong() {
-      this.$store.commit({ type: "prevSong" });
-    },
+    // nextSong() {
+    //   this.$store.commit({ type: "nextSong" });
+    // },
+    // prevSong() {
+    //   this.$store.commit({ type: "prevSong" });
+    // },
   },
-  mounted () {
-  },
+  mounted() {},
 
   components: {
     songList,

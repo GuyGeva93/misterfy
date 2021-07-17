@@ -2,7 +2,7 @@
   <div class="home-page">
     <div class="hero-txt"><h1>HERO</h1></div>
     <div class="hero-img">
-      <img src="@/assets/hero.png" alt="" />
+      <img src="@/assets/img/hero.png" alt="" />
     </div>
     <h2>TOP 10</h2>
     <station-list :stations="stations" v-if="stations" />
