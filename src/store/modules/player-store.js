@@ -5,10 +5,14 @@ export const playerStore = {
   strict: true,
   state: {
     currSongId: '',
+    currSong: ''
   },
   getters: {
     currSongId(state) {
       return state.currSongId
+    },
+    currSong(state) {
+      return state.currSong
     }
   },
   mutations: {
@@ -29,6 +33,11 @@ export const playerStore = {
       if (!idx) idx = 1
       const nextSong = currStation.songs[idx - 1]
       state.currSongId = nextSong.id
+    },
+    currSongImg(state) {
+      const currStation = this.getters.currStation
+      const currSong = currStation.songs.find(song => song.id === state.currSongId)
+      state.currSong = currSong
     }
   },
   actions: {}

@@ -1,10 +1,8 @@
 <template>
 	<section class="player" v-if="songId">
+		
 		<section class="player-controls">
-			<marquee-text>
-				<span>1 2 3 4</span>
-			</marquee-text>
-
+			<marquee-text :repeat="1" :duration="3"> Long test check </marquee-text>
 			<span @click.stop="prevSong">⏪</span>
 			<span v-if="isPlay" @click.stop="togglePlay">▶</span>
 			<span v-else @click.stop="togglePlay">⏸</span>
