@@ -28,7 +28,7 @@
 			<span v-if="isPlay" @click.stop="togglePlay">
 				<svg
 					class="player-play-btn"
-					width="20px"
+					width="30px"
 					aria-hidden="true"
 					focusable="false"
 					data-prefix="far"
