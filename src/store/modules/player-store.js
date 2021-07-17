@@ -23,6 +23,7 @@ export const playerStore = {
       state.currSongId = nextSong.id
     },
     prevSong(state) {
+      debugger
       const currStation = this.getters.currStation
       let idx = currStation.songs.findIndex(song => song.id === state.currSongId)
       if (!idx) idx = 1

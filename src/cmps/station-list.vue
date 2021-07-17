@@ -1,13 +1,17 @@
 <template>
   <section class="station-list">
     <carousel
-      :per-page="4"
+      :per-page="5"
       :mouse-drag="true"
+      :speed="500"
       ref="carousel"
       :navigationEnabled="true"
+      :paginationEnabled="false"
       :loop="true"
       :navigationNextLabel="nextLabel"
       :navigationPrevLabel="prevLabel"
+      :count="stations.length"
+      @navigation-click="navClick"
     >
       <slide v-for="station in stations" :key="station._id">
         <station-preview :station="station" />
@@ -30,19 +34,19 @@ export default {
     },
   },
   data() {
-    return {
-      frequency: 1,
-    };
-  },
-  created() {
-    this.frequency++;
+    return {};
   },
   computed: {
     nextLabel() {
-      return '<button class="btn-next" >Next </button>';
+      return '<button class="btn-next" >➡ </button>';
     },
     prevLabel() {
-      return '<button class="btn-prev" >Previous </button>';
+      return '<button class="btn-prev" >⬅ </button>';
+    },
+  },
+  methods: {
+    navClick() {
+      // console.log(this.$refs["carousel"]);
     },
   },
 

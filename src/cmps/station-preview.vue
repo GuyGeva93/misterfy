@@ -4,7 +4,7 @@
       <div class="station-preview-card">
         <span class="station-preview-name">{{ station.name }}</span>
         <img
-          :src="station.imgUrl"
+          :src="station.imgUrl" :alt="station.name"
         />
       </div>
     </router-link>
