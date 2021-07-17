@@ -3,6 +3,10 @@ header {
     align-items: center;
     justify-content: space-around;
     background-color: $clr2;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    width: 100%;
     .logo {
         color: white;
         text-transform: uppercase;

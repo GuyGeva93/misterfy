@@ -11,6 +11,7 @@ props:{
         type:String
     }
 },
+
 computed:{
     activeTag(){
         const {tag}= this.$route.params;
