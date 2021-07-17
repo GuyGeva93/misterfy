@@ -2,6 +2,7 @@
   <section class="player" v-if="songId">
     <vue-plyr ref="plyr">
       <div class="plyr__video-embed" id="player">
+        <button>NEXT</button>
         <iframe :src="src" allowtransparency allow="autoplay"></iframe>
       </div>
       <!-- <div
@@ -33,7 +34,7 @@ export default {
     this.$refs.plyr.player.on("ended", (event) => {
       console.log(event);
       // console.log(this.$refs);
-      this.$store.commit({type:'nextSong'})
+      this.$store.commit({ type: 'nextSong' })
       this.$refs.plyr.player.play();
     });
   },
