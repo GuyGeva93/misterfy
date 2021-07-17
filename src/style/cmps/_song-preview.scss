@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #2e2e2e;
+    background-color: darken($clr1, 6%);
     &:hover {
-        background-color: rgba(46, 9, 80, 0.397);
+        background-color: $clr2;
     }
     .like-song {
         background-color: transparent;

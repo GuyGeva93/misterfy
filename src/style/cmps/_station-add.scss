@@ -1,13 +1,25 @@
 .station-add {
-    height: 500px;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
     width: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: $clr2;
     color: black;
-    z-index: 10;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 10px;
+    .close {
+        align-self: flex-end;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: white;
+        font-size: 1.1rem;
+    }
     form {
         display: flex;
         flex-direction: column;

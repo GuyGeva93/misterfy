@@ -5,7 +5,6 @@
     min-height: 90vh;
     .section-details-img {
         grid-column: 2/4;
-        background-color: blue;
     }
     .station-details-info {
         grid-column: 4/6;
@@ -18,10 +17,6 @@
         grid-column: 3/-1;
         &.open {
             grid-column: 6/-1;
-        }
-        // background-color: green;
-        .song-list-container {
-            background-color: #2e2e2e;
         }
     }
     .song-list-options {

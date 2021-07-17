@@ -48,7 +48,6 @@ export default {
         console.log(clone);
         console.log(this.song);
         this.addSong(this.song);
-        // this.$store.commit('setCurrStation', clone)
       },
     },
   },

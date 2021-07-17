@@ -1,11 +1,14 @@
 <template>
   <header>
+    <div v-if="isCreating" class="screen-cover"></div>
     <div class="logo" @click="goHome">Misterfy</div>
     <filter-text-search @search="search" />
     <nav class="main-nav">
       <router-link to="/">Home</router-link> |
-      <button class="creatify-btn" @click.stop="toggleCreating">Creatify</button> |
-      <router-link to="/explore">Explore</router-link> |
+      <button class="creatify-btn" @click.stop="toggleCreating">
+        Creatify
+      </button>
+      | <router-link to="/explore">Explore</router-link> |
       <router-link to="/dashboard">Dashboard</router-link> |
       <router-link to="/about">About</router-link>
     </nav>
@@ -29,17 +32,16 @@ export default {
     },
     search(name) {
       //Preventing duplicated route error
-      const currName=this.$route.params.name;
-     if((currName && currName===name))return;
-     if(!name)name='*';
-     let url="/explore/" + name;
-     if(this.tag)url+='/'+this.tag;
-      this.$router.push(url)
-      .catch(err=>{
+      const currName = this.$route.params.name;
+      if (currName && currName === name) return;
+      if (!name) name = "*";
+      let url = "/explore/" + name;
+      if (this.tag) url += "/" + this.tag;
+      this.$router.push(url).catch((err) => {
         //When same route appears
-         if (err.name != "NavigationDuplicated") {
-    throw err;
-  }
+        if (err.name != "NavigationDuplicated") {
+          throw err;
+        }
       });
 
       //   const res = await youtubeService.name(name);
@@ -55,10 +57,10 @@ export default {
       return (this.isCreating = !this.isCreating);
     },
   },
-  computed:{
-    tag(){
-    return this.$route.params.tag;  
-    }
+  computed: {
+    tag() {
+      return this.$route.params.tag;
+    },
   },
 
   components: {
