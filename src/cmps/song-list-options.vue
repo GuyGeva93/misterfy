@@ -1,8 +1,6 @@
 <template>
   <section class="song-list-options">
-    <div>
-      <div @click="toggleStationLike" :class="{ liked: isLiked }">
-        <svg
+      <svg @click="toggleStationLike" :class="{ liked: isLiked }"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           width="40px"
@@ -17,11 +15,11 @@
             />
           </g>
         </svg>
-      </div>
-      <!-- <span @click="toggleStationLike" :class="{liked: isLiked}">❤</span> -->
-    </div>
-    <div>✖</div>
-    <div @click.stop="toggleSearch">➕</div>
+    <img src="../assets/svg/trash-alt-solid.svg">
+    <img  @click.stop="toggleSearch" src="../assets/svg/plus-solid.svg">
+    <img @click.stop="prevSong" src="../assets/svg/backward-solid.svg">
+    <img class="options-play-btn" src="../assets/svg/play-circle-solid.svg">
+    <img @click.stop="nextSong" src="../assets/svg/forward-solid.svg">
     <form class="song-list-search" :class="{ open: isSearch }">
       <input
         v-debounce="search"
@@ -53,8 +51,8 @@ export default {
     toggleSearch() {
       this.$emit("opened");
       this.isSearch = !this.isSearch;
-      this.txt = ''
-      this.results=[]
+      this.txt = "";
+      this.results = [];
     },
     async search(query) {
       if (!query) {
@@ -63,12 +61,16 @@ export default {
       }
       this.results = await youtubeService.query(query);
       console.log("this.results", this.results);
-            
-
     },
     toggleStationLike() {
       this.isLiked = !this.isLiked;
+    },
 
+    nextSong() {
+      this.$store.commit({ type: "nextSong" });
+    },
+    prevSong() {
+      this.$store.commit({ type: "prevSong" });
     },
   },
   components: {

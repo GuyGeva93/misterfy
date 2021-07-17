@@ -1,7 +1,7 @@
 <template>
   <header>
     <div v-if="isCreating" class="screen-cover"></div>
-    <img class="logo" @click="goHome" src="../assets/logo_transparent.png" alt="">
+    <img class="logo" @click="goHome" src="../assets/logo/logo_transparent.png" alt="">
     <filter-text-search @search="search" />
     <nav class="main-nav">
       <router-link to="/">Home</router-link> |

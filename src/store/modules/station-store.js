@@ -21,6 +21,15 @@ export const stationStore = {
       }
       return stations
     },
+    tags(state) {
+      const tags = state.stations.reduce(
+        (acc, station) => {
+          acc.push(...station.tags);
+          return acc;
+        }, ["All"]
+      );
+      return new Set(tags);
+    },
     currStation(state) {
       return state.currStation
     },

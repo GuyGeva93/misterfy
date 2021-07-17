@@ -11,18 +11,11 @@
         border-top: $clr2 1px solid;
         height: 70px;
         align-items: center;
-        img {
-            object-fit: cover;
-            object-position: center;
-            border-radius: 10px;
-            height: 60px;
-            width: 60px;
-        }
     }
 }
 
 .song-list-search.open {
-    grid-column: 1/4;
+    grid-column: 1/7;
     height: 60px;
     grid-row: 2/3;
     margin-bottom: 0;
@@ -33,15 +26,6 @@
         font-size: large;
         padding: 0 7px 0 7px;
         outline: none;
-    }
-}
-
-.song-results {
-    .search-result {
-        background-color: $clr4;
-        margin: 5px;
-        padding: 2px;
-        text-align: start;
-        height: 40px;
+        border: none;
     }
 }

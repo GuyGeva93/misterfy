@@ -5,6 +5,7 @@
         <span class="station-preview-name">{{ station.name }}</span>
         <img
           :src="station.imgUrl" :alt="station.name"
+          @load="play"
         />
       </div>
     </router-link>
@@ -22,7 +23,8 @@ export default {
     // console.log('this.station',this.station);
   },
   methods: {
-    play() {
+    play(ev) {
+      console.log(ev);
       // console.log("Play station");
     },
     // details(stationId) {

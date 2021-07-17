@@ -3,7 +3,7 @@
     <carousel
       :per-page="5"
       :mouse-drag="true"
-      :speed="500"
+
       ref="carousel"
       :navigationEnabled="true"
       :paginationEnabled="false"
@@ -25,6 +25,8 @@
 // :autoplay="true"
 //  :autoplayTimeout="1000"
 //       :autoplayHoverPause="false"
+//speed of the carousel sliding
+//      :speed="500"
 import stationPreview from "./station-preview.vue";
 import { Carousel, Slide } from "vue-carousel";
 export default {
