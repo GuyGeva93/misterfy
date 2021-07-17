@@ -7,6 +7,10 @@ function makeId(length = 5) {
     return txt;
 }
 
+function makeNumericId() {
+    return Date.now() % 1000;
+}
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -15,5 +19,6 @@ function getRandomInt(min, max) {
 
 export const utilService = {
     makeId,
+    makeNumericId,
     getRandomInt
 }
