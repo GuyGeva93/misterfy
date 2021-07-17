@@ -1,11 +1,13 @@
 <template>
 	<div id="app">
+		<div class="header-filler"></div>
 		<app-header />
 		<main>
 			<router-view />
 		</main>
 		<player-img />
 		<player :key="this.$store.getters.currSongId" />
+		<div class="player-filler"></div>
 		<!-- <app-footer /> -->
 	</div>
 </template>
@@ -20,7 +22,8 @@ export default {
 		appHeader,
 		// appFooter,
     playerImg,
-		player
+		player,
+		
 	},
 	created() {
 		this.$store.dispatch({ type: 'loadStations' });

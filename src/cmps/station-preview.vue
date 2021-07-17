@@ -23,8 +23,8 @@ export default {
     // console.log('this.station',this.station);
   },
   methods: {
-    play(ev) {
-      console.log(ev);
+    play() {
+      // console.log(ev);
       // console.log("Play station");
     },
     // details(stationId) {

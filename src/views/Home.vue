@@ -1,6 +1,10 @@
 <template>
   <div class="home-page">
-    <div class="hero-txt"><h1>LISTENING IS EVERYTHING</h1></div>
+    <div class="hero-txt">
+      <h1 class="first">LISTENING</h1>
+      <h1 class="second"> IS</h1>
+      <h1 class="third"> EVERYTHING</h1>
+      </div>
     <div class="hero-img">
       <img src="@/assets/img/hero.png" alt="" />
     </div>

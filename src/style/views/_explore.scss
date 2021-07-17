@@ -14,7 +14,12 @@
                 font-size: 1.5rem;
                 color: white;
                 .tag.active {
-                    color: $clr2;
+                    transition: color 0.7s;
+                    color: gold;
+                    border-bottom: 1px white solid;
+                    // background-color: white;
+                    // padding: 0 10px 0 10px;
+                    // border-radius: 3em;
                 }
             }
         }
