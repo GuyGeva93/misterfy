@@ -5,8 +5,8 @@
         <span class="station-preview-name">{{ station.name }}</span>
         <img
           :src="station.imgUrl" :alt="station.name"
-          @load="play"
         />
+          <!-- @load="play" -->
       </div>
     </router-link>
   </section>
@@ -19,17 +19,15 @@ export default {
       type: Object,
     },
   },
-  created() {
-    // console.log('this.station',this.station);
-  },
-  methods: {
-    play(ev) {
-      console.log(ev);
-      // console.log("Play station");
-    },
-    // details(stationId) {
-    //   this.$router.push(`/details/${stationId}`);
-    // },
-  },
+  // created() {
+  //   // console.log('this.station',this.station);
+  // },
+  // methods: {
+  //   play(ev) {
+  //     console.log(ev);
+  //     // console.log("Play station");
+  //   },
+ 
+  // },
 }
 </script>
