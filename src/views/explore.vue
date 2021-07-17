@@ -5,7 +5,7 @@
         <!-- <li class="tag-preview">
           <router-link :to="'/explore/' + this.name" >All</router-link>
         </li> -->
-        <li v-for="(tag, idx) in setTags" :key="idx" class="tag-preview">
+        <li v-for="(tag, idx) in tags" :key="idx" class="tag-preview">
           <router-link :to="getUrl(tag)">
             <station-tag :tag="tag" />
           </router-link>
@@ -26,19 +26,9 @@
 import stationList from "@/cmps/station-list";
 import stationTag from "@/cmps/station-tag";
 export default {
-  created() {
-    const tags = this.stations.reduce(
-      (acc, station) => {
-        acc.push(...station.tags);
-        return acc;
-      },
-      ["All"]
-    );
-    this.setTags = new Set(tags);
-  },
+  created() {},
   data() {
     return {
-      setTags: [],
       isLoading: false,
     };
   },
@@ -61,6 +51,9 @@ export default {
     },
     stations() {
       return this.$store.getters.stationsToDisplay;
+    },
+    tags() {
+    return this.$store.getters.tags;
     },
   },
   components: {

@@ -1,10 +1,11 @@
 <template>
   <div class="home-page">
-    <div class="hero-txt"><h1>HERO</h1></div>
+    <div class="hero-txt"><h1>LISTENING IS EVERYTHING</h1></div>
     <div class="hero-img">
       <img src="@/assets/img/hero.png" alt="" />
     </div>
-    <h2>TOP 10</h2>
+   <div class="station-main">
+      <h2>TOP 10</h2>
     <station-list :stations="stations" v-if="stations" />
     <br />
     <br />
@@ -16,6 +17,7 @@
     <br />
     <h2>RECOMENDED FOR YOU</h2>
     <station-list :stations="stations" />
+   </div>
   </div>
 </template>
 

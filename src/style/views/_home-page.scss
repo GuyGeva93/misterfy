@@ -3,10 +3,12 @@
     display: flex;
     flex-direction: column;
     .hero-img {
-        position: relative;
+        margin-bottom: 200px;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
         img {
             width: 100%;
-            height: 80%;
             object-fit: cover;
         }
     }
@@ -18,5 +20,17 @@
         z-index: 1;
         color: white;
         font-size: larger;
+    }
+    .station-main {
+        position: relative;
+        top: 100vh;
+        height: 100vh;
+        background-color: $clr1;
+        z-index: 10;
+        h2 {
+            text-align: center;
+            margin: 10px;
+            text-decoration: underline;
+        }
     }
 }
