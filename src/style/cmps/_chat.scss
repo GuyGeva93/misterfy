@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     grid-column: 1/3;
-    grid-row: 1/-1;
+    grid-row: 1/4;
     border: 1px solid white;
-    height: calc(100% - 40px);
+    height: 100%;
     >h2 {
         text-align: center;
         box-shadow: inset 0 0 5px 3px black;
@@ -14,17 +14,22 @@
     .msg-list {
         overflow-y: auto;
         flex: 1;
+        padding: 5px;
+        background-color: $clr1;
     }
-    .msg-info {
-        display: flex;
-        gap: 20px;
-        padding: 10px;
-        width: 50%;
-        border: 1px solid white;
-        border-radius: 10px;
-        background-color: $clr3;
-        &.sender {
-            justify-content: flex-end;
+    .chat-msg-preview {
+        .msg-info {
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            width: 50%;
+            border: 1px solid white;
+            border-radius: 10px;
+            background-color: $clr3;
+            &.sender {
+                align-items: flex-end;
+                background-color: lighten($clr2, 10%);
+            }
         }
     }
     .msg-text {

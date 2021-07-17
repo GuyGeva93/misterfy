@@ -10,15 +10,14 @@ header {
     background-color: $clr1;
     max-height: 100px;
     .logo {
-        padding-top: 10px;
-        height: 150px;
+        // padding-top: 10px;
+        height: 100px;
         color: white;
         text-transform: uppercase;
         cursor: pointer;
         transition: color 1s;
-        &:hover {
-            color: gold;
-        }
+        object-fit: cover;
+        padding: 5px;
     }
     .filter-search-container {
         display: flex;
@@ -26,7 +25,7 @@ header {
         align-items: center;
         position: relative;
         .main-search {
-            background-color: $clr2;
+            background-color: lightgray;
             border: none;
             outline: none;
             font-size: 1.5rem;
