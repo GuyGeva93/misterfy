@@ -19,10 +19,7 @@ async function query(stationId) {
 async function add(newMsg) {
     newMsg.sentAt = Date.now();
 
-    const msgs = await storageService.query(CHAT_KEY);
-    //Is this his first msg?
-    const existMsgSender = msgs.find(msg => !!msg.from._id)
-    newMsg.from._id = (existMsgSender) ? existMsgSender.from._id : _getId();
+    // const msgs = await storageService.query(CHAT_KEY);
     storageService.post(CHAT_KEY, newMsg);
 
 
@@ -74,7 +71,3 @@ function getEmptyMsg() {
         // gWatchedUser = watchedStation
     })
 })();
-
-function _getId() {
-    return Date.now() % 1000;
-}

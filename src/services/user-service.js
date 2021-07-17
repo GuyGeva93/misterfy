@@ -1,11 +1,13 @@
 import { storageService } from './async-storage-service'
-import { httpService } from './http-service'
+// import { httpService } from './http-service'
 import { socketService } from './socket-service'
 
 // const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 var gWatchedUser = null;
 
 export const userService = {
+    saveUserId,
+    getUserId,
     login,
     logout,
     signup,
@@ -15,6 +17,20 @@ export const userService = {
     update,
     getLoggedinUser,
     // increaseScore
+}
+
+//For chat sender ids
+function saveUserId(userId) {
+    sessionStorage.setItem('userId', JSON.stringify(userId))
+
+}
+
+function getUserId() {
+    const userId = sessionStorage.getItem('userId');
+    if (userId) {
+        return JSON.parse(userId);
+    }
+    return null;
 }
 
 window.userService = userService
@@ -80,8 +96,8 @@ function getLoggedinUser() {
 // This IIFE functions for Dev purposes 
 // It allows testing of real time updates (such as sockets) by listening to storage events
 (async() => {
-    var user = getLoggedinUser()
-        // Dev Helper: Listens to when localStorage changes in OTHER browser
+    // var user = getLoggedinUser()
+    // Dev Helper: Listens to when localStorage changes in OTHER browser
 
     // Here we are listening to changes for the watched user (coming from other browsers)
     window.addEventListener('storage', async() => {
@@ -89,10 +105,10 @@ function getLoggedinUser() {
         const freshUsers = await storageService.query('user')
         const watchedUser = freshUsers.find(u => u._id === gWatchedUser._id)
         if (!watchedUser) return;
-        if (gWatchedUser.score !== watchedUser.score) {
-            console.log('Watched user score changed - localStorage updated from another browser')
-            socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser)
-        }
+        // if (gWatchedUser.score !== watchedUser.score) {
+        //     console.log('Watched user score changed - localStorage updated from another browser')
+        //     socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser)
+        // }
         gWatchedUser = watchedUser
     })
 })();
