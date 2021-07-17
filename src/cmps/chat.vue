@@ -8,7 +8,7 @@
     </ul>
     <form @submit.prevent="sendMsg" class="msg-form">
       <input type="text" v-model="msg.txt" placeholder="Your msg" />
-      <button>Send</button>
+      <button class="btn-send">Send</button>
     </form>
   </section>
 </template>

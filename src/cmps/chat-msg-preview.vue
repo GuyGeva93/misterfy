@@ -1,6 +1,6 @@
 <template>
-  <section class="chat-msg-preview">
-    <section class="msg-info" :class="msgSender">
+  <section class="chat-msg-preview" :class="msgSender" >
+    <section class="msg-info" :class="msgSender" >
     <section>
           <h3>{{ msg.from.name + msg.from._id }}</h3>
       <h4>{{ formattedDate }}</h4>
