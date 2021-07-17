@@ -3,8 +3,9 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1fr 60px 1fr 1fr;
     min-height: 90vh;
-    .section-details-img {
-        grid-column: 2/4;
+    .station-details-img {
+        margin-left: 10px;
+        box-shadow: 10px 3px 10px 15px $clr4;
     }
     .station-details-info {
         grid-column: 4/6;

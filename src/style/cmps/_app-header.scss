@@ -2,8 +2,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: $clr2;
+    background-color: $clr1;
+    max-height: 100px;
     .logo {
+        padding-top: 10px;
+        height: 150px;
         color: white;
         text-transform: uppercase;
         cursor: pointer;
@@ -13,7 +16,29 @@ header {
         }
     }
     .filter-search-container {
+        display: flex;
         align-self: center;
+        align-items: center;
+        position: relative;
+        .main-search {
+            background-color: $clr2;
+            border: none;
+            outline: none;
+            font-size: 1.5rem;
+            border-radius: 3em;
+            padding: 10px;
+            width: 400px;
+        }
+        button {
+            position: absolute;
+            right: 0;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            img {
+                height: 30px;
+            }
+        }
     }
     .main-nav {
         padding: 30px;
