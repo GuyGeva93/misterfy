@@ -19,22 +19,9 @@
     }
     .chat-msg-preview {
         display: flex;
-        flex-direction: column;
-        grid-column: 1/3;
-        grid-row: 1/4;
-        border: 1px solid white;
-        height: 100%;
-        >h2 {
-            text-align: center;
-            box-shadow: inset 0 0 5px 3px black;
-            background-color: $clr1;
-            padding: 10px;
-        }
-        .msg-list {
-            flex: 1;
-            overflow-y: auto;
-            padding: 5px;
-            background-color: $clr1;
+        margin-bottom: 20px;
+        &.sender {
+            justify-content: flex-end;
         }
         .msg-info {
             gap: 20px;
