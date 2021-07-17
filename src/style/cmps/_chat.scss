@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     grid-column: 1/3;
-    grid-row: 1/-1;
+    grid-row: 1/4;
     border: 1px solid white;
-    height: calc(100% - 40px);
+    height: 100%;
     >h2 {
         text-align: center;
         box-shadow: inset 0 0 5px 3px black;
@@ -12,26 +12,35 @@
         padding: 10px;
     }
     .msg-list {
-        overflow-y: auto;
         flex: 1;
+        overflow-y: auto;
+        padding: 5px;
+        background-color: $clr1;
     }
-    .msg-info {
+    .chat-msg-preview {
         display: flex;
-        gap: 20px;
-        padding: 10px;
-        width: 50%;
-        border: 1px solid white;
-        border-radius: 10px;
-        background-color: $clr3;
+        margin-bottom: 20px;
         &.sender {
             justify-content: flex-end;
         }
-    }
-    .msg-text {
-        display: flex;
-        width: fit-content;
-        // margin: 10px auto;
-        padding: 10px;
+        .msg-info {
+            gap: 20px;
+            padding: 10px;
+            width: 50%;
+            border: 1px solid white;
+            border-radius: 10px;
+            background-color: $clr3;
+            &.sender {
+                align-items: flex-end;
+                background-color: lighten($clr2, 10%);
+            }
+            .msg-text {
+                display: flex;
+                width: fit-content;
+                // margin: 10px auto;
+                padding: 10px;
+            }
+        }
     }
     .msg-form {
         display: flex;
@@ -39,6 +48,13 @@
             flex: 1;
             height: 40px;
             font-size: large;
+            outline: none;
+        }
+        .btn-send {
+            background-color: $clr3;
+            &:hover {
+                background-color: lighten($clr3, 20%);
+            }
         }
     }
 }
