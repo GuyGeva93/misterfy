@@ -32,7 +32,6 @@ export default {
       this.$store.commit({ type: "loadSongToPlayer", songId });
       eventBusService.$emit("playSong");
       this.isPlaying = true
-      // this.$refs.plyr.player.on('play', () => console.log('pressed Play'))
     },
   },
 };
