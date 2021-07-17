@@ -2,7 +2,7 @@
   <section class="player" v-if="songId">
     <vue-plyr ref="plyr">
       <div class="plyr__video-embed" id="player">
-        <button>NEXT</button>
+        <!-- <button>NEXT</button> -->
         <iframe :src="src" allowtransparency allow="autoplay"></iframe>
       </div>
       <!-- <div

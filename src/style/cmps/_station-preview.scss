@@ -6,10 +6,12 @@
     cursor: pointer;
     margin: 5px;
     .station-preview-card {
+        width: 170px;
+        height: 180px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        background: green;
+        background: $clr3;
         border-radius: 10px;
         img {
             width: 70px;
@@ -17,8 +19,9 @@
             grid-row: 2;
             grid-column: 3;
             align-self: self-end;
-            border-end-end-radius: 10px;
+            border-radius: 10px;
             transform: rotate(10deg);
+            object-fit: cover;
         }
         .station-preview-name {
             justify-self: flex-start;

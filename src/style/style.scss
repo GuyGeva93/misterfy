@@ -1,9 +1,10 @@
+@import './setup/_variables.scss';
+@import './setup/_functions.scss';
+@import './setup/_helpers.scss';
 @import './_main.scss';
 @import './cmps/_app-header.scss';
 @import './cmps/_app-footer.scss';
 @import './views/_home-page.scss';
-@import './setup/_functions.scss';
-@import './setup/_helpers.scss';
 @import './cmps/_filter-text-search.scss';
 @import './views/_explore.scss';
 @import './cmps/_station-list.scss';

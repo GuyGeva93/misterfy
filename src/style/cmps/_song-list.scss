@@ -7,8 +7,8 @@
     padding: 0;
     li {
         display: flex;
-        border-bottom: goldenrod 1px solid;
-        border-top: goldenrod 1px solid;
+        border-bottom: $clr2 1px solid;
+        border-top: $clr2 1px solid;
         height: 70px;
         align-items: center;
         img {
@@ -38,7 +38,7 @@
 
 .song-results {
     .search-result {
-        background-color: #1e1e1e;
+        background-color: $clr4;
         margin: 5px;
         padding: 2px;
         text-align: start;

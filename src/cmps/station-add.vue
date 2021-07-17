@@ -1,7 +1,7 @@
 <template>
   <section class="station-add">
-    <h2>Adding a new station</h2>
-    <button class="close" @click="closeModal">✖</button>
+    <button class="close" @click="closeModal">X</button>
+    <h2>Create your new station</h2>
     <form @submit.prevent="createStation">
      <label class="choose-file">
        <div>Choose image</div>
