@@ -9,7 +9,6 @@ Vue.config.productionTip = false
 
 import VuePlyr from 'vue-plyr'
 import 'vue-plyr/dist/vue-plyr.css'
-
 import VueCarousel from 'vue-carousel';
 Vue.use(VueCarousel);
 

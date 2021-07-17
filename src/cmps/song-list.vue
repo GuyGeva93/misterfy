@@ -58,6 +58,7 @@ export default {
           list,
           stationId: this.stationId,
         });
+        // this.$store.commit({type: "setListOrder", list})
       },
     },
   },
