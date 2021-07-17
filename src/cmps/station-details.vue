@@ -1,7 +1,11 @@
 <template>
-  <section class="station-details" v-if="currStation">
+  <section
+    class="station-details"
+    v-if="currStation"
+  >
     <chat :stationId="stationId" class="section-details-chat" />
-    <section class="station-details-img">
+
+    <section ref="img" class="station-details-img">
       <img :src="currStation.imgUrl" />
     </section>
     <section class="station-details-info">
@@ -18,27 +22,26 @@
 </template>
 
 <script>
+// import ColorThief from "colorthief";
 // import { stationService } from "@/services/station-service.js";
 import { youtubeService } from "@/services/youtube-service.js";
-
 import songListOptions from "@/cmps/song-list-options.vue";
-
 import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
 export default {
   async created() {
     const { stationId } = this.$route.params;
-    this.$store.dispatch({ type: 'currStation', stationId })
-    // this.station = await stationService.getById(stationId);
+    this.$store.dispatch({ type: "currStation", stationId });
   },
   data() {
     return {
       // station: null,
       isSearch: false,
-      isOpen: false
+      isOpen: false,
+      // colorThief: new ColorThief(),
+      mainColor: null,
     };
   },
-
 
   computed: {
     stationId() {
@@ -48,12 +51,19 @@ export default {
     //   return this.station.tags.join(',')
     // },
     currStation() {
-      return this.$store.getters.currStation
-    }
+      return this.$store.getters.currStation;
+    },
+     mainImg() {
+       return this.$store.getters.currStation.imgUrl
+       
+    },
+    getMainColor() {
+      return this.mainColor
+    },
   },
 
   methods: {
-    addSong() { },
+    addSong() {},
     async search(query) {
       const res = await youtubeService.query(query);
       res.items.map((item) => {
@@ -65,15 +75,17 @@ export default {
     },
 
     opened() {
-      this.isOpen = !this.isOpen
+      this.isOpen = !this.isOpen;
     },
 
     nextSong() {
-      this.$store.commit({ type: 'nextSong' })
+      this.$store.commit({ type: "nextSong" });
     },
     prevSong() {
-      this.$store.commit({ type: 'prevSong' })
-    }
+      this.$store.commit({ type: "prevSong" });
+    },
+  },
+  mounted () {
   },
 
   components: {

@@ -1,53 +1,63 @@
 <template>
   <section class="station-list">
-    <div
-      class="station-list-conatiner"
-      v-for="station in stations"
-      :key="station._id">
-      <station-preview :station="station" />
-    </div>
+    <carousel
+      :per-page="4"
+      :mouse-drag="true"
+      ref="carousel"
+      :navigationEnabled="true"
+      :loop="true"
+      :navigationNextLabel="nextLabel"
+      :navigationPrevLabel="prevLabel"
+    >
+      <slide v-for="station in stations" :key="station._id">
+        <station-preview :station="station" />
+      </slide>
+    </carousel>
   </section>
 </template>
 
 <script>
+// carousel autoplay
+// :autoplay="true"
+//  :autoplayTimeout="1000"
+//       :autoplayHoverPause="false"
 import stationPreview from "./station-preview.vue";
+import { Carousel, Slide } from "vue-carousel";
 export default {
-  props:{
-    stations:{
-      type: Array
-    }
+  props: {
+    stations: {
+      type: Array,
+    },
   },
   data() {
     return {
-      // stations: [
-      //   {
-      //     _id: 's101',
-      //     name: 'Hip Hop',
-      //   },
-      //   {
-      //     _id: 's102',
-      //     name: 'Israeli',
-      //   },
-      //   {
-      //     _id: 's103',
-      //     name: 'Rock',
-      //   },
-      //   {
-      //     _id: 's104',
-      //     name: 'Chill',
-      //   },
-      //   {
-      //     _id: 's105',
-      //     name: 'Relax',
-      //   },
-      // ],
+      frequency: 1,
     };
   },
-  created () {
+  created() {
+    this.frequency++;
+  },
+  computed: {
+    nextLabel() {
+      return '<button class="btn-next" >Next </button>';
+    },
+    prevLabel() {
+      return '<button class="btn-prev" >Previous </button>';
+    },
+  },
+
+  mounted() {
+    //Hacked way to make stations appear on start
+    setTimeout(() => {
+      this.$refs["carousel"].onResize();
+      this.$refs["carousel"].goToPage(0);
+    }, 200);
   },
 
   components: {
     stationPreview,
+    Carousel,
+    Slide,
   },
 };
 </script>

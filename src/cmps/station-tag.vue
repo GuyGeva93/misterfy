@@ -14,8 +14,6 @@ props:{
 computed:{
     activeTag(){
         const {tag}= this.$route.params;
-        console.log(tag);
-        console.log(this.tag);
         return ((!tag && this.tag==='All')||tag===this.tag) ? 'active' :'';
     }
 }

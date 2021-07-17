@@ -37,7 +37,7 @@ export const stationStore = {
             // console.log(stations);
             state.stations = stations;
         },
-        setFilter(state, { filterBy }) {
+        setFilter(state, { filterBy = { name: '', tag: '' } }) {
             state.filterBy = filterBy
         },
         removeStation(state, { stationId }) {
@@ -56,6 +56,10 @@ export const stationStore = {
             state.stations.push(station)
             state.currStation = station;
         },
+        setListOrder(state, { songList }) {
+            state.currStation.songs = songList
+        }
+
 
 
         // updateStation(state, payload) {
@@ -105,6 +109,10 @@ export const stationStore = {
         async currStation({ commit }, { stationId }) {
             const currStation = await stationService.getById(stationId)
             commit({ type: 'setCurrStation', currStation })
+        },
+        async setListOrder({ commit }, { list, stationId }) {
+            const songList = await stationService.saveSongList(list, stationId)
+            commit({ type: 'setListOrder', songList })
         }
     }
 };
