@@ -5,8 +5,8 @@
   >
     <chat :stationId="stationId" class="section-details-chat" />
 
-    <section ref="img" class="station-details-img">
-      <img :src="currStation.imgUrl" />
+    <section ref="img" >
+      <img class="station-details-img" :src="currStation.imgUrl" />
     </section>
     <section class="station-details-info">
       <h3>Title: {{ currStation.name }}</h3>
