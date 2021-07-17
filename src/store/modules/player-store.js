@@ -5,7 +5,8 @@ export const playerStore = {
   strict: true,
   state: {
     currSongId: '',
-    currSong: ''
+    isPlaying: false
+    // currSong: ''
   },
   getters: {
     currSongId(state) {
@@ -34,11 +35,15 @@ export const playerStore = {
       const nextSong = currStation.songs[idx - 1]
       state.currSongId = nextSong.id
     },
-    currSongImg(state) {
-      const currStation = this.getters.currStation
-      const currSong = currStation.songs.find(song => song.id === state.currSongId)
-      state.currSong = currSong
+    isPlaying(state){
+      state.isPlaying = !state.isPlaying
+      console.log('state.isPlaying', state.isPlaying)
     }
+    // currSongImg(state) {
+    //   const currStation = this.getters.currStation
+    //   const currSong = currStation.songs.find(song => song.id === state.currSongId)
+    //   state.currSong = currSong
+    // }
   },
   actions: {}
 };

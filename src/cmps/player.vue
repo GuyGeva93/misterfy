@@ -101,6 +101,12 @@ export default {
 		this.$refs.plyr.player.on("ready", () => {
 			this.$refs.plyr.player.play();
 		});
+		this.$refs.plyr.player.on('playing', () => {
+			this.$store.commit({ type: 'isPlaying' })
+		})
+		this.$refs.plyr.player.on('pause', () => {
+			this.$store.commit({ type: 'isPlaying' })
+		})
 		this.$refs.plyr.player.on("ended", () => {
 			this.$store.commit({ type: "nextSong" });
 			this.$refs.plyr.player.play();
@@ -109,10 +115,8 @@ export default {
 	methods: {
 		togglePlay() {
 			if (this.isPlay) {
-				console.log("play");
 				this.$refs.plyr.player.play();
 			} else {
-				console.log("pause");
 				this.$refs.plyr.player.pause();
 			}
 			this.isPlay = !this.isPlay;
