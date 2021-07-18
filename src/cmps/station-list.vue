@@ -1,9 +1,9 @@
 <template>
   <section class="station-list">
     <carousel
+      v-if="$route.name === 'home'"
       :per-page="5"
       :mouse-drag="true"
-
       ref="carousel"
       :navigationEnabled="true"
       :paginationEnabled="false"
@@ -11,12 +11,14 @@
       :navigationNextLabel="nextLabel"
       :navigationPrevLabel="prevLabel"
       :count="stations.length"
-      @navigation-click="navClick"
     >
       <slide v-for="station in stations" :key="station._id">
         <station-preview :station="station" />
       </slide>
     </carousel>
+    <div v-else v-for="station in stations" :key="station._id">
+      <station-preview :station="station" />
+    </div>
   </section>
 </template>
 
@@ -30,6 +32,7 @@
 import stationPreview from "./station-preview.vue";
 import { Carousel, Slide } from "vue-carousel";
 export default {
+  name: "explore",
   props: {
     stations: {
       type: Array,
@@ -46,18 +49,16 @@ export default {
       return '<button class="btn-prev" ><svg width="20px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-left" class="carousel-left-arrow" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"></path></svg></button>';
     },
   },
-  methods: {
-    navClick() {
-      // console.log(this.$refs["carousel"]);
-    },
-  },
+  methods: {},
 
   mounted() {
     //Hacked way to make stations appear on start
-    setTimeout(() => {
-      this.$refs["carousel"].onResize();
-      this.$refs["carousel"].goToPage(0);
-    }, 200);
+    if (this.$refs["carousel"]) {
+      setTimeout(() => {
+        this.$refs["carousel"].onResize();
+        this.$refs["carousel"].goToPage(0);
+      }, 200);
+    }
   },
 
   components: {

@@ -35,7 +35,6 @@ export default {
 				return this.$store.getters.currStation.songs
 			},
 			set(list) {
-				console.log("set", list);
 				this.$store.dispatch({
 					type: "setListOrder",
 					list,
