@@ -2,14 +2,14 @@
 	<section class="player" v-if="songId">
 		<section class="player-controls">
 			<marquee-text>
-				<span>1 2 3 4</span>
+				<span>{{ currSong.title }}</span>
 			</marquee-text>
 
 			<!-- forward button: -->
-			<span
+
+			<span @click.stop="prevSong"
 				><svg
 					class="player-next-btn"
-					@click.stop="prevSong"
 					width="20px"
 					aria-hidden="true"
 					focusable="false"
@@ -87,15 +87,22 @@
 </template>
 
 <script>
-import MarqueeText from "vue-marquee-text-component";
+import MarqueeText from "vue-marquee-text-component"
 export default {
+	created() {
+
+	},
 	data() {
 		return {
 			currSongId: "",
+			currSong: {},
 			isPlay: false,
 		};
 	},
 	mounted() {
+		this.currSong = this.$store.getters.currSong
+		console.log('this.currSong', this.currSong)
+
 		if (!this.$refs.plyr) return; // When player isn't ready
 
 		this.$refs.plyr.player.on("ready", () => {
@@ -122,15 +129,17 @@ export default {
 			this.isPlay = !this.isPlay;
 		},
 		prevSong() {
-			this.$store.commit({ type: "prevSong" });
+			this.$store.commit({ type: "prevSong" })
+			this.$store.commit({ type: "setCurrSong" })
 		},
 		nextSong() {
-			this.$store.commit({ type: "nextSong" });
+			this.$store.commit({ type: "nextSong" })
+			this.$store.commit({ type: "setCurrSong" })
 		},
 	},
 	computed: {
 		songId() {
-			return this.$store.getters.currSongId;
+			return this.$store.getters.currSongId
 		},
 		src() {
 			return `https://www.youtube.com/embed/${this.songId}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1`;

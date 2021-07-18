@@ -4,74 +4,6 @@ import { storageService } from './async-storage-service.js'
 
 const STATION_KEY = 'station'
 const gStations = [{
-        "_id": "5c09",
-        "name": "Funky Monks",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUK1LaBaummJfuW6GIM_kt3R9egIlpqVpEKw&usqp=CAU",
-        "tags": [
-            "Funk",
-            "Happy"
-        ],
-        "createdAt": 1541652422,
-        "createdBy": {
-            "_id": "u101",
-            "fullname": "Puki Ben David",
-            "imgUrl": "@/assets/user-img.png"
-        },
-        "likedByUsers": [
-            "{minimal-user}",
-            "{minimal-user}"
-        ],
-        "songs": [{
-                "id": "fLexgOxsZu0",
-                "title": "The Meters - Cissy Strut",
-                "url": "https://www.youtube.com/watch?v=fLexgOxsZu0&ab_channel=BrunoMars",
-                "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
-                "addedBy": "{minimal-user}"
-            },
-            {
-                "id": "mUkfiLjooxs",
-                "title": "The JB's - Pass The Peas",
-                "url": "https://www.youtube.com/watch?v=09R8_2nJtjg&ab_channel=Maroon5VEVO",
-                "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
-                "addedBy": {}
-            }
-        ]
-    }, {
-        "_id": "5c10",
-        "name": "Junky Funks",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlby2ptcAwN49-xSziIMYE8SxChaVDPSGXjg&usqp=CAU",
-        "tags": [
-            "Funk",
-            "Pop",
-            "Sad",
-            "Romantic"
-        ],
-        "createdAt": 1541652422,
-        "createdBy": {
-            "_id": "u102",
-            "fullname": "Shuki Ben David",
-            "imgUrl": "@/assets/user-img.png"
-        },
-        "likedByUsers": [
-            "{minimal-user}",
-            "{minimal-user}"
-        ],
-        "songs": [{
-                "id": "s1002",
-                "title": "The Meters - Cissy Strut",
-                "url": "https://www.youtube.com/watch?v=tAGnKpE4NCI&ab_channel=Metallica",
-                "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
-                "addedBy": "{minimal-user}"
-            },
-            {
-                "id": "123123",
-                "title": "The JB's - Pass The Peas",
-                "url": "https://www.youtube.com/watch?v=xwtdhWltSIg&ab_channel=remhq",
-                "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
-                "addedBy": {}
-            }
-        ]
-    }, {
         "_id": "NiGlG",
         "name": "Glee",
         "imgUrl": "data:image/jpeg;base64,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",
@@ -259,6 +191,390 @@ const gStations = [{
         "createdBy": {
             "id": 336,
             "fullname": "guest336"
+        }
+    },
+    {
+        "_id": "vq3TL",
+        "name": "AVICII",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626597340/Sprint%204%20stations%20imgs/ik8hckzclshtc4h0ai13.jpg",
+        "description": "Swedish DJ",
+        "tags": [
+            "Pop"
+        ],
+        "createdAt": 1626597291233,
+        "songs": [{
+                "id": "5y_KJAg8bHI",
+                "title": "Avicii - Wake Me Up (Lyric Video)",
+                "imgUrl": "https://i.ytimg.com/vi/5y_KJAg8bHI/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "YxIiPLVR6NA",
+                "title": "Avicii - Hey Brother (Lyric)",
+                "imgUrl": "https://i.ytimg.com/vi/YxIiPLVR6NA/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "2S0QhGGO1gQ",
+                "title": "Avicii - The Nights (Lyrics)",
+                "imgUrl": "https://i.ytimg.com/vi/2S0QhGGO1gQ/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 171,
+            "fullname": "guest171"
+        }
+    },
+    {
+        "_id": "caYJ8",
+        "name": "Jonathan Young",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626597589/Sprint%204%20stations%20imgs/p2aujfk5mngvxkadpyer.jpg",
+        "description": "Covers Singer",
+        "tags": [
+            "Cover"
+        ],
+        "createdAt": 1626597532806,
+        "songs": [{
+                "id": "_VmsK2x9Y4Q",
+                "title": "Every Time We Touch (Cascada) - POP PUNK COVER by Jonathan Young",
+                "imgUrl": "https://i.ytimg.com/vi/_VmsK2x9Y4Q/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "Q8RJAFWPHs4",
+                "title": "BACKSTREET BOYS - Larger Than Life (Metal cover version) Jonathan Young &amp; Lee Albrecht",
+                "imgUrl": "https://i.ytimg.com/vi/Q8RJAFWPHs4/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "CzxPLPKLFqQ",
+                "title": "[Nightcore] Everybody (Backstreets Back) {Backstreet Boys Mix Cover} - Jonathan Young",
+                "imgUrl": "https://i.ytimg.com/vi/CzxPLPKLFqQ/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "FDDeCaP_HGI",
+                "title": "Eye of the Tiger - POWER METAL cover by Jonathan Young",
+                "imgUrl": "https://i.ytimg.com/vi/FDDeCaP_HGI/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "a883itqqcd4",
+                "title": "POWER RANGERS - POWER METAL (Jonathan Young)",
+                "imgUrl": "https://i.ytimg.com/vi/a883itqqcd4/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "g7hPtc1WIIg",
+                "title": "BLUE DA BA DEE (Eiffel 65) - Metal cover version by Jonathan Young &amp; ToxicXEternity",
+                "imgUrl": "https://i.ytimg.com/vi/g7hPtc1WIIg/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 171,
+            "fullname": "guest171"
+        }
+    },
+    {
+        "_id": "dg9gf",
+        "name": "Pentatonix",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626598138/Sprint%204%20stations%20imgs/dgw2myyot0cb4pgqzbi2.jpg",
+        "description": "Covers band from Texas U.S",
+        "tags": [
+            "Cover"
+        ],
+        "createdAt": 1626598123972,
+        "songs": [{
+                "id": "LRP8d7hhpoQ",
+                "title": "[OFFICIAL VIDEO] Hallelujah - Pentatonix",
+                "imgUrl": "https://i.ytimg.com/vi/LRP8d7hhpoQ/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "P95_pCbCPZw",
+                "title": "[Official Video] Cheerleader – Pentatonix (OMI Cover)",
+                "imgUrl": "https://i.ytimg.com/vi/P95_pCbCPZw/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "jpYtzWKUYtQ",
+                "title": "PENTATONIX ft. DOLLY PARTON - JOLENE (LYRICS)",
+                "imgUrl": "https://i.ytimg.com/vi/jpYtzWKUYtQ/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "elwTgpHlty0",
+                "title": "[OFFICIAL VIDEO] Havana - Pentatonix",
+                "imgUrl": "https://i.ytimg.com/vi/elwTgpHlty0/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 171,
+            "fullname": "guest171"
+        }
+    },
+    {
+        "_id": "ql8N3",
+        "name": "The Wanted",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626598472/Sprint%204%20stations%20imgs/yrcossapdpiich0cpoxh.jpg",
+        "description": "A great band",
+        "tags": [
+            "hip-hop"
+        ],
+        "createdAt": 1626598463996,
+        "songs": [{
+                "id": "RFS5N_yAGTo",
+                "title": "The Wanted - Chasing The Sun",
+                "imgUrl": "https://i.ytimg.com/vi/RFS5N_yAGTo/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "-ZcpaOR1X64",
+                "title": "The Wanted - Walks Like Rihanna (Lyrics)",
+                "imgUrl": "https://i.ytimg.com/vi/-ZcpaOR1X64/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "2ggzxInyzVE",
+                "title": "The Wanted - Glad You Came",
+                "imgUrl": "https://i.ytimg.com/vi/2ggzxInyzVE/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "8piAL5rD6wI",
+                "title": "The Wanted - We Own The Night (Official Video)",
+                "imgUrl": "https://i.ytimg.com/vi/8piAL5rD6wI/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 171,
+            "fullname": "guest171"
+        }
+    },
+    {
+        "_id": "CEXKA",
+        "name": "Romanian Songs",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626598912/Sprint%204%20stations%20imgs/egetp3pppo5xbuneqs0n.png",
+        "description": "",
+        "tags": [
+            "hip-hop"
+        ],
+        "createdAt": 1626598817307,
+        "songs": [{
+                "id": "YnopHCL1Jk8",
+                "title": "O-Zone - Dragostea Din Tei [Official Video]",
+                "imgUrl": "https://i.ytimg.com/vi/YnopHCL1Jk8/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "sS76eS34Y0c",
+                "title": "ALEXANDRA STAN - Mr. Saxobeat",
+                "imgUrl": "https://i.ytimg.com/vi/sS76eS34Y0c/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 171,
+            "fullname": "guest171"
+        }
+    },
+    {
+        "_id": "3UC21",
+        "name": "METAL",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626598582/Sprint%204%20stations%20imgs/ezm10j79qn7jshvybvso.jpg",
+        "description": "Metal from all eras",
+        "tags": [
+            "Metal"
+        ],
+        "createdAt": 1626598347085,
+        "songs": [{
+                "id": "EhGEGIBGLu8",
+                "title": "Dio - Holy Diver",
+                "imgUrl": "https://i.ytimg.com/vi/EhGEGIBGLu8/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "WM8bTdBs-cw",
+                "title": "Metallica: One (Official Music Video)",
+                "imgUrl": "https://i.ytimg.com/vi/WM8bTdBs-cw/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "aU-dKoFZT0A",
+                "title": "Megadeth - A Tout Le Monde",
+                "imgUrl": "https://i.ytimg.com/vi/aU-dKoFZT0A/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "3mbvWn1EY6g",
+                "title": "Motörhead – Ace Of Spades (Official Video)",
+                "imgUrl": "https://i.ytimg.com/vi/3mbvWn1EY6g/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "09LTT0xwdfw",
+                "title": "Disturbed - Down With The Sickness [Official Music Video]",
+                "imgUrl": "https://i.ytimg.com/vi/09LTT0xwdfw/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "mjF1rmSV1dM",
+                "title": "ARCH ENEMY - The Eagle Flies Alone (OFFICIAL VIDEO)",
+                "imgUrl": "https://i.ytimg.com/vi/mjF1rmSV1dM/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "oqdZpxkzNvc",
+                "title": "Lamb of God - Redneck (Official HD Video)",
+                "imgUrl": "https://i.ytimg.com/vi/oqdZpxkzNvc/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 45,
+            "fullname": "guest45"
+        }
+    },
+    {
+        "_id": "AlAle",
+        "name": "Teen Rock",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626599405/Sprint%204%20stations%20imgs/pkd1kbf62hedmrsmjeuu.jpg",
+        "description": "Teen years metal",
+        "tags": [
+            "Rock"
+        ],
+        "createdAt": 1626599355457,
+        "songs": [{
+                "id": "5NPBIwQyPWE",
+                "title": "Avril Lavigne - Complicated (Official Video)",
+                "imgUrl": "https://i.ytimg.com/vi/5NPBIwQyPWE/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "Bg59q4puhmg",
+                "title": "Avril Lavigne - Girlfriend",
+                "imgUrl": "https://i.ytimg.com/vi/Bg59q4puhmg/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "RYnFIRc0k6E",
+                "title": "Limp Bizkit - Rollin&#39; (Official Video)",
+                "imgUrl": "https://i.ytimg.com/vi/RYnFIRc0k6E/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "04F4xlWSFh0",
+                "title": "Drowning Pool - Bodies",
+                "imgUrl": "https://i.ytimg.com/vi/04F4xlWSFh0/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "kXYiU_JCYtU",
+                "title": "Numb [Official Music Video] - Linkin Park",
+                "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "eVTXPUF4Oz4",
+                "title": "In The End [Official HD Music Video] - Linkin Park",
+                "imgUrl": "https://i.ytimg.com/vi/eVTXPUF4Oz4/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "CDl9ZMfj6aE",
+                "title": "Alien Ant Farm - Smooth Criminal",
+                "imgUrl": "https://i.ytimg.com/vi/CDl9ZMfj6aE/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 45,
+            "fullname": "guest45"
+        }
+    },
+    {
+        "_id": "nJPeQ",
+        "name": "Leprous, Malina",
+        "imgUrl": "http://res.cloudinary.com/gileadinc/image/upload/v1626599587/Sprint%204%20stations%20imgs/zmg2pjrf8l5zigou3mmt.jpg",
+        "description": "full album",
+        "tags": [
+            "Metal"
+        ],
+        "createdAt": 1626599580428,
+        "songs": [{
+                "id": "xnaEFtFWn7s",
+                "title": "Bonneville",
+                "imgUrl": "https://i.ytimg.com/vi/xnaEFtFWn7s/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "_7aRAcWhAPk",
+                "title": "Leprous - Stuck (lyrics)",
+                "imgUrl": "https://i.ytimg.com/vi/_7aRAcWhAPk/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "FZSlX1zXnfM",
+                "title": "LEPROUS - From The Flame (OFFICIAL VIDEO)",
+                "imgUrl": "https://i.ytimg.com/vi/FZSlX1zXnfM/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "7QmWYw6c6GU",
+                "title": "Captive",
+                "imgUrl": "https://i.ytimg.com/vi/7QmWYw6c6GU/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "Tl4gwOMrJiQ",
+                "title": "LEPROUS - Illuminate (OFFICIAL VIDEO)",
+                "imgUrl": "https://i.ytimg.com/vi/Tl4gwOMrJiQ/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "K6OI_E5twY0",
+                "title": "Leashes",
+                "imgUrl": "https://i.ytimg.com/vi/K6OI_E5twY0/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "KTcUwfzZIb0",
+                "title": "Mirage",
+                "imgUrl": "https://i.ytimg.com/vi/KTcUwfzZIb0/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "ZVnESkrisu4",
+                "title": "Malina",
+                "imgUrl": "https://i.ytimg.com/vi/ZVnESkrisu4/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "Jov-9_cEAgo",
+                "title": "Coma",
+                "imgUrl": "https://i.ytimg.com/vi/Jov-9_cEAgo/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "u7ZUVSweipI",
+                "title": "The Weight of Disaster",
+                "imgUrl": "https://i.ytimg.com/vi/u7ZUVSweipI/default.jpg",
+                "addedBy": ""
+            },
+            {
+                "id": "LKr1b1KmgYw",
+                "title": "The Last Milestone",
+                "imgUrl": "https://i.ytimg.com/vi/LKr1b1KmgYw/default.jpg",
+                "addedBy": ""
+            }
+        ],
+        "createdBy": {
+            "id": 45,
+            "fullname": "guest45"
         }
     }
 ]
