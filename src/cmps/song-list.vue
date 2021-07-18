@@ -35,17 +35,12 @@ export default {
 				return this.$store.getters.currStation.songs
 			},
 			set(list) {
-				this.$store.dispatch({
-					type: "setListOrder",
-					list,
-					stationId: this.stationId,
-				});
-				// this.$store.commit({type: "setListOrder", list})
+				this.$store.dispatch({type: "setListOrder", list, stationId: this.stationId});
+				
 			},
 		},
 	},
 	created() {
-		// console.log('this.songs:', Array.isArray(this.songs))
 	},
 };
 </script>

@@ -1,7 +1,5 @@
 .home-page {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    grid-column: 1/-1;
     .hero-img {
         margin-bottom: 200px;
         position: fixed;
@@ -53,6 +51,7 @@
         }
     }
     .station-main {
+        grid-column: 1/-1;
         background-color: #000000;
         background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);
         position: relative;

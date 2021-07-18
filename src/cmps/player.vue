@@ -109,8 +109,9 @@ export default {
 			this.$store.commit({ type: 'isPlaying' })
 		})
 		this.$refs.plyr.player.on("ended", () => {
-			this.$store.commit({ type: "nextSong" });
-			this.$refs.plyr.player.play();
+			this.$store.commit({ type: "nextSong" })
+			this.$store.commit({ type: "setCurrSong" })
+			this.$refs.plyr.player.play()
 		});
 	},
 	methods: {
@@ -141,6 +142,3 @@ export default {
 	},
 };
 </script>
-
-<style>
-</style>

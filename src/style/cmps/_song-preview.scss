@@ -1,6 +1,8 @@
 .song-preview {
+    position: relative;
     width: 100%;
     display: grid;
+    margin-right: 10px;
     grid-template-columns: 1fr 1fr 2fr 5fr 3fr 1fr 1fr;
     justify-content: space-around;
     align-items: center;
@@ -15,6 +17,10 @@
     }
     .song-title {
         width: 100%;
+        max-width: 450px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .song-preview-play-btn {
         cursor: pointer;
@@ -34,10 +40,26 @@
         }
     }
     .song-preview-remove-btn {
+        position: absolute;
+        right: 10px;
+        top: 30%;
         cursor: pointer;
         fill: white;
         &:hover {
             fill: red;
+        }
+    }
+    .slide-in-enter-active,
+    .slide-in-leave-active {
+        transition: all .2s linear;
+        transform: translateX(40px)
+    }
+    .details-btn {
+        transform: rotate(90deg);
+        height: 30px;
+        &:hover {
+            cursor: pointer;
+            filter: invert(83%) sepia(24%) saturate(3266%) hue-rotate(358deg) brightness(104%) contrast(107%);
         }
     }
 }
