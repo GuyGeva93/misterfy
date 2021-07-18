@@ -14,18 +14,14 @@
       <img src="@/assets/img/hero.png" alt="" />
     </div>
     <div class="station-main">
-      <h2>TOP 10</h2>
-      <station-list :stations="stations" v-if="stations" />
-      <br />
-      <br />
-      <br />
+      <h2>TOP PICKS</h2>
+      <station-list :stations="topPicks" v-if="topPicks" />
+      
       <h2>YOUR PICKS</h2>
-      <station-list :stations="stations" />
-      <br />
-      <br />
-      <br />
+      <station-list :stations="yourPicks" v-if="yourPicks"/>
+      
       <h2>RECOMENDED FOR YOU</h2>
-      <station-list :stations="stations" />
+      <station-list :stations="recomended" v-if="recomended"/>
     </div>
   </div>
 </template>
@@ -42,6 +38,15 @@ export default {
       const stations= this.$store.getters.stationsToDisplay;
       return stations;
     },
+    topPicks(){
+      return this.stations.slice(0,6)
+    },
+    yourPicks(){
+      return this.stations.slice(6,11)
+    },
+    recomended(){
+       return this.stations.slice(11)
+    }
   },
 
   mounted() {
