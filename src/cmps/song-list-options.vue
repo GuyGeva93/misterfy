@@ -16,7 +16,7 @@
         />
       </g>
     </svg>
-    <img src="../assets/svg/trash-alt-solid.svg" />
+    <img src="../assets/svg/trash-alt-solid.svg" @click.stop="removeStation"/>
     <img @click.stop="toggleSearch" src="../assets/svg/plus-solid.svg" />
     <img @click.stop="prevSong" src="../assets/svg/backward-solid.svg" />
     <img
@@ -97,6 +97,9 @@ export default {
     prevSong() {
       this.$store.commit({ type: "prevSong" });
     },
+    removeStation() {
+      this.$emit('removeStation')
+		}
   },
   components: {
     songResults,

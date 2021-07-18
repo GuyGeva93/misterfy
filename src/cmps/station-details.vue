@@ -10,7 +10,11 @@
 			</h4>
 			<h4>Listeners: 14,532</h4>
 		</section>
-		<song-list-options @search="search" @opened="opened" />
+		<song-list-options
+			@search="search"
+			@opened="opened"
+			@removeStation="removeStation"
+		/>
 		<!-- <button @click.stop="nextSong">Next</button>
     <button @click.stop="prevSong">Prev</button> -->
 		<section class="station-list-container" :class="{ open: isOpen }">
@@ -28,8 +32,8 @@ import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
 export default {
 	async created() {
-		const { stationId } = this.$route.params;
-		this.$store.dispatch({ type: "currStation", stationId });
+		const { stationId } = this.$route.params
+		this.$store.dispatch({ type: "currStation", stationId })
 	},
 	data() {
 		return {
@@ -71,9 +75,13 @@ export default {
 				console.log("video snippet:", item.snippet.title);
 				console.log("video thumbnail:", item.snippet.thumbnails.default.url);
 				console.log("video publishedAt:", item.snippet.publishedAt);
-			});
+			})
 		},
-
+		removeStation() {
+			const { stationId } = this.$route.params
+			this.$store.commit({ type: 'removeStation', stationId })
+			this.$router.push('/')
+		},
 		opened() {
 			this.isOpen = !this.isOpen;
 		},

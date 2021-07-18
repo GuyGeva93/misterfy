@@ -34,16 +34,12 @@ export const stationStore = {
     currStation(state) {
       return state.currStation
     },
-    // currSong(state) {
-    //   return state.currSong
-    // },
     filterBy(state) {
       return state.filterBy
     },
     sortBy(state) {
       return state.sortBy
     },
-
   },
   mutations: {
     setStations(state, { stations }) {

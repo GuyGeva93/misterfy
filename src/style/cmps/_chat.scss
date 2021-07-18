@@ -1,60 +1,97 @@
 .chat-container {
+    position: fixed;
+    // top: 0;
+    // left: 0;
     display: flex;
     flex-direction: column;
     grid-column: 1/3;
     grid-row: 1/4;
-    border: 1px solid white;
-    height: 100%;
-    >h2 {
-        text-align: center;
-        box-shadow: inset 0 0 5px 3px black;
+    border: 1px solid $clr2;
+    border-radius: 10px;
+    min-width: 25%;
+    .chat {
         background-color: $clr1;
-        padding: 10px;
-    }
-    .msg-list {
-        flex: 1;
+        background: url(~@/assets/img/chat-wallpaper.jpg) no-repeat;
+        // background-position: center;
+        background-size: cover;
+        border-radius: 10px;
         overflow-y: auto;
-        max-height: 500px;
-        padding: 5px;
-        background-color: $clr1;
-    }
-    .chat-msg-preview {
-        display: flex;
-        margin-bottom: 20px;
-        &.sender {
-            justify-content: flex-end;
-        }
-        .msg-info {
-            gap: 20px;
+        >h2 {
+            text-align: center;
+            //not full black
+            // box-shadow: inset 0 0 5px 3px #292929;z
+            // background-color: $clr1;
             padding: 10px;
-            width: 50%;
-            border: 1px solid white;
-            border-radius: 10px;
-            background-color: $clr3;
+        }
+        .msg-list {
+            flex: 1;
+            margin-bottom: 6px;
+            padding: 5px;
+        }
+        .chat-msg-preview {
+            display: flex;
+            margin-bottom: 30px;
             &.sender {
-                align-items: flex-end;
-                background-color: lighten($clr2, 10%);
+                justify-content: flex-end;
             }
-            .msg-text {
-                display: flex;
-                width: fit-content;
-                // margin: 10px auto;
+            .msg-info {
+                gap: 20px;
                 padding: 10px;
+                width: 50%;
+                border: 1px solid white;
+                border-radius: 10px;
+                background-color: $clr3;
+                &.sender {
+                    align-items: flex-end;
+                    background-color: lighten($clr2, 10%);
+                }
+                .msg-text {
+                    display: flex;
+                    width: fit-content;
+                    // margin: 10px auto;
+                    padding: 10px;
+                }
             }
+        }
+        height: 552px;
+        /* width */
+        &::-webkit-scrollbar {
+            width: 15px;
+            border-radius: 10px;
+        }
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: $clr3;
+            border-radius: 10px;
+        }
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: lighten($clr4, 10%);
+            border-radius: 10px;
+        }
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: lighten($clr4, 10%);
+            border-radius: 10px;
         }
     }
     .msg-form {
         display: flex;
+        background-color: $clr4;
         input {
             flex: 1;
             height: 40px;
             font-size: large;
             outline: none;
+            border-radius: 10px;
         }
         .btn-send {
-            background-color: $clr3;
+            background-color: $clr4;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            color: white;
             &:hover {
-                background-color: lighten($clr3, 20%);
+                background-color: lighten($clr4, 10%);
             }
         }
     }
