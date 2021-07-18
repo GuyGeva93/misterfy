@@ -102,9 +102,9 @@ const gStations = [{
                 "addedBy": ""
             },
             {
-                "id": "8znN_y--WfI",
-                "title": "סטטיק ובן אל - סלסולים (Prod. by K.K. Slider)",
-                "imgUrl": "https://i.ytimg.com/vi/8znN_y--WfI/default.jpg",
+                "id": "94BIxqTYJzU",
+                "title": "Static and Ben El - Silsulim (Produced by Jordi) | סטטיק ובן אל תבורי - סלסולים (Prod. by Jordi)",
+                "imgUrl": "https://i.ytimg.com/vi/94BIxqTYJzU/default.jpg",
                 "addedBy": ""
             },
             {

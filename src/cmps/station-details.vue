@@ -54,7 +54,7 @@ export default {
 			return this.$store.getters.currStation;
 		},
 		getTags() {
-			return this.getStation.tags.join(",");
+			return this.currStation.tags.join(",");
 		},
 		currStation() {
 			return this.$store.getters.currStation;
