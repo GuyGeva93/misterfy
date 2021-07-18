@@ -24,7 +24,7 @@
         <input type="file" @change="handleImg" />
       </label>
       <input type="url" placeholder="Image URL" v-model="imgUrl" />
-      <input type="text" placeholder="Name" v-model="newStation.name" />
+      <input type="text" placeholder="Name" v-model="newStation.name" required/>
       <input
         type="text"
         placeholder="Description"
@@ -37,6 +37,7 @@
         list="tags"
         @change="tagsShow"
         placeholder="Genre"
+        required
       />
       <datalist id="tags">
         <option v-for="tag in tags" :key="tag">{{ tag }}</option>

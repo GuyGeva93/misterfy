@@ -42,6 +42,15 @@
             top: 100%;
             left: 1000px
         }
+        .scroll-down {
+            position: absolute;
+            display: flex;
+            align-self: stretch;
+            width: 200px;
+            height: 150px;
+            bottom: 50px;
+            left: -7vw;
+        }
     }
     .station-main {
         background-color: #000000;

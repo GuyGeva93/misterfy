@@ -2,11 +2,11 @@
   <section class="station-preview" v-if="station" :style="stationImg" >
     <router-link :to="'/details/' + station._id">
       <div class="station-preview-card">
-        <span class="station-preview-name">{{ station.name }}</span>
+       
         <img v-if="station.songs && station.songs.length"
           :src="station.songs[0].imgUrl" :alt="station.name"
         />
-          <!-- @load="play" -->
+       <span class="station-preview-name">{{ station.name }}</span>
       </div>
     </router-link>
   </section>

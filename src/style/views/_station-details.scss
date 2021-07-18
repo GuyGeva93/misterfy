@@ -6,19 +6,26 @@
     grid-template-rows: 1fr 60px 1fr 1fr;
     min-height: 90vh;
     .station-details-img {
-        box-shadow: 10px 3px 10px 15px $clr4;
+        box-shadow: 10px 3px 15px 8px $clr4;
         grid-column: 3;
+        max-width: 300px;
     }
     .station-details-info {
         grid-column: 4/6;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding-bottom: 10px;
+        padding-bottom: 60px;
         margin: 10px;
         margin-left: 20px;
         &>* {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 4rem;
+        }
+        .tags {
+            font-size: 2rem
         }
     }
     .station-list-container {

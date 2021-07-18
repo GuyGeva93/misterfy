@@ -3,8 +3,9 @@
 		<chat :stationId="stationId" class="section-details-chat" />
 		<img ref="img" class="station-details-img" :src="currStation.imgUrl" />
 		<section v-if="getStation" class="station-details-info">
-			<h2>Title: {{ currStation.name }}</h2>
-			<h4>Tags: {{ getTags }}</h4>
+			<h2 class="title">{{ currStation.name }}</h2>
+			<h4>Tags</h4>
+			<h4 class="tags"> {{ getTags }}</h4>
 			<h4>
 				Station Author: <span>{{ currStation.createdBy.fullname }}</span>
 			</h4>
@@ -79,7 +80,8 @@ export default {
 		},
 		removeStation() {
 			const { stationId } = this.$route.params
-			this.$store.commit({ type: 'removeStation', stationId })
+			this.$store.dispatch({ type: 'removeStation', stationId })
+			this.$store.commit({ type: 'clearCurrSong' })
 			this.$router.push('/')
 		},
 		opened() {
