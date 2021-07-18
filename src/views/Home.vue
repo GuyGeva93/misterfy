@@ -10,12 +10,12 @@
     </div>
    <div class="station-main">
       <h2>TOP 10</h2>
-    <station-list :stations="stations" v-if="stations" />
+    <station-list :stations="stations" />
     <br />
     <br />
     <br />
     <h2>YOUR PICKS</h2>
-    <station-list :stations="stations" />
+    <station-list :stations="stations"  />
     <br />
     <br />
     <br />
@@ -34,7 +34,8 @@ export default {
   },
   computed: {
     stations() {
-      return this.$store.getters.stationsToDisplay;
+      const stations= this.$store.getters.stationsToDisplay;
+      return stations;
     },
   },
   
