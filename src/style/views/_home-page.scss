@@ -24,7 +24,7 @@
         font-size: 2rem;
         .first {
             position: absolute;
-            left: -409px;
+            left: -430px;
             top: 30%;
         }
         .second {
@@ -55,6 +55,9 @@
             padding-left: 10vw;
             margin: 10px;
             // text-decoration: underline;
+        }
+        &>* {
+            margin-bottom: 100px
         }
     }
 }

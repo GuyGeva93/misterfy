@@ -13,6 +13,11 @@
             .tag-preview a {
                 font-size: 1.5rem;
                 color: white;
+                .tag {
+                    &:hover {
+                        border-bottom: 1px white solid;
+                    }
+                }
                 .tag.active {
                     transition: color 0.7s;
                     color: gold;

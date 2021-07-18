@@ -7,7 +7,6 @@ import stationDetails from '../cmps/station-details.vue';
 import stationAdd from '../cmps/station-add.vue';
 
 Vue.use(VueRouter)
-
 const routes = [{
         path: '/',
         name: 'home',
