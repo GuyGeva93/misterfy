@@ -1,13 +1,15 @@
 <template>
   <section v-if="msgs" class="chat-container">
-    <h2>The wall</h2>
+   <section class="chat">
+      <h2>The wall</h2>
     <ul class="clear-list msg-list">
       <li v-for="(msg, idx) in msgs" :key="idx">
         <chat-msg-preview :msg="msg" :userId="currUserId"  />
       </li>
     </ul>
+   </section>
     <form @submit.prevent="sendMsg" class="msg-form">
-      <input type="text" v-model="msg.txt" placeholder="Your msg" />
+      <input type="text" v-model="msg.txt" placeholder="Say something nice" />
       <button class="btn-send">Send</button>
     </form>
   </section>
