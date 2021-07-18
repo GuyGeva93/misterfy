@@ -1,8 +1,8 @@
 <template>
   <section v-if="msgs" class="chat-container">
-   <section class="chat">
+   <section class="chat" ref="chat" >
       <h2>The wall</h2>
-    <ul class="clear-list msg-list">
+    <ul class="clear-list msg-list" >
       <li v-for="(msg, idx) in msgs" :key="idx">
         <chat-msg-preview :msg="msg" :userId="currUserId"  />
       </li>
@@ -50,14 +50,19 @@ currUserId(){
   },
   methods: {
     async sendMsg() {
-    
+    if(!this.msg.txt)return;
+    const {chat}=this.$refs;
+
       this.msg.stationId = this.stationId;
       this.msg.from._id=this.currUserId;
       await chatService.add(this.msg);
       this.msgs.push(this.msg);
+      chat.scrollTop=chat.scrollHeight+500;
+      console.log(chat.scrollTop);
       const reply = await chatService.botReply(this.msg);
       this.msgs.push(reply);
       this.msg = chatService.getEmptyMsg();
+      chat.scrollTop=chat.scrollHeight+500;
     },
     loadMsgs(msgs) {
       this.msgs = msgs;
