@@ -16,11 +16,6 @@
 </template>
 
 <script>
-//"Sortable" npm. not sure i need it...
-
-//name: songs
-//pull: false
-//put: true
 import songPreview from "@/cmps/song-preview";
 import draggable from "vuedraggable";
 export default {

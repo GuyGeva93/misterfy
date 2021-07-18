@@ -618,7 +618,7 @@ function remove(stationId) {
     //     res.data
     // })
     // return httpService.delete(`station/${stationId}`)
-    return storageService.delete(STATION_KEY, stationId)
+    return storageService.remove(STATION_KEY, stationId)
 
 }
 

@@ -79,7 +79,8 @@ export default {
 		},
 		removeStation() {
 			const { stationId } = this.$route.params
-			this.$store.commit({ type: 'removeStation', stationId })
+			this.$store.dispatch({ type: 'removeStation', stationId })
+			this.$store.commit({ type: 'clearCurrSong' })
 			this.$router.push('/')
 		},
 		opened() {

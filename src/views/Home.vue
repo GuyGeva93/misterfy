@@ -9,6 +9,7 @@
         <div class="chevron"></div>
         <div class="chevron"></div>
       </div>
+      <div @click="scrollDown" class="scroll-down"></div>
     </div>
     <div class="hero-img">
       <img src="@/assets/img/hero.png" alt="" />
@@ -46,6 +47,11 @@ export default {
     },
     recomended(){
        return this.stations.slice(11)
+    }
+  },
+  methods: {
+    scrollDown() {
+      window.scrollTo(0,940);
     }
   },
 

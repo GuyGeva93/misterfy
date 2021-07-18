@@ -12,17 +12,6 @@ import 'vue-plyr/dist/vue-plyr.css'
 import VueCarousel from 'vue-carousel';
 Vue.use(VueCarousel);
 
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-// import { faHeart } from '@fortawesome/free-solid-svg-icons'
-
-// library.add(faUserSecret)
-// library.add(faHeart)
-
-// Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 Vue.config.productionTip = false
 
 Vue.config.productionTip = false

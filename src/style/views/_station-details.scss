@@ -8,6 +8,7 @@
     .station-details-img {
         box-shadow: 10px 3px 10px 15px $clr4;
         grid-column: 3;
+        max-width: 300px;
     }
     .station-details-info {
         grid-column: 4/6;
