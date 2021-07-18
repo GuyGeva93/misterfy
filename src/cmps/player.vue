@@ -1,12 +1,9 @@
 <template>
 	<section class="player" v-if="songId">
 		<section class="player-controls">
-			<marquee-text>
+			<marquee>
 				<span>{{ currSong.title }}</span>
-			</marquee-text>
-
-			<!-- forward button: -->
-
+			</marquee>
 			<span @click.stop="prevSong"
 				><svg
 					class="player-next-btn"
@@ -24,7 +21,6 @@
 						d="M11.5 280.6l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2zm256 0l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2z"
 					></path></svg
 			></span>
-			<!-- play button: -->
 			<span v-if="isPlay" @click.stop="togglePlay">
 				<svg
 					class="player-play-btn"
@@ -87,7 +83,6 @@
 </template>
 
 <script>
-import MarqueeText from "vue-marquee-text-component"
 export default {
 	created() {
 
@@ -101,7 +96,6 @@ export default {
 	},
 	mounted() {
 		this.currSong = this.$store.getters.currSong
-		console.log('this.currSong', this.currSong)
 
 		if (!this.$refs.plyr) return; // When player isn't ready
 
@@ -144,9 +138,6 @@ export default {
 		src() {
 			return `https://www.youtube.com/embed/${this.songId}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1`;
 		},
-	},
-	components: {
-		MarqueeText,
 	},
 };
 </script>
