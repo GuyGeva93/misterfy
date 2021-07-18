@@ -46,7 +46,7 @@
 			<span v-else @click.stop="togglePlay"
 				><svg
 					class="player-pause-btn"
-					width="20px"
+					width="30px"
 					aria-hidden="true"
 					focusable="false"
 					data-prefix="far"
