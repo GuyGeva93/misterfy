@@ -59,8 +59,7 @@ export default {
 	methods: {
 		play(songId) {
 			this.$store.commit({ type: "loadSongToPlayer", songId })
-			this.$store.commit({ type: "setCurrSong", songId })
-			// eventBusService.$emit("playSong")
+			this.$store.commit({ type: "setCurrSong" })
 			this.isPlaying = true
 		},
 		removeSong(songId) {
