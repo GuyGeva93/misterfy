@@ -1,16 +1,23 @@
 <template>
   <header>
     <div v-if="isCreating" class="screen-cover"></div>
-    <img class="logo" @click="goHome" src="../assets/logo/logo_transparent.png" alt="">
+    <img
+      class="logo"
+      @click="goHome"
+      src="../assets/logo/logo_transparent.png"
+      alt=""
+    />
     <filter-text-search @search="search" />
     <nav class="main-nav">
-      <router-link to="/">Home</router-link> |
-      <button class="creatify-btn" @click.stop="toggleCreating">
-        Creatify
-      </button>
-      | <router-link to="/explore">Explore</router-link> |
-      <router-link to="/dashboard">Dashboard</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link>|<button
+        class="creatify-btn"
+        @click.stop="toggleCreating"
+      >
+        Creatify</button
+      >|<router-link to="/explore">Explore</router-link>|<router-link
+        to="/dashboard"
+        >Dashboard</router-link
+      >|<router-link to="/about">About</router-link>
     </nav>
     <station-add v-if="isCreating" @closeModal="toggleCreating" />
   </header>

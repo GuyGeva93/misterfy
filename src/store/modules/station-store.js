@@ -65,18 +65,12 @@ export const stationStore = {
         setCurrStation(state, { currStation }) {
             state.currStation = currStation
         },
-        // setCurrSong(state) {
-        //   const currSongId = this.getters.currSongId
-        //   const currSong = state.currStation.songs.find(song => song.id === currSongId)
-        //   console.log('currSong', currSong)
-        //   state.currSong = currSong
-        // },
         addStation(state, { station }) {
             state.stations.push(station)
             state.currStation = station;
         },
-        setListOrder(state, { songList }) {
-            state.currStation.songs = songList
+        setListOrder(state, { list }) {
+            state.currStation.songs = list
                 //Reactive stations list
             const idx = state.stations.findIndex(station => station._id === state.currStation._id)
             state.stations.splice(idx, 1, state.currStation)
@@ -121,8 +115,8 @@ export const stationStore = {
             commit({ type: 'setCurrStation', currStation })
         },
         async setListOrder({ commit }, { list, stationId }) {
-            const songList = await stationService.saveSongList(list, stationId)
-            commit({ type: 'setListOrder', songList })
+            commit({ type: 'setListOrder', list })
+            await stationService.saveSongList(list, stationId)
         }
     }
 };

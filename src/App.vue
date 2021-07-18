@@ -1,13 +1,11 @@
 <template>
-	<div id="app">
-		<div class="header-filler"></div>
+	<div id="app" class="main-layout">
+		<!-- <div class="header-filler main-layout" ></div> -->
 		<app-header />
-		<main>
 			<router-view />
-		</main>
 		<player-img />
 		<player :key="this.$store.getters.currSongId" />
-		<div class="player-filler"></div>
+		<!-- <div class="player-filler"></div> -->
 		<!-- <app-footer /> -->
 	</div>
 </template>

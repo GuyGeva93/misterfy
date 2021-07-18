@@ -1,7 +1,8 @@
 header {
+    grid-row: 1;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: $clr2;
     position: fixed;
     z-index: 20;
@@ -10,14 +11,16 @@ header {
     background-color: $clr1;
     max-height: 100px;
     .logo {
-        // padding-top: 10px;
+        padding: 0;
         height: 100px;
         color: white;
         text-transform: uppercase;
         cursor: pointer;
         transition: color 1s;
         object-fit: cover;
-        padding: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 100px;
     }
     .filter-search-container {
         display: flex;
@@ -45,22 +48,28 @@ header {
         }
     }
     .main-nav {
-        padding: 30px;
+        padding-right: 100px;
         a {
             font-weight: bold;
             color: white;
+            padding-inline-end: 5px;
+            padding-inline-start: 5px;
             &.router-link-exact-active {
                 color: gold;
             }
         }
         .creatify-btn {
+            padding: 0;
+            margin: 0;
+            padding-inline-end: 5px;
+            padding-inline-start: 5px;
             background-color: transparent;
             border: none;
             outline: none;
             font-weight: bold;
             color: white;
             font-size: 1rem;
-            font-family: Avenir, Helvetica, Arial, sans-serif;
+            font-family: montserrat-regular, sans-serif;
         }
     }
 }
