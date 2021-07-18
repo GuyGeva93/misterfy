@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div class="home-page main-layout">
     <div class="hero-txt">
       <h1 class="first">LISTENING</h1>
       <h1 class="second">IS</h1>

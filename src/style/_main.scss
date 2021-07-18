@@ -11,6 +11,11 @@ html {
     scroll-behavior: smooth;
 }
 
+.main-layout {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+}
+
 body {
     margin: 0;
     background-color: #000000;
@@ -18,8 +23,7 @@ body {
     color: white;
     overflow-x: hidden;
     #app {
-        display: flex;
-        flex-direction: column;
+        grid-template-rows: 100px 1fr 100px;
         font-family: montserrat-regular, sans-serif;
     }
     a {
