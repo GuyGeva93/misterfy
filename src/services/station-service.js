@@ -77,7 +77,7 @@ const gStations = [{
         ]
     }, {
         "_id": "dbrsB",
-        "name": "Israel Music",
+        "name": "Israeli Music",
         "imgUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAC/CAMAAADEm+k5AAAAhFBMVEX///8AOLgAG7MAMbf2+P1Yb8gAHrPq7PcAJrS/xeYAKbUANbcALbYAL7b7/P4AJLTd4vMAF7IYQ7tEYMPGzerv8Pi4weZNZ8UANLiOndiirt51iNCyvONxhM+ttuEvUb/i5/Vcc8nS2O+ElNWVo9ogSLxnfMxAXcKcqdx/kNMAAK4HPLq9nvkNAAADtklEQVR4nO3d227iMBSF4RAYjoFACy3QMz3R6fu/3zRedmAqKEiUbEj+76JqJC7MUmJvO06IIgAAAAAAABSigUwUIxPVkCEHIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQeJ6shEf5Cx3nYAAMC+5tYNOA2LvwvrJpyEh/6DdRNOwX1aS2+tG2Fv0O/Vev2BdTPMPSdfs73k2boZ1lojN+0dtawbYuxP3eVQr/iEbxz7dZB4bN0UUxc9n0PvwroplubtfGGsXeGqstFdWyHsNqybY+YmUSfp/iY31s2xMlQn2b3TaREPrRtk5NKdCPXL1T+V1GmqhBqGE6PZsW6Sic9e3i2oo+h9WjfJwkt3NUz4gaP7Yt2o4k10VaQqG+aproyJcauK99Z3l8KrP3x1F0n/zbRNR9RobTbW6dC9nbjDya2ujOZ4y+fPvcgaxHFzkzRUkf44VJbpxk/Ho7NfqLlq7nnn/SfNK+uvcbj36cExTN+tv8QvGI4OzmFUior7LjkwhuTO+iv8ikZYZOi2Jfl2HIS+Mvl2nJ77YOEtFURy33HGzwoi9ce5ew0iyWzsj/W59tL6C/wWrb71wwLDg+s5N9RMqq2m4fbWjUqt8qzY+aLJLzBsr6H/r7V9B9ss0QrutVtg0PA3+GFOFeZermrSgFu/LrSlx/WoBYY0K4f8HLu28YO11Vz8SqdN/FhkQ4/tQ19+mi/GbakQO6sraKpIPgpu6XGFi2EW1uC2VYj5Et1s/RIpjzAm+k5ya4XoO8d0HsbWQltZAA2WtWRXheirT/2dlm+HyCLcyXSl0fYKsdFe+1xcwh1DT/VVDD9ViMtVEPWnwlpXnFa+ELGjQszv/daapdwVMQvzph0V4jgE9jW6lJKKpN17PvzekC2l1vlb+rFwV+e38GNsaeaZ33A+OPQPDuOF7Fs/zMtdP1BPCvMLh/mms/f6w3u51x9W61GPVV6PYn1SWK92uH8h3M9yuL/pcL9b2P/gsB9G2B/lsF/OGYzYP5lhP+0OFdtfvRX77T2ev/B4HkfWns/yM8tqPp/F83oez296PM8rPN/tzdM8hrTCz/vz/oeA94F4vB9GeF+Qx/ujhPeJebxfzuN9g8L7J71KV5IAgPNi/cMTJ4LfQxF+H0fIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQchByEHIQchBohiZqIGM9bYDAAAAAACAqvgHDuyN18xrS4AAAAAASUVORK5CYII=",
         "description": "Some israeli songs",
         "tags": [
