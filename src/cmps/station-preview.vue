@@ -6,7 +6,7 @@
         <img v-if="station.songs && station.songs.length"
           :src="station.songs[0].imgUrl" :alt="station.name"
         />
-       <span class="station-preview-name">{{ station.name }}</span>
+       <h2 class="station-preview-name">{{ station.name }}</h2>
       </div>
     </router-link>
   </section>
