@@ -1,11 +1,11 @@
 <template>
 	<section class="player" v-if="songId">
-		<section class="player-controls">
 			<section class="marquee">
-				<marquee>
+				<marquee scrollamount="10">
 					<span class="marquee">{{ currSong.title }}</span>
 				</marquee>
 			</section>
+		<section class="player-controls">
 			<span @click.stop="prevSong"
 				><svg
 					class="player-next-btn"
@@ -76,6 +76,11 @@
 					></path></svg
 			></span>
 		</section>
+		<!-- <section class="marquee">
+			<marquee>
+				<span class="marquee">{{ currSong.title }}</span>
+			</marquee>
+		</section> -->
 		<vue-plyr ref="plyr">
 			<div class="plyr__video-embed" id="player">
 				<iframe :src="src" allowtransparency allow="autoplay"></iframe>
