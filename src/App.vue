@@ -2,9 +2,11 @@
 	<div id="app" class="main-layout">
 		<!-- <div class="header-filler main-layout" ></div> -->
 		<app-header />
-			<router-view />
-		<player-img />
-		<player :key="this.$store.getters.currSongId" />
+		<router-view />
+		<section class="player-container">
+			<player-img />
+			<player :key="this.$store.getters.currSongId" />
+		</section>
 		<!-- <div class="player-filler"></div> -->
 		<!-- <app-footer /> -->
 	</div>
@@ -19,9 +21,9 @@ export default {
 	components: {
 		appHeader,
 		// appFooter,
-    playerImg,
+		playerImg,
 		player,
-		
+
 	},
 	created() {
 		this.$store.dispatch({ type: 'loadStations' });
