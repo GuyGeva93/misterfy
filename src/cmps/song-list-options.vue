@@ -75,8 +75,11 @@ export default {
 				this.results = [];
 				return;
 			}
-			this.results = await youtubeService.query(query)
-			console.log("this.results", this.results)
+			try {
+				this.results = await youtubeService.query(query)
+			} catch (err) {
+				console.log('Error on YouTube query =>', err)
+			}
 		},
 		toggleStationLike() {
 			this.isLiked = !this.isLiked;

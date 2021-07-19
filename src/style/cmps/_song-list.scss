@@ -9,7 +9,7 @@
         margin: 0;
         padding: 0;
         overflow-y: auto;
-        max-height: 340px;
+        height: 340px;
         &::-webkit-scrollbar {
             width: 10px;
             border-radius: 10px;
@@ -31,7 +31,7 @@
         }
         li {
             display: flex;
-            height: 9%;
+            height: 55px;
             align-items: center;
             padding-bottom: 2px;
         }
