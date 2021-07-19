@@ -13,6 +13,9 @@
   // --plyr-audio-control-background-hover: $clr2;
   // --plyr-audio-range-thumb-active-shadow-color: $clr1;
   // --plyr-audio-controls-background: $clr4;
+  .song-info-slider {
+    background-color: darken($clr1, 10%);
+  }
   .player-controls {
     display: flex;
     align-items: center;

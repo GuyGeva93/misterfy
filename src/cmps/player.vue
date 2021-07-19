@@ -1,10 +1,5 @@
 <template>
 	<section class="player" v-if="songId">
-			<section class="marquee">
-				<marquee scrollamount="10">
-					<span class="marquee">{{ currSong.title }}</span>
-				</marquee>
-			</section>
 		<section class="player-controls">
 			<span @click.stop="prevSong"
 				><svg
@@ -76,11 +71,7 @@
 					></path></svg
 			></span>
 		</section>
-		<!-- <section class="marquee">
-			<marquee>
-				<span class="marquee">{{ currSong.title }}</span>
-			</marquee>
-		</section> -->
+		<song-info-slider class="song-info-slider"/>
 		<vue-plyr ref="plyr">
 			<div class="plyr__video-embed" id="player">
 				<iframe :src="src" allowtransparency allow="autoplay"></iframe>
@@ -90,10 +81,9 @@
 </template>
 
 <script>
+import songInfoSlider from '@/cmps/song-info-slider.vue'
 export default {
-	created() {
 
-	},
 	data() {
 		return {
 			currSongId: "",
@@ -146,6 +136,10 @@ export default {
 		src() {
 			return `https://www.youtube.com/embed/${this.songId}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1`;
 		},
+	},
+
+	components: {
+		songInfoSlider,
 	},
 };
 </script>

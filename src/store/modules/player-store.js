@@ -1,6 +1,3 @@
-// import { stationService } from "@/services/station-service.js";
-// import { RegExp } from 'core-js/web';
-
 export const playerStore = {
   strict: true,
   state: {
@@ -47,13 +44,6 @@ export const playerStore = {
     isPlaying(state) {
       state.isPlaying = !state.isPlaying
     }
-    // currSongImg(state) {
-    //   const currStation = this.getters.currStation
-    //   const currSong = currStation.songs.find(song => song.id === state.currSongId)
-    //   state.currSong = currSong
-    // }
   },
   actions: {}
-};
-
-// export const stationStore = new Vuex.Store(options)
+}
