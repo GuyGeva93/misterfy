@@ -1,13 +1,13 @@
 <template>
-  <section class="station-preview" v-if="station" :style="stationImg" >
+  <section class="station-preview" v-if="station"  >
     <router-link :to="'/details/' + station._id">
-      <div class="station-preview-card">
+      <div class="station-preview-card" :style="stationImg">
        
         <img v-if="station.songs && station.songs.length"
           :src="station.songs[0].imgUrl" :alt="station.name"
         />
-       <h2 class="station-preview-name">{{ station.name }}</h2>
       </div>
+       <h2  class="station-preview-name">{{ station.name }}</h2>
     </router-link>
   </section>
 </template>
