@@ -5,12 +5,12 @@
     display: grid;
     gap: 20px;
     grid-template-columns: 12.5% 12.5% repeat(6, 1fr);
-    grid-template-rows: 1fr 60px 1fr 1fr;
+    grid-template-rows: 250px 40px 1fr 1fr;
     min-height: 90vh;
     .station-details-img {
         box-shadow: 10px 3px 15px 8px $clr4;
         grid-column: 3;
-        max-width: 300px;
+        max-width: 250px;
     }
     .station-details-info {
         grid-column: 4/-1;

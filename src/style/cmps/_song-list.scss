@@ -27,3 +27,10 @@
         border: none;
     }
 }
+
+.song-list-headers {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 10% 18.5% 43% 1fr;
+    color: darken($clr1, 15%);
+}
