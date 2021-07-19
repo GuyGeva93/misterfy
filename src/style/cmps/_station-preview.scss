@@ -44,7 +44,11 @@
         margin-bottom: 5px;
     }
     .station-preview-creator {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: white;
+        .creator-name {
+            font-size: 1rem;
+            font-weight: bold;
+        }
     }
 }

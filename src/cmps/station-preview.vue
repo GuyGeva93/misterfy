@@ -8,7 +8,7 @@
         />
       </div>
        <h2  class="station-preview-name">{{ station.name }}</h2>
-       <h3  class="station-preview-creator">{{ station.createdBy.fullname }}</h3>
+       <h3  class="station-preview-creator">Created by <span class="creator-name">{{ station.createdBy.fullname }}</span></h3>
     </router-link>
   </section>
 </template>
