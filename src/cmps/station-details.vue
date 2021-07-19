@@ -4,8 +4,7 @@
 		<img ref="img" class="station-details-img" :src="currStation.imgUrl" />
 		<section v-if="getStation" class="station-details-info">
 			<h2 class="title">{{ currStation.name }}</h2>
-			<h4>Tags</h4>
-			<h4 class="tags"> {{ getTags }}</h4>
+			<h4 class="tags">Generes:  {{ getTags }}</h4>
 			<h4>
 				Station Author: <span>{{ currStation.createdBy.fullname }}</span>
 			</h4>

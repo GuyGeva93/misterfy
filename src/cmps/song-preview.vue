@@ -24,7 +24,7 @@
     <img
       @click="toggleRemove"
       class="details-btn"
-      src="@/assets/img/ellipsis.png"
+      src="@/assets/icons/ellipsis.png"
     />
 	<transition name="slide-in">
     <svg v-if="isRemove"
