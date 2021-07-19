@@ -89,7 +89,7 @@ export default {
 				const savedImg = await uploadImg(file);
 				this.newStation.imgUrl = savedImg.url;
 				this.imgLoaded = true;
-			} catch (error) {
+			} catch (err) {
 				console.log('Error on handle img =>', err)
 
 			}
