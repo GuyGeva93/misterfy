@@ -1,5 +1,6 @@
 .player-container {
-    // position: fixed;
+    z-index: 18;
+    position: fixed;
     grid-row: 3/4;
     grid-column: 1/-1;
     bottom: 0;

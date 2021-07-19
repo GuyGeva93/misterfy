@@ -41,7 +41,8 @@
     }
     .song-preview-remove-btn {
         position: absolute;
-        right: 10px;
+        right: 5.5%;
+        // z-index: 100;
         top: 30%;
         cursor: pointer;
         fill: white;
@@ -52,7 +53,7 @@
     .slide-in-enter-active,
     .slide-in-leave-active {
         transition: all .2s linear;
-        transform: translateX(40px)
+        transform: translateX(100px)
     }
     .details-btn {
         transform: rotate(90deg);
