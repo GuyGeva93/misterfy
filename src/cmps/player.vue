@@ -81,9 +81,8 @@
 </template>
 
 <script>
-import songInfoSlider from '@/cmps/song-info-slider.vue'
+import songInfoSlider from "@/cmps/song-info-slider.vue";
 export default {
-
 	data() {
 		return {
 			currSongId: "",
@@ -92,23 +91,23 @@ export default {
 		};
 	},
 	mounted() {
-		this.currSong = this.$store.getters.currSong
+		this.currSong = this.$store.getters.currSong;
 
 		if (!this.$refs.plyr) return; // When player isn't ready
 
 		this.$refs.plyr.player.on("ready", () => {
 			this.$refs.plyr.player.play();
 		});
-		this.$refs.plyr.player.on('playing', () => {
-			this.$store.commit({ type: 'isPlaying' })
-		})
-		this.$refs.plyr.player.on('pause', () => {
-			this.$store.commit({ type: 'isPlaying' })
-		})
+		this.$refs.plyr.player.on("playing", () => {
+			this.$store.commit({ type: "isPlaying" });
+		});
+		this.$refs.plyr.player.on("pause", () => {
+			this.$store.commit({ type: "isPlaying" });
+		});
 		this.$refs.plyr.player.on("ended", () => {
-			this.$store.commit({ type: "nextSong" })
-			this.$store.commit({ type: "setCurrSong" })
-			this.$refs.plyr.player.play()
+			this.$store.commit({ type: "nextSong" });
+			this.$store.commit({ type: "setCurrSong" });
+			this.$refs.plyr.player.play();
 		});
 	},
 	methods: {
@@ -121,17 +120,17 @@ export default {
 			this.isPlay = !this.isPlay;
 		},
 		prevSong() {
-			this.$store.commit({ type: "prevSong" })
-			this.$store.commit({ type: "setCurrSong" })
+			this.$store.commit({ type: "prevSong" });
+			this.$store.commit({ type: "setCurrSong" });
 		},
 		nextSong() {
-			this.$store.commit({ type: "nextSong" })
-			this.$store.commit({ type: "setCurrSong" })
+			this.$store.commit({ type: "nextSong" });
+			this.$store.commit({ type: "setCurrSong" });
 		},
 	},
 	computed: {
 		songId() {
-			return this.$store.getters.currSongId
+			return this.$store.getters.currSongId;
 		},
 		src() {
 			return `https://www.youtube.com/embed/${this.songId}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1`;

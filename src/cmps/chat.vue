@@ -80,15 +80,17 @@ export default {
 			} catch (err) {
 				console.log('Error on chat add =>', err)
 			}
-
+			setTimeout(()=>{
+				chat.scrollTo(0,chat.scrollHeight)
+			},0)
 			this.msgs.push(this.msg)
-			chat.scrollTop = chat.scrollHeight + 500
-			console.log(chat.scrollTop)
 			try {
 				const reply = await chatService.botReply(this.msg)
 				this.msgs.push(reply)
 			this.msg = chatService.getEmptyMsg()
-			chat.scrollTop = chat.scrollHeight + 500
+			setTimeout(()=>{
+				chat.scrollTo(0,chat.scrollHeight)
+			},0)
 			} catch (err) {
 				console.log('Error on chat bot reply =>', err)
 			}

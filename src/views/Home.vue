@@ -27,7 +27,6 @@
 		</div>
 	</div>
 </template>
-
 <script>
 import stationList from "@/cmps/station-list";
 export default {
@@ -52,7 +51,7 @@ export default {
 	},
 	methods: {
 		scrollDown() {
-			window.scrollTo(0, 940)
+			window.scrollTo(0, 840)
 		}
 	},
 	watch: {
