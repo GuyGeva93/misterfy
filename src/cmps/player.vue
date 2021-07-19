@@ -1,5 +1,6 @@
 <template>
 	<section class="player" v-if="songId">
+		<song-info-slider class="song-info-slider" />
 		<section class="player-controls">
 			<span @click.stop="prevSong"
 				><svg
@@ -71,7 +72,6 @@
 					></path></svg
 			></span>
 		</section>
-		<song-info-slider class="song-info-slider"/>
 		<vue-plyr ref="plyr">
 			<div class="plyr__video-embed" id="player">
 				<iframe :src="src" allowtransparency allow="autoplay"></iframe>
