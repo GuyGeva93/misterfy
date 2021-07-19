@@ -44,6 +44,11 @@ export default {
 
       return url;
     },
+    // getStationsByTag(tag){
+    //   return this.stations.filter(station=>{
+    //     return 
+    //   })
+    // }
   },
   computed: {
     name() {

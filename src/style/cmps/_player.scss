@@ -1,7 +1,10 @@
 .player {
   display: flex;
+  grid-row: 3;
+  flex-direction: column;
   z-index: 18;
   justify-content: flex-end;
+  align-items: center;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -12,14 +15,19 @@
   // --plyr-audio-controls-background: $clr4;
   .player-controls {
     display: flex;
-    gap: 5px;
+    align-items: center;
+    gap: 10px;
     border: none;
     outline: none;
-    align-items: center;
+    // align-items: center;
     background-color: #000;
-    width: 50%;
-    span {
+    width: 100%;
+    span  {
       cursor: pointer;
+      // width: 20%;
+    }
+    .marquee {
+      width: 20%;
     }
   }
   .plyr {

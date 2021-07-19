@@ -1,9 +1,11 @@
 <template>
 	<section class="player" v-if="songId">
 		<section class="player-controls">
-			<marquee>
-				<span>{{ currSong.title }}</span>
-			</marquee>
+			<section class="marquee">
+				<marquee>
+					<span class="marquee">{{ currSong.title }}</span>
+				</marquee>
+			</section>
 			<span @click.stop="prevSong"
 				><svg
 					class="player-next-btn"

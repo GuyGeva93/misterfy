@@ -1,7 +1,9 @@
 .station-details {
     margin-top: 20px;
+    grid-column: 2/3;
+    grid-row: 2/3;
     display: grid;
-    gap: 10px;
+    gap: 20px;
     grid-template-columns: 12.5% 12.5% repeat(6, 1fr);
     grid-template-rows: 1fr 60px 1fr 1fr;
     min-height: 90vh;
@@ -11,12 +13,10 @@
         max-width: 300px;
     }
     .station-details-info {
-        grid-column: 4/6;
+        grid-column: 4/-1;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        padding-bottom: 60px;
-        margin: 10px;
+        justify-content: flex-start;
         margin-left: 20px;
         &>* {
             margin-bottom: 10px;
@@ -25,47 +25,49 @@
             font-size: 4rem;
         }
         .tags {
-            font-size: 2rem
+            font-size: 1rem
         }
     }
-    .station-list-container {
-        grid-row: 3/-1;
-        grid-column: 3/-1;
-        &.open {
-            grid-column: 6/-1;
-        }
+}
+
+.station-list-container {
+    grid-row: 3/-1;
+    grid-column: 3/-1;
+    &.open {
+        grid-column: 6/-1;
     }
-    .song-list-options {
-        grid-column: 3/5;
-        grid-row: 2/-1;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 60px 50px 1fr;
-        font-size: x-large;
-        text-align: center;
-        // margin-bottom: 20px;
-        .song-results {
-            grid-column: 1/-1;
-            grid-row: 3/4;
-            font-size: 0.95rem;
-            .search-result {
-                border-radius: 10px;
-                background-color: lighten($clr4, 10%);
-                margin: 5px;
-                padding: 2px;
-                text-align: start;
-                height: 40px;
-            }
-            &>* {
-                margin-top: 2px;
-                border-radius: 10px;
-                background-color: $clr4;
-                margin-bottom: 2px;
-                padding: 5px;
-            }
+}
+
+.song-list-options {
+    grid-column: 3/5;
+    grid-row: 2/-1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 60px 50px 1fr;
+    font-size: x-large;
+    text-align: center;
+    // margin-bottom: 20px;
+    .song-results {
+        grid-column: 1/-1;
+        grid-row: 3/4;
+        font-size: 0.95rem;
+        .search-result {
+            border-radius: 10px;
+            background-color: lighten($clr4, 10%);
+            margin: 5px;
+            padding: 2px;
+            text-align: start;
+            height: 40px;
         }
         &>* {
-            cursor: pointer;
+            margin-top: 2px;
+            border-radius: 10px;
+            background-color: $clr4;
+            margin-bottom: 2px;
+            padding: 5px;
         }
+    }
+    &>* {
+        cursor: pointer;
     }
 }

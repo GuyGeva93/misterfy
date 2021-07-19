@@ -2,9 +2,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
+    // justify-content: center;
     .VueCarousel {
-        width: 80%;
+        width: 85%;
+        margin-left: 100px;
+        margin-right: 100px
     }
     .btn-next,
     .btn-prev {

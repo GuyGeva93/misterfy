@@ -4,6 +4,7 @@
       <h1 class="first">LISTENING</h1>
       <h1 class="second">IS</h1>
       <h1 class="third">EVERYTHING</h1>
+      
       <div class="hero-arrrows container">
         <div class="chevron"></div>
         <div class="chevron"></div>
