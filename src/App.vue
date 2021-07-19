@@ -17,10 +17,12 @@ import appHeader from "@/cmps/app-header";
 // import appFooter from "@/cmps/app-footer";
 import playerImg from '@/cmps/player-img'
 import player from '@/cmps/player'
+// import songInfoSlider from '@/cmps/song-info-slider.vue'
 export default {
 	components: {
 		appHeader,
 		// appFooter,
+		// songInfoSlider,
 		playerImg,
 		player,
 

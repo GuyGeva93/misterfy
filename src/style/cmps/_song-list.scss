@@ -1,14 +1,40 @@
-.songs-list {
+.songs-list-container {
+    grid-row: 3/-1;
     display: flex;
-    list-style: none;
     flex-direction: column;
-    gap: 5px;
-    margin: 0;
-    padding: 0;
-    li {
+    .songs-list {
         display: flex;
-        height: 70px;
-        align-items: center;
+        list-style: none;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        overflow-y: auto;
+        height: 340px;
+        &::-webkit-scrollbar {
+            width: 10px;
+            border-radius: 10px;
+        }
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: darken($clr1, 5%);
+            border-radius: 10px;
+        }
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: lighten($clr4, 20%);
+            border-radius: 10px;
+        }
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: lighten($clr4, 10%);
+            border-radius: 10px;
+        }
+        li {
+            display: flex;
+            height: 55px;
+            align-items: center;
+            padding-bottom: 2px;
+        }
     }
 }
 
@@ -26,4 +52,11 @@
         outline: none;
         border: none;
     }
+}
+
+.song-list-headers {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 10% 18.5% 43% 1fr;
+    color: darken($clr1, 15%);
 }

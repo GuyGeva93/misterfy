@@ -7,12 +7,13 @@
     align-items: center;
     background-color: darken($clr1, 6%);
     justify-items: center;
+    padding: 3px 0 3px;
     .thumbnail {
         object-fit: cover;
         object-position: center;
         border-radius: 10px;
-        height: 60px;
-        width: 60px;
+        height: 45px;
+        width: 45px;
     }
     .song-title {
         width: 100%;

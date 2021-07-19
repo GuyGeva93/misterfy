@@ -1,5 +1,11 @@
 <template>
 	<section class="songs-list-container">
+		<div class="song-list-headers">
+			<span></span>
+			<span>#</span>
+			<span>Title</span>
+			<span>Plays</span>
+		</div>
 		<ul class="songs-list">
 			<draggable
 				v-model="mySongs"
