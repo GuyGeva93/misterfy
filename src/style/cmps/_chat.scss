@@ -58,12 +58,12 @@
         }
         /* width */
         &::-webkit-scrollbar {
-            width: 15px;
+            width: 10px;
             border-radius: 10px;
         }
         /* Track */
         &::-webkit-scrollbar-track {
-            background: $clr3;
+            background: lighten($clr3, 20%);
             border-radius: 10px;
         }
         /* Handle */
@@ -93,6 +93,8 @@
             border-bottom-right-radius: 10px;
             border: none;
             padding-right: 40px;
+            background-color: $clr1;
+            color: white;
         }
         .btn-send {
             padding-top: 5px;
@@ -101,7 +103,7 @@
             outline: none;
             background-color: transparent;
             border: none;
-            fill: $clr4;
+            fill: goldenrod;
             &:hover {
                 fill: lighten($clr4, 5%)
             }
