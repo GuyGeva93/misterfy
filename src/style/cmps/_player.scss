@@ -1,5 +1,5 @@
 .player {
-  display: flex;
+  // display: flex;
   grid-row: 3;
   flex-direction: column;
   z-index: 18;
@@ -8,7 +8,7 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 100%;
+  width: 91%;
   --plyr-color-main: gold;
   // --plyr-audio-control-background-hover: $clr2;
   // --plyr-audio-range-thumb-active-shadow-color: $clr1;
@@ -16,18 +16,16 @@
   .player-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 15px;
     border: none;
     outline: none;
     // align-items: center;
     background-color: #000;
     width: 100%;
-    span  {
+    height: 40px;
+    span {
       cursor: pointer;
-      // width: 20%;
-    }
-    .marquee {
-      width: 20%;
     }
   }
   .plyr {
