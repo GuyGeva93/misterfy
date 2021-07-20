@@ -28,6 +28,7 @@ export default {
 	data() {
 		return {
 			stationId: this.$route.params.stationId,
+			currSongId:null
 		};
 	},
 	components: {
@@ -45,6 +46,7 @@ export default {
 			},
 		},
 	},
+
 };
 </script>
 

@@ -43,10 +43,13 @@ export default {
 			this.$refs.plyr.player.play();
 		});
 		this.$refs.plyr.player.on("playing", () => {
-			this.$store.commit({ type: "isPlaying" });
+			this.$store.commit({ type: "isPlaying", action: true });
+		});
+		this.$refs.plyr.player.on("play", () => {
+			this.$store.commit({ type: "isPlaying", action: true });
 		});
 		this.$refs.plyr.player.on("pause", () => {
-			this.$store.commit({ type: "isPlaying" });
+			this.$store.commit({ type: "isPlaying", action: false });
 		});
 		this.$refs.plyr.player.on("ended", () => {
 			this.$store.commit({ type: "nextSong" });
@@ -82,7 +85,6 @@ export default {
 			return `https://www.youtube.com/embed/${this.songId}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1`;
 		},
 	},
-
 	destroyed() {
 		eventBusService.$off('togglePlay')
 	},
