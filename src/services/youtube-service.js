@@ -45,7 +45,6 @@ async function getDuration(youtubeId) {
   }
 }
 
-
 function getTitle(title) {
   // Removes HTML char codes
   let output = he.decode(title);
