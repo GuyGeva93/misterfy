@@ -58,8 +58,11 @@ export default {
       return this.$store.getters.stationsToDisplay;
     },
     tags() {
-      return this.$store.getters.tags;
+      // console.log(this.$store.getters.tags);
+      const tags= this.$store.getters.tags;
+      return['All',...tags];
     },
+    
   },
   components: {
     stationList,
@@ -70,7 +73,6 @@ export default {
       immediate: true,
       async handler() {
         const { name, tag = "" } = this.$route.params;
-//TODO: how the tags will come from if the stations dont
         const filterBy = {
           name,
           tag,
@@ -84,6 +86,9 @@ export default {
         }
       },
     },
+ destroyed () {
+   this.$route.push('/explore');
+ },
   },
 };
 </script>

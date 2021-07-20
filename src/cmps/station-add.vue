@@ -109,6 +109,14 @@ export default {
           type: "saveStation",
           station: this.newStation,
         });
+        const userMsg = {
+          txt: "Station has been successfully added!",
+          type: "success",
+        };
+        this.$store.commit({ type: "updateUserMsg", userMsg });
+        setTimeout(() => {
+          this.$store.commit({ type: "deleteMsg" });
+        }, 2000);
         this.$emit("closeModal");
         this.$router.push(`/details/${this.newStation._id}`);
       } catch (err) {

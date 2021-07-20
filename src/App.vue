@@ -2,6 +2,7 @@
 	<div id="app" class="main-layout">
 		<!-- <div class="header-filler main-layout" ></div> -->
 		<app-header />
+		<user-msg/>
 		<router-view />
 		<section class="player-container" v-if="currSong">
 			<player-img />
@@ -18,6 +19,7 @@ import appHeader from "@/cmps/app-header";
 import playerImg from '@/cmps/player-img'
 import player from '@/cmps/player'
 // import songInfoSlider from '@/cmps/song-info-slider.vue'
+import userMsg from '@/cmps/user-msg'
 export default {
 	components: {
 		appHeader,
@@ -25,10 +27,12 @@ export default {
 		// songInfoSlider,
 		playerImg,
 		player,
+		userMsg
 
 	},
-	created() {
-		this.$store.dispatch({ type: 'loadStations' });
+	async created() {
+		const data=await this.$store.dispatch({ type: 'loadStations' });
+		this.$store.commit({type:'setTags',tags:data.tags});
 	},
 	computed: {
 		currSong() {
