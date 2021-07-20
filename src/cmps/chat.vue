@@ -71,7 +71,7 @@ export default {
 	methods: {
 		async sendMsg() {
 			if (!this.msg.txt) return;
-			const { chat } = this.$refs;
+			// const { chat } = this.$refs;
 
 			this.msg.stationId = this.stationId
 			this.msg.from._id = this.currUserId
@@ -84,9 +84,9 @@ export default {
 				console.log('Error on chat add =>', err)
 			}
 				// this.msgs.push(copiedMsg)
-			setTimeout(()=>{
-				chat.scrollTo(0,chat.scrollHeight)
-			},0)
+			// setTimeout(()=>{
+			// 	chat.scrollTo(0,chat.scrollHeight)
+			// },0)
 
 			try {
 				const reply = await chatService.botReply(copiedMsg)
@@ -97,14 +97,18 @@ export default {
 			} catch (err) {
 				console.log('Error on chat bot reply =>', err)
 			}
-				setTimeout(()=>{
-				chat.scrollTo(0,chat.scrollHeight)
-			},0)
+			// 	setTimeout(()=>{
+			// 	chat.scrollTo(0,chat.scrollHeight)
+			// },0)
 			
 		},
 		async loadMsgs() {
+			const { chat } = this.$refs;
 			this.msgs =await chatService.query(this.stationId);
 			console.log(this.msgs,'hello');
+				setTimeout(()=>{
+				chat.scrollTo(0,chat.scrollHeight)
+			},0)
 		},
 	},
 	destroyed() {
