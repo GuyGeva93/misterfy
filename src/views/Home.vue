@@ -37,7 +37,6 @@ export default {
 	computed: {
 		stations() {
 			const stations = this.$store.getters.stationsToDisplay;
-			console.log(stations)
 			return stations;
 		},
 		topPicks() {
