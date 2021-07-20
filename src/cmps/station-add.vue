@@ -104,23 +104,32 @@ export default {
         id: this.currUserId,
         fullname: "guest" + this.currUserId,
       };
+
+      let userMsg = {};
       try {
+       
         this.newStation = await this.$store.dispatch({
           type: "saveStation",
           station: this.newStation,
         });
-        const userMsg = {
+        //  debugger
+        userMsg = {
           txt: "Station has been successfully added!",
           type: "success",
         };
-        this.$store.commit({ type: "updateUserMsg", userMsg });
-        setTimeout(() => {
-          this.$store.commit({ type: "deleteMsg" });
-        }, 2000);
         this.$emit("closeModal");
         this.$router.push(`/details/${this.newStation._id}`);
       } catch (err) {
         console.log("Error on save station =>", err);
+        userMsg = {
+          txt: "Adding the station has been failed!",
+          type: "error",
+        };
+      } finally {
+        this.$store.commit({ type: "updateUserMsg", userMsg });
+        setTimeout(() => {
+          this.$store.commit({ type: "deleteMsg" });
+        }, 2000);
       }
     },
     closeModal() {

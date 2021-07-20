@@ -26,7 +26,9 @@
 import stationList from "@/cmps/station-list";
 import stationTag from "@/cmps/station-tag";
 export default {
-  created() {},
+  created() {
+    this.$router.push('/explore');
+  },
   data() {
     return {
       isLoading: false,
@@ -86,9 +88,7 @@ export default {
         }
       },
     },
- destroyed () {
-   this.$route.push('/explore');
- },
+
   },
 };
 </script>

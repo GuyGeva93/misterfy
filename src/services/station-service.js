@@ -50,6 +50,7 @@ async function remove(stationId) {
         return removedStation
     } catch (err) {
         console.log('Error on station service =>', err)
+        throw err;
     }
     // return storageService.remove(STATION_KEY, stationId)
 
@@ -77,6 +78,7 @@ async function save(station) {
         }
     } catch (err) {
         console.log('Error on station service =>', err)
+        throw err;
     }
 
     // user = await httpService[method](`station/${station._id}`, station)
@@ -114,6 +116,7 @@ async function saveSong(song, stationId) {
         return updatedStation
     } catch (err) {
         console.log('Error on station service =>', err)
+        throw err;
     }
     // const station = await getById(stationId)
     // station.songs.push({
@@ -134,6 +137,7 @@ async function removeSong(songId, stationId) {
         return updatedStation
     } catch (err) {
         console.log('Error on station service =>', err)
+        throw err;
     }
 }
 

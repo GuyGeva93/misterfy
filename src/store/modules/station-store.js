@@ -83,6 +83,7 @@ export const stationStore = {
                 commit({ type: 'removeStation', stationId })
             } catch (err) {
                 console.log('Error on removeStation =>', err)
+                throw err;
             }
         },
         async saveStation({ commit }, payload) {
@@ -93,6 +94,7 @@ export const stationStore = {
                 return station;
             } catch (err) {
                 console.log('Error on saveStation =>', err)
+                throw err;
             }
         },
         async setFilter({ commit }, { sortBy, filterBy }) {
@@ -121,6 +123,7 @@ export const stationStore = {
                 commit({ type: 'removeSong', updatedStation })
             } catch (err) {
                 console.log('Error on removeSong =>', err)
+                throw err;
             }
         },
         async currStation({ commit }, { stationId }) {
