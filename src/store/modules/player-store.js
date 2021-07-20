@@ -12,6 +12,9 @@ export const playerStore = {
     currSong(state) {
       return state.currSong
     },
+    isPlaying(state) {
+      return state.isPlaying
+    }
   },
   mutations: {
     loadSongToPlayer(state, { songId }) {
@@ -43,7 +46,12 @@ export const playerStore = {
     },
     isPlaying(state) {
       state.isPlaying = !state.isPlaying
-    }
+    },
+    // playSong() {
+
+    // }
   },
-  actions: {}
+  actions: {
+
+  }
 }

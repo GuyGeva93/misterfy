@@ -20,13 +20,13 @@ async function query(query) {
   }
 }
 async function getSongById(youtubeId) {
-  try {
-    const res = await axios.get(`${DETAILS_URL}?id=${youtubeId}&part=id,contentDetails,snippet&key=${YT_API_KEY}`);
-    return res.data
-  } catch (err) {
-    console.log(err)
-    throw err
-  }
+    try {
+        const res = await axios.get(`${DETAILS_URL}?id=${youtubeId}&part=id,contentDetails,snippet&key=${YT_API_KEY}`);
+        return res.data
+    } catch (err) {
+        console.log(err)
+        throw err
+    }
 }
 
 async function getDuration(youtubeId) {
