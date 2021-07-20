@@ -32,7 +32,6 @@ export default {
 	},
 	computed: {
 		currSong() {
-			console.log(this.$store.getters.currSong)
 			return this.$store.getters.currSong 
 		}
 	},
