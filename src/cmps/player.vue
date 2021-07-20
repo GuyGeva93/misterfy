@@ -42,9 +42,9 @@ export default {
 		this.$refs.plyr.player.on("ready", () => {
 			this.$refs.plyr.player.play();
 		});
-		this.$refs.plyr.player.on("playing", () => {
-			this.$store.commit({ type: "isPlaying" });
-		});
+		// this.$refs.plyr.player.on("playing", () => {
+		// 	this.$store.commit({ type: "isPlaying" });
+		// });
 		this.$refs.plyr.player.on("pause", () => {
 			this.$store.commit({ type: "isPlaying" });
 		});

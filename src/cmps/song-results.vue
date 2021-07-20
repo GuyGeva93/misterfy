@@ -21,7 +21,7 @@
 
 <script>
 import draggable from "vuedraggable"
-import { youtubeService } from '@/services/youtube-service.js'
+// import { youtubeService } from '@/services/youtube-service.js'
 
 export default {
 	components: {
