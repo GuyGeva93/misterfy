@@ -37,6 +37,7 @@ export default {
 	computed: {
 		stations() {
 			const stations = this.$store.getters.stationsToDisplay;
+			console.log(stations)
 			return stations;
 		},
 		topPicks() {
@@ -60,7 +61,7 @@ export default {
 			handler() {
 				//reset filter when coming home page
 				this.$store.commit({ type: "setFilter" })
-				this.$store.dispatch({type:'loadStations'})
+				this.$store.dispatch({ type: 'loadStations' })
 			},
 		},
 	},
