@@ -4,7 +4,7 @@
 			<span></span>
 			<span>#</span>
 			<span>Title</span>
-			<span>Plays</span>
+			<span><img src="../assets/icons/clock.png"></span>
 		</div>
 		<ul class="songs-list">
 			<draggable

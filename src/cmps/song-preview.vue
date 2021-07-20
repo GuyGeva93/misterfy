@@ -19,7 +19,7 @@
     <h3>{{ idx + 1 }}</h3>
     <img class="thumbnail" :src="song.imgUrl" />
     <h3 class="song-title">{{ song.title }}</h3>
-    <h3>352,587</h3>
+    <!-- <h3>{{song}}</h3> -->
     <button class="like-song">🤍</button>
     <img
       @click="toggleRemove"
@@ -77,6 +77,9 @@ export default {
     removeSong(songId) {
       this.$store.dispatch({ type: "removeSong", songId });
     },
+  },
+  mounted () {
+    console.log(this.song);
   },
 };
 </script>
