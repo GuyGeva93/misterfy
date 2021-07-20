@@ -6,8 +6,23 @@ import { userStore } from './modules/user-store.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {},
-    mutations: {},
+    state: {
+        userMsg: null
+    },
+    getters: {
+        userMsg(state) {
+            return state.userMsg;
+        }
+    },
+    mutations: {
+        updateUserMsg(state, { userMsg }) {
+            state.userMsg = userMsg;
+        },
+        deleteMsg(state) {
+            state.userMsg = null
+        },
+
+    },
     actions: {},
     modules: {
         stationStore,

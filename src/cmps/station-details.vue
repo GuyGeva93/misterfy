@@ -85,6 +85,14 @@ export default {
 			const { stationId } = this.$route.params
 			this.$store.dispatch({ type: 'removeStation', stationId })
 			this.$store.commit({ type: 'clearCurrSong' })
+			    const userMsg = {
+          txt: "Station has been successfully removed!",
+          type: "success",
+        };
+        this.$store.commit({ type: "updateUserMsg", userMsg });
+        setTimeout(() => {
+          this.$store.commit({ type: "deleteMsg" });
+        }, 2000);
 			this.$router.push('/')
 		},
 		opened() {
