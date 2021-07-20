@@ -26,7 +26,8 @@ async function query(filterBy) {
     // return stations
 
     try {
-        return httpService.get(`station`, { filterBy })
+        const stations = await httpService.get(`station`, { filterBy })
+        return stations
     } catch (err) {
         console.log('Error on station service =>', err)
     }
@@ -36,15 +37,17 @@ async function getById(stationId) {
     // const station = await storageService.get(STATION_KEY, stationId)
     // return station
     try {
-        return httpService.get(`station/${stationId}`)
+        const station = await httpService.get(`station/${stationId}`)
+        return station
     } catch (err) {
         console.log('Error on station service =>', err)
     }
 }
 
-function remove(stationId) {
+async function remove(stationId) {
     try {
-        return httpService.delete(`station/${stationId}`)
+        const removedStation = await httpService.delete(`station/${stationId}`)
+        return removedStation
     } catch (err) {
         console.log('Error on station service =>', err)
     }
@@ -114,6 +117,7 @@ async function saveSong(song, stationId) {
             addedBy: ''
         };
         const updatedStation = await httpService.put('station/' + stationId, newSong);
+        console.log(updatedStation);
         return updatedStation
     } catch (err) {
         console.log('Error on station service =>', err)
