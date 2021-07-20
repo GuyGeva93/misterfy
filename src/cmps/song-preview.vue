@@ -2,8 +2,7 @@
 	<section
 		@mouseover="isHover = true"
 		@mouseleave="isHover = false"
-		class="song-preview"
-	>
+		class="song-preview">
 		<span v-if="isHover">
 			<img
 				v-if="!isRunning || song.id !== togglePlayPause"
