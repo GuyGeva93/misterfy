@@ -9,7 +9,7 @@
     />
     <filter-text-search @search="search" />
     <nav class="main-nav">
-      <router-link to="/">Home</router-link>|<button
+      <router-link @click.native="scrollTop" to="/">Home</router-link>|<button
         class="creatify-btn"
         @click.stop="toggleCreating"
       >
@@ -34,8 +34,12 @@ export default {
     };
   },
   methods: {
+    scrollTop() {
+      window.scrollTo(0, 0);
+    },
     goHome() {
       this.$router.push("/");
+      window.scrollTo(0, 0);
     },
     search(name) {
       //Preventing duplicated route error
@@ -44,8 +48,7 @@ export default {
       if (!name) name = "*";
       let url = "/explore/" + name;
       if (this.tag) url += "/" + this.tag;
-      
-      
+
       this.$router.push(url).catch((err) => {
         //When same route appears
         if (err.name != "NavigationDuplicated") {
