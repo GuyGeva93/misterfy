@@ -1,20 +1,20 @@
 <template>
 	<section v-if="results" class="song-results">
 		<draggable v-model="myList">
+			<!-- <div -->
+			<!-- > -->
 			<div
 				v-for="song in results"
 				:key="song.id.videoId"
 				@end="addSong(this.song)"
 				group="songs"
+				class="search-result"
+				@click.stop="addSong(song)"
+				@mousedown="getCurrSong(song)"
 			>
-				<div
-					class="search-result"
-					@click.stop="addSong(song)"
-					@mousedown="getCurrSong(song)"
-				>
-					{{ song.snippet.title }}
-				</div>
+				{{ song.snippet.title }}
 			</div>
+			<!-- </div> -->
 		</draggable>
 	</section>
 </template>
@@ -34,32 +34,32 @@ export default {
 	},
 	data() {
 		return {
-			song: ''
-		}
+			song: "",
+		};
 	},
 	computed: {
 		myList: {
 			get() {
+				// console.log(this.$store.state.stationStore.currStation.songs);
 				return this.$store.state.stationStore.currStation.songs;
 			},
 			set(clone) {
-				console.log(clone)
-				this.addSong(this.song)
+				console.log(clone);
+				console.log(this.song);
+				this.addSong(this.song);
 			},
 		},
 	},
 	methods: {
-		async addSong(song) {
-			const { stationId } = this.$route.params
-			const duration = await youtubeService.getDuration(song.id.videoId)
-			console.log('duration', duration)
-			this.$store.dispatch({ type: "addSong", song, stationId })
+		addSong(song) {
+			console.log(song);
+			const { stationId } = this.$route.params;
+			this.$store.dispatch({ type: "addSong", song, stationId });
 		},
 		getCurrSong(song) {
-			this.song = song
-		}
+			this.song = song;
+		},
 	},
-	mounted() {
-	},
+	mounted() { },
 };
 </script>

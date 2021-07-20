@@ -79,17 +79,44 @@
         grid-column: 1/-1;
         grid-row: 3/4;
         font-size: 0.95rem;
-        .search-result {
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 10px;
             border-radius: 10px;
+        }
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: darken($clr1, 5%);
+            // border-radius: 10px;
+        }
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: lighten($clr4, 20%);
+            // border-radius: 10px;
+        }
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: lighten($clr4, 10%);
+            // border-radius: 10px;
+        }
+        .search-result {
+            // border-radius: 10px;
             background-color: lighten($clr4, 10%);
             margin: 5px;
             padding: 2px;
+            padding-top: 9px;
             text-align: start;
             height: 40px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            &:hover {
+                background-color: lighten($clr4, 15%);
+            }
         }
         &>* {
             margin-top: 2px;
-            border-radius: 10px;
+            // border-radius: 10px;
             background-color: $clr4;
             margin-bottom: 2px;
             padding: 5px;

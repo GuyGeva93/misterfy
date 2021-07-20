@@ -39,12 +39,13 @@ export default {
 	props: {
 		stationId: {
 			type: String,
-		},
+		}
+		
 	},
 
 	async created() {
 		socketService.emit("chat topic", this.stationId)
-		socketService.on("new msg", this.loadMsgs)
+		socketService.on("chat addMsg", this.loadMsgs)
 		if (!this.msgs.length) {
 			try {
 				this.msgs = await chatService.query(this.stationId)
@@ -74,34 +75,40 @@ export default {
 
 			this.msg.stationId = this.stationId
 			this.msg.from._id = this.currUserId
-
+				const copiedMsg=JSON.parse(JSON.stringify(this.msg));
 			try {
 				await chatService.add(this.msg)
+				this.msg = chatService.getEmptyMsg()
+				socketService.emit('chat newMsg',copiedMsg)
 			} catch (err) {
 				console.log('Error on chat add =>', err)
 			}
+				// this.msgs.push(copiedMsg)
 			setTimeout(()=>{
 				chat.scrollTo(0,chat.scrollHeight)
 			},0)
-			this.msgs.push(this.msg)
+
 			try {
-				const reply = await chatService.botReply(this.msg)
-				this.msgs.push(reply)
-			this.msg = chatService.getEmptyMsg()
-			setTimeout(()=>{
-				chat.scrollTo(0,chat.scrollHeight)
-			},0)
+				const reply = await chatService.botReply(copiedMsg)
+				socketService.emit('chat newMsg',reply)
+		
+			// this.msgs.push(reply);
+		
 			} catch (err) {
 				console.log('Error on chat bot reply =>', err)
 			}
+				setTimeout(()=>{
+				chat.scrollTo(0,chat.scrollHeight)
+			},0)
 			
 		},
-		loadMsgs(msgs) {
-			this.msgs = msgs;
+		async loadMsgs() {
+			this.msgs =await chatService.query(this.stationId);
+			console.log(this.msgs,'hello');
 		},
 	},
 	destroyed() {
-		socketService.off("new msg", this.loadMsgs);
+		socketService.off("chat addMsg", this.loadMsgs);
 	},
 	components: {
 		chatMsgPreview,
