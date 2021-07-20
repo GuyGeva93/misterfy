@@ -44,12 +44,10 @@ export const playerStore = {
       const nextSong = currStation.songs[idx - 1]
       state.currSongId = nextSong.id
     },
-    isPlaying(state) {
-      state.isPlaying = !state.isPlaying
+    isPlaying(state, { action }) {
+      if (action) state.isPlaying = true
+      else state.isPlaying = false
     },
-    // playSong() {
-
-    // }
   },
   actions: {
 

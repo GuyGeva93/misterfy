@@ -13,7 +13,7 @@
 			/>
 			<img
 				v-if="isRunning && song.id === togglePlayPause"
-				@click.stop="pause(song.id)"
+				@click.stop="play(song.id)"
 				class="song-preview-pause-btn"
 				src="../assets/icons/pause-lines.png"
 			/>
@@ -22,7 +22,6 @@
 		<img class="thumbnail" :src="song.imgUrl" />
 		<h3 class="song-title">{{ song.title }}</h3>
 		<h3>{{ song.duration }}</h3>
-		<!-- <h3>352,587</h3> -->
 		<button class="like-song">🤍</button>
 		<img
 			@click.stop="toggleRemove"
@@ -64,7 +63,6 @@ export default {
 	},
 	data() {
 		return {
-			isPlaying: false,
 			isRemove: false,
 			isHover: false
 		};
@@ -80,29 +78,18 @@ export default {
 	methods: {
 		play(songId) {
 			if (this.$store.getters.currSongId && songId !== this.$store.getters.currSongId) {
-				if (!this.isPlaying) {
-					this.$store.commit({ type: "loadSongToPlayer", songId });
-					this.$store.commit({ type: "setCurrSong", songId });
-					this.isPlaying = true
-					console.log('this.isRunning', this.isRunning)
-				}
-				// else {
-				// 	console.log('HERE')
-				// 	eventBusService.$emit('togglePlay')
-				// }
-				// this.isPlaying = false
+				this.$store.commit({ type: "loadSongToPlayer", songId });
+				this.$store.commit({ type: "setCurrSong", songId });
 			} else if (songId === this.$store.getters.currSongId) {
+				console.log('NOW')
 				eventBusService.$emit('togglePlay')
 			} else {
 				this.$store.commit({ type: "loadSongToPlayer", songId });
 				this.$store.commit({ type: "setCurrSong", songId });
-				this.isPlaying = true
 			}
 
 		},
-		pause() {
-			eventBusService.$emit('togglePlay')
-		},
+
 		toggleRemove() {
 			this.isRemove = !this.isRemove;
 		},
