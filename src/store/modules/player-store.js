@@ -2,7 +2,7 @@ export const playerStore = {
   strict: true,
   state: {
     currSongId: '',
-    currSong: {},
+    currSong: null,
     isPlaying: false
   },
   getters: {

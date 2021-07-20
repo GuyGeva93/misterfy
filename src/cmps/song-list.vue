@@ -4,7 +4,7 @@
 			<span></span>
 			<span>#</span>
 			<span>Title</span>
-			<span>Plays</span>
+			<span>Duration</span>
 		</div>
 		<ul class="songs-list">
 			<draggable
@@ -37,16 +37,13 @@ export default {
 	computed: {
 		mySongs: {
 			get() {
-				console.log("get");
 				return this.$store.getters.currStation.songs
 			},
 			set(list) {
-				this.$store.dispatch({type: "setListOrder", list, stationId: this.stationId});
-				
+				this.$store.dispatch({ type: "setListOrder", list, stationId: this.stationId });
+
 			},
 		},
-	},
-	created() {
 	},
 };
 </script>

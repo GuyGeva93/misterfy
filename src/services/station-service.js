@@ -102,19 +102,12 @@ function getEmptyStation() {
 
 async function saveSong(song, stationId) {
   try {
-    // const station = await getById(stationId)
-    // station.songs.push({
-    //     id: song.id.videoId,
-    //     title: song.snippet.title,
-    //     imgUrl: song.snippet.thumbnails.default.url,
-    //     addedBy: ''
-    // })
-    // const updatedStation = await save(station)
     const newSong = {
       id: song.id.videoId,
       title: song.snippet.title,
       imgUrl: song.snippet.thumbnails.default.url,
-      addedBy: ''
+      addedBy: '',
+      duration: song.duration
     };
     const updatedStation = await httpService.put('station/' + stationId, newSong);
     console.log(updatedStation);
@@ -122,6 +115,14 @@ async function saveSong(song, stationId) {
   } catch (err) {
     console.log('Error on station service =>', err)
   }
+  // const station = await getById(stationId)
+  // station.songs.push({
+  //     id: song.id.videoId,
+  //     title: song.snippet.title,
+  //     imgUrl: song.snippet.thumbnails.default.url,
+  //     addedBy: ''
+  // })
+  // const updatedStation = await save(station)
 }
 
 async function removeSong(songId, stationId) {

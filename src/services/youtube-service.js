@@ -7,27 +7,16 @@ const DETAILS_URL = 'https://www.googleapis.com/youtube/v3/videos'
 export const youtubeService = {
   query,
   getSongById,
+  getDuration,
   getTitle
 }
 
 async function query(query) {
   try {
-    // console.log("get -> API_KEYS[gCurrApiKey]", API_KEYS[gCurrApiKey])
     const res = await axios.get(`${SEARCH_URL}?videoCategoryId=10&part=id,snippet&videoEmbeddable=true&type=video&maxResults=10&q=${query}&key=${YT_API_KEY}`)
-
-    // gCount = 0;
     return res.data
   } catch (err) {
-    console.dir(err)
-    // if (gCount === API_KEYS.length) {
-    //     gCount = 0
-    //     throw (err)
-    // } else {
-    //     // gCurrApiKey++;
-    //     // gCount++;
-    //     if (gCurrApiKey >= API_KEYS.length) gCurrApiKey = 0;
-    //     return get(query);
-    // }
+    console.log(err)
   }
 }
 async function getSongById(youtubeId) {
@@ -40,6 +29,22 @@ async function getSongById(youtubeId) {
   }
 }
 
+async function getDuration(youtubeId) {
+  const res = await axios.get(`${DETAILS_URL}?id=${youtubeId}&part=contentDetails&key=${YT_API_KEY}`)
+  let duration = res.data.items[0].contentDetails.duration
+  try {
+    duration = duration.substring(2)
+    duration = duration.replace('M', ':')
+    duration = duration.split(':')
+    duration[1] = duration[1].replace('S', '')
+    duration[1] = duration[1].padStart(2, '0')
+    duration = duration.join(':')
+    return duration.toString()
+  } catch (err) {
+    return null
+  }
+}
+
 
 function getTitle(title) {
   // Removes HTML char codes
@@ -47,6 +52,5 @@ function getTitle(title) {
   // Removes 'Official Video' brackets
   const officialVideoRegex = /[([].?(official.?video)?(official music video)?.?[)\]]/ig
   output = output.replace(officialVideoRegex, '');
-
   return output;
 }

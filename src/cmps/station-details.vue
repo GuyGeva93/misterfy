@@ -53,7 +53,6 @@ export default {
 			return this.$store.getters.currStation
 		},
 		getTags() {
-			console.log(this.$store.getters.currStation)
 			return this.currStation.tags.join(",")
 		},
 		currStation() {

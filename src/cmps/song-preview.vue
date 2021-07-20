@@ -19,7 +19,8 @@
     <h3>{{ idx + 1 }}</h3>
     <img class="thumbnail" :src="song.imgUrl" />
     <h3 class="song-title">{{ song.title }}</h3>
-    <h3>352,587</h3>
+    <h3>{{song.duration}}</h3>
+    <!-- <h3>352,587</h3> -->
     <button class="like-song">🤍</button>
     <img
       @click="toggleRemove"
