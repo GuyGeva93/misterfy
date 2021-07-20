@@ -60,7 +60,7 @@ export default {
 			handler() {
 				//reset filter when coming home page
 				this.$store.commit({ type: "setFilter" })
-				this.$store.dispatch({type:'loadStations'})
+				this.$store.dispatch({ type: 'loadStations' })
 			},
 		},
 	},
