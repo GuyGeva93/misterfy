@@ -23,6 +23,7 @@
     "socket.io-client": "^2.2.0",
     "sortablejs": "^1.14.0",
     "vue": "^2.6.11",
+    "vue-audio-visual": "^2.2.2",
     "vue-carousel": "^0.18.0",
     "vue-debounce": "^3.0.0",
     "vue-fontawesome": "0.0.2",

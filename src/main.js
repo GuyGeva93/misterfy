@@ -6,15 +6,15 @@ import store from './store'
 import vueDebounce from 'vue-debounce'
 import './style/style.scss'
 Vue.config.productionTip = false
+import AudioVisual from 'vue-audio-visual'
+
 
 import VuePlyr from 'vue-plyr'
 import 'vue-plyr/dist/vue-plyr.css'
 import VueCarousel from 'vue-carousel';
 Vue.use(VueCarousel);
+Vue.use(AudioVisual)
 
-Vue.config.productionTip = false
-
-Vue.config.productionTip = false
 Vue.use(vueDebounce, {
     defaultTime: '700ms'
 })
