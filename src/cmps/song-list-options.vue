@@ -23,16 +23,16 @@
       @click.stop="toggleSearch"
       src="../assets/svg/plus-solid.svg"
     />
-    <img @click.stop="prevSong" src="../assets/svg/backward-solid.svg" />
+    <img class="options-prev-btn" @click.stop="prevSong" src="../assets/icons/next.png" />
     <img
       @click.stop="playStation"
       class="options-play-btn"
-      src="../assets/svg/play-circle-solid.svg"
+      src="../assets/icons/play-button.png"
     />
-    <img @click.stop="nextSong" src="../assets/svg/forward-solid.svg" />
+    <img class="options-next-btn" @click.stop="nextSong" src="../assets/icons/next.png" />
     <img
       @click.stop="toggleRemove"
-      :class="{ removing: !isRemoving }"
+      :class="{ removing: isRemoving }"
       class="options-ellipsis-btn"
       src="../assets/icons/ellipsis.png"
     />
