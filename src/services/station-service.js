@@ -114,7 +114,6 @@ async function saveSong(song, stationId) {
             addedBy: ''
         };
         const updatedStation = await httpService.put('station/' + stationId, newSong);
-        console.log(updatedStation);
         return updatedStation
     } catch (err) {
         console.log('Error on station service =>', err)

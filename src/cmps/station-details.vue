@@ -1,6 +1,6 @@
 <template>
 	<section class="station-details" v-if="currStation">
-		<chat :stationId="stationId" class="section-details-chat" />
+		<chat :stationId="stationId"  class="section-details-chat" />
 		<img ref="img" class="station-details-img" :src="currStation.imgUrl" />
 		<section v-if="getStation" class="station-details-info">
 			<h2 class="title">{{ currStation.name }}</h2>
@@ -53,6 +53,7 @@ export default {
 			return this.$store.getters.currStation
 		},
 		getTags() {
+			console.log(this.currStation.tags);
 			return this.currStation.tags.join(",")
 		},
 		currStation() {
