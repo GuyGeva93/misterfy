@@ -18,6 +18,7 @@
 				src="../assets/icons/pause-lines.png"
 			/>
 		</span>
+		<span v-else-if="!isHover&&song.id === togglePlayPause && isRunning"><equalizer/></span>
 		<h3 v-else>{{ idx + 1 }}</h3>
 		<img class="thumbnail" :src="song.imgUrl" />
 		<h3 class="song-title">{{ song.title }}</h3>
@@ -52,6 +53,7 @@
 
 <script>
 import { eventBusService } from '@/services/eventBus-service.js'
+import equalizer from '@/cmps/equalizer'
 export default {
 	props: {
 		song: {
@@ -61,6 +63,9 @@ export default {
 			type: Number,
 		},
 	},
+	components: {
+equalizer
+},
 	data() {
 		return {
 			isRemove: false,
