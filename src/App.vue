@@ -3,7 +3,7 @@
 		<!-- <div class="header-filler main-layout" ></div> -->
 		<app-header />
 		<router-view />
-		<section class="player-container">
+		<section class="player-container" v-if="currSong">
 			<player-img />
 			<player :key="this.$store.getters.currSongId" />
 		</section>
@@ -29,6 +29,11 @@ export default {
 	},
 	created() {
 		this.$store.dispatch({ type: 'loadStations' });
+	},
+	computed: {
+		currSong() {
+			return this.$store.getters.currSong 
+		}
 	},
 
 }

@@ -60,71 +60,73 @@ import songResults from "@/cmps/song-results.vue";
 import { youtubeService } from "@/services/youtube-service.js";
 
 export default {
-  data() {
-    return {
-      isSearch: false,
-      txt: "",
-      results: [],
-      isLiked: false,
-      isRemoving: false,
-    };
-  },
-  computed: {
-    isPlaying() {
-      return this.$store.state.playerStore.isPlaying;
-    },
-    currSong() {
-      return this.$store.getters.currSong;
-    },
-    currStation() {
-      return this.$store.getters.currStation;
-    },
-  },
+	data() {
+		return {
+			isSearch: false,
+			txt: "",
+			results: [],
+			isLiked: false,
+			isRemoving: false,
+		};
+	},
+	computed: {
+		isPlaying() {
+			return this.$store.state.playerStore.isPlaying;
+		},
+		currSong() {
+			return this.$store.getters.currSong;
+		},
+		currStation() {
+			return this.$store.getters.currStation;
+		},
+	},
 
-  methods: {
-    toggleSearch() {
-      this.$emit("opened");
-      this.isSearch = !this.isSearch;
-      this.txt = "";
-      this.results = [];
-    },
-    async search(query) {
-      if (!query) {
-        this.results = [];
-        return;
-      }
-      try {
-        this.results = await youtubeService.query(query);
-      } catch (err) {
-        console.log("Error on YouTube query =>", err);
-      }
-    },
-    toggleStationLike() {
-      this.isLiked = !this.isLiked;
-    },
-    playStation() {
-      if (!this.currStation.songs || !this.currStation.songs.length) return;
-      const songId = this.$store.getters.currStation.songs[0].id;
-      this.$store.commit({ type: "loadSongToPlayer", songId });
-      this.$store.commit({ type: "setCurrSong" });
-    },
-    nextSong() {
-      this.$store.commit({ type: "nextSong" });
-      this.$store.commit({ type: "setCurrSong" });
-    },
-    prevSong() {
-      this.$store.commit({ type: "prevSong" });
-      this.$store.commit({ type: "setCurrSong" });
-    },
-    removeStation() {
-      this.$emit("removeStation");
-    },
-    toggleRemove() {
-      this.isRemoving = !this.isRemoving;
-    },
-  },
-  components: {
-    songResults,
-  },
+	methods: {
+		toggleSearch() {
+			this.$emit("opened");
+			this.isSearch = !this.isSearch;
+			this.txt = "";
+			this.results = [];
+		},
+		async search(query) {
+			if (!query) {
+				this.results = [];
+				return;
+			}
+			try {
+				this.results = await youtubeService.query(query)
+				// console.log('results', this.results)
+				// const duration = await youtubeService.getDuration()
+			} catch (err) {
+				console.log("Error on YouTube query =>", err)
+			}
+		},
+		toggleStationLike() {
+			this.isLiked = !this.isLiked;
+		},
+		playStation() {
+			if (!this.currStation.songs || !this.currStation.songs.length) return;
+			const songId = this.$store.getters.currStation.songs[0].id;
+			this.$store.commit({ type: "loadSongToPlayer", songId });
+			this.$store.commit({ type: "setCurrSong" });
+		},
+		nextSong() {
+			this.$store.commit({ type: "nextSong" });
+			this.$store.commit({ type: "setCurrSong" });
+		},
+		prevSong() {
+			this.$store.commit({ type: "prevSong" });
+			this.$store.commit({ type: "setCurrSong" });
+		},
+		removeStation() {
+			this.$emit("removeStation");
+		},
+		toggleRemove() {
+			this.isRemoving = !this.isRemoving;
+		},
+	},
+	components: {
+		songResults,
+	},
 };
 </script>
