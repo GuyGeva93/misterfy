@@ -3,10 +3,10 @@ $bar-color: #fff;
 $ball-color: #fff;
 $bg-color: #EA4961;
 .loader {
-    position: relative;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 75px;
     height: 100px;
     &__bar {

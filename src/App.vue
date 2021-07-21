@@ -1,14 +1,14 @@
 <template>
   <div id="app" class="main-layout">
-    <div v-if="!loaded" class="loader">
+    <!-- <div v-if="!loaded" class="loader">
       <div class="loader__bar"></div>
       <div class="loader__bar"></div>
       <div class="loader__bar"></div>
       <div class="loader__bar"></div>
       <div class="loader__bar"></div>
       <div class="loader__ball"></div>
-    </div>
-    <template v-if="loaded">
+    </div> -->
+    <template>
       <app-header />
       <user-msg />
       <router-view />
@@ -26,21 +26,14 @@ import appHeader from "@/cmps/app-header";
 // import appFooter from "@/cmps/app-footer";
 import playerImg from "@/cmps/player-img";
 import player from "@/cmps/player";
-// import songInfoSlider from '@/cmps/song-info-slider.vue'
 import userMsg from "@/cmps/user-msg";
 export default {
   components: {
     appHeader,
     // appFooter,
-    // songInfoSlider,
     playerImg,
     player,
     userMsg,
-  },
-  data() {
-    return {
-      loaded: false,
-    };
   },
   async created() {
     const data = await this.$store.dispatch({ type: "loadStations" });
@@ -64,11 +57,7 @@ export default {
       return document.readyState;
     },
   },
-  mounted() {
-	  setTimeout(()=>{
-		  return (this.loaded = true);
-	  },3000)
-  },
+ 
 };
 </script>
 

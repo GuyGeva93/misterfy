@@ -1,15 +1,13 @@
 <template>
   <header>
     <div v-if="isCreating" class="screen-cover"></div>
-    <img
-      class="logo"
-      @click="goHome"
-      src="../assets/logo/logo_transparent.png"
-      alt=""
-    />
+    <span class="logo" @click="goHome">
+      <img class="logo-img" src="../assets/logo/logo-no-txt.png" alt="" />
+      <img class="logo-txt" src="../assets/logo/logo-txt.png" />
+    </span>
     <filter-text-search @search="search" />
-    <h2 v-if="loggedinUser" >Hello, {{loggedinUser.fullname}} </h2>
-   <nav class="main-nav">
+    <h2 v-if="loggedinUser">Hello, {{ loggedinUser.fullname }}</h2>
+    <nav class="main-nav">
       <router-link @click.native="scrollTop" to="/">Home</router-link>|<button
         class="creatify-btn"
         @click.stop="toggleCreating"
@@ -19,10 +17,10 @@
         to="/dashboard"
         >Dashboard</router-link
       >|<router-link to="/about">About</router-link>|
-    <template v-if="!loggedinUser">  <router-link to="/signup" >Signup</router-link></template>
-    <template v-else><button @click="logout">Logout</button></template>
-       
-      
+      <template v-if="!loggedinUser">
+        <router-link to="/signup">Signup</router-link></template
+      >
+      <template v-else><button @click="logout">Logout</button></template>
     </nav>
     <station-add v-if="isCreating" @closeModal="toggleCreating" />
   </header>
@@ -73,17 +71,17 @@ export default {
     toggleCreating() {
       return (this.isCreating = !this.isCreating);
     },
-   async logout(){
-      await this.$store.dispatch({type:'logout'});
-    }
+    async logout() {
+      await this.$store.dispatch({ type: "logout" });
+    },
   },
   computed: {
     tag() {
       return this.$route.params.tag;
     },
-    loggedinUser(){
+    loggedinUser() {
       return this.$store.getters.loggedinUser;
-    }
+    },
   },
 
   components: {
