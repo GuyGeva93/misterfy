@@ -1,5 +1,5 @@
 <template>
-	<section class="station-details" v-if="currStation">
+	<section ref="grid" class="station-details" v-if="currStation">
 		<chat :stationId="stationId" class="section-details-chat" />
 		<img ref="img" class="station-details-img" :src="currStation.imgUrl" />
 		<section v-if="currStation" class="station-details-info">
@@ -27,6 +27,7 @@ import { youtubeService } from "@/services/youtube-service.js";
 import songListOptions from "@/cmps/song-list-options.vue";
 import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
+// import { wrapGrid } from 'animate-css-grid'
 export default {
 	async created() {
 		const { stationId } = this.$route.params;

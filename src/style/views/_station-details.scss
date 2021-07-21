@@ -50,6 +50,9 @@
     grid-template-rows: 60px 50px 1fr;
     font-size: x-large;
     text-align: center;
+    .plus-btn {
+        transition: transform .8s
+    }
     .plus-btn.open {
         transform: rotate(135deg);
     }
