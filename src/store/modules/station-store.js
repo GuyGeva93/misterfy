@@ -13,21 +13,11 @@ export const stationStore = {
     sortBy: { tags: [] }
   },
   getters: {
-    stationsToDisplay({ stations }) {
-      return stations
-    },
-    tags(state) {
-      return state.tags
-    },
-    currStation(state) {
-      return state.currStation
-    },
-    filterBy(state) {
-      return state.filterBy
-    },
-    sortBy(state) {
-      return state.sortBy
-    },
+    stationsToDisplay({ stations }) { return stations },
+    tags(state) { return state.tags },
+    currStation(state) { return state.currStation },
+    filterBy(state) { return state.filterBy },
+    sortBy(state) { return state.sortBy },
   },
   mutations: {
     setStations(state, { stations }) {
