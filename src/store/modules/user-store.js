@@ -70,6 +70,7 @@ export const userStore = {
         throw err
       }
     },
+    
   }
 
 };
