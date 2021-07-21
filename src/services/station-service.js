@@ -104,6 +104,7 @@ function getEmptyStation() {
 
 async function saveSong(song, stationId) {
     try {
+        const station = await getById(stationId);
         const newSong = {
             id: song.id.videoId,
             title: song.snippet.title,
@@ -111,8 +112,8 @@ async function saveSong(song, stationId) {
             addedBy: '',
             duration: song.duration
         };
-        const updatedStation = await httpService.put('station/' + stationId, newSong);
-        console.log(updatedStation);
+        station.songs.push(newSong);
+        const updatedStation = await save(station)
         return updatedStation
     } catch (err) {
         console.log('Error on station service =>', err)

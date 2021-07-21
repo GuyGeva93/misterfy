@@ -20,7 +20,7 @@
           v-for="(song, idx) in mySongs"
           :key="song._id"
         >
-          <song-preview :song="song" :idx="idx" @refresh-songs="refreshSongs" />
+          <song-preview :song="song" :idx="idx"  />
         </li>
       </draggable>
     </ul>
@@ -67,14 +67,7 @@ export default {
       };
     },
   },
-  methods: {
-    refreshSongs(updatedStation) {
-      this.$store.commit({
-        type: "removeSong",
-        updatedStation,
-      });
-    },
-  },
+ 
 };
 </script>
 
