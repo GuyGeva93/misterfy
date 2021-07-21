@@ -1,7 +1,9 @@
 <template>
+<transition name="slide-fade">
    <div v-if="msg" class="msg" :class="msgClass" >
         {{msg.txt}}
     </div>
+    </transition>
 </template>
 
 <script>
