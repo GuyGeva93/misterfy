@@ -20,12 +20,14 @@
 				<iframe :src="src" allowtransparency allow="autoplay"></iframe>
 			</div>
 		</vue-plyr>
+		<equalizer2 v-if="!isPlay" style="position: absolute; top: 50px; left: 40px;" />
 	</section>
 </template>
 
 <script>
 import songInfoSlider from "@/cmps/song-info-slider.vue";
 import { eventBusService } from '@/services/eventBus-service.js'
+import equalizer2 from '@/cmps/equalizer2'
 export default {
 	data() {
 		return {
@@ -91,6 +93,7 @@ export default {
 
 	components: {
 		songInfoSlider,
+		equalizer2
 	},
 };
 </script>

@@ -13,7 +13,9 @@ header {
     backdrop-filter: blur(10px);
     box-shadow: 0 15px 20px black;
     .logo {
+        padding-left: 100px;
         display: flex;
+        cursor: pointer;
         .logo-img {
             width: 60px;
             padding: 5px 0 5px;

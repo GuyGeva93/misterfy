@@ -105,10 +105,11 @@ function getEmptyStation() {
 async function saveSong(song, stationId) {
     try {
         const station = await getById(stationId);
+        console.log(song.snippet.thumbnails);
         const newSong = {
             id: song.id.videoId,
             title: song.snippet.title,
-            imgUrl: song.snippet.thumbnails.default.url.replace('https:', ''),
+            imgUrl: song.snippet.thumbnails.high.url.replace('https:', ''),
             addedBy: '',
             duration: song.duration
         };
