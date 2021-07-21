@@ -25,7 +25,7 @@
 		<img class="thumbnail" :src="song.imgUrl" />
 		<h3 class="song-title">{{ song.title }}</h3>
 		<h3>{{ song.duration }}</h3>
-		<button @click.stop="like" class="like-song">🤍</button>
+		<button @click.stop="like" class="like-song"><img src="../assets/icons/like.png"></button>
 		<img
 			@click.stop="toggleRemove"
 			:class="{'removing' : isRemove}"
