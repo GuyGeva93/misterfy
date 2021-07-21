@@ -5,6 +5,7 @@ import explore from '../views/explore.vue';
 import dashboard from '../views/dashboard.vue';
 import stationDetails from '../cmps/station-details.vue';
 import stationAdd from '../cmps/station-add.vue';
+import signupLogin from '@/views/signup-login.vue';
 Vue.use(VueRouter)
 const routes = [{
         path: '/',
@@ -35,6 +36,10 @@ const routes = [{
     {
         path: '/add',
         component: stationAdd
+    },
+    {
+        path: '/signup',
+        component: signupLogin
     },
 ]
 

@@ -6,6 +6,7 @@ export const stationStore = {
     strict: true,
     state: {
         stations: [],
+
         tags: [],
         currStation: null,
         currSong: null,
