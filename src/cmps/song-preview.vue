@@ -25,10 +25,12 @@
 		<img class="thumbnail" :src="song.imgUrl" />
 		<h3 class="song-title">{{ song.title }}</h3>
 		<h3>{{ song.duration }}</h3>
-		<button @click.stop="like" class="like-song">🤍</button>
+		<button :class="{ liked: isLiked }" @click.stop="like" class="like-song">
+			🤍
+		</button>
 		<img
 			@click.stop="toggleRemove"
-			:class="{'removing' : isRemove}"
+			:class="{ removing: isRemove }"
 			class="details-btn"
 			src="@/assets/icons/ellipsis.png"
 		/>
@@ -56,7 +58,7 @@
 
 <script>
 import { eventBusService } from '@/services/eventBus-service.js'
-import {socketService} from '@/services/socket-service.js';
+import { socketService } from '@/services/socket-service.js';
 import equalizer from '@/cmps/equalizer'
 export default {
 	props: {
@@ -70,14 +72,14 @@ export default {
 	components: {
 		equalizer
 	},
-	created()
-	{
-		socketService.on('removed song',this.refreshSongs)
+	created() {
+		socketService.on('removed song', this.refreshSongs)
 	},
 	data() {
 		return {
 			isRemove: false,
 			isHover: false,
+			isLiked: false
 		};
 	},
 	computed: {
@@ -102,14 +104,14 @@ export default {
 			}
 		},
 		toggleRemove() {
-			this.isRemove = !this.isRemove;
+			this.isRemove = !this.isRemove
 		},
 		//use socket inside backend controller
 		async removeSong(songId) {
 			let userMsg = null;
 			try {
-				const updatedStaion=await this.$store.dispatch({ type: "removeSong", songId });
-				socketService.emit('remove song',updatedStaion);
+				const updatedStaion = await this.$store.dispatch({ type: "removeSong", songId });
+				socketService.emit('remove song', updatedStaion);
 				userMsg = {
 					txt: "The song has been successfully removed!",
 					type: "success",
@@ -127,10 +129,11 @@ export default {
 			}
 		},
 		like() {
-			this.$emit('songLiked', this.song)
+			this.isLiked = !this.isLiked
+			this.$store.dispatch({ type: 'likedSong', song: this.song })
 		},
-		refreshSongs(updatedStaion){
-			this.$emit('refresh-songs',updatedStaion);
+		refreshSongs(updatedStaion) {
+			this.$emit('refresh-songs', updatedStaion);
 		}
 	},
 }

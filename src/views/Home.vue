@@ -64,5 +64,8 @@ export default {
 			},
 		},
 	},
+	created () {
+		console.log(this.$store.getters.loggedinUser);
+	},
 };
 </script>
