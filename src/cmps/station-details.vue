@@ -1,5 +1,5 @@
 <template>
-  <section class="station-details" v-if="currStation">
+  <section ref="grid" class="station-details" v-if="currStation">
     <chat :stationId="stationId" class="section-details-chat" />
     <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
     <section v-if="currStation" class="station-details-info">
@@ -28,6 +28,7 @@ import { youtubeService } from "@/services/youtube-service.js";
 import songListOptions from "@/cmps/song-list-options.vue";
 import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
+// import { wrapGrid } from 'animate-css-grid'
 export default {
   async created() {
     const { stationId } = this.$route.params;
@@ -46,6 +47,10 @@ export default {
   },
 
   computed: {
+    // grid() {
+    //   return this.$refs[0];
+    // },
+    // wrapGrid(grid);
     stationId() {
       return this.$route.params.stationId;
     },
@@ -87,9 +92,9 @@ export default {
           txt: "Station has been successfully removed!",
           type: "success",
         };
-		  this.$router.push("/"); 
+        this.$router.push("/");
       } catch (err) {
-		  userMsg = {
+        userMsg = {
           txt: "Removing the station has been failed!",
           type: "error",
         };
@@ -109,5 +114,8 @@ export default {
     chat,
     songListOptions,
   },
+     mounted() {
+    //   animateCSSGrid.wrapGrid(this.$refs.grid, { easing: 'backOut', stagger: 10, duration: 400 })
+    }
 };
 </script>
