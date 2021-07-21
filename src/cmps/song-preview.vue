@@ -2,7 +2,8 @@
 	<section
 		@mouseover="isHover = true"
 		@mouseleave="isHover = false"
-		class="song-preview">
+		class="song-preview"
+	>
 		<span v-if="isHover">
 			<img
 				v-if="!isRunning || song.id !== togglePlayPause"
@@ -17,12 +18,14 @@
 				src="../assets/icons/pause-lines.png"
 			/>
 		</span>
-		<span v-else-if="!isHover&&song.id === togglePlayPause && isRunning"><equalizer/></span>
+		<span v-else-if="!isHover && song.id === togglePlayPause && isRunning"
+			><equalizer
+		/></span>
 		<h3 v-else>{{ idx + 1 }}</h3>
 		<img class="thumbnail" :src="song.imgUrl" />
 		<h3 class="song-title">{{ song.title }}</h3>
 		<h3>{{ song.duration }}</h3>
-		<button class="like-song">🤍</button>
+		<button @click.stop="like" class="like-song">🤍</button>
 		<img
 			@click.stop="toggleRemove"
 			class="details-btn"
@@ -63,12 +66,12 @@ export default {
 		},
 	},
 	components: {
-equalizer
-},
+		equalizer
+	},
 	data() {
 		return {
 			isRemove: false,
-			isHover: false
+			isHover: false,
 		};
 	},
 	computed: {
@@ -91,30 +94,33 @@ equalizer
 				this.$store.commit({ type: "loadSongToPlayer", songId });
 				this.$store.commit({ type: "setCurrSong", songId });
 			}
-    },
-    toggleRemove() {
-      this.isRemove = !this.isRemove;
-    },
-    async removeSong(songId) {
-      let userMsg = {};
-      try {
-        await this.$store.dispatch({ type: "removeSong", songId });
-        userMsg = {
-          txt: "The song has been successfully removed!",
-          type: "success",
-        };
-      } catch (err) {
-        userMsg = {
-          txt: "Removing the song has been failed!",
-          type: "error",
-        };
-      } finally {
-        this.$store.commit({ type: "updateUserMsg", userMsg });
-        setTimeout(() => {
-          this.$store.commit({ type: "deleteMsg" });
-        }, 2000);
-      }
-    },
-  },
+		},
+		toggleRemove() {
+			this.isRemove = !this.isRemove;
+		},
+		async removeSong(songId) {
+			let userMsg = {};
+			try {
+				await this.$store.dispatch({ type: "removeSong", songId });
+				userMsg = {
+					txt: "The song has been successfully removed!",
+					type: "success",
+				};
+			} catch (err) {
+				userMsg = {
+					txt: "Removing the song has been failed!",
+					type: "error",
+				};
+			} finally {
+				this.$store.commit({ type: "updateUserMsg", userMsg });
+				setTimeout(() => {
+					this.$store.commit({ type: "deleteMsg" });
+				}, 2000);
+			}
+		},
+		like() {
+			this.$emit('songLiked', this.song)
+		}
+	},
 }
 </script>
