@@ -15,7 +15,11 @@
         @end="drag = false"
         group="songs"
       >
-        <li class="song-draggable" v-for="(song, idx) in mySongs" :key="song._id">
+        <li
+          class="song-draggable"
+          v-for="(song, idx) in mySongs"
+          :key="song._id"
+        >
           <song-preview :song="song" :idx="idx" />
         </li>
       </draggable>

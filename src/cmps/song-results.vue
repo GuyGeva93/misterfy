@@ -1,13 +1,15 @@
 <template>
   <section v-if="results" class="song-results">
-    <draggable v-model="myList">
+    <draggable
+      v-model="myList"
+      v-bind="dragOptions"
+    >
       <!-- <div -->
       <!-- > -->
       <div
         v-for="song in results"
         :key="song.id.videoId"
         @end="addSong(this.song)"
-        group="songs"
         class="search-result"
         @click.stop="addSong(song)"
         @mousedown="getCurrSong(song)"
@@ -48,6 +50,14 @@ export default {
         console.log(this.song);
         this.addSong(this.song);
       },
+    },
+    dragOptions() {
+      return {
+        animation: 300,
+        group: "songs",
+        disabled: false,
+        ghostClass: "ghost",
+      };
     },
   },
   methods: {
