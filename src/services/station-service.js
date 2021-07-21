@@ -107,7 +107,7 @@ async function saveSong(song, stationId) {
         const newSong = {
             id: song.id.videoId,
             title: song.snippet.title,
-            imgUrl: song.snippet.thumbnails.default.url,
+            imgUrl: song.snippet.thumbnails.default.url.replace('https:', ''),
             addedBy: '',
             duration: song.duration
         };
