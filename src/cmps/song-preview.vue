@@ -130,9 +130,10 @@ export default {
         }, 2000);
       }
     },
-    like() {
-      this.$emit("songLiked", this.song);
-    },
+   	like() {
+			this.isLiked = !this.isLiked
+			this.$store.dispatch({ type: 'likedSong', song: this.song })
+		},
     refreshStation(savedStation) {
       console.log(savedStation);
       this.$store.commit({

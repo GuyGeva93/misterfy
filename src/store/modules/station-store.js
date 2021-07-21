@@ -108,10 +108,10 @@ export const stationStore = {
                 throw err;
             }
         },
-        async removeSong({ commit, state }, { songId }) {
+        async removeSong({ state }, { songId }) {
             try {
                 const updatedStation = await stationService.removeSong(songId, state.currStation._id)
-                commit({ type: 'removeSong', updatedStation })
+                    // commit({ type: 'removeSong', updatedStation })
                 return updatedStation;
             } catch (err) {
                 console.log('Error on removeSong =>', err)
