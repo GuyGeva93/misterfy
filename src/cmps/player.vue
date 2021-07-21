@@ -35,7 +35,6 @@ export default {
 		};
 	},
 	mounted() {
-		console.log(this.$route);
 		this.currSong = this.$store.getters.currSong;
 
 		if (!this.$refs.plyr) return; // When player isn't ready

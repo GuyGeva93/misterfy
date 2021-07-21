@@ -4,7 +4,7 @@
 			<span></span>
 			<span>#</span>
 			<span>Title</span>
-			<span><img src="../assets/icons/clock.png"></span>
+			<span><img src="../assets/icons/clock.png" /></span>
 		</div>
 		<ul class="songs-list">
 			<draggable
@@ -14,7 +14,7 @@
 				group="songs"
 			>
 				<li v-for="(song, idx) in mySongs" :key="song._id">
-					<song-preview :song="song" :idx="idx" />
+					<song-preview :song="song" :idx="idx" @songLiked="songLiked" />
 				</li>
 			</draggable>
 		</ul>
@@ -28,7 +28,8 @@ export default {
 	data() {
 		return {
 			stationId: this.$route.params.stationId,
-			currSongId:null
+			currSongId: null,
+			likedSongs: []
 		};
 	},
 	components: {
@@ -42,9 +43,16 @@ export default {
 			},
 			set(list) {
 				this.$store.dispatch({ type: "setListOrder", list, stationId: this.stationId });
-
 			},
 		},
+	},
+	methods: {
+		songLiked(song) {
+			const idx = this.likedSongs.findIndex(s => s.id === song.id)
+			if (idx < 0) this.likedSongs.push(song)
+			else this.likedSongs.splice(idx, 1)
+			console.log(this.likedSongs)
+		}
 	},
 
 };
