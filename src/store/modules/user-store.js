@@ -7,11 +7,15 @@ export const userStore = {
     currUserId: '',
     loggedinUser: userService.getLoggedinUser(),
     users: [],
+
   },
   getters: {
     //Guest Mode
-    currUserId(state) { return state.currUserId },
+    currUserId(state) {
+      return state.currUserId;
+    },
     loggedinUser({ loggedinUser }) { return loggedinUser },
+
     users({ users }) { return users },
   },
   mutations: {
@@ -27,7 +31,7 @@ export const userStore = {
       state.users = users;
     },
     setLoggedinUser(state, { user }) {
-      state.loggedinUse = user;
+      state.loggedinUser = user;
     }
   },
   actions: {
@@ -70,7 +74,6 @@ export const userStore = {
         throw err
       }
     },
-    
   }
 
 };
