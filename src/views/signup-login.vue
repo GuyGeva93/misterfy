@@ -76,9 +76,11 @@ this.loadUsers();
         type: "signup",
         userCred: this.signupCreds,
       });
+      this.$router.push('/');
     },
     async login(){
       await this.$store.dispatch({type:'login',userCred:this.loginCred})
+      this.$router.push('/');
     }
   },
 };

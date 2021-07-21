@@ -6,15 +6,9 @@ export const playerStore = {
     isPlaying: false
   },
   getters: {
-    currSongId(state) {
-      return state.currSongId
-    },
-    currSong(state) {
-      return state.currSong
-    },
-    isPlaying(state) {
-      return state.isPlaying
-    }
+    currSongId(state) { return state.currSongId },
+    currSong(state) { return state.currSong },
+    isPlaying(state) { return state.isPlaying }
   },
   mutations: {
     loadSongToPlayer(state, { songId }) {

@@ -8,7 +8,8 @@
       alt=""
     />
     <filter-text-search @search="search" />
-    <nav class="main-nav">
+    <h2 v-if="loggedinUser" >Hello, {{loggedinUser.fullname}} </h2>
+   <nav class="main-nav">
       <router-link @click.native="scrollTop" to="/">Home</router-link>|<button
         class="creatify-btn"
         @click.stop="toggleCreating"
@@ -17,9 +18,11 @@
       >|<router-link to="/explore">Explore</router-link>|<router-link
         to="/dashboard"
         >Dashboard</router-link
-      >|<router-link to="/about">About</router-link>|<router-link to="/signup"
-        >Signup</router-link
-      >
+      >|<router-link to="/about">About</router-link>|
+    <template v-if="!loggedinUser">  <router-link to="/signup" >Signup</router-link></template>
+    <template v-else><button @click="logout">Logout</button></template>
+       
+      
     </nav>
     <station-add v-if="isCreating" @closeModal="toggleCreating" />
   </header>
@@ -70,11 +73,17 @@ export default {
     toggleCreating() {
       return (this.isCreating = !this.isCreating);
     },
+   async logout(){
+      await this.$store.dispatch({type:'logout'});
+    }
   },
   computed: {
     tag() {
       return this.$route.params.tag;
     },
+    loggedinUser(){
+      return this.$store.getters.loggedinUser;
+    }
   },
 
   components: {
