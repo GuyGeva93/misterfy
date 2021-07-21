@@ -20,7 +20,7 @@
           v-for="(song, idx) in mySongs"
           :key="song._id"
         >
-          <song-preview :song="song" :idx="idx" />
+          <song-preview :song="song" :idx="idx" @refresh-songs="refreshSongs" />
         </li>
       </draggable>
     </ul>
@@ -45,7 +45,7 @@ export default {
   computed: {
     mySongs: {
       get() {
-        return this.$store.getters.currStation.songs;
+        return this.currStation.songs;
       },
       set(list) {
         this.$store.dispatch({
@@ -55,6 +55,9 @@ export default {
         });
       },
     },
+    currStation() {
+      return this.$store.getters.currStation;
+    },
     dragOptions() {
       return {
         animation: 300,
@@ -62,6 +65,14 @@ export default {
         disabled: false,
         ghostClass: "ghost",
       };
+    },
+  },
+  methods: {
+    refreshSongs(updatedStation) {
+      this.$store.commit({
+        type: "removeSong",
+        updatedStation,
+      });
     },
   },
 };

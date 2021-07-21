@@ -55,6 +55,7 @@
 
 <script>
 import { eventBusService } from '@/services/eventBus-service.js'
+import {socketService} from '@/services/socket-service.js';
 import equalizer from '@/cmps/equalizer'
 export default {
 	props: {
@@ -67,6 +68,10 @@ export default {
 	},
 	components: {
 		equalizer
+	},
+	created()
+	{
+		socketService.on('removed song',this.refreshSongs)
 	},
 	data() {
 		return {
@@ -98,10 +103,12 @@ export default {
 		toggleRemove() {
 			this.isRemove = !this.isRemove;
 		},
+		//use socket inside backend controller
 		async removeSong(songId) {
-			let userMsg = {};
+			let userMsg = null;
 			try {
-				await this.$store.dispatch({ type: "removeSong", songId });
+				const updatedStaion=await this.$store.dispatch({ type: "removeSong", songId });
+				socketService.emit('remove song',updatedStaion);
 				userMsg = {
 					txt: "The song has been successfully removed!",
 					type: "success",
@@ -120,6 +127,9 @@ export default {
 		},
 		like() {
 			this.$emit('songLiked', this.song)
+		},
+		refreshSongs(updatedStaion){
+			this.$emit('refresh-songs',updatedStaion);
 		}
 	},
 }

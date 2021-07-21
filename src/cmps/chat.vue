@@ -105,7 +105,7 @@ export default {
 		async loadMsgs() {
 			const { chat } = this.$refs;
 			this.msgs =await chatService.query(this.stationId);
-			console.log(this.msgs,'hello');
+			// console.log(this.msgs,'hello');
 				setTimeout(()=>{
 				chat.scrollTo(0,chat.scrollHeight)
 			},0)
