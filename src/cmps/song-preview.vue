@@ -28,6 +28,7 @@
 		<button @click.stop="like" class="like-song">🤍</button>
 		<img
 			@click.stop="toggleRemove"
+			:class="{'removing' : isRemove}"
 			class="details-btn"
 			src="@/assets/icons/ellipsis.png"
 		/>

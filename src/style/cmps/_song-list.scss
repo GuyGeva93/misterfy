@@ -13,7 +13,7 @@
         margin: 0;
         padding: 0;
         overflow-y: auto;
-        height: 36vh;
+        height: 35vh;
         margin-top: 10px;
         &::-webkit-scrollbar {
             width: 10px;
@@ -62,6 +62,6 @@
 .song-list-headers {
     display: grid;
     width: 100%;
-    grid-template-columns: 3% 20% 43% 1fr;
+    grid-template-columns: 3% 20% 48% 1fr;
     color: darken($clr1, 15%);
 }

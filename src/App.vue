@@ -1,46 +1,75 @@
 <template>
-	<div id="app" class="main-layout">
-		<!-- <div class="header-filler main-layout" ></div> -->
-		<app-header />
-		<user-msg/>
-		<router-view />
-		<section class="player-container" v-if="currSong">
-			<player-img />
-			<player :key="this.$store.getters.currSongId" />
-		</section>
-		<!-- <div class="player-filler"></div> -->
-		<!-- <app-footer /> -->
-	</div>
+  <div id="app" class="main-layout">
+    <div v-if="!loaded" class="loader">
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__ball"></div>
+    </div>
+    <template v-if="loaded">
+      <app-header />
+      <user-msg />
+      <router-view />
+      <section class="player-container" v-if="currSong">
+        <player-img />
+        <player :key="this.$store.getters.currSongId" />
+      </section>
+    </template>
+    <!-- <app-footer /> -->
+  </div>
 </template>
 
 <script>
 import appHeader from "@/cmps/app-header";
 // import appFooter from "@/cmps/app-footer";
-import playerImg from '@/cmps/player-img'
-import player from '@/cmps/player'
+import playerImg from "@/cmps/player-img";
+import player from "@/cmps/player";
 // import songInfoSlider from '@/cmps/song-info-slider.vue'
-import userMsg from '@/cmps/user-msg'
+import userMsg from "@/cmps/user-msg";
 export default {
-	components: {
-		appHeader,
-		// appFooter,
-		// songInfoSlider,
-		playerImg,
-		player,
-		userMsg
-
-	},
-	async created() {
-		const data=await this.$store.dispatch({ type: 'loadStations' });
-		this.$store.commit({type:'setTags',tags:data.tags});
-	},
-	computed: {
-		currSong() {
-			return this.$store.getters.currSong 
-		}
-	},
-
-}
+  components: {
+    appHeader,
+    // appFooter,
+    // songInfoSlider,
+    playerImg,
+    player,
+    userMsg,
+  },
+  data() {
+    return {
+      loaded: false,
+    };
+  },
+  async created() {
+    const data = await this.$store.dispatch({ type: "loadStations" });
+    this.$store.commit({ type: "setTags", tags: data.tags });
+  },
+  computed: {
+    currSong() {
+      return this.$store.getters.currSong;
+    },
+  },
+  methods: {
+    checkAppReady() {
+      const poller = setInterval(() => {
+        if (document.readyState === "complete") {
+          clearInterval(poller);
+          console.log("not ready");
+          return document.readyState;
+        }
+        return document.readyState;
+      }, 1000);
+      return document.readyState;
+    },
+  },
+  mounted() {
+	  setTimeout(()=>{
+		  return (this.loaded = true);
+	  },3000)
+  },
+};
 </script>
 
 
