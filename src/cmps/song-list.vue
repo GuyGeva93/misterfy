@@ -20,7 +20,7 @@
           v-for="(song, idx) in mySongs"
           :key="song._id"
         >
-          <song-preview :song="song" :idx="idx" />
+          <song-preview :song="song" :idx="idx"  />
         </li>
       </draggable>
     </ul>
@@ -45,7 +45,7 @@ export default {
   computed: {
     mySongs: {
       get() {
-        return this.$store.getters.currStation.songs;
+        return this.currStation.songs;
       },
       set(list) {
         this.$store.dispatch({
@@ -54,6 +54,9 @@ export default {
           stationId: this.stationId,
         });
       },
+    },
+    currStation() {
+      return this.$store.getters.currStation;
     },
     dragOptions() {
       return {
@@ -64,6 +67,7 @@ export default {
       };
     },
   },
+ 
 };
 </script>
 

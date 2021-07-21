@@ -1,77 +1,81 @@
 .song-preview {
-    position: relative;
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 5fr 15% 5% 1fr;
+  justify-content: space-around;
+  align-items: center;
+  background-color: darken($clr1, 6%);
+  justify-items: center;
+  padding: 3px 0 3px;
+  .thumbnail {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    height: 45px;
+    width: 45px;
+  }
+  .song-title {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr 5fr 15% 5% 1fr;
-    justify-content: space-around;
-    align-items: center;
-    background-color: darken($clr1, 6%);
-    justify-items: center;
-    padding: 3px 0 3px;
-    .thumbnail {
-        object-fit: cover;
-        object-position: center;
-        border-radius: 10px;
-        height: 45px;
-        width: 45px;
-    }
-    .song-title {
-        width: 100%;
-        max-width: 450px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .song-preview-play-btn,
-    .song-preview-pause-btn {
-        cursor: pointer;
-        filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
-        &:hover {
-            fill: gold;
-        }
-    }
+    max-width: 450px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .song-preview-play-btn,
+  .song-preview-pause-btn {
+    cursor: pointer;
+    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
     &:hover {
-        background-color: $clr2;
+      fill: gold;
     }
-    .like-song {
-        background-color: transparent;
-        border: none;
-        &:hover {
-            font-size: 1.1rem;
-        }
+  }
+  &:hover {
+    background-color: $clr2;
+  }
+  .like-song {
+    background-color: transparent;
+    border: none;
+    &:hover {
+      font-size: 1.1rem;
     }
-    .song-preview-remove-btn {
-        position: absolute;
-        right: 5.5%;
-        // z-index: 100;
-        top: 30%;
-        cursor: pointer;
-        fill: white;
-        &:hover {
-            fill: red;
-        }
+    .liked {
+      // filter: invert(14%) sepia(96%) saturate(7064%) hue-rotate(4deg) brightness(110%) contrast(115%);
+      // color:red;
     }
-    .slide-in-enter-active,
-    .slide-in-leave-active {
-        transition: all .2s linear;
-        transform: translateX(100px)
+  }
+  .song-preview-remove-btn {
+    position: absolute;
+    right: 5.5%;
+    // z-index: 100;
+    top: 30%;
+    cursor: pointer;
+    fill: white;
+    &:hover {
+      fill: red;
     }
-    .details-btn {
-        transform: rotate(90deg);
-        height: 30px;
-        transition: transform .2s linear;
-        &:hover {
-            cursor: pointer;
-            filter: invert(83%) sepia(24%) saturate(3266%) hue-rotate(358deg) brightness(104%) contrast(107%);
-        }
+  }
+  .slide-in-enter-active,
+  .slide-in-leave-active {
+    transition: all 0.2s linear;
+    transform: translateX(100px);
+  }
+  .details-btn {
+    transform: rotate(90deg);
+    height: 30px;
+    transition: transform 0.2s linear;
+    &:hover {
+      cursor: pointer;
+      filter: invert(83%) sepia(24%) saturate(3266%) hue-rotate(358deg) brightness(104%) contrast(107%);
     }
-    .details-btn.removing {
-        transition: transform .2s linear;
-        transform: translateX(1vw) rotate(90deg);
-    }
+  }
+  .details-btn.removing {
+    transition: transform 0.2s linear;
+    transform: translateX(1vw) rotate(90deg);
+  }
 }
 
 .ghost {
-    border: gold 1px solid;
-    opacity: 1;
+  border: gold 1px solid;
+  opacity: 1;
 }

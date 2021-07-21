@@ -55,73 +55,92 @@
 </template>
 
 <script>
-import { eventBusService } from '@/services/eventBus-service.js'
-import equalizer from '@/cmps/equalizer'
+import { eventBusService } from "@/services/eventBus-service.js";
+import { socketService } from "@/services/socket-service.js";
+import equalizer from "@/cmps/equalizer";
 export default {
-	props: {
-		song: {
-			type: Object,
+  props: {
+    song: {
+      type: Object,
+    },
+    idx: {
+      type: Number,
+    },
+  },
+  components: {
+    equalizer,
+  },
+  created() {
+    socketService.on("refresh station", this.refreshStation);
+  },
+  data() {
+    return {
+      isRemove: false,
+      isHover: false,
+    };
+  },
+  computed: {
+    isRunning() {
+      return this.$store.getters.isPlaying;
+    },
+    togglePlayPause() {
+      return this.$store.getters.currSongId;
+    },
+  },
+  methods: {
+    play(songId) {
+      if (
+        this.$store.getters.currSongId &&
+        songId !== this.$store.getters.currSongId
+      ) {
+        this.$store.commit({ type: "loadSongToPlayer", songId });
+        this.$store.commit({ type: "setCurrSong", songId });
+      } else if (songId === this.$store.getters.currSongId) {
+        console.log("NOW");
+        eventBusService.$emit("togglePlay");
+      } else {
+        this.$store.commit({ type: "loadSongToPlayer", songId });
+        this.$store.commit({ type: "setCurrSong", songId });
+      }
+    },
+    toggleRemove() {
+      this.isRemove = !this.isRemove;
+    },
+    //use socket inside backend controller
+    async removeSong(songId) {
+      let userMsg = null;
+      try {
+        await this.$store.dispatch({
+          type: "removeSong",
+          songId,
+        });
+        userMsg = {
+          txt: "The song has been successfully removed!",
+          type: "success",
+        };
+      } catch (err) {
+        userMsg = {
+          txt: "Removing the song has been failed!",
+          type: "error",
+        };
+      } finally {
+        this.$store.commit({ type: "updateUserMsg", userMsg });
+        setTimeout(() => {
+          this.$store.commit({ type: "deleteMsg" });
+        }, 2000);
+      }
+    },
+   	like() {
+			this.isLiked = !this.isLiked
+			this.$store.dispatch({ type: 'likedSong', song: this.song })
 		},
-		idx: {
-			type: Number,
-		},
-	},
-	components: {
-		equalizer
-	},
-	data() {
-		return {
-			isRemove: false,
-			isHover: false,
-		};
-	},
-	computed: {
-		isRunning() {
-			return this.$store.getters.isPlaying
-		},
-		togglePlayPause() {
-			return this.$store.getters.currSongId
-		}
-	},
-	methods: {
-		play(songId) {
-			if (this.$store.getters.currSongId && songId !== this.$store.getters.currSongId) {
-				this.$store.commit({ type: "loadSongToPlayer", songId });
-				this.$store.commit({ type: "setCurrSong", songId });
-			} else if (songId === this.$store.getters.currSongId) {
-				console.log('NOW')
-				eventBusService.$emit('togglePlay')
-			} else {
-				this.$store.commit({ type: "loadSongToPlayer", songId });
-				this.$store.commit({ type: "setCurrSong", songId });
-			}
-		},
-		toggleRemove() {
-			this.isRemove = !this.isRemove;
-		},
-		async removeSong(songId) {
-			let userMsg = {};
-			try {
-				await this.$store.dispatch({ type: "removeSong", songId });
-				userMsg = {
-					txt: "The song has been successfully removed!",
-					type: "success",
-				};
-			} catch (err) {
-				userMsg = {
-					txt: "Removing the song has been failed!",
-					type: "error",
-				};
-			} finally {
-				this.$store.commit({ type: "updateUserMsg", userMsg });
-				setTimeout(() => {
-					this.$store.commit({ type: "deleteMsg" });
-				}, 2000);
-			}
-		},
-		like() {
-			this.$emit('songLiked', this.song)
-		}
-	},
-}
+    refreshStation(savedStation) {
+      console.log(savedStation);
+      this.$store.commit({
+        type: "setCurrStation",
+        currStation: savedStation,
+      });
+    },
+  },
+};
 </script>

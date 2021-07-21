@@ -7,15 +7,11 @@ export const userStore = {
     currUserId: '',
     loggedinUser: userService.getLoggedinUser(),
     users: [],
-
   },
   getters: {
     //Guest Mode
-    currUserId(state) {
-      return state.currUserId;
-    },
+    currUserId({ currUserId }) { return currUserId },
     loggedinUser({ loggedinUser }) { return loggedinUser },
-
     users({ users }) { return users },
   },
   mutations: {
@@ -32,6 +28,9 @@ export const userStore = {
     },
     setLoggedinUser(state, { user }) {
       state.loggedinUser = user;
+    },
+    updateUser(state, { user }) {
+      state.loggedinUser = user
     }
   },
   actions: {
@@ -47,6 +46,8 @@ export const userStore = {
     },
     async signup({ commit }, { userCred }) {
       try {
+        userCred.likedSongs = []
+        userCred.likedStations = []
         const user = await userService.signup(userCred)
         commit({ type: 'setLoggedinUser', user })
         return user;
@@ -74,6 +75,33 @@ export const userStore = {
         throw err
       }
     },
+    async likedSong({ commit }, { song }) {
+      try {
+        const currUser = this.getters.loggedinUser
+        const idx = currUser.likedSongs.findIndex(s => s.id === song.id)
+        if (idx < 0) currUser.likedSongs.push(song)
+        else currUser.likedSongs.splice(idx, 1)
+        // commit({ type: 'updateUser', currUser })
+        commit({ type: 'setLoggedinUser', user: currUser })
+        const updatedUser = await userService.update(currUser)
+        console.log('updatedUser', updatedUser)
+      } catch (err) {
+        console.log('Error on likedSong')
+      }
+    },
+    async likedStation({ commit }, { station }) {
+      try {
+        const currUser = this.getters.loggedinUser
+        const idx = currUser.likedStations.findIndex(s => s._id === station._id)
+        if (idx < 0) currUser.likedStations.push(station)
+        else currUser.likedStations.splice(idx, 1)
+        commit({ type: 'setLoggedinUser', user: currUser })
+        const updatedUser = await userService.update(currUser)
+        console.log('updatedUser', updatedUser)
+      } catch (err) {
+        console.log('Error on likedSong')
+      }
+    }
   }
 
 };
