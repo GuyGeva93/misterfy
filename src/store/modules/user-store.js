@@ -7,15 +7,11 @@ export const userStore = {
     currUserId: '',
     loggedinUser: userService.getLoggedinUser(),
     users: [],
-
   },
   getters: {
     //Guest Mode
-    currUserId(state) {
-      return state.currUserId;
-    },
+    currUserId({ currUserId }) { return currUserId },
     loggedinUser({ loggedinUser }) { return loggedinUser },
-
     users({ users }) { return users },
   },
   mutations: {
@@ -74,6 +70,14 @@ export const userStore = {
         throw err
       }
     },
+    // async likedSong({ commit }, { song }) {
+    //   try {
+    //     await userService.likedSong(song)
+    //     commit({ likedSong })
+    //   } catch (err) {
+    //     console.log('Error on likedSong')
+    //   }
+    // }
   }
 
 };
