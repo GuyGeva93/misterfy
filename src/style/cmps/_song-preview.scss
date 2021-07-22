@@ -64,6 +64,7 @@
         transform: rotate(90deg);
         height: 30px;
         transition: transform 0.2s linear;
+        filter: invert(100%) sepia(0%) saturate(17%) hue-rotate(346deg) brightness(105%) contrast(100%);
         &:hover {
             cursor: pointer;
             filter: invert(83%) sepia(24%) saturate(3266%) hue-rotate(358deg) brightness(104%) contrast(107%);
