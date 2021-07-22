@@ -1,13 +1,5 @@
 <template>
   <div id="app" class="main-layout">
-    <!-- <div v-if="!loaded" class="loader">
-      <div class="loader__bar"></div>
-      <div class="loader__bar"></div>
-      <div class="loader__bar"></div>
-      <div class="loader__bar"></div>
-      <div class="loader__bar"></div>
-      <div class="loader__ball"></div>
-    </div> -->
     <template>
       <app-header />
       <user-msg />

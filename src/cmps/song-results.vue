@@ -1,11 +1,6 @@
 <template>
   <section v-if="results" class="song-results">
-    <draggable
-      v-model="myList"
-      v-bind="dragOptions"
-    >
-      <!-- <div -->
-      <!-- > -->
+    <draggable v-model="myList" v-bind="dragOptions">
       <div
         v-for="song in results"
         :key="song.id.videoId"
@@ -16,7 +11,6 @@
       >
         {{ song.snippet.title }}
       </div>
-      <!-- </div> -->
     </draggable>
   </section>
 </template>

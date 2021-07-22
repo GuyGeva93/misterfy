@@ -60,9 +60,11 @@
 				v-model="txt"
 				v-if="isSearch"
 				placeholder="Search for a song"
+				@input="displayLoader"
 			/>
 		</form>
-		<song-results :results="results.items" v-if="isSearch" />
+		<song-results ref="results" :results="results.items" v-if="isSearch" />
+		<div v-if="isSearch && loader" class="lds-facebook"> <div></div><div></div><div></div></div>
 	</section>
 </template>
 
@@ -78,6 +80,7 @@ export default {
 			results: [],
 			isLiked: false,
 			isRemoving: false,
+			loader: false
 		};
 	},
 	computed: {
@@ -93,6 +96,9 @@ export default {
 	},
 
 	methods: {
+		displayLoader(){
+			this.loader = true
+		},
 		toggleSearch() {
 			this.$emit("opened");
 			this.isSearch = !this.isSearch;
@@ -106,6 +112,7 @@ export default {
 			}
 			try {
 				this.results = await youtubeService.query(query);
+				this.loader = false
 			} catch (err) {
 				console.log("Error on YouTube query =>", err);
 			}

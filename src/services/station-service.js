@@ -12,8 +12,7 @@ export const stationService = {
     getEmptyStation,
     saveSong,
     removeSong,
-    saveSongList,
-
+    saveSongList
 }
 
 // const STATION_URL = 'http://127.0.0.1:3030/api/station/'
