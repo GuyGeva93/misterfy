@@ -13,8 +13,11 @@
       </ul>
     </section>
     <template v-if="!isLoading">
-      <section v-if="stations">
-        <station-list :stations="stations" />
+      <section v-if="stations" class="explore-station-list">
+        <div v-for="station in stations" :key="station._id">
+          <station-preview :station="station" />
+          <!-- <station-list :stations="stations" /> -->
+        </div>
       </section>
       <h2 v-else>No stations found</h2>
     </template>
@@ -23,11 +26,12 @@
 </template>
 
 <script>
-import stationList from "@/cmps/station-list";
+// import stationList from "@/cmps/station-list";
+import stationPreview from "@/cmps/station-preview";
 import stationTag from "@/cmps/station-tag";
 export default {
   created() {
-    this.$router.push('/explore');
+    this.$router.push("/explore");
   },
   data() {
     return {
@@ -61,14 +65,14 @@ export default {
     },
     tags() {
       // console.log(this.$store.getters.tags);
-      const tags= this.$store.getters.tags;
-      return['All',...tags];
+      const tags = this.$store.getters.tags;
+      return ["All", ...tags];
     },
-    
   },
   components: {
-    stationList,
+    // stationList,
     stationTag,
+    stationPreview,
   },
   watch: {
     "$route.params": {
@@ -88,7 +92,6 @@ export default {
         }
       },
     },
-
   },
 };
 </script>
