@@ -25,13 +25,14 @@
             padding: 10px;
         }
         .msg-list {
+            height: 0;
             flex: 1;
             margin-bottom: 6px;
             padding: 5px;
         }
         .chat-msg-preview {
             display: flex;
-            margin-bottom: 30px;
+            padding-bottom: 30px;
             &.sender {
                 justify-content: flex-end;
             }
