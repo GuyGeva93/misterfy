@@ -12,7 +12,7 @@
       <input type="text" v-model="msg.txt" placeholder="Say something nice" />
       <button class="btn-send"  @click.stop="sendMsg">
         <svg
-          width="30px"
+          width="25px"
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
