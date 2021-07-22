@@ -2,7 +2,7 @@
 	<section class="station-list">
 		<carousel
 			v-if="$route.name === 'home'"
-			:per-page="6"
+			:per-page="5"
 			:mouse-drag="true"
 			ref="carousel"
 			:navigationEnabled="true"
