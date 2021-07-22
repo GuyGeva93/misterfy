@@ -13,7 +13,7 @@
         @click.stop="toggleCreating"
       >
         Creatify</button
-      >|<router-link to="/explore">Explore</router-link>|<router-link
+      >|<router-link to="/explore"  @click.native="scrollTop">Explore</router-link>|<router-link
         to="/dashboard"
         >Dashboard</router-link
       >|<router-link to="/about">About</router-link>|

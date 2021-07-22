@@ -36,43 +36,49 @@
                 justify-content: flex-end;
             }
             .msg-info {
+                position: relative;
                 gap: 20px;
                 padding: 10px;
                 width: 50%;
-                border: 1px solid white;
-                border-radius: 10px;
-                background-color: $clr3;
+                background-color: $clr4;
+                .msg-sender {
+                    color: gold;
+                    margin-bottom: 10px;
+                }
                 &.sender {
                     align-items: flex-end;
-                    background-color: lighten($clr2, 10%);
+                    background-color: lighten($clr4, 10%);
                 }
                 .msg-text {
                     display: flex;
                     width: fit-content;
                     // margin: 10px auto;
-                    padding: 10px;
+                    // padding: 10px;
+                    margin-bottom: 20px;
+                }
+                .msg-sent-time {
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    font-size: rem(12px);
                 }
             }
         }
         /* width */
         &::-webkit-scrollbar {
             width: 10px;
-            border-radius: 10px;
         }
         /* Track */
         &::-webkit-scrollbar-track {
-            background: lighten($clr3, 20%);
-            border-radius: 10px;
+            background: lighten($clr4, 20%);
         }
         /* Handle */
         &::-webkit-scrollbar-thumb {
             background: lighten($clr4, 10%);
-            border-radius: 10px;
         }
         /* Handle on hover */
         &::-webkit-scrollbar-thumb:hover {
             background: lighten($clr4, 10%);
-            border-radius: 10px;
         }
     }
     .msg-form {
@@ -84,7 +90,7 @@
         input {
             position: relative;
             flex: 1;
-            height: 40px;
+            // height: 40px;
             font-size: large;
             outline: none;
             border-bottom-left-radius: 10px;
@@ -93,11 +99,12 @@
             padding-right: 40px;
             background-color: $clr1;
             color: white;
+            padding: 10px;
         }
         .btn-send {
-            padding-top: 5px;
+            padding-top: 10px;
             position: absolute;
-            right: 0;
+            right: 10px;
             outline: none;
             background-color: transparent;
             border: none;
