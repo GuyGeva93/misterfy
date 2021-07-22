@@ -6,16 +6,16 @@
     grid-row: 1/-1;
     border-radius: 10px;
     width: 100%;
-    height: 100%;
+    height: 665px;
     min-width: 265px;
     .chat {
-        height: 650px;
+        height: 100%;
         background-color: $clr1;
         background: url(~@/assets/img/chat-wallpaper.jpg) no-repeat;
         // background-position: center;
         background-size: cover;
-        border-top-right-radius: 10px;
-        border-top-left-radius: 10px;
+        // border-top-right-radius: 10px;
+        // border-top-left-radius: 10px;
         overflow-y: auto;
         >h2 {
             text-align: center;
@@ -33,6 +33,8 @@
         .chat-msg-preview {
             display: flex;
             padding-bottom: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
             &.sender {
                 justify-content: flex-end;
             }
@@ -40,11 +42,14 @@
                 position: relative;
                 gap: 20px;
                 padding: 10px;
-                width: 50%;
+                min-width: 50%;
+                max-width: 70%;
                 background-color: $clr4;
                 .msg-sender {
                     color: gold;
                     margin-bottom: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 &.sender {
                     align-items: flex-end;
@@ -56,6 +61,7 @@
                     // margin: 10px auto;
                     // padding: 10px;
                     margin-bottom: 20px;
+                    word-break: break-all;
                 }
                 .msg-sent-time {
                     position: absolute;
@@ -71,31 +77,31 @@
         }
         /* Track */
         &::-webkit-scrollbar-track {
-            background: lighten($clr4, 20%);
+            background: lighten($clr4, 5%);
         }
         /* Handle */
         &::-webkit-scrollbar-thumb {
-            background: lighten($clr4, 10%);
+            background: lighten($clr4, 20%);
         }
         /* Handle on hover */
         &::-webkit-scrollbar-thumb:hover {
-            background: lighten($clr4, 10%);
+            background: lighten($clr4, 15%);
         }
     }
     .msg-form {
         position: relative;
         display: flex;
         background-color: $clr4;
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
+        // border-bottom-right-radius: 10px;
+        // border-bottom-left-radius: 10px;
         input {
             position: relative;
             flex: 1;
             // height: 40px;
             font-size: large;
             outline: none;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            // border-bottom-left-radius: 10px;
+            // border-bottom-right-radius: 10px;
             border: none;
             padding-right: 40px;
             background-color: $clr1;
