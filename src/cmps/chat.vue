@@ -4,13 +4,13 @@
       <h2>The wall</h2>
       <ul class="clear-list msg-list">
         <li v-for="(msg, idx) in msgs" :key="idx">
-          <chat-msg-preview :msg="msg" :userId="currUserId" />
+          <chat-msg-preview :msg="msg" :userId="currUserId" :loggedinUser="loggedinUser" />
         </li>
       </ul>
     </section>
     <form @submit.prevent="" class="msg-form">
       <input type="text" v-model="msg.txt" placeholder="Say something nice" />
-      <button class="btn-send"  @click.stop="sendMsg">
+      <button class="btn-send" @click.stop="sendMsg">
         <svg
           width="25px"
           aria-hidden="true"
@@ -28,7 +28,7 @@
         </svg>
       </button>
     </form>
-      <!-- <button @click.stop="clearChatMsgs">Clear messages</button> -->
+    <!-- <button @click.stop="clearChatMsgs">Clear messages</button> -->
   </section>
 </template>
 
@@ -67,6 +67,9 @@ export default {
     currUserId() {
       return this.$store.getters.currUserId;
     },
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
   },
   methods: {
     async sendMsg() {
@@ -74,7 +77,20 @@ export default {
       // const { chat } = this.$refs;
 
       this.msg.stationId = this.stationId;
-      this.msg.from._id = this.currUserId;
+      let sender = null;
+      if (this.loggedinUser) {
+        const { _id, username } = this.loggedinUser;
+        sender = {
+          _id,
+          username,
+        };
+      } else {
+        sender = {
+          _id: this.currUserId,
+          username: "guest" + this.currUserId,
+        };
+      }
+      this.msg.from = sender;
       const copiedMsg = JSON.parse(JSON.stringify(this.msg));
       try {
         await chatService.add(this.msg);

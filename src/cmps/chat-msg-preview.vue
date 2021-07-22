@@ -2,7 +2,7 @@
   <section class="chat-msg-preview" :class="msgSender" >
     <section class="msg-info" :class="msgSender" >
     <section>
-          <h3 class="msg-sender">{{ msg.from.name + msg.from._id }}</h3>
+          <h3 class="msg-sender">{{ msg.from.username}}</h3>
       <span class="msg-sent-time">{{ formattedDate }}</span>
     </section>
       <section class="msg-text">
@@ -22,13 +22,16 @@ export default {
     userId: {
       type: Number,
     },
+    loggedinUser:{
+      type:Object
+    }
   },
   computed: {
     formattedDate() {
       return new Date(this.msg.sentAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',hour12:false });
     },
     msgSender(){
-        return {sender:this.userId===this.msg.from._id};
+        return {sender: (this.loggedinUser && this.loggedinUser._id===this.msg.from._id)||(this.userId===this.msg.from._id)};
     }
   },
 };

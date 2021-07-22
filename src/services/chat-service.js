@@ -51,7 +51,7 @@ function botReply(newMsg) {
                 sentAt: Date.now(),
                 txt: botService.sendMsg(newMsg),
                 from: {
-                    name: 'Botify',
+                    username: 'Botify',
                     _id: '',
                 }
             };
