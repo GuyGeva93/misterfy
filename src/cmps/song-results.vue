@@ -1,11 +1,6 @@
 <template>
   <section v-if="results" class="song-results">
-    <draggable
-      v-model="myList"
-      v-bind="dragOptions"
-    >
-      <!-- <div -->
-      <!-- > -->
+    <draggable v-model="myList" v-bind="dragOptions">
       <div
         v-for="song in results"
         :key="song.id.videoId"
@@ -16,14 +11,13 @@
       >
         {{ song.snippet.title }}
       </div>
-      <!-- </div> -->
     </draggable>
   </section>
 </template>
 
 <script>
 import draggable from "vuedraggable";
-import {socketService} from "@/services/socket-service.js";
+import { socketService } from "@/services/socket-service.js";
 // import { youtubeService } from '@/services/youtube-service.js'
 
 export default {
@@ -40,7 +34,7 @@ export default {
       song: "",
     };
   },
-  created(){
+  created() {
     socketService.on("station updated", this.updateStation);
   },
   computed: {
@@ -90,7 +84,7 @@ export default {
       this.song = song;
     },
     updateStation(savedStation) {
-      console.log(savedStation,'555');
+      console.log(savedStation, "555");
       this.$store.commit({
         type: "setCurrStation",
         currStation: savedStation,
