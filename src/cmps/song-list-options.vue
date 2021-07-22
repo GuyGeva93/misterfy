@@ -53,7 +53,7 @@
 				@blur="toggleRemove"
 			/>
 		</transition>
-		<form class="song-list-search" :class="{ open: isSearch }">
+		<form @submit.prevent class="song-list-search" :class="{ open: isSearch }">
 			<input
 				v-debounce="search"
 				type="text"

@@ -23,14 +23,14 @@
       <img src="@/assets/img/hero.png" @load="onImgLoad" />
     </div>
     <div v-show="loaded" class="station-main">
-      <h2>TOP PICKS</h2>
-      <station-list :stations="topPicks" v-if="topPicks" />
+      <h2 class="top-picks">TOP PICKS</h2>
+      <station-list class="top-picks-carousel" :stations="topPicks" v-if="topPicks" />
 
-      <h2>YOUR PICKS</h2>
-      <station-list :stations="yourPicks" v-if="yourPicks" />
+      <h2 class="your-picks">YOUR PICKS</h2>
+      <station-list class="your-picks-carousel" :stations="yourPicks" v-if="yourPicks" />
 
-      <h2>RECOMENDED FOR YOU</h2>
-      <station-list :stations="recomended" v-if="recomended" />
+      <h2 class="recomended">RECOMENDED FOR YOU</h2>
+      <station-list class="recomended-carousel" :stations="recomended" v-if="recomended" />
     </div>
   </div>
 </template>
@@ -52,13 +52,13 @@ export default {
       return stations;
     },
     topPicks() {
-      return this.stations.slice(0, 6);
+      return this.stations.slice(0, 7);
     },
     yourPicks() {
-      return this.stations.slice(6, 11);
+      return this.stations.slice(7, 12);
     },
     recomended() {
-      return this.stations.slice(11);
+      return this.stations.slice(12);
     },
   },
   methods: {

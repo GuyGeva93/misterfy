@@ -11,7 +11,11 @@
     // --plyr-audio-control-background-hover: $clr2;
     // --plyr-audio-range-thumb-active-shadow-color: $clr1;
     // --plyr-audio-controls-background: $clr4;
+    // .song-info-slider {
+    //     // background-color: rgba(122, 122, 122, 0.534);
+    // }
     .player-controls {
+        box-shadow: 2px -7px 15px 5px #58584f;
         position: relative;
         display: flex;
         align-items: flex-end;
@@ -33,21 +37,30 @@
             left: 50%;
             transform: translate(-50%);
             filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
+            &:hover {
+                filter: invert(88%) sepia(27%) saturate(5587%) hue-rotate(1deg) brightness(107%) contrast(105%);
+            }
         }
         .player-forward-btn {
             position: absolute;
             z-index: 18;
             top: 23px;
-            left: 53%;
+            left: 57%;
             filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
+            &:hover {
+                filter: invert(88%) sepia(27%) saturate(5587%) hue-rotate(1deg) brightness(107%) contrast(105%);
+            }
         }
         .player-previous-btn {
             position: absolute;
             z-index: 18;
             top: 23px;
-            right: 53%;
+            right: 57%;
             transform: rotate(180deg);
             filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
+            &:hover {
+                filter: invert(88%) sepia(27%) saturate(5587%) hue-rotate(1deg) brightness(107%) contrast(105%);
+            }
         }
     }
     .plyr {

@@ -70,6 +70,7 @@ export default {
 		async search(query) {
 			try {
 				const res = await youtubeService.query(query);
+				console.log(res.items[0].snippet.thumbnails);
 				res.items.map((item) => {
 					console.log("video id:", item.id.videoId);
 					console.log("video snippet:", item.snippet.title);
