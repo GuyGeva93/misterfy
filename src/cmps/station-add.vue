@@ -129,7 +129,7 @@ export default {
         });
         //  debugger
         userMsg = {
-          txt: "Station has been successfully added!",
+          txt: "Station Added",
           type: "success",
         };
         this.$emit("closeModal");
@@ -137,7 +137,7 @@ export default {
       } catch (err) {
         console.log("Error on save station =>", err);
         userMsg = {
-          txt: "Adding the station has been failed!",
+          txt: "Adding Station Failed!",
           type: "error",
         };
       } finally {

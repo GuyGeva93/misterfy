@@ -115,12 +115,12 @@ export default {
           songId,
         });
         userMsg = {
-          txt: "The song has been successfully removed!",
+          txt: "Song Removed",
           type: "success",
         };
       } catch (err) {
         userMsg = {
-          txt: "Removing the song has been failed!",
+          txt: "Removing Song Failed!",
           type: "error",
         };
       } finally {

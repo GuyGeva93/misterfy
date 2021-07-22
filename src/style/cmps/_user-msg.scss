@@ -1,18 +1,18 @@
 .msg {
-    color: white;
+    color: rgb(211, 211, 211);
     padding: 10px;
     font-size: 1.4em;
     position: absolute;
     z-index: 50;
-    top: 50px;
-    left: 50%;
-    transform: translate(-50%);
+    top: 12px;
+    left: 60%;
+    // transform: translate(-50%);
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .msg-success {
-    color: green;
+    color: #4d4d4d;
 }
 
 .msg-error {

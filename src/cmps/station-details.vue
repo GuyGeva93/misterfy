@@ -89,13 +89,13 @@ export default {
         await this.$store.dispatch({ type: "removeStation", stationId });
         this.$store.commit({ type: "clearCurrSong" });
         userMsg = {
-          txt: "Station has been successfully removed!",
+          txt: "Station Removed",
           type: "success",
         };
         this.$router.push("/");
       } catch (err) {
         userMsg = {
-          txt: "Removing the station has been failed!",
+          txt: "Removing station failed",
           type: "error",
         };
       } finally {
