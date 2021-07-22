@@ -1,5 +1,6 @@
 import { stationService } from "@/services/station-service.js";
 import { youtubeService } from "../../services/youtube-service";
+import { socketService } from '../../services/socket-service';
 // import { RegExp } from 'core-js/web';
 
 export const stationStore = {
@@ -71,6 +72,7 @@ export const stationStore = {
             try {
                 await stationService.remove(stationId)
                 commit({ type: 'removeStation', stationId })
+
             } catch (err) {
                 console.log('Error on removeStation =>', err)
                 throw err;
@@ -108,10 +110,11 @@ export const stationStore = {
                 throw err;
             }
         },
-        async removeSong({ state }, { songId }) {
+        async removeSong({ commit, state }, { songId }) {
             try {
                 const updatedStation = await stationService.removeSong(songId, state.currStation._id)
-                    // commit({ type: 'removeSong', updatedStation })
+                commit({ type: 'removeSong', updatedStation })
+                socketService.emit('station updated', updatedStation);
                 return updatedStation;
             } catch (err) {
                 console.log('Error on removeSong =>', err)

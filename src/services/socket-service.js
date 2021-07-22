@@ -24,10 +24,11 @@ function createSocketService() {
             // YaronB: Need to send a dummy ajax request as to setup the socket-session correctly
             // await httpService.get('setup-session')
             // socket = io(baseUrl, { reconnection: false})
-            socket = io(baseUrl)
+            socket = io.connect(baseUrl)
                 // socketIsReady = true;
         },
         on(eventName, cb) {
+            if (eventName === 'station updated') debugger
             socket.on(eventName, cb)
         },
         off(eventName, cb = null) {

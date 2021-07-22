@@ -135,6 +135,7 @@ export default {
 			this.$store.dispatch({ type: 'likedSong', song: this.song })
 		},
     refreshStation(savedStation) {
+      debugger
       console.log(savedStation);
       this.$store.commit({
         type: "setCurrStation",

@@ -27,12 +27,14 @@ import { youtubeService } from "@/services/youtube-service.js";
 import songListOptions from "@/cmps/song-list-options.vue";
 import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
+import {socketService} from "@/services/socket-service.js";
 // import { wrapGrid } from 'animate-css-grid'
 export default {
 	async created() {
 		const { stationId } = this.$route.params;
 		try {
 			await this.$store.dispatch({ type: "currStation", stationId });
+			socketService.emit('station watch',stationId);
 		} catch (err) {
 			console.log("Error on curr station dispatch =>", err);
 		}
