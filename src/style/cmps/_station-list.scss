@@ -1,6 +1,7 @@
 .station-list {
     grid-column: 2/3;
-    display: flex;
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
     flex-wrap: wrap;
     // gap: 10px;
     &.top-picks-carousel {
@@ -11,13 +12,15 @@
     }
     margin-bottom: 40px !important;
     .VueCarousel {
-        width: 90%;
-        margin-left: 100px;
-        margin-right: 100px;
-        .VueCarousel-inner {
-            gap: 10px;
+        grid-column: 2/3;
+        display: grid;
+        width: 100%;
+        .VueCarousel-wrapper {
             width: 100%;
-            flex-basis: 280px !important;
+            .VueCarousel-inner {
+                width: 100%;
+                flex-basis: 20% !important;
+            }
         }
     }
     .btn-next,
@@ -32,10 +35,10 @@
         }
     }
     .btn-prev {
-        transform: rotate(-90deg) translateX(50px);
+        transform: rotate(-90deg) translateX(63px);
     }
     .btn-next {
-        transform: rotate(90deg) translateX(-50px);
+        transform: rotate(90deg) translateX(-63px) translateY(55px);
     }
     .song-list-container {
         grid-column: 6/-1;
