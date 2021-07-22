@@ -1,5 +1,6 @@
 import { utilService } from '@/services/util-service';
 import { userService } from '@/services/user-service';
+import { stationService } from '../../services/station-service';
 
 export const userStore = {
   strict: true,
@@ -78,15 +79,26 @@ export const userStore = {
     async likedSong({ commit }, { song }) {
       try {
         const currUser = this.getters.loggedinUser
-        const idx = currUser.likedSongs.findIndex(s => s.id === song.id)
-        if (idx < 0) currUser.likedSongs.push(song)
-        else currUser.likedSongs.splice(idx, 1)
-        // commit({ type: 'updateUser', currUser })
+        if (!currUser.likedSongs || !currUser.likedSongs.length) {
+          currUser.likedSongs = stationService.getEmptyStation()
+          currUser.likedSongs.name = 'Songs I liked'
+          currUser.likedSongs.description = 'My favorites!'
+          currUser.likedSongs.imgUrl = '@/src/assets/img/heart.png'
+          currUser.likedSongs.tags.push('favorites')
+          currUser.likedSongs.createdAt = Date.now()
+          currUser.likedSongs.createdBy = currUser.fullname
+          currUser.likedSongs.songs.push(song)
+        } else {
+          const idx = currUser.likedSongs.findIndex(s => s.id === song.id)
+          if (idx < 0) currUser.likedSongs.push(song)
+          else currUser.likedSongs.splice(idx, 1)
+        }
         commit({ type: 'setLoggedinUser', user: currUser })
         const updatedUser = await userService.update(currUser)
         console.log('updatedUser', updatedUser)
       } catch (err) {
         console.log('Error on likedSong')
+        throw err
       }
     },
     async likedStation({ commit }, { station }) {
