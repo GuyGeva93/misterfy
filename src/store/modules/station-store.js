@@ -104,6 +104,7 @@ export const stationStore = {
                 song.snippet.title = await youtubeService.getTitle(song.snippet.title)
                 const updatedStation = await stationService.saveSong(song, stationId)
                 commit({ type: 'saveSong', updatedStation })
+                socketService.emit('station updated', updatedStation);
                 return updatedStation;
             } catch (err) {
                 console.log('Error on addSong =>', err)
@@ -132,7 +133,8 @@ export const stationStore = {
         async setListOrder({ commit }, { list, stationId }) {
             commit({ type: 'setListOrder', list })
             try {
-                await stationService.saveSongList(list, stationId)
+                const updatedStation = await stationService.saveSongList(list, stationId)
+                socketService.emit('station updated', updatedStation);
             } catch (err) {
                 console.log('Error on setListOrder =>', err)
             }

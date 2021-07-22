@@ -8,9 +8,9 @@
         </li>
       </ul>
     </section>
-    <form @submit.prevent="sendMsg" class="msg-form">
+    <form @submit.prevent="" class="msg-form">
       <input type="text" v-model="msg.txt" placeholder="Say something nice" />
-      <button class="btn-send">
+      <button class="btn-send"  @click.stop="sendMsg">
         <svg
           width="30px"
           aria-hidden="true"
@@ -28,6 +28,7 @@
         </svg>
       </button>
     </form>
+      <!-- <button @click.stop="clearChatMsgs">Clear messages</button> -->
   </section>
 </template>
 
@@ -95,9 +96,18 @@ export default {
     async loadMsgs() {
       const { chat } = this.$refs;
       this.msgs = await chatService.query(this.stationId);
-      console.log(this.msgs, "hello");
       this.$nextTick(() => {
         chat.scrollTo(0, chat.scrollHeight);
+      });
+    },
+
+    async clearChatMsgs() {
+      // debugger
+      const updatedStation = await chatService.clearChatMsgs(this.stationId);
+      // socketService.emit("station updated", updatedStation);
+      this.$store.commit({
+        type: "setCurrStation",
+        currStation: updatedStation,
       });
     },
   },

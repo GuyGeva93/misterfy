@@ -28,7 +28,6 @@ function createSocketService() {
                 // socketIsReady = true;
         },
         on(eventName, cb) {
-            if (eventName === 'station updated') debugger
             socket.on(eventName, cb)
         },
         off(eventName, cb = null) {

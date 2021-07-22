@@ -12,7 +12,8 @@ export const stationService = {
     getEmptyStation,
     saveSong,
     removeSong,
-    saveSongList
+    saveSongList,
+
 }
 
 // const STATION_URL = 'http://127.0.0.1:3030/api/station/'
@@ -105,7 +106,6 @@ function getEmptyStation() {
 async function saveSong(song, stationId) {
     try {
         const station = await getById(stationId);
-        console.log(song.snippet.thumbnails);
         const newSong = {
             id: song.id.videoId,
             title: song.snippet.title,
@@ -120,14 +120,7 @@ async function saveSong(song, stationId) {
         console.log('Error on station service =>', err)
         throw err;
     }
-    // const station = await getById(stationId)
-    // station.songs.push({
-    //     id: song.id.videoId,
-    //     title: song.snippet.title,
-    //     imgUrl: song.snippet.thumbnails.default.url,
-    //     addedBy: ''
-    // })
-    // const updatedStation = await save(station)
+
 }
 
 async function removeSong(songId, stationId) {
@@ -148,7 +141,8 @@ async function saveSongList(list, stationId) {
         const station = await getById(stationId)
         station.songs = [...list]
         const updatedStation = await save(station)
-        return updatedStation.songs
+        return updatedStation;
+        // return updatedStation.songs
     } catch (err) {
         console.log('Error on station service =>', err)
     }

@@ -23,7 +23,7 @@
 
 <script>
 import draggable from "vuedraggable";
-import {socketService} from "@/services/socket-service.js";
+// import {socketService} from "@/services/socket-service.js";
 // import { youtubeService } from '@/services/youtube-service.js'
 
 export default {
@@ -41,7 +41,7 @@ export default {
     };
   },
   created(){
-    socketService.on("station updated", this.updateStation);
+  
   },
   computed: {
     myList: {
@@ -89,13 +89,7 @@ export default {
     getCurrSong(song) {
       this.song = song;
     },
-    updateStation(savedStation) {
-      console.log(savedStation,'555');
-      this.$store.commit({
-        type: "setCurrStation",
-        currStation: savedStation,
-      });
-    },
+  
   },
   mounted() {},
 };

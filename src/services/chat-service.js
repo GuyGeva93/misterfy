@@ -2,6 +2,7 @@
 // import { socketService } from './socket-service.js';
 import { botService } from './bot-service.js';
 import { httpService } from './http-service.js'
+import { stationService } from './station-service.js';
 // const CHAT_KEY = "chatMsgs";
 
 // let gWatchedStation;
@@ -10,7 +11,8 @@ export const chatService = {
     query,
     add,
     botReply,
-    getEmptyMsg
+    getEmptyMsg,
+    clearChatMsgs
 }
 
 async function query(stationId) {
@@ -67,6 +69,18 @@ function getEmptyMsg() {
         txt: ""
     }
 }
+
+async function clearChatMsgs(stationId) {
+    console.log(stationId, 'stationId chat');
+    const station = await stationService.getById(stationId);
+    station.msgs = [];
+    const updatedStation = await stationService.save(station);
+    console.log(updatedStation);
+    return updatedStation;
+
+}
+
+
 
 (async() => {
     // Dev Helper: Listens to when localStorage changes in OTHER browser
