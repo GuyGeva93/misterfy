@@ -4,7 +4,7 @@
     <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
     <section v-if="currStation" class="station-details-info">
       <h2 class="title">{{ currStation.name }}</h2>
-      <h4 class="tags">Generes: {{ getTags }}</h4>
+      <h4 class="tags">Genres: {{ getTags }}</h4>
       <h4>
         Station Author: <span>{{ currStation.createdBy.fullname }}</span>
       </h4>
@@ -14,7 +14,6 @@
       @search="search"
       @opened="opened"
       @removeStation="removeStation"
-      @stationLiked="stationLiked"
     />
     <section class="station-list-container" :class="{ open: isOpen }">
       <song-list :songs="currStation.songs" />
@@ -89,13 +88,13 @@ export default {
         await this.$store.dispatch({ type: "removeStation", stationId });
         this.$store.commit({ type: "clearCurrSong" });
         userMsg = {
-          txt: "Station has been successfully removed!",
+          txt: "Station Removed",
           type: "success",
         };
         this.$router.push("/");
       } catch (err) {
         userMsg = {
-          txt: "Removing the station has been failed!",
+          txt: "Removing station failed",
           type: "error",
         };
       } finally {
@@ -108,14 +107,8 @@ export default {
     opened() {
       this.isOpen = !this.isOpen;
     },
-    stationLiked(station) {
-      const idx = this.likedStations.findIndex((s) => s._id === station._id);
-      if (idx < 0) this.likedStations.push(station);
-      else this.likedStations.splice(idx, 1);
-      console.log(this.likedStations);
-    },
+    
     updateStation(updatedStation) {
-      console.log(updatedStation, "555");
       this.$store.commit({
         type: "setCurrStation",
         currStation: updatedStation,

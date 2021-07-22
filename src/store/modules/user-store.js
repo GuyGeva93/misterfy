@@ -79,6 +79,7 @@ export const userStore = {
     async likedSong({ commit }, { song }) {
       try {
         const currUser = this.getters.loggedinUser
+        if (!currUser) return
         if (!currUser.likedSongs || !currUser.likedSongs.length) {
           currUser.likedSongs = stationService.getEmptyStation()
           currUser.likedSongs.name = 'Songs I liked'
@@ -105,13 +106,21 @@ export const userStore = {
       try {
         const currUser = this.getters.loggedinUser
         const idx = currUser.likedStations.findIndex(s => s._id === station._id)
-        if (idx < 0) currUser.likedStations.push(station)
-        else currUser.likedStations.splice(idx, 1)
+        if (idx < 0) {
+          currUser.likedStations.push(station)
+          station.likedByUsers.push(currUser)
+        }
+        else {
+          currUser.likedStations.splice(idx, 1)
+          const idx = station.likedByUsers.findIndex(user => user._id === currUser._id)
+          station.likedByUsers.splice(idx, 1)
+        }
         commit({ type: 'setLoggedinUser', user: currUser })
         const updatedUser = await userService.update(currUser)
         console.log('updatedUser', updatedUser)
       } catch (err) {
-        console.log('Error on likedSong')
+        console.log('Error on likedStation')
+        throw err
       }
     }
   }

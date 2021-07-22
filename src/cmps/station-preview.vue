@@ -24,7 +24,8 @@
 			</h3>
 			<div class="station-likes-count">
 				<img class="card-like-count-heart" src="../assets/icons/like.png" />
-				<span class="card-like-count">57</span>
+				<!-- <span class="card-like-count">test</span> -->
+				<span class="card-like-count">{{likesCount}}</span>
 			</div>
 		</router-link>
 	</section>
@@ -47,16 +48,11 @@ export default {
 			};
 			return style;
 		},
+		likesCount() {
+			console.log(this.station.likedByUsers.length)
+			return this.station.likedByUsers.length
+		}
 	},
-	// created() {
-	//   // console.log('this.station',this.station);
-	// },
-	// methods: {
-	//   play(ev) {
-	//     console.log(ev);
-	//     // console.log("Play station");
-	//   },
 
-	// },
 };
 </script>

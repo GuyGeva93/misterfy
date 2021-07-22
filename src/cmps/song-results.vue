@@ -65,12 +65,12 @@ export default {
       try {
         await this.$store.dispatch({ type: "addSong", song, stationId });
         userMsg = {
-          txt: "The song has been successfully added!",
+          txt: "Song Added",
           type: "success",
         };
       } catch (err) {
         userMsg = {
-          txt: "Adding the song has been failed",
+          txt: "Adding song Failed",
           type: "error",
         };
       } finally {
