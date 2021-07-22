@@ -14,7 +14,6 @@
       @search="search"
       @opened="opened"
       @removeStation="removeStation"
-      @stationLiked="stationLiked"
     />
     <section class="station-list-container" :class="{ open: isOpen }">
       <song-list :songs="currStation.songs" />
@@ -108,14 +107,8 @@ export default {
     opened() {
       this.isOpen = !this.isOpen;
     },
-    stationLiked(station) {
-      const idx = this.likedStations.findIndex((s) => s._id === station._id);
-      if (idx < 0) this.likedStations.push(station);
-      else this.likedStations.splice(idx, 1);
-      console.log(this.likedStations);
-    },
+    
     updateStation(updatedStation) {
-      console.log(updatedStation, "555");
       this.$store.commit({
         type: "setCurrStation",
         currStation: updatedStation,

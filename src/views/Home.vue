@@ -62,20 +62,23 @@ export default {
 	computed: {
 		stations() {
 			const stations = this.$store.getters.stationsToDisplay;
+			console.log(stations)
 			return stations;
 		},
 		topPicks() {
 			return this.stations.slice(0, 7);
 		},
 		yourPicks() {
-			// const favorites = {}
-			// const user = this.$store.getters.loggedinUser
-			// if (user.likedSongs.length) favorites.songs = user.likedSongs
-			// if (user.likedStations.length) favorites.stations = user.likedStations
-			// if (!user || !user.likedStations.length) return this.stations.slice(7, 12)
-			// else return favorites
-			// else return user.likedStations
-      return this.stations.slice(7, 12)
+			const favorites = {
+				songs: [],
+				stations: []
+			}
+			const user = this.$store.getters.loggedinUser
+			if (!user || !user.likedStations.length) return this.stations.slice(7, 12)
+			if (user.likedStations.length) {
+				favorites.stations.push(...user.likedStations)
+			}
+			return favorites.stations
 		},
 		recomended() {
 			return this.stations.slice(12);
