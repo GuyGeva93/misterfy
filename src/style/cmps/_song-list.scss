@@ -32,7 +32,7 @@
         }
         /* Handle on hover */
         &::-webkit-scrollbar-thumb:hover {
-            background: lighten($clr4, 10%);
+            background: lighten($clr4, 15%);
             // border-radius: 10px;
         }
         li {
@@ -69,7 +69,7 @@
 .song-list-headers {
     display: grid;
     width: 100%;
-    grid-template-columns: 4% 24% 49% 1fr;
+    grid-template-columns: 4% 23% 50% 1fr;
     color: rgb(190, 190, 190);
     img {
         filter: invert(94%) sepia(0%) saturate(0%) hue-rotate(194deg) brightness(82%) contrast(90%);
