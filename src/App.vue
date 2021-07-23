@@ -37,17 +37,17 @@ export default {
     },
   },
   methods: {
-    checkAppReady() {
-      const poller = setInterval(() => {
-        if (document.readyState === "complete") {
-          clearInterval(poller);
-          console.log("not ready");
-          return document.readyState;
-        }
-        return document.readyState;
-      }, 1000);
-      return document.readyState;
-    },
+    // checkAppReady() {
+    //   const poller = setInterval(() => {
+    //     if (document.readyState === "complete") {
+    //       clearInterval(poller);
+    //       console.log("not ready");
+    //       return document.readyState;
+    //     }
+    //     return document.readyState;
+    //   }, 1000);
+    //   return document.readyState;
+    // },
   },
  
 };

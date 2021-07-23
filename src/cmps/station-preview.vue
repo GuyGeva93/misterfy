@@ -20,7 +20,7 @@
 			<h2 class="station-preview-name">{{ station.name }}</h2>
 			<h3 class="station-preview-creator">
 				Created by
-				<span class="creator-name">{{ station.createdBy.fullname }}</span>
+				<span class="creator-name">{{ station.createdBy.username }}</span>
 			</h3>
 			<div class="station-likes-count">
 				<img class="card-like-count-heart" src="../assets/icons/like.png" />

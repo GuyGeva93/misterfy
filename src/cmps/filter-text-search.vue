@@ -17,7 +17,7 @@ export default {
     search() {
       this.$emit('search', this.name)
       //Emptying search
-      // this.name='';
+      this.name='';
 
     }
   },
