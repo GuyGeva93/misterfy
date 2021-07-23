@@ -1,0 +1,18 @@
+.modal {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    padding: 20px;
+    left: 50%;
+    top: 60%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btn-close {
+        position: absolute;
+        right: 10px;
+    }
+}

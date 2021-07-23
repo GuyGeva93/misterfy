@@ -49,7 +49,7 @@ export default {
 			return style;
 		},
 		likesCount() {
-			console.log(this.station.likedByUsers.length)
+			if(!this.station.likedByUsers)console.log(this.station);
 			return this.station.likedByUsers.length
 		}
 	},
