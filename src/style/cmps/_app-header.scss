@@ -65,7 +65,8 @@ header {
     }
     .main-nav {
         padding-right: 100px;
-        background-color: #0e0e0ecc;
+        background-color: #121313;
+        backdrop-filter: blur(10px);
         a {
             font-weight: bold;
             color: white;
