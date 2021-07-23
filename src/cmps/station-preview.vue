@@ -25,7 +25,7 @@
 			<div class="station-likes-count">
 				<img class="card-like-count-heart" src="../assets/icons/like.png" />
 				<!-- <span class="card-like-count">test</span> -->
-				<span class="card-like-count">{{likesCount}}</span>
+				<span class="card-like-count">{{ likesCount }}</span>
 			</div>
 		</router-link>
 	</section>
@@ -41,18 +41,27 @@ export default {
 	computed: {
 		stationImg() {
 			const style = {
-				// "img": `url(${this.station.imgUrl})`,
-				// "background-image": `url(${this.station.imgUrl})`,
 				"background-repeat": "no-repeat",
 				"background-size": "cover",
 			};
 			return style;
 		},
 		likesCount() {
-			console.log(this.station.likedByUsers.length)
-			return this.station.likedByUsers.length
+			// if (!this.station) return -1
+			this.nextTick(() => {
+				const length = this.station.likedByUsers.length
+				return length
+			})
+			return length
+			// return this.station.likedByUsers.length
 		}
 	},
-
+	// methods: {
+	// 	likesCount() {
+	// 		if (!this.station.likedByUsers) this.currStation = 0
+	// 		const length = this.station.likedByUsers.length
+	// 		this.currStation = length
+	// 	}
+	// },
 };
 </script>

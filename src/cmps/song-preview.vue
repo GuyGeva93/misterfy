@@ -136,7 +136,7 @@ export default {
 		},
 		like() {
 			this.isLiked = !this.isLiked
-			this.$store.dispatch({ type: 'likedSong', song: this.song })
+			// this.$store.dispatch({ type: 'likedSong', song: this.song })
 		},
 		refreshStation(savedStation) {
 			debugger

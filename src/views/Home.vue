@@ -66,27 +66,28 @@ export default {
 			return stations;
 		},
 		topPicks() {
-			return this.stations.slice(0, 7);
+			return this.stations.slice(0, 7)
 		},
 		yourPicks() {
-			const favorites = {
-				songs: [],
-				stations: []
-			}
-			const user = this.$store.getters.loggedinUser
-			if (!user || !user.likedStations.length) return this.stations.slice(7, 12)
-			if (user.likedStations.length) {
-				favorites.stations.push(...user.likedStations)
-			}
-			return favorites.stations
+			// const favorites = {
+			// 	stations: []
+			// }
+			// const user = this.$store.getters.loggedinUser
+			// if (!user || !user.likedStations) 
+			return this.stations.slice(7, 12)
+			// if (user.likedStations) {
+			// 	favorites.stations.push(...user.likedStations)
+			// 	return favorites.stations
+			// }
+			// else return 9
 		},
 		recomended() {
-			return this.stations.slice(12);
+			return this.stations.slice(12)
 		},
 	},
 	methods: {
 		scrollDown() {
-			window.scrollTo(0, 927);
+			window.scrollTo(0, 927)
 		},
 		onImgLoad() {
 			this.loaded = true;
@@ -97,8 +98,8 @@ export default {
 			immediate: true,
 			handler() {
 				//reset filter when coming home page
-				this.$store.commit({ type: "setFilter" });
-				this.$store.dispatch({ type: "loadStations" });
+				this.$store.commit({ type: "setFilter" })
+				this.$store.dispatch({ type: "loadStations" })
 			},
 		},
 	},

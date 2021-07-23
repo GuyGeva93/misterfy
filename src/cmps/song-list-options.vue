@@ -1,7 +1,7 @@
 <template>
 	<section class="song-list-options">
+			<!-- @click.stop="like" -->
 		<svg
-			@click.stop="like"
 			:class="{ liked: isLiked }"
 			class="like-station-btn"
 			xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ export default {
 		},
 		isLiked() {
 			const user = this.$store.getters.loggedinUser
-			if (!user) return
+			if (!user || !user.likedStations) return false
 			const likedStation = user.likedStations.find(s => s._id === this.currStation._id)
 			if (likedStation) return true
 			return false
@@ -129,10 +129,9 @@ export default {
 				console.log("Error on YouTube query =>", err);
 			}
 		},
-		like() {
-			this.$store.dispatch({ type: "likedStation", station: this.currStation })
-			
-		},
+		// like() {
+			// this.$store.dispatch({ type: "likedStation", station: this.currStation })
+		// },
 		playStation() {
 			if (!this.currStation.songs || !this.currStation.songs.length) return;
 			const songId = this.$store.getters.currStation.songs[0].id;
