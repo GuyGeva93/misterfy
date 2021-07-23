@@ -150,3 +150,36 @@ $base: 0.6rem;
         transform: translateY($base * 8)
     }
 }
+
+@include for-hero-layout {
+    .hero-arrows.container {
+        top: 70%
+    }
+    .station-main {
+        top: 80vh;
+    }
+}
+
+@include for-wider-layout {
+    .scroll-down {
+        display: none;
+    }
+    .hero-arrows.container {
+        display: none;
+    }
+    .station-main {
+        top: 55vw;
+    }
+}
+
+@include for-wide-layout {
+    .home-page .hero-txt {
+        font-size: 4rem;
+    }
+}
+
+@include for-normal-layout {
+    .home-page .hero-txt {
+        font-size: 3rem;
+    }
+}
