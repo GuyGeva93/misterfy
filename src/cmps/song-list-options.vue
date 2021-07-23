@@ -150,7 +150,8 @@ export default {
     },
     removeStation() {
 		const msg={
-			txt:'Are you sure?'
+			txt:'Are you sure you want to remove this station?',
+      type:'confirm'
 		}
       this.$emit("removeStation",msg);
     },

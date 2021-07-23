@@ -1,9 +1,11 @@
 <template>
   <section class="modal">
     <button @click="closeModal" class="btn-close">✖</button>
-    <h2>{{ msg.txt }}</h2>
-    <button @click="setOk">Ok</button>
-    <button @click="closeModal">Cancel</button>
+    <h3 class="msg-text">{{ msg.txt }}</h3>
+   <section class="btns-container">
+    <button @click="closeModal" class="btn-cancel">Cancel</button>
+      <button @click="setOk" class="btn-ok" >Ok</button>
+   </section>
   </section>
 </template>
 
