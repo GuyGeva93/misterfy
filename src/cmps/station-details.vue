@@ -13,8 +13,11 @@
     <song-list-options
       @search="search"
       @opened="opened"
-      @removeStation="removeStation"
+      @removeStation="openModal"
     />
+    <template v-if="confirmMsg">
+      <modal :msg="confirmMsg" @closeModal="confirmMsg = null" @setOk="setOk" />
+    </template>
     <section class="station-list-container" :class="{ open: isOpen }">
       <song-list :songs="currStation.songs" />
     </section>
@@ -23,9 +26,11 @@
 
 <script>
 import { youtubeService } from "@/services/youtube-service.js";
+import { eventBusService } from "@/services/eventBus-service.js";
 import songListOptions from "@/cmps/song-list-options.vue";
 import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
+import modal from "@/cmps/modal";
 import { socketService } from "@/services/socket-service.js";
 // import { wrapGrid } from 'animate-css-grid'
 export default {
@@ -35,6 +40,7 @@ export default {
     try {
       await this.$store.dispatch({ type: "currStation", stationId });
       socketService.emit("station watch", stationId);
+      eventBusService.$on("removeSong", this.openModal);
     } catch (err) {
       console.log("Error on curr station dispatch =>", err);
     }
@@ -45,6 +51,7 @@ export default {
       isOpen: false,
       mainColor: null,
       likedStations: [],
+      confirmMsg: null,
     };
   },
 
@@ -107,17 +114,50 @@ export default {
     opened() {
       this.isOpen = !this.isOpen;
     },
-    
+
     updateStation(updatedStation) {
       this.$store.commit({
         type: "setCurrStation",
         currStation: updatedStation,
       });
     },
+    openModal(msg) {
+      this.confirmMsg = msg;
+    },
+    setOk() {
+      if (this.confirmMsg.songId) {
+        this.removeSong();
+      } else this.removeStation();
+    },
+    async removeSong() {
+      const songId = this.confirmMsg.songId;
+      let userMsg = null;
+      try {
+        await this.$store.dispatch({
+          type: "removeSong",
+          songId,
+        });
+        userMsg = {
+          txt: "Song Removed",
+          type: "success",
+        };
+      } catch (err) {
+        userMsg = {
+          txt: "Removing Song Failed!",
+          type: "error",
+        };
+      } finally {
+        this.$store.commit({ type: "updateUserMsg", userMsg });
+        setTimeout(() => {
+          this.$store.commit({ type: "deleteMsg" });
+        }, 2000);
+      }
+    },
   },
   components: {
     songList,
     chat,
+    modal,
     songListOptions,
   },
 };

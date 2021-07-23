@@ -46,15 +46,15 @@ export default {
 			};
 			return style;
 		},
-		likesCount() {
+		// likesCount() {
 			// if (!this.station) return -1
-			this.nextTick(() => {
-				const length = this.station.likedByUsers.length
-				return length
-			})
-			return length
+			// this.nextTick(() => {
+			// 	const length = this.station.likedByUsers.length
+			// 	return length
+			// })
+			// return length
 			// return this.station.likedByUsers.length
-		}
+		// }
 	},
 	// methods: {
 	// 	likesCount() {
