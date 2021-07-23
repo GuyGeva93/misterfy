@@ -154,7 +154,7 @@ export default {
     },
     openModal() {
       const msg = {
-        txt: "Are you sure?",
+        txt: "Are you sure you want to remove this song?",
         type: "confirm",
         songId: this.song.id,
       }

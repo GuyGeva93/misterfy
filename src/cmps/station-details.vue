@@ -1,5 +1,6 @@
 <template>
   <section ref="grid" class="station-details" v-if="currStation">
+       <div v-if="confirmMsg" class="screen-cover"></div>
     <chat :stationId="stationId" class="section-details-chat" />
     <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
     <section v-if="currStation" class="station-details-info">
