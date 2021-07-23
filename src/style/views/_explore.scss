@@ -149,18 +149,18 @@
 //800px
 @include for-normal-layout {
   .explore-container .explore-station-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @include for-narrow-layout {
   .explore-container .explore-station-list {
-    grid-template-columns: repeat(2, 180px);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @include for-mobile-layout {
   .explore-container .explore-station-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
