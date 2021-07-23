@@ -66,7 +66,7 @@ export default {
 			return stations;
 		},
 		topPicks() {
-			return this.stations.slice(0, 7)
+			return this.stations.slice(0, 6)
 		},
 		yourPicks() {
 			// const favorites = {
@@ -74,7 +74,7 @@ export default {
 			// }
 			// const user = this.$store.getters.loggedinUser
 			// if (!user || !user.likedStations) 
-			return this.stations.slice(7, 12)
+			return this.stations.slice(6, 11)
 			// if (user.likedStations) {
 			// 	favorites.stations.push(...user.likedStations)
 			// 	return favorites.stations
@@ -82,7 +82,7 @@ export default {
 			// else return 9
 		},
 		recomended() {
-			return this.stations.slice(12)
+			return this.stations.slice(11)
 		},
 	},
 	methods: {

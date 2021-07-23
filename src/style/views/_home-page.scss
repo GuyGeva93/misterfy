@@ -35,6 +35,7 @@
         height: 200px;
         width: 200px;
         z-index: 9;
+        cursor: pointer;
     }
 }
 
@@ -48,7 +49,7 @@
     position: relative;
     top: 100vh;
     height: 100%;
-    padding-top: 40px;
+    // padding-top: 40px;
     background-color: $clr1;
     z-index: 10;
     >h2 {
@@ -152,15 +153,6 @@ $base: 0.6rem;
 }
 
 @include for-hero-layout {
-    .hero-arrows.container {
-        top: 70%
-    }
-    .station-main {
-        top: 80vh;
-    }
-}
-
-@include for-wider-layout {
     .scroll-down {
         display: none;
     }
@@ -168,18 +160,41 @@ $base: 0.6rem;
         display: none;
     }
     .station-main {
+        top: 80vh;
+    }
+}
+
+@include for-wider-layout {
+    .station-main {
         top: 55vw;
     }
 }
 
 @include for-wide-layout {
     .home-page .hero-txt {
-        font-size: 4rem;
+        font-size: 6vw;
+        top: 20%
     }
 }
 
 @include for-normal-layout {
     .home-page .hero-txt {
-        font-size: 3rem;
+        // font-size: 3rem;
+        top: 15%
+    }
+}
+
+@include for-narrow-layout {
+    .home-page .hero-txt {
+        // font-size: 2.5rem;
+        top: 15%
+    }
+}
+
+@include for-mobile-layout {
+    .home-page .hero-txt {
+        font-size: 2rem;
+        top: 15%;
+        left: 20%
     }
 }
