@@ -16,9 +16,9 @@
 				<station-preview :station="station" />
 			</slide>
 		</carousel>
-		<div v-else v-for="station in stations" :key="station._id">
-			<station-preview class="your-picks-carousel" :station="station" />
-		</div>
+		<template v-else >
+			<station-preview v-for="station in stations" :key="station._id" class="your-picks-carousel" :station="station" />
+		</template>
 	</section>
 </template>
 

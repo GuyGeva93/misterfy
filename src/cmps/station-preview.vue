@@ -24,8 +24,8 @@
 			</h3>
 			<div class="station-likes-count">
 				<img class="card-like-count-heart" src="../assets/icons/like.png" />
-				<!-- <span class="card-like-count">test</span> -->
-				<span class="card-like-count">{{ likesCount }}</span>
+				<span class="card-like-count">500</span>
+				<!-- <span class="card-like-count">{{ likesCount }}</span> -->
 			</div>
 		</router-link>
 	</section>
