@@ -79,10 +79,12 @@ export default {
       immediate: true,
       async handler() {
         const { name, tag = "" } = this.$route.params;
+        if(!name)return;
         const filterBy = {
           name,
           tag,
         };
+        console.log(this.$route.params,'777');
         if (!name || name === "*") filterBy.name = "";
         try {
           this.$store.commit({ type: "setFilter", filterBy });

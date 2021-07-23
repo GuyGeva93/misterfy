@@ -67,6 +67,7 @@ export default {
       window.scrollTo(0, 0);
     },
     search(name) {
+      if(!name)return;
       //Preventing duplicated route error
       const currName = this.$route.params.name;
       if (currName && currName === name) return;

@@ -6,7 +6,7 @@
       <h2 class="title">{{ currStation.name }}</h2>
       <h4 class="tags">Genres: {{ getTags }}</h4>
       <h4>
-        Station Author: <span>{{ currStation.createdBy.fullname }}</span>
+        Station Author: <span>{{ currStation.createdBy.username }}</span>
       </h4>
       <h4>Listeners: 14,532</h4>
     </section>

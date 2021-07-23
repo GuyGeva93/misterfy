@@ -92,6 +92,9 @@ export default {
     currUserId() {
       return this.$store.getters.currUserId;
     },
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
   },
   methods: {
     async handleImg(ev) {
@@ -116,10 +119,20 @@ export default {
       if (this.selectedTag) {
         this.newStation.tags.push(this.selectedTag);
       }
-      this.newStation.createdBy = {
-        id: this.currUserId,
-        fullname: "guest" + this.currUserId,
-      };
+         let creator = null;
+      if (this.loggedinUser) {
+        const { _id, username } = this.loggedinUser;
+        creator = {
+          _id,
+          username,
+        };
+      } else {
+        creator = {
+          _id: this.currUserId,
+          username: "guest" + this.currUserId,
+        };
+      }
+      this.newStation.createdBy =creator
 
       let userMsg = {};
       try {
