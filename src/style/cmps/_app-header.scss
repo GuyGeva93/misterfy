@@ -56,7 +56,6 @@ header {
         }
     }
     .hamburger {
-        margin-right: 10px;
         display: none;
         svg {
             fill: white;
@@ -66,6 +65,9 @@ header {
     .main-nav {
         padding-right: 100px;
         background-color: #0e0e0ecc;
+        .filter-search-container {
+            display: none;
+        }
         a {
             font-weight: bold;
             color: white;
@@ -104,8 +106,12 @@ header {
 
 @include for-wide-layout {
     header {
+        >.filter-search-container {
+            display: none;
+        }
         .hamburger {
             display: block;
+            padding-right: 100px;
         }
         .main-nav {
             display: flex;
@@ -116,8 +122,11 @@ header {
             padding: 10px;
             width: 200px;
             align-items: center;
-            transform: translateX(100%);
+            transform: translateX(150%);
             transition: transform .6s;
+            .filter-search-container {
+                display: flex;
+            }
             .nav-link {
                 margin-bottom: 15px;
             }
@@ -127,6 +136,18 @@ header {
             .sep {
                 display: none;
             }
+        }
+    }
+}
+
+@include for-normal-layout {
+    header {
+        // grid-column: 2;
+        .logo {
+            padding-left: 0;
+        }
+        .hamburger {
+            padding-right: 0;
         }
     }
 }
