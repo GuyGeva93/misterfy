@@ -57,10 +57,12 @@ header {
     }
     .hamburger {
         display: none;
-        svg {
-            fill: white;
-        }
+        // filter: invert(96%) sepia(100%) saturate(0%) hue-rotate(65deg) brightness(105%) contrast(103%);
+        fill: white;
         cursor: pointer;
+        &:hover {
+            fill: gold;
+        }
     }
     .main-nav {
         padding-right: 100px;
@@ -94,6 +96,12 @@ header {
 
 @include for-wider-layout {
     header {
+        .hamburger-container {
+            padding-right: 100px;
+            .hamburger {
+                display: none;
+            }
+        }
         .filter-search-container {
             .main-search {
                 width: 250px;
@@ -107,9 +115,12 @@ header {
         >.filter-search-container {
             display: none;
         }
-        .hamburger {
-            display: block;
+        .hamburger-container {
+            padding: 0;
             padding-right: 100px;
+            .hamburger {
+                display: block;
+            }
         }
         .main-nav {
             display: flex;
@@ -142,10 +153,10 @@ header {
     header {
         // grid-column: 2;
         .logo {
-            padding-left: 0;
+            padding-left: 10px;
         }
-        .hamburger {
-            padding-right: 0;
+        .hamburger-container {
+            padding-right: 20px;
         }
     }
 }
