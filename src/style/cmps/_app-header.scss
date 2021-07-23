@@ -133,7 +133,8 @@ header {
             right: 0;
             padding: 10px;
             width: 200px;
-            align-items: center;
+            // align-items: stretch;
+            text-align: center;
             transform: translateX(300px);
             transition: transform .6s;
             background-color: #121313ef;
