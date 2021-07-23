@@ -23,6 +23,7 @@
       </svg>
     </div>
     <nav class="main-nav" :class="{ 'nav-open': isNavBurgerOpen }">
+		 <filter-text-search @search="search" />
       <button class="creatify-btn nav-link" @click.stop="toggleCreating">
         Creatify
       </button>
