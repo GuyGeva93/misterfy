@@ -24,7 +24,7 @@
     <h3 v-else>{{ idx + 1 }}</h3>
     <img class="thumbnail" :src="song.imgUrl" />
     <h3 class="song-title">{{ song.title }}</h3>
-    <h3>{{ song.duration }}</h3>
+    <h3 class="duration">{{ song.duration }}</h3>
     <button @click.stop="like">
       <img src="../assets/icons/like.png" class="like-song" v-if="!isLiked" />
       <img src="../assets/img/heart.png" class="liked" v-else />
