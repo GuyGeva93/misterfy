@@ -71,6 +71,6 @@ body {
 
 @include for-mobile-layout {
     .main-layout {
-        grid-template-columns: 350px;
+        grid-template-columns: 5% 1fr 5%;
     }
 }
