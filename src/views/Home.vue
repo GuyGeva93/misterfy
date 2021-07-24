@@ -69,17 +69,14 @@ export default {
 			return this.stations.slice(0, 6)
 		},
 		yourPicks() {
-			// const favorites = {
-			// 	stations: []
-			// }
-			// const user = this.$store.getters.loggedinUser
-			// if (!user || !user.likedStations) 
-			return this.stations.slice(6, 11)
-			// if (user.likedStations) {
-			// 	favorites.stations.push(...user.likedStations)
-			// 	return favorites.stations
-			// }
-			// else return 9
+			let favoritesStations = []
+			const user = this.$store.getters.loggedinUser
+			if (!user || !user.likedStations) return this.stations.slice(6, 11)
+			if (user.likedStations) {
+				favoritesStations.push(...user.likedStations)
+				return favoritesStations
+			}
+			else return this.stations.slice(6, 11)
 		},
 		recomended() {
 			return this.stations.slice(11)
@@ -89,8 +86,8 @@ export default {
 		scrollDown() {
 			const div = this.$refs.stationMain
 			const yOffset = -80;
-			const y=div.getBoundingClientRect().top + window.pageYOffset + yOffset;
-			window.scrollTo({top: y})
+			const y = div.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			window.scrollTo({ top: y })
 		},
 		onImgLoad() {
 			this.loaded = true;
@@ -106,7 +103,7 @@ export default {
 			},
 		},
 	},
-	created () {
+	created() {
 	},
 };
 </script>

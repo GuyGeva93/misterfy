@@ -103,18 +103,18 @@ export const userStore = {
     // },
     async likedStation({ commit }, { station }) {
       try {
-        debugger
         const currUser = this.getters.loggedinUser
+        if (!currUser) return
         const idx = currUser.likedStations.findIndex(s => s._id === station._id)
         if (idx < 0) {
           currUser.likedStations.push(station)
-          station.likedByUsers.push(currUser)
+          station.likedByUsers += 1
         }
         else {
           currUser.likedStations.splice(idx, 1)
-          const idx = station.likedByUsers.findIndex(user => user._id === currUser._id)
-          station.likedByUsers.splice(idx, 1)
+          station.likedByUsers -= 1
         }
+        this.dispatch({ type: 'saveStation', station })
         commit({ type: 'setLoggedinUser', user: currUser })
         const updatedUser = await userService.update(currUser)
         console.log('updatedUser', updatedUser)

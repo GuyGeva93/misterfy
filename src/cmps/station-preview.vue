@@ -24,8 +24,8 @@
 			</h3>
 			<div class="station-likes-count">
 				<img class="card-like-count-heart" src="../assets/icons/like.png" />
-				<span class="card-like-count">500</span>
-				<!-- <span class="card-like-count">{{ likesCount }}</span> -->
+				<!-- <span class="card-like-count">500</span> -->
+				<span class="card-like-count">{{ likedByUsers }}</span>
 			</div>
 		</router-link>
 	</section>
@@ -46,15 +46,9 @@ export default {
 			};
 			return style;
 		},
-		// likesCount() {
-			// if (!this.station) return -1
-			// this.nextTick(() => {
-			// 	const length = this.station.likedByUsers.length
-			// 	return length
-			// })
-			// return length
-			// return this.station.likedByUsers.length
-		// }
+		likedByUsers(){
+			return this.station.likedByUsers
+		}
 	},
 	// methods: {
 	// 	likesCount() {

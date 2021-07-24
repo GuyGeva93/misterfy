@@ -96,7 +96,7 @@ function getEmptyStation() {
     tags: [],
     createdAt: Date.now(),
     // createdBy: {},
-    likedByUsers: [],
+    likedByUsers: 0,
     songs: []
   }
   console.log('station', station)
