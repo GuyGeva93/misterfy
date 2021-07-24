@@ -5,8 +5,10 @@ import router from './router'
 import store from './store'
 import vueDebounce from 'vue-debounce'
 import './style/style.scss'
+import VueSocialSharing from 'vue-social-sharing'
 Vue.config.productionTip = false
 
+Vue.use(VueSocialSharing);
 
 
 import VuePlyr from 'vue-plyr'

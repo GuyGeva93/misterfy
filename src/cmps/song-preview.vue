@@ -89,6 +89,7 @@ export default {
 	},
 	computed: {
 		isRunning() {
+			console.log(this.$store.getters.isPlaying);
 			return this.$store.getters.isPlaying;
 		},
 		togglePlayPause() {
