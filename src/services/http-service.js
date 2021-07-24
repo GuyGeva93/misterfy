@@ -2,7 +2,7 @@ import Axios from 'axios'
 import router from '@/router/index'
 
 const BASE_URL = process.env.NODE_ENV === 'production' ?
-  '/api/station' :
+  '/api/' :
   '//localhost:3030/api/'
 var axios = Axios.create({
   withCredentials: true
