@@ -22,12 +22,9 @@ async function query(stationId) {
     // } catch (err) {
     //     console.log('Error on chat service =>', err)
     // }
-    try {
-        const msgs = await httpService.get('station/chat/' + stationId);
-        return msgs;
-    } catch (err) {
-        console.log('Error on chat service =>', err)
-    }
+
+    const station = await stationService.getById(stationId);
+    return await station.msgs;
 }
 async function add(newMsg) {
     newMsg.sentAt = Date.now()

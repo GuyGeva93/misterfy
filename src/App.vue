@@ -35,6 +35,7 @@ export default {
     currSong() {
       return this.$store.getters.currSong;
     },
+
   },
   methods: {
     // checkAppReady() {

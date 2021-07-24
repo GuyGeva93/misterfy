@@ -31,7 +31,13 @@ import stationPreview from "@/cmps/station-preview";
 import stationTag from "@/cmps/station-tag";
 export default {
   created() {
-    this.$router.push("/explore");
+    if(this.name||this.tag)
+    this.$router.push("/explore").catch((err) => {
+        //When same route appears
+        if (err.name != "NavigationDuplicated") {
+          throw err;
+        }
+      });
   },
   data() {
     return {
@@ -84,7 +90,6 @@ export default {
           name,
           tag,
         };
-        console.log(this.$route.params,'777');
         if (!name || name === "*") filterBy.name = "";
         try {
           this.$store.commit({ type: "setFilter", filterBy });
