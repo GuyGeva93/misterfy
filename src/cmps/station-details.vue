@@ -1,7 +1,8 @@
 <template>
   <section ref="grid" class="station-details" v-if="currStation">
-    <div v-if="confirmMsg" class="screen-cover"></div>
-    <chat :stationId="stationId" class="section-details-chat" />
+     <button class="btn-open-chat" v-if="!isChatOpened" @click="isChatOpened=true">Open chat</button>
+    <div v-if="confirmMsg||isChatOpened" class="screen-cover"></div>
+    <chat :stationId="stationId" class="section-details-chat" :class="{'chat-opened':isChatOpened}" @closeChat="closeChat" />
     <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
     <section v-if="currStation" class="station-details-info">
       <h2 class="title">{{ currStation.name }}</h2>
@@ -39,6 +40,7 @@
       @opened="opened"
       @removeStation="openModal"
     />
+        
     <template v-if="confirmMsg">
       <modal :msg="confirmMsg" @closeModal="confirmMsg = null" @setOk="setOk" />
     </template>
@@ -77,7 +79,8 @@ export default {
       mainColor: null,
       likedStations: [],
       confirmMsg: null,
-      isSharing: false
+      isSharing: false,
+      isChatOpened:false
     };
   },
 
@@ -185,6 +188,9 @@ export default {
         }, 2000);
       }
     },
+    closeChat(){
+      this.isChatOpened=false;
+    }
   },
   // watch: {
   //   currStation: {
