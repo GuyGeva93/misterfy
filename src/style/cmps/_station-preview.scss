@@ -162,6 +162,9 @@
 }
 
 @include for-narrow-layout {
+    .station-list .VueCarousel {
+        height: 100%;
+    }
     .station-list .VueCarousel-slide {
         justify-content: center;
     }
