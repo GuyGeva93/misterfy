@@ -1,88 +1,108 @@
 <template>
-	<section class="signup-login">
-		<section class="login">
-			<h2 class="title">Log in</h2>
-			<form @submit.prevent="login">
-				<select v-model="loginCred.username">
-					<option value="">Select User</option>
-					<option v-for="user in users" :key="user._id" :value="user.username">
-						{{ user.fullname }}
-					</option>
-				</select>
-				<button>Login</button>
-			</form>
-		</section>
+  <section class="signup-login">
+    <section class="login">
+      <h2 class="title">Log in</h2>
+      <form @submit.prevent="login">
+        <select v-model="loginCred.username">
+          <option value="">Select User</option>
+          <option v-for="user in users" :key="user._id" :value="user.username">
+            {{ user.fullname }}
+          </option>
+        </select>
+        <button>Login</button>
+      </form>
+    </section>
 
-		<section class="signup">
-			<h2 class="title">Sign up</h2>
-			<form @submit.prevent="signup">
-				<h3>Username:</h3>
-				<input
-					type="text"
-					placeholder="Enter username"
-					v-model="signupCreds.username"
-				/>
-				<h3>Fullname:</h3>
-				<input
-					type="text"
-					placeholder="Enter full name"
-					v-model="signupCreds.fullname"
-				/>
-				<h3>Password</h3>
-				<input
-					type="password"
-					autocomplete="false"
-					v-model="signupCreds.password"
-				/>
-				<button>Sign up</button>
-			</form>
-		</section>
-	</section>
+    <section class="signup">
+      <h2 class="title">Sign up</h2>
+      <form @submit.prevent="signup">
+        Upload your profile picture
+        <input type="file" @change="handleImg" />
+        <h3>Username:</h3>
+        <input
+          type="text"
+          placeholder="Enter username"
+          v-model="signupCreds.username"
+        />
+        <h3>Fullname:</h3>
+        <input
+          type="text"
+          placeholder="Enter full name"
+          v-model="signupCreds.fullname"
+        />
+        <h3>Password</h3>
+        <input
+          type="password"
+          autocomplete="false"
+          v-model="signupCreds.password"
+        />
+        <button>Sign up</button>
+      </form>
+    </section>
+  </section>
 </template>
 
 <script>
+import { uploadImg } from "@/services/img-upload-service.js";
 export default {
-	data() {
-		return {
-			signupCreds: {
-				fullname: "",
-				username: "",
-				password: "",
-			},
-			loginCred: {
-				username: "",
-				password: "12345",
-			},
-		};
-	},
-	created() {
-		this.loadUsers();
-	},
-	computed: {
-		loggedinUser() {
-			return this.$store.getters.loggedinUser;
-		},
+  data() {
+    return {
+      signupCreds: {
+		  imgUrl:"",
+        fullname: "",
+        username: "",
+        password: "",
+      },
+      loginCred: {
+        username: "",
+        password: "12345",
+      },
+	        imgLoaded: true,
+    };
+  },
+  created() {
+    this.loadUsers();
+  },
+  computed: {
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
 
-		users() {
-			return this.$store.getters.users;
-		},
-	},
-	methods: {
-		loadUsers() {
-			this.$store.dispatch({ type: "loadUsers" });
-		},
-		async signup() {
-			await this.$store.dispatch({
-				type: "signup",
-				userCred: this.signupCreds,
-			});
-			this.$router.push('/');
-		},
-		async login() {
-			await this.$store.dispatch({ type: 'login', userCred: this.loginCred })
-			this.$router.push('/');
-		}
-	},
+    users() {
+      return this.$store.getters.users;
+    },
+  },
+  methods: {
+    async handleImg(ev) {
+      if (!ev.target.files[0]) return;
+      const file = ev.target.files[0];
+      const fileType = file["type"];
+      if (!fileType.includes("image")) return;
+      try {
+        this.imgLoaded = false;
+        const savedImg = await uploadImg(file);
+		console.log(savedImg.url);
+        this.signupCreds.imgUrl = savedImg.url;
+        this.imgLoaded = true;
+      } catch (err) {
+        console.log("Error on handle img =>", err);
+      }
+    },
+    loadUsers() {
+      this.$store.dispatch({ type: "loadUsers" });
+    },
+    async signup() {
+      await this.$store.dispatch({
+        type: "signup",
+        userCred: this.signupCreds,
+      });
+      this.$router.push("/");
+    },
+    async login() {
+      await this.$store.dispatch({ type: "login", userCred: this.loginCred });
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
