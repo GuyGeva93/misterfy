@@ -251,7 +251,7 @@
     .song-list-search.open {
       grid-column: 1/7;
     }
-    .song-results{
+    .song-results {
       grid-column: 1/7;
     }
   }
@@ -316,14 +316,30 @@
     grid-column: 1/-1;
   }
   .songs-list .song-preview {
-    grid-template-columns: 10% 10% 2fr 15% 5% 10%;
+    grid-template-columns: 10% 10% 2fr 15% 5% 15%;
   }
-  // .chat {
-  //   display: none;
-  // }
-  // .msg-form input, button{
-  //   display: none;
-  // }
+  .player-img,
+  .player-img img {
+    display: none;
+  }
+  .player-container .player {
+    grid-column: 1/-1;
+  }
+  .player-container .player .player-controls .player-previous-btn {
+    right: 60%;
+  }
+  .player-container .player .player-controls .player-forward-btn {
+    left: 60%;
+  }
+  .player-container .player .player-controls .player-play-btn,
+  .player-container .player .player-controls .player-pause-btn {
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .songs-list .song-preview .details-btn.removing {
+    transition: transform 0.2s linear;
+    transform: translateX(-2vw) rotate(90deg);
+  }
 }
 
 @include for-narrow-layout {
@@ -341,20 +357,59 @@
   }
   .station-list-container {
     &.open {
-      width: 55%;
-      // .songs-list .song-preview {
-      //   grid-template-columns: 10% 10% 2fr 15% 5% 10%;
-      // }
+      width: 0%;
       .song-preview .thumbnail {
         display: none;
       }
-      //*[@id="app"]/section/section[4]/section/ul/div/li[1]/section/img[1]
     }
+    .songs-list .song-preview .details-btn.removing {
+      transition: transform 0.2s linear;
+      transform: translateX(-3vw) rotate(90deg);
+    }
+  }
+  .song-preview .thumbnail {
+    display: none;
+  }
+  .songs-list .song-preview {
+    grid-template-columns: 10% 2fr 15% 5% 15%;
   }
 }
 
-// @include for-mobile-layout {
-//   .station-details {
-//     grid-template-rows: ;
-//   }
-// }
+@include for-mobile-layout {
+  .songs-list .song-preview {
+    grid-template-columns: 10% 2fr 15% 10% 5%;
+  }
+  .station-details {
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 150px 100px 50px 1fr;
+  }
+  .station-details .station-details-img {
+    grid-column: 2;
+    width: 150px;
+    justify-self: center;
+  }
+  .station-details .station-details-info {
+    grid-row: 2;
+    justify-self: flex-start;
+    .title {
+      line-height: normal;
+    }
+    & > * {
+      margin-bottom: 2px;
+    }
+  }
+  .song-list-options {
+    grid-column: 2;
+    grid-row: 3/-1;
+  }
+  .station-list-container {
+    grid-row: 4;
+  }
+   .song-list-options .song-results {
+    grid-column: 1/-1;
+    height: 90%;
+  }
+  .song-list-options .song-list-search.open {
+    grid-column: 1/-1;
+  }
+}

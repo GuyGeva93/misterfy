@@ -22,7 +22,7 @@
 		<div v-show="loaded" class="hero-img">
 			<img src="@/assets/img/hero.png" @load="onImgLoad" />
 		</div>
-		<div v-show="loaded" class="station-main">
+		<div ref="stationMain" v-show="loaded" class="station-main">
 			<h2 class="top-picks">TOP PICKS</h2>
 			<station-list
 				class="top-picks-carousel"
@@ -62,7 +62,7 @@ export default {
 	computed: {
 		stations() {
 			const stations = this.$store.getters.stationsToDisplay;
-			console.log(stations)
+			// console.log(stations)
 			return stations;
 		},
 		topPicks() {
@@ -87,7 +87,10 @@ export default {
 	},
 	methods: {
 		scrollDown() {
-			window.scrollTo(0, 927)
+			const div = this.$refs.stationMain
+			const yOffset = -80;
+			const y=div.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			window.scrollTo({top: y})
 		},
 		onImgLoad() {
 			this.loaded = true;
