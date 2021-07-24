@@ -103,5 +103,7 @@ export default {
 			},
 		},
 	},
+	created () {
+	},
 };
 </script>
