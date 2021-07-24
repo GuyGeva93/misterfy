@@ -100,13 +100,13 @@ export default {
         console.log("Error on chat add =>", err);
       }
 
-      try {
-        const reply = await chatService.botReply(copiedMsg);
-        socketService.emit("chat newMsg", reply);
+      // try {
+      //   const reply = await chatService.botReply(copiedMsg);
+      //   socketService.emit("chat newMsg", reply);
 
-      } catch (err) {
-        console.log("Error on chat bot reply =>", err);
-      }
+      // } catch (err) {
+      //   console.log("Error on chat bot reply =>", err);
+      // }
     },
     async loadMsgs() {
       const { chat } = this.$refs;

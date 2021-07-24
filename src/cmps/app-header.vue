@@ -6,23 +6,27 @@
       <img class="logo-txt" src="../assets/logo/logo-txt.png" />
     </span>
     <filter-text-search @search="search" />
-    <h2 class="user-greeting" v-if="loggedinUser">Hello {{ loggedinUser.fullname.substr(0, loggedinUser.fullname.indexOf(' '))}}</h2>
+    <div class="user-greeting" v-if="loggedinUser">
+      <img class="user-img" :src="loggedinUser.imgUrl" :alt="loggedinUser.fullname">
+    <h3>  Hello
+      <span class="user-name">{{ loggedinUser.fullname.substr(0, loggedinUser.fullname.indexOf(" ")) }}</span> !</h3>
+    </div>
     <div class="hamburger-container">
-    <svg
-      class="hamburger"
-      @click="toggleNavEntry"
-      height="32px"
-      id="Layer_1"
-      style="enable-background: new 0 0 32 32"
-      version="1.1"
-      viewBox="0 0 32 32"
-      width="32px"
-      xml:space="preserve"
-    >
-      <path
-        d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"
-      />
-    </svg>
+      <svg
+        class="hamburger"
+        @click="toggleNavEntry"
+        height="32px"
+        id="Layer_1"
+        style="enable-background: new 0 0 32 32"
+        version="1.1"
+        viewBox="0 0 32 32"
+        width="32px"
+        xml:space="preserve"
+      >
+        <path
+          d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"
+        />
+      </svg>
     </div>
     <nav class="main-nav" :class="{ 'nav-open': isNavBurgerOpen }">
       <filter-text-search @search="search" />
@@ -30,13 +34,13 @@
         Creatify
       </button>
       <span class="sep">|</span>
-      <router-link class="nav-link" to="/explore" @click.native="scrollTop"
+      <router-link class="nav-link" to="/explore" @click.native="exploreClicked"
         >Explore</router-link
       ><span class="sep">|</span>
-      <router-link class="nav-link" to="/about">About</router-link
+      <router-link class="nav-link" to="/about" @click.native="toggleNavEntry">About</router-link
       ><span class="sep">|</span>
       <template v-if="!loggedinUser">
-        <router-link to="/signup">Signup</router-link></template
+        <router-link to="/signup" @click.native="toggleNavEntry">Signup</router-link></template
       >
       <template v-else
         ><button class="logout-btn" @click="logout">Logout</button></template
@@ -59,6 +63,10 @@ export default {
     };
   },
   methods: {
+    exploreClicked() {
+      this.scrollTop();
+      this.toggleNavEntry();
+    },
     scrollTop() {
       window.scrollTo(0, 0);
     },
@@ -72,7 +80,8 @@ export default {
       window.scrollTo(0, 0);
     },
     search(name) {
-      if(!name)return;
+      this.toggleNavEntry();
+      if (!name) return;
       //Preventing duplicated route error
       const currName = this.$route.params.name;
       if (currName && currName === name) return;
@@ -103,6 +112,7 @@ export default {
       await this.$store.dispatch({ type: "logout" });
     },
     toggleNavEntry() {
+      console.log("5");
       this.isNavBurgerOpen = !this.isNavBurgerOpen;
     },
   },

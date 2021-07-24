@@ -55,6 +55,20 @@ header {
             }
         }
     }
+    .user-greeting {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .user-name {
+            color: gold;
+        }
+        .user-img {
+            width: 50px;
+            // height: 50%;
+            // object-fit: cover;
+            border-radius: 50%;
+        }
+    }
     .hamburger {
         display: none;
         // filter: invert(96%) sepia(100%) saturate(0%) hue-rotate(65deg) brightness(105%) contrast(103%);

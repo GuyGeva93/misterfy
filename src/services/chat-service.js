@@ -1,6 +1,6 @@
 // import { storageService } from './async-storage-service.js'
 // import { socketService } from './socket-service.js';
-import { botService } from './bot-service.js';
+// import { botService } from './bot-service.js';
 import { httpService } from './http-service.js'
 import { stationService } from './station-service.js';
 // const CHAT_KEY = "chatMsgs";
@@ -10,7 +10,7 @@ import { stationService } from './station-service.js';
 export const chatService = {
     query,
     add,
-    botReply,
+    // botReply,
     getEmptyMsg,
     clearChatMsgs
 }
@@ -40,23 +40,23 @@ async function add(newMsg) {
     }
 }
 
-function botReply(newMsg) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const reply = {
-                stationId: newMsg.stationId,
-                sentAt: Date.now(),
-                txt: botService.sendMsg(newMsg),
-                from: {
-                    username: 'Botify',
-                    _id: '',
-                }
-            };
-            add(reply);
-            resolve(reply)
-        }, 1500);
-    })
-}
+// function botReply(newMsg) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             const reply = {
+//                 stationId: newMsg.stationId,
+//                 sentAt: Date.now(),
+//                 txt: botService.sendMsg(newMsg),
+//                 from: {
+//                     username: 'Botify',
+//                     _id: '',
+//                 }
+//             };
+//             add(reply);
+//             resolve(reply)
+//         }, 1500);
+//     })
+// }
 
 function getEmptyMsg() {
     return {
