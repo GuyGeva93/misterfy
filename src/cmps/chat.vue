@@ -1,5 +1,6 @@
 <template>
   <section v-if="msgs" class="chat-container">
+      <button class="btn-close" @click="closeChat">✖</button>
     <section class="chat" ref="chat">
       <h2>The wall</h2>
       <ul class="clear-list msg-list">
@@ -28,6 +29,7 @@
         </svg>
       </button>
     </form>
+ 
     <!-- <button @click.stop="clearChatMsgs">Clear messages</button> -->
   </section>
 </template>
@@ -125,6 +127,9 @@ export default {
         currStation: updatedStation,
       });
     },
+    closeChat(){
+      this.$emit('closeChat');
+    }
   },
   watch:{
 stationId:{

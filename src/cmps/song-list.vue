@@ -8,6 +8,8 @@
     </div>
     <ul class="songs-list">
       <draggable
+      :options="{delay: 400}"
+      delay-on-touch-only=true
         class="list-group"
         v-model="mySongs"
         v-bind="dragOptions"
@@ -43,6 +45,12 @@ export default {
     draggable,
   },
   computed: {
+    // narrowMediaQuery() {
+    //   return window.matchMedia("(max-width: 600px)").matches;
+    // },
+    // isHover(){
+    // return this.narrowMediaQuery
+    // },
     mySongs: {
       get() {
         return this.currStation.songs;

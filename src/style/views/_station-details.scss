@@ -6,6 +6,9 @@
     gap: 20px;
     grid-template-columns: 12.5% 12.5% repeat(6, 1fr);
     grid-template-rows: 250px 40px 1fr 1fr;
+    .btn-open-chat {
+        display: none;
+    }
     height: calc(100vh - 230px);
     .station-details-img {
         box-shadow: 12px 7px 15px 8px $clr4;
@@ -296,6 +299,22 @@
     .station-details {
         margin-left: 10px;
         grid-template-columns: 250px repeat(5, 1fr);
+        .btn-open-chat {
+            display: block;
+            position: absolute;
+            top: 115px;
+            right: 0;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            font-size: 1.1rem;
+            background-color: #3e3e3e;
+            border: 0.5px solid;
+            color: white;
+            padding: 5px;
+            &:hover {
+                color: gold;
+            }
+        }
     }
     .station-details .station-details-img {
         grid-column: 1;
@@ -379,6 +398,7 @@
         grid-column: 1/2;
         width: 100%;
         object-fit: contain;
+        max-height: 200px;
     }
     .station-details .station-details-info {
         grid-column: 2/-1;
@@ -407,6 +427,11 @@
     // .station-details .station-details-info .share-options {
     //     // right: 10%;
     // }
+    .station-details {
+        .btn-open-chat {
+            left: 15%;
+        }
+    }
     .station-details .songs-list-container .songs-list {
         height: 30vh;
     }
@@ -422,6 +447,7 @@
         grid-column: 2;
         width: 150px;
         justify-self: center;
+        max-height: 150px;
     }
     .station-details .station-details-info {
         grid-row: 2;
