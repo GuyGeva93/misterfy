@@ -16,10 +16,10 @@
         grid-column: 2/3;
         display: grid;
         width: 100%;
-        height: 90%;
+        height: 100%;
         .VueCarousel-wrapper {
             width: 100%;
-            height: 100%;
+            height: 300px;
             .VueCarousel-inner {
                 width: 100%;
                 flex-basis: 20% !important;
