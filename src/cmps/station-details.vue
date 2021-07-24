@@ -1,6 +1,6 @@
 <template>
   <section ref="grid" class="station-details" v-if="currStation">
-       <div v-if="confirmMsg" class="screen-cover"></div>
+    <div v-if="confirmMsg" class="screen-cover"></div>
     <chat :stationId="stationId" class="section-details-chat" />
     <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
     <section v-if="currStation" class="station-details-info">
@@ -9,7 +9,30 @@
       <h4>
         Station Author: <span>{{ currStation.createdBy.username }}</span>
       </h4>
-      <h4>Listeners: 14,532</h4>
+      <h4>Listeners: {{getRandNum}}</h4>
+      <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
+      <div class="share-options">
+        <ShareNetwork
+    network="facebook"
+    url="this is where we need the url in heroku"
+    title="Check out my station! i made a playlist you might like"
+    description=""
+    quote=""
+    hashtags="vuejs,music,station,mistrefy"
+  >
+    <img class="facebook-icon" src="../assets/social-icons/facebook.png" >
+</ShareNetwork>
+        <ShareNetwork
+    network="whatsapp"
+    url="this is where we need the url in heroku"
+    title="Check out my station! i made a playlist you might like"
+    description=""
+    quote=""
+    hashtags="vuejs,music,station,mistrefy"
+  >
+    <img class="whatsapp-icon" src="../assets/social-icons/whatsapp.png" >
+</ShareNetwork>
+      </div>
     </section>
     <song-list-options
       @search="search"
@@ -28,6 +51,7 @@
 <script>
 import { youtubeService } from "@/services/youtube-service.js";
 import { eventBusService } from "@/services/eventBus-service.js";
+import { utilService } from "@/services/util-service.js";
 import songListOptions from "@/cmps/song-list-options.vue";
 import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
@@ -53,10 +77,14 @@ export default {
       mainColor: null,
       likedStations: [],
       confirmMsg: null,
+      isSharing: false
     };
   },
 
   computed: {
+    getRandNum() {
+      return utilService.getRandomInt(1000, 99999).toLocaleString()
+    },
     stationId() {
       return this.$route.params.stationId;
     },
@@ -75,6 +103,9 @@ export default {
   },
 
   methods: {
+     toggleSharing(){
+       this.isSharing = !this.isSharing
+     },
     async search(query) {
       try {
         const res = await youtubeService.query(query);

@@ -6,7 +6,7 @@
       <img class="logo-txt" src="../assets/logo/logo-txt.png" />
     </span>
     <filter-text-search @search="search" />
-    <h2 v-if="loggedinUser">Hello, {{ loggedinUser.fullname }}</h2>
+    <h2 class="user-greeting" v-if="loggedinUser">Hello {{ loggedinUser.fullname.substr(0, loggedinUser.fullname.indexOf(' '))}}</h2>
     <div class="hamburger-container">
     <svg
       class="hamburger"
