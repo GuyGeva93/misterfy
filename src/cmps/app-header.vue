@@ -9,7 +9,8 @@
     <div class="user-greeting" v-if="loggedinUser">
       <img class="user-img" :src="loggedinUser.imgUrl" :alt="loggedinUser.fullname">
     <h3>  Hello
-      <span class="user-name">{{ loggedinUser.fullname.substr(0, loggedinUser.fullname.indexOf(" ")) }}</span> !</h3>
+      <span class="user-name">{{ getFirstName }}</span> !</h3>
+    <!-- <h2 class="user-greeting" >Hello {{ getFirstName }}</h2> -->
     </div>
     <div class="hamburger-container">
       <svg
@@ -117,6 +118,14 @@ export default {
     },
   },
   computed: {
+    getFirstName() {
+     let firstName = this.loggedinUser.fullname.substr(
+        0,
+        this.loggedinUser.fullname.indexOf(" ")
+      );
+      if(!firstName) return this.loggedinUser.fullname
+      else return firstName
+    },
     tag() {
       return this.$route.params.tag;
     },

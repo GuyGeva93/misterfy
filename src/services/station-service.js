@@ -26,7 +26,8 @@ async function query(filterBy) {
     // return stations
 
     try {
-        const data = await httpService.get(`station/`, { filterBy })
+        const data = await httpService.get(`station`, { filterBy })
+            // const data = await httpService.get(`station`, { params: filterBy })
         return data
     } catch (err) {
         console.log('Error on station service =>', err)
