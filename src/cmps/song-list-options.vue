@@ -132,7 +132,7 @@ export default {
 			}
 		},
 		like() {
-		  this.$store.dispatch({ type: "likedStation", station: this.currStation });
+			this.$store.dispatch({ type: "likedStation", station: this.currStation });
 		},
 		playStation() {
 			if (!this.currStation.songs || !this.currStation.songs.length) return;
