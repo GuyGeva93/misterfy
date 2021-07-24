@@ -10,29 +10,35 @@
       <h4>
         Station Author: <span>{{ currStation.createdBy.username }}</span>
       </h4>
-      <h4>Listeners: {{getRandNum}}</h4>
+      <h4>Listeners: {{ getRandNum }}</h4>
       <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
       <div class="share-options">
         <ShareNetwork
-    network="facebook"
-    url="this is where we need the url in heroku"
-    title="Check out my station! i made a playlist you might like"
-    description=""
-    quote=""
-    hashtags="vuejs,music,station,mistrefy"
-  >
-    <img class="facebook-icon" src="../assets/social-icons/facebook.png" >
-</ShareNetwork>
+          network="facebook"
+          :url="getUrl"
+          title="Check out my station!"
+          description="This is a cool playlist i made and i think you might like"
+          quote="Listening is everything"
+          hashtags="vuejs, music, station, mistrefy"
+        >
+          <img
+            class="facebook-icon"
+            src="../assets/social-icons/facebook.png"
+          />
+        </ShareNetwork>
         <ShareNetwork
-    network="whatsapp"
-    url="this is where we need the url in heroku"
-    title="Check out my station! i made a playlist you might like"
-    description=""
-    quote=""
-    hashtags="vuejs,music,station,mistrefy"
-  >
-    <img class="whatsapp-icon" src="../assets/social-icons/whatsapp.png" >
-</ShareNetwork>
+          network="whatsapp"
+          :url="getUrl"
+          title="Check out my station!"
+          description="This is a cool playlist i made and i think you might like"
+          quote="Listening is everything"
+          hashtags="vuejs, music, station, mistrefy"
+        >
+          <img
+            class="whatsapp-icon"
+            src="../assets/social-icons/whatsapp.png"
+          />
+        </ShareNetwork>
       </div>
     </section>
     <song-list-options
@@ -85,8 +91,11 @@ export default {
   },
 
   computed: {
+    getUrl() {
+      return `https://misterfy.herokuapp.com/#/details/${this.currStation._id}`;
+    },
     getRandNum() {
-      return utilService.getRandomInt(1000, 99999).toLocaleString()
+      return utilService.getRandomInt(1000, 99999).toLocaleString();
     },
     stationId() {
       return this.$route.params.stationId;
@@ -106,9 +115,9 @@ export default {
   },
 
   methods: {
-     toggleSharing(){
-       this.isSharing = !this.isSharing
-     },
+    toggleSharing() {
+      this.isSharing = !this.isSharing;
+    },
     async search(query) {
       try {
         const res = await youtubeService.query(query);
@@ -196,7 +205,7 @@ export default {
   //   currStation: {
   //      handler() {
   //       const {currSong}=this.$store.getters;
-        
+
   //       if(!currSong){
   //         if(!this.currStation.songs||!this.currStation.songs.length)return;
   //         const songId=this.currStation.songs[0].id;
