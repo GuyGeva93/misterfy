@@ -46,13 +46,13 @@ export default {
   async created() {
     socketService.emit("chat topic", this.stationId);
     socketService.on("chat addMsg", this.loadMsgs);
-    if (!this.msgs.length) {
-      try {
-        this.msgs = await chatService.query(this.stationId);
-      } catch (err) {
-        console.log("Error on chat query =>", err);
-      }
-    }
+    // if (!this.msgs.length) {
+    //   try {
+    //     this.msgs = await chatService.query(this.stationId);
+    //   } catch (err) {
+    //     console.log("Error on chat query =>", err);
+    //   }
+    // }
     if (!this.currUserId) {
       this.$store.commit({ type: "setUserId" });
     }
@@ -104,7 +104,6 @@ export default {
         const reply = await chatService.botReply(copiedMsg);
         socketService.emit("chat newMsg", reply);
 
-        // this.msgs.push(reply);
       } catch (err) {
         console.log("Error on chat bot reply =>", err);
       }
@@ -126,6 +125,15 @@ export default {
         currStation: updatedStation,
       });
     },
+  },
+  watch:{
+stationId:{
+  async handler(stationId){
+    this.msgs=await chatService.query(stationId);
+  },
+  deep:true,
+  immediate:true
+}
   },
   destroyed() {
     socketService.off("chat addMsg", this.loadMsgs);

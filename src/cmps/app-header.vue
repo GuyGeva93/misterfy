@@ -63,7 +63,12 @@ export default {
       window.scrollTo(0, 0);
     },
     goHome() {
-      this.$router.push("/");
+      this.$router.push("/").catch((err) => {
+        //When same route appears
+        if (err.name != "NavigationDuplicated") {
+          throw err;
+        }
+      });
       window.scrollTo(0, 0);
     },
     search(name) {

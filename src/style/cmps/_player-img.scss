@@ -8,6 +8,7 @@
     z-index: 19;
     object-fit: cover;
     background-color: darken($clr1, 10%);
+    cursor: pointer;
     img {
         height: 100%;
     }
