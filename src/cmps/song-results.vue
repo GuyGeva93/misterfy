@@ -44,7 +44,7 @@ export default {
         // console.log(this.$store.state.stationStore.currStation.songs);
         return this.$store.state.stationStore.currStation.songs;
       },
-      set(clone) {
+      set() {
         this.addSong(this.song);
       },
     },
