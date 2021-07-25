@@ -124,6 +124,7 @@
         grid-row: 3/4;
         font-size: 0.95rem;
         overflow-y: auto;
+        width: 100%;
         &::-webkit-scrollbar {
             width: 10px;
             border-radius: 10px;
@@ -270,14 +271,11 @@
         }
         .song-results {
             grid-column: 1/7;
+            width: 100%;
         }
     }
     .chat {
         grid-column: 1/2;
-    }
-    .msg-form input,
-    button {
-        // display: none;
     }
 }
 
@@ -417,7 +415,7 @@
         left: initial;
         right: 3%;
         padding: 5px;
-        bottom: 4px
+        bottom: 120%
     }
     .songs-list-container .songs-list .list-group li {
         height: 45px;
@@ -438,13 +436,14 @@
     .station-details .station-details-img {
         grid-column: 2;
         width: 150px;
-        justify-self: center;
+        justify-self: start;
         max-height: 150px;
     }
     .station-details .station-details-info {
         grid-row: 2;
         .title {
             line-height: normal;
+            font-size: 1.5rem;
         }
         .author,
         .listeners,
@@ -462,9 +461,17 @@
     .station-list-container {
         grid-row: 4;
     }
+    .song-list-options .song-list-search.open,
     .song-list-options .song-results {
+        width: 100%;
         grid-column: 1/-1;
         height: 90%;
+    }
+    .song-list-options .song-list-search.open {
+        height: 40px;
+        input {
+            height: 40px;
+        }
     }
     .song-list-options .song-list-search.open {
         grid-column: 1/-1;
