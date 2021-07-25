@@ -1,6 +1,7 @@
 <template>
   <section v-if="results" class="song-results">
-    <draggable v-model="myList" v-bind="dragOptions">
+    <draggable v-model="myList" v-bind="dragOptions" :delay="400"
+      delay-on-touch-only=true>
       <div
         v-for="song in results"
         :key="song.id.videoId"
