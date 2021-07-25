@@ -131,7 +131,7 @@ export default {
     },
     async search(query) {
       try {
-        const res = await youtubeService.query(query);
+         await youtubeService.query(query);
       } catch (err) {
         console.log("Error on YouTube query =>", err);
       }

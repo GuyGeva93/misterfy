@@ -115,7 +115,7 @@ export const userStore = {
                 }
                 this.dispatch({ type: 'saveStation', station })
                 commit({ type: 'setLoggedinUser', user: currUser })
-                const updatedUser = await userService.update(currUser)
+                await userService.update(currUser)
             } catch (err) {
                 console.log('Error on likedStation =>', err)
                 throw err
