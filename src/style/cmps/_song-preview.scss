@@ -88,3 +88,9 @@
     border: gold 1px solid;
     opacity: 1;
 }
+
+@include for-narrow-layout {
+    .station-details .songs-list-container .songs-list {
+        font-size: 0.9rem;
+    }
+}

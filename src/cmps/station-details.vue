@@ -1,16 +1,27 @@
 <template>
   <section ref="grid" class="station-details" v-if="currStation">
-     <button class="btn-open-chat" v-if="!isChatOpened" @click="isChatOpened=true">Open chat</button>
-    <div v-if="confirmMsg||isChatOpened" class="screen-cover"></div>
-    <chat :stationId="stationId" class="section-details-chat" :class="{'chat-opened':isChatOpened}" @closeChat="closeChat" />
+    <button
+      class="btn-open-chat"
+      v-if="!isChatOpened"
+      @click="isChatOpened = true"
+    >
+      <img src="../assets/icons/chat-bubbles-with-ellipsis.png">
+    </button>
+    <div v-if="confirmMsg || isChatOpened" class="screen-cover"></div>
+    <chat
+      :stationId="stationId"
+      class="section-details-chat"
+      :class="{ 'chat-opened': isChatOpened }"
+      @closeChat="closeChat"
+    />
     <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
     <section v-if="currStation" class="station-details-info">
       <h2 class="title">{{ currStation.name }}</h2>
       <h4 class="tags">Genres: {{ getTags }}</h4>
-      <h4>
-        Station Author: <span>{{ currStation.createdBy.username }}</span>
+      <h4 class="author">
+        Created By: <span>{{ currStation.createdBy.username }}</span>
       </h4>
-      <h4>Listeners: {{ getRandNum }}</h4>
+      <h4 class="listeners">Listeners: {{ getRandNum }}</h4>
       <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
       <div class="share-options">
         <ShareNetwork
@@ -46,13 +57,14 @@
       @opened="opened"
       @removeStation="openModal"
     />
-        
+
     <template v-if="confirmMsg">
       <modal :msg="confirmMsg" @closeModal="confirmMsg = null" @setOk="setOk" />
     </template>
     <section class="station-list-container" :class="{ open: isOpen }">
       <song-list :songs="currStation.songs" />
     </section>
+      <vue-particles style="z-index: -1; height: 90%; width: 100%; position: absolute" color="#dedede"></vue-particles>
   </section>
 </template>
 
@@ -65,7 +77,6 @@ import songList from "@/cmps/song-list";
 import chat from "@/cmps/chat";
 import modal from "@/cmps/modal";
 import { socketService } from "@/services/socket-service.js";
-// import { wrapGrid } from 'animate-css-grid'
 export default {
   async created() {
     socketService.on("station updated", this.updateStation);
@@ -86,7 +97,7 @@ export default {
       likedStations: [],
       confirmMsg: null,
       isSharing: false,
-      isChatOpened:false
+      isChatOpened: false,
     };
   },
 
@@ -197,9 +208,9 @@ export default {
         }, 2000);
       }
     },
-    closeChat(){
-      this.isChatOpened=false;
-    }
+    closeChat() {
+      this.isChatOpened = false;
+    },
   },
   // watch: {
   //   currStation: {

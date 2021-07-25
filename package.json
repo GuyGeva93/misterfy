@@ -27,6 +27,7 @@
     "vue-carousel": "^0.18.0",
     "vue-debounce": "^3.0.0",
     "vue-fontawesome": "0.0.2",
+    "vue-particles": "^1.0.9",
     "vue-plyr": "^7.0.0",
     "vue-router": "^3.2.0",
     "vue-social-sharing": "^3.0.8",

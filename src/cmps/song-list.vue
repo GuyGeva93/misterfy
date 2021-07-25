@@ -8,7 +8,7 @@
     </div>
     <ul class="songs-list">
       <draggable
-      :options="{delay: 400}"
+      :delay="400"
       delay-on-touch-only=true
         class="list-group"
         v-model="mySongs"
