@@ -2,11 +2,12 @@
     grid-row: 2/3;
     grid-column: 2/-2;
     display: grid;
-    grid-template-rows: 70px 1fr 100px;
+    grid-template-rows: 70px 150px 1fr 100px;
     flex-direction: column;
     .explore {
         display: flex;
         flex-direction: column;
+        grid-row: 2/3;
         .tags-list {
             list-style: none;
             margin: 30px 0px 30px 0px;
@@ -36,7 +37,7 @@
     .explore-station-list {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        grid-row: 2/3;
+        grid-row: 3/4;
         grid-auto-rows: 330px;
         gap: 2%;
         div {
