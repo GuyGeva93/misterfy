@@ -64,18 +64,18 @@ body {
 }
 
 @include for-narrow-layout {
-    body {
-        overflow-x: hidden
-    }
-    html {
-        overflow-x: hidden
-    }
     .main-layout {
         grid-template-columns: 20px 1fr 20px;
     }
 }
 
 @include for-mobile-layout {
+    body {
+        overflow-x: hidden
+    }
+    html {
+        overflow-x: hidden
+    }
     .main-layout {
         grid-template-columns: 5% 1fr 5%;
     }

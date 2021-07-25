@@ -174,3 +174,10 @@
         flex-basis: 100% !important;
     }
 }
+
+@include for-mobile-layout {
+    .station-list .VueCarousel-slide .station-preview a .card-container .station-preview-card .first-song-preview-container {
+        width: 70px;
+        height: 70px;
+    }
+}
