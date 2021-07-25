@@ -96,14 +96,6 @@ export default {
           throw err;
         }
       });
-
-      //   const res = await youtubeService.name(name);
-      //   res.items.map((item) => {
-      //     console.log("video id:", item.id.videoId);
-      //     console.log("video snippet:", item.snippet.title);
-      //     console.log("video thumbnail:", item.snippet.thumbnails.default);
-      //     console.log("video publishedAt:", item.snippet.publishedAt);
-      //   });
     },
 
     toggleCreating() {
@@ -113,7 +105,6 @@ export default {
       await this.$store.dispatch({ type: "logout" });
     },
     toggleNavEntry() {
-      console.log("5");
       this.isNavBurgerOpen = !this.isNavBurgerOpen;
     },
   },

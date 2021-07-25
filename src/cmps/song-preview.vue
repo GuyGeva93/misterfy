@@ -89,7 +89,6 @@ export default {
   },
   computed: {
     isRunning() {
-      console.log(this.$store.getters.isPlaying);
       return this.$store.getters.isPlaying;
     },
     togglePlayPause() {
@@ -108,7 +107,6 @@ export default {
         this.$store.commit({ type: "loadSongToPlayer", songId });
         this.$store.commit({ type: "setCurrSong", songId });
       } else if (songId === this.$store.getters.currSongId) {
-        console.log("NOW");
         eventBusService.$emit("togglePlay");
       } else {
         this.$store.commit({ type: "loadSongToPlayer", songId });
@@ -143,14 +141,7 @@ export default {
         }, 2000);
       }
     },
-    // like() {
-    //   this.isLiked = !this.isLiked;
-    //   this.$store.dispatch({ type: "likedSong", song: this.song });
-    // },
-
     refreshStation(savedStation) {
-      debugger;
-      console.log(savedStation);
       this.$store.commit({
         type: "setCurrStation",
         currStation: savedStation,
@@ -162,7 +153,6 @@ export default {
         type: "confirm",
         songId: this.song.id,
       };
-      console.log("msg", msg);
       eventBusService.$emit("removeSong", msg);
     },
   },

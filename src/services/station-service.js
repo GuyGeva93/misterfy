@@ -100,7 +100,6 @@ function getEmptyStation() {
         likedByUsers: 0,
         songs: []
     }
-    console.log('station', station)
     return station
 }
 

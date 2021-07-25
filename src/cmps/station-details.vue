@@ -132,13 +132,6 @@ export default {
     async search(query) {
       try {
         const res = await youtubeService.query(query);
-        console.log(res.items[0].snippet.thumbnails);
-        res.items.map((item) => {
-          console.log("video id:", item.id.videoId);
-          console.log("video snippet:", item.snippet.title);
-          console.log("video thumbnail:", item.snippet.thumbnails.default.url);
-          console.log("video publishedAt:", item.snippet.publishedAt);
-        });
       } catch (err) {
         console.log("Error on YouTube query =>", err);
       }

@@ -29,7 +29,6 @@
         <span v-if="!newStation.imgUrl">Upload file</span>
         <input type="file" @change="handleImg" />
       </label>
-      <!-- <label v-if="newStation.imgUrl">Image preview</label> -->
       <input
         type="url"
         placeholder="Image URL"
@@ -140,7 +139,6 @@ export default {
           type: "saveStation",
           station: this.newStation,
         });
-        //  debugger
         userMsg = {
           txt: "Station Added",
           type: "success",
@@ -162,9 +160,6 @@ export default {
     },
     closeModal() {
       this.$emit("closeModal");
-    },
-    tagsShow() {
-      console.log(this.newStation.tags);
     },
   },
 };

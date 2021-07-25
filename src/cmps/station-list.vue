@@ -64,23 +64,18 @@ export default {
     },
     numOfSlides() {
       if (this.narrowMediaQuery) {
-        // console.log("narrow");
         return 1;
       }
       if (this.normalMediaQuery) {
-        // console.log("normal");
         return 2;
       }
       if (this.wideMediaQuery) {
-        // console.log("wide");
         return 3;
       }
       else if (this.widerMediaQuery) {
-        // console.log("wider");
         return 4;
       }
       else {
-        // console.log("else");
         return 5;
       }
     },

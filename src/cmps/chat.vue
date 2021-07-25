@@ -48,13 +48,6 @@ export default {
   async created() {
     socketService.emit("chat topic", this.stationId);
     socketService.on("chat addMsg", this.loadMsgs);
-    // if (!this.msgs.length) {
-    //   try {
-    //     this.msgs = await chatService.query(this.stationId);
-    //   } catch (err) {
-    //     console.log("Error on chat query =>", err);
-    //   }
-    // }
     if (!this.currUserId) {
       this.$store.commit({ type: "setUserId" });
     }
@@ -101,14 +94,6 @@ export default {
       } catch (err) {
         console.log("Error on chat add =>", err);
       }
-
-      // try {
-      //   const reply = await chatService.botReply(copiedMsg);
-      //   socketService.emit("chat newMsg", reply);
-
-      // } catch (err) {
-      //   console.log("Error on chat bot reply =>", err);
-      // }
     },
     async loadMsgs() {
       const { chat } = this.$refs;

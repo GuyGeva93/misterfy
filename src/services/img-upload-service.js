@@ -11,7 +11,6 @@ export const uploadImg = async (file) => {
   FORM_DATA.append('file', file)
   FORM_DATA.append('folder', 'Sprint 4 stations imgs');
   FORM_DATA.append('upload_preset', UPLOAD_PRESET)
-  console.log('uploadImg -> FORM_DATA', FORM_DATA)
   // Sending a post method request to Cloudniarys' API
   try {
     const res = await axios.post(UPLOAD_URL, FORM_DATA)

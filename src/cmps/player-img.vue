@@ -11,7 +11,6 @@ export default {
     },
     currSongImg() {
       const currSong = this.$store.getters.currSong;
-      console.log(currSong);
       const { imgUrl } = currSong;
       return imgUrl;
     },
