@@ -9,6 +9,8 @@ import VueSocialSharing from 'vue-social-sharing'
 Vue.config.productionTip = false
 
 Vue.use(VueSocialSharing);
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 
 
 import VuePlyr from 'vue-plyr'
