@@ -62,7 +62,7 @@ export default {
 	},
 	computed: {
 		stations() {
-			const stations = this.$store.getters.stationsToDisplay;
+			const stations = this.$store.getters.allStations;
 			// console.log(stations)
 			return stations;
 		},

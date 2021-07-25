@@ -13,11 +13,19 @@
       </ul>
     </section>
     <template v-if="!isLoading">
-      <section v-if="stations" class="explore-station-list">
-        <div v-for="station in stations" :key="station._id">
+      <section v-if="filteredStations" class="explore-station-list">
+        <!-- <h3>{{filterTitle}}</h3> -->
+        <div v-for="station in filteredStations" :key="station._id">
           <station-preview :station="station" />
           <!-- <station-list :stations="stations" /> -->
         </div>
+      <!-- <div v-if="!noFilter" class="more-stations"> -->
+        <!-- <h2 class="more-stations-title">More stations:</h2> -->
+          <!-- <div v-for="station in stations" :key="'a'+station._id"> -->
+          <!-- <station-preview :station="station" /> -->
+          <!-- <station-list :stations="stations" /> -->
+        <!-- </div> -->
+      <!-- </div> -->
       </section>
       <h2 v-else>No stations found</h2>
     </template>
@@ -67,14 +75,34 @@ export default {
       return this.$route.params.name;
     },
     stations() {
-      return this.$store.getters.stationsToDisplay;
+      return this.$store.getters.allStations;
+    },
+    filteredStations(){
+      return this.$store.getters.stationsToDisplay
     },
     tags() {
       // console.log(this.$store.getters.tags);
       const tags = this.$store.getters.tags;
       return ["All", ...tags];
     },
+    filterTitle(){
+      let {name,tag}=this.$route.params;
+      if(!name||name==='*')if(!tag)name='All';
+      else name='';
+      if(!tag){
+        if(name==='All')tag='';
+        else tag='All';
+      }
+      name+=' ';
+      // return tag;
+      return name+tag;
+    },
+    noFilter(){
+          const {name,tag}=this.$route.params;
+          return (!name||name==='*') && !tag
+    }
   },
+
   components: {
     // stationList,
     stationTag,

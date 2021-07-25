@@ -28,8 +28,9 @@ export default {
     userMsg,
   },
   async created() {
-    const data = await this.$store.dispatch({ type: "loadStations" });
-    this.$store.commit({ type: "setTags", tags: data.tags });
+   await this.$store.dispatch({ type: "loadStations" });
+    // const data = await this.$store.dispatch({ type: "loadStations" });
+    // this.$store.commit({ type: "setTags", tags: data.tags });
   },
   computed: {
     currSong() {
