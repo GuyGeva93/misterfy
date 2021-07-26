@@ -1,11 +1,5 @@
 <template>
   <section class="songs-list-container">
-    <div class="song-list-headers">
-      <span></span>
-      <span>#</span>
-      <span>Title</span>
-      <span><img src="../assets/icons/clock.png" /></span>
-    </div>
     <ul class="songs-list">
       <draggable
       :delay="400"
@@ -45,12 +39,7 @@ export default {
     draggable,
   },
   computed: {
-    // narrowMediaQuery() {
-    //   return window.matchMedia("(max-width: 600px)").matches;
-    // },
-    // isHover(){
-    // return this.narrowMediaQuery
-    // },
+    
     mySongs: {
       get() {
         return this.currStation.songs;
