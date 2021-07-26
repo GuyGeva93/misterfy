@@ -60,29 +60,11 @@ export default {
   methods: {
     async addSong(song) {
       const { stationId } = this.$route.params;
-      let userMsg = null;
-      try {
-        await this.$store.dispatch({ type: "addSong", song, stationId });
-        userMsg = {
-          txt: "Song Added",
-          type: "success",
-        };
-      } catch (err) {
-        userMsg = {
-          txt: "Adding song Failed",
-          type: "error",
-        };
-      } finally {
-        this.$store.commit({ type: "updateUserMsg", userMsg });
-        setTimeout(() => {
-          this.$store.commit({ type: "deleteMsg" });
-        }, 2000);
-      }
+        this.$store.dispatch({ type: "addSong", song, stationId })
     },
     getCurrSong(song) {
       this.song = song;
     },
-  
   },
   mounted() {},
 };
