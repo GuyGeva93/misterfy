@@ -66,6 +66,5 @@ export default {
       this.song = song;
     },
   },
-  mounted() {},
-};
+}
 </script>
