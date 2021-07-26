@@ -26,7 +26,7 @@
         <h4 class="author">
           Created By: <span>{{ currStation.createdBy.username }}</span>
         </h4>
-        <h4 class="listeners">Listeners: {{ getRandNum }}</h4>
+        <h4 class="listeners">Listeners: {{ formatNumber(getRandNum) }}</h4>
         <h4 class="details-likes-count"><img class="details-like-count-heart" src="../assets/icons/like.png" />
        {{ formatNumber(currStation.likedByUsers) }}</h4>
         <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
