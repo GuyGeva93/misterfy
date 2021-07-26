@@ -119,8 +119,11 @@
                     }
                 }
                 .station-likes-count {
-                    display: inline-block;
-                    align-items: center;
+                    // display: inline-block;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-end;
+                    gap: 5px;
                     .card-like-count-heart {
                         width: 20px;
                         padding-top: 10px;
@@ -136,6 +139,10 @@
             margin: 20px;
             align-self: flex-end;
         }
+    }
+    .no-stations-msg {
+        margin-top: 10px;
+        text-align: center;
     }
 }
 
