@@ -5,7 +5,7 @@
       <img class="logo-img" src="../assets/logo/logo-no-txt.png" alt="" />
       <img class="logo-txt" src="../assets/logo/logo-txt.png" />
     </span>
-    <filter-text-search @search="search" />
+    <filter-text-search @search="search" :filterName="filterName" />
     <div class="user-greeting" v-if="loggedinUser">
       <img v-if="loggedinUser.imgUrl" class="user-img" :src="loggedinUser.imgUrl">
       <img v-else src="../assets/icons/user.png" >
@@ -31,7 +31,7 @@
       </svg>
     </div>
     <nav class="main-nav" :class="{ 'nav-open': isNavBurgerOpen }">
-      <filter-text-search @search="search" />
+      <filter-text-search @search="search"  :filterName="filterName" />
       <button class="creatify-btn nav-link" @click.stop="toggleCreating">
         Creatify
       </button>
@@ -83,10 +83,13 @@ export default {
     },
     search(name) {
       this.toggleNavEntry();
-      if (!name) return;
-      //Preventing duplicated route error
-      const currName = this.$route.params.name;
-      if (currName && currName === name) return;
+      if(!name){
+        const {path} = this.$route;
+        console.log(name);
+          if (name !== "" || !path.includes("explore")) return
+      }
+      //   //Preventing duplicated route error
+      // if (currName && currName === name) return;
       if (!name) name = "*";
       let url = "/explore/" + name;
       if (this.tag) url += "/" + this.tag;
@@ -124,6 +127,9 @@ export default {
     loggedinUser() {
       return this.$store.getters.loggedinUser;
     },
+    filterName(){
+      return this.$route.params.name||'';
+    }
   },
 
   components: {

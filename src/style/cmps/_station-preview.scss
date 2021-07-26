@@ -130,11 +130,15 @@
                 }
             }
             .station-likes-count {
+                padding-top: 10px;
+                display: flex;
+                gap: 5px;
                 .card-like-count-heart {
-                    padding-top: 10px;
+                    // padding-top: 10px;
                     filter: invert(14%) sepia(96%) saturate(7064%) hue-rotate(4deg) brightness(110%) contrast(115%);
                 }
                 .card-like-count {
+                    // padding-top: 10px;
                     color: rgb(165, 165, 165);
                 }
             }

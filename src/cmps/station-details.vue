@@ -27,6 +27,8 @@
           Created By: <span>{{ currStation.createdBy.username }}</span>
         </h4>
         <h4 class="listeners">Listeners: {{ getRandNum }}</h4>
+        <h4 class="details-likes-count"><img class="details-like-count-heart" src="../assets/icons/like.png" />
+       {{ formatNumber(currStation.likedByUsers) }}</h4>
         <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
         <div class="share-options">
           <ShareNetwork
@@ -128,7 +130,7 @@ export default {
       return `https://misterfy.herokuapp.com/#/details/${this.currStation._id}`;
     },
     getRandNum() {
-      return utilService.getRandomInt(1000, 99999).toLocaleString();
+      return utilService.getRandomInt(1000, 99999);
     },
     stationId() {
       return this.$route.params.stationId;
@@ -225,6 +227,15 @@ export default {
     },
     closeChat() {
       this.isChatOpened = false;
+    },
+     formatNumber(number) {
+      let count = number;
+      if (count < 1000) return count;
+      count /= 1000;
+      const countStr = Math.round(count * 10) / 10 + "K";
+      if (count < 1000) return countStr;
+      count /= 1000;
+      return Math.round(count * 10) / 10 + "M";
     },
   },
   // watch: {

@@ -23,6 +23,14 @@
         flex-direction: column;
         justify-content: flex-start;
         margin-left: 20px;
+        .details-likes-count {
+            display: flex;
+            gap: 5px;
+            .details-like-count-heart {
+                // padding-top: 2px;
+                filter: invert(14%) sepia(96%) saturate(7064%) hue-rotate(4deg) brightness(110%) contrast(115%);
+            }
+        }
         &>*:not(:last-child) {
             margin-bottom: 10px;
         }
