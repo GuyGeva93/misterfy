@@ -50,7 +50,6 @@
         type="text"
         v-model="selectedTag"
         list="tags"
-        @change="tagsShow"
         placeholder="Genre"
         required
       />

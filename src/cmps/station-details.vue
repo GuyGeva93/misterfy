@@ -19,14 +19,15 @@
         :class="{ 'chat-opened': isChatOpened }"
         @closeChat="closeChat"
       />
-      <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
+      <img ref="img" class="station-details-img" :src="currStation.imgUrl" v-if="currStation.imgUrl"  />
+      <img ref="img" class="station-details-img" src="../assets/img/station-img.jpg" v-else  />
       <section v-if="currStation" class="station-details-info">
         <h2 class="title">{{ currStation.name }}</h2>
         <h4 class="tags">Genres: {{ getTags }}</h4>
         <h4 class="author">
           Created By: <span>{{ currStation.createdBy.username }}</span>
         </h4>
-        <h4 class="listeners">Listeners: {{ formatNumber(getRandNum) }}</h4>
+        <h4 class="listeners">Listeners: {{ formatNumber(currStation.likedByUsers+getRandNum) }}</h4>
         <h4 class="details-likes-count"><img class="details-like-count-heart" src="../assets/icons/like.png" />
        {{ formatNumber(currStation.likedByUsers) }}</h4>
         <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
@@ -131,7 +132,7 @@ export default {
       return `https://misterfy.herokuapp.com/#/details/${this.currStation._id}`;
     },
     getRandNum() {
-      return utilService.getRandomInt(1000, 99999);
+      return utilService.getRandomInt(10, 9999);
     },
     stationId() {
       return this.$route.params.stationId;
