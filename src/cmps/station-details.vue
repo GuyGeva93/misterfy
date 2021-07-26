@@ -1,71 +1,93 @@
 <template>
-  <section ref="grid" class="station-details" v-if="currStation">
-    <button
-      class="btn-open-chat"
-      v-if="!isChatOpened"
-      @click="isChatOpened = true"
+  <!-- <section> -->
+    <section
+      ref="grid"
+      class="station-details"
+      v-if="currStation && stationId === currStation._id"
     >
-      <img src="../assets/icons/chat-bubbles-with-ellipsis.png">
-    </button>
-    <div v-if="confirmMsg || isChatOpened" class="screen-cover"></div>
-    <chat
-      :stationId="stationId"
-      class="section-details-chat"
-      :class="{ 'chat-opened': isChatOpened }"
-      @closeChat="closeChat"
-    />
-    <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
-    <section v-if="currStation" class="station-details-info">
-      <h2 class="title">{{ currStation.name }}</h2>
-      <h4 class="tags">Genres: {{ getTags }}</h4>
-      <h4 class="author">
-        Created By: <span>{{ currStation.createdBy.username }}</span>
-      </h4>
-      <h4 class="listeners">Listeners: {{ getRandNum }}</h4>
-      <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
-      <div class="share-options">
-        <ShareNetwork
-          network="facebook"
-          :url="getUrl"
-          title="Check out my station!"
-          description="This is a cool playlist i made and i think you might like"
-          quote="Listening is everything"
-          hashtags="vuejs, music, station, mistrefy"
-        >
-          <img
-            class="facebook-icon"
-            src="../assets/social-icons/facebook.png"
-          />
-        </ShareNetwork>
-        <ShareNetwork
-          network="whatsapp"
-          :url="getUrl"
-          title="Check out my station!"
-          description="This is a cool playlist i made and i think you might like"
-          quote="Listening is everything"
-          hashtags="vuejs, music, station, mistrefy"
-        >
-          <img
-            class="whatsapp-icon"
-            src="../assets/social-icons/whatsapp.png"
-          />
-        </ShareNetwork>
-      </div>
-    </section>
-    <song-list-options
-      @search="search"
-      @opened="opened"
-      @removeStation="openModal"
-    />
+      <button
+        class="btn-open-chat"
+        v-if="!isChatOpened"
+        @click="isChatOpened = true"
+      >
+        <img src="../assets/icons/chat-bubbles-with-ellipsis.png" />
+      </button>
+      <div v-if="confirmMsg || isChatOpened" class="screen-cover"></div>
+      <chat
+        :stationId="stationId"
+        class="section-details-chat"
+        :class="{ 'chat-opened': isChatOpened }"
+        @closeChat="closeChat"
+      />
+      <img ref="img" class="station-details-img" :src="currStation.imgUrl" />
+      <section v-if="currStation" class="station-details-info">
+        <h2 class="title">{{ currStation.name }}</h2>
+        <h4 class="tags">Genres: {{ getTags }}</h4>
+        <h4 class="author">
+          Created By: <span>{{ currStation.createdBy.username }}</span>
+        </h4>
+        <h4 class="listeners">Listeners: {{ getRandNum }}</h4>
+        <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
+        <div class="share-options">
+          <ShareNetwork
+            network="facebook"
+            :url="getUrl"
+            title="Check out my station!"
+            description="This is a cool playlist i made and i think you might like"
+            quote="Listening is Everything"
+            hashtags="music"
+          >
+            <img
+              class="facebook-icon"
+              src="../assets/social-icons/facebook.png"
+            />
+          </ShareNetwork>
+          <ShareNetwork
+            network="whatsapp"
+            :url="getUrl"
+            title="Check out my station!"
+            description="This is a cool playlist i made and i think you might like"
+            quote="Listening is Everything"
+          >
+            <img
+              class="whatsapp-icon"
+              src="../assets/social-icons/whatsapp.png"
+            />
+          </ShareNetwork>
+        </div>
+      </section>
+      <song-list-options
+        @search="search"
+        @opened="opened"
+        @removeStation="openModal"
+      />
 
-    <template v-if="confirmMsg">
-      <modal :msg="confirmMsg" @closeModal="confirmMsg = null" @setOk="setOk" />
-    </template>
-    <section class="station-list-container" :class="{ open: isOpen }">
-      <song-list :songs="currStation.songs" />
+      <template v-if="confirmMsg">
+        <modal
+          :msg="confirmMsg"
+          @closeModal="confirmMsg = null"
+          @setOk="setOk"
+        />
+      </template>
+      <section class="station-list-container" :class="{ open: isOpen }">
+        <song-list :songs="currStation.songs" />
+      </section>
+      <vue-particles
+        style="z-index: -1; height: 90%; width: 100%; position: absolute"
+        color="#dedede"
+      ></vue-particles>
     </section>
-      <vue-particles style="z-index: -1; height: 90%; width: 100%; position: absolute" color="#dedede"></vue-particles>
-  </section>
+    <!-- <section v-else >
+      <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+      </div>
+    </section> -->
+  <!-- </section> -->
 </template>
 
 <script>
@@ -131,7 +153,7 @@ export default {
     },
     async search(query) {
       try {
-         await youtubeService.query(query);
+        await youtubeService.query(query);
       } catch (err) {
         console.log("Error on YouTube query =>", err);
       }

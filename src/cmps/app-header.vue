@@ -42,7 +42,7 @@
       <router-link class="nav-link" to="/about" @click.native="toggleNavEntry">About</router-link
       ><span class="sep">|</span>
       <template v-if="!loggedinUser">
-        <router-link to="/signup" @click.native="toggleNavEntry">Signup</router-link></template
+        <router-link to="/signup" @click.native="toggleNavEntry">Signup/Login</router-link></template
       >
       <template v-else
         ><button class="logout-btn" @click="logout">Logout</button></template

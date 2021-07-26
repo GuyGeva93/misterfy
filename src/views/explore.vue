@@ -14,18 +14,9 @@
     </section>
     <template v-if="!isLoading">
       <section v-if="filteredStations" class="explore-station-list">
-        <!-- <h3>{{filterTitle}}</h3> -->
         <div v-for="station in filteredStations" :key="station._id">
           <station-preview :station="station" />
-          <!-- <station-list :stations="stations" /> -->
         </div>
-      <!-- <div v-if="!noFilter" class="more-stations"> -->
-        <!-- <h2 class="more-stations-title">More stations:</h2> -->
-          <!-- <div v-for="station in stations" :key="'a'+station._id"> -->
-          <!-- <station-preview :station="station" /> -->
-          <!-- <station-list :stations="stations" /> -->
-        <!-- </div> -->
-      <!-- </div> -->
       </section>
       <h2 v-else>No stations found</h2>
     </template>
@@ -122,6 +113,7 @@ export default {
         try {
           this.$store.commit({ type: "setFilter", filterBy });
           await this.$store.dispatch({ type: "loadStations" });
+          console.log('now?');
         } catch (err) {
           console.log("Error on set filter =>", err);
         }
