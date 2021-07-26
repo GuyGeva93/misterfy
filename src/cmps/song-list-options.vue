@@ -1,6 +1,5 @@
 <template>
 	<section class="song-list-options">
-		
 		<svg
 			@click.stop="like"
 			:class="{ liked: isLiked }"
@@ -19,7 +18,7 @@
 				/>
 			</g>
 		</svg>
-		<img @click.stop="like" src="../assets/icons/heart.png" v-else>
+		<img @click.stop="like" src="../assets/icons/heart.png" v-else />
 		<img
 			:class="{ open: isSearch }"
 			class="plus-btn"
@@ -135,7 +134,18 @@ export default {
 			}
 		},
 		like() {
-			this.$store.dispatch({ type: "likedStation", station: this.currStation });
+			if (!this.$store.getters.loggedinUser) {
+				const userMsg = {
+					txt: 'Must be logged in to like',
+					type: "error",
+				}
+				this.$store.commit({ type: "updateUserMsg", userMsg });
+				setTimeout(() => {
+					this.$store.commit({ type: "deleteMsg" });
+				}, 2000);
+			} else {
+				this.$store.dispatch({ type: "likedStation", station: this.currStation });
+			}
 		},
 		playStation() {
 			if (!this.currStation.songs || !this.currStation.songs.length) return;
