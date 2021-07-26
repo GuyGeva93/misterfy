@@ -4,9 +4,8 @@
     font-size: 1.4em;
     position: absolute;
     z-index: 50;
-    top: 12px;
-    left: 60%;
-    // transform: translate(-50%);
+    top: 60px;
+    left: 50%;
     background-color: #fff;
     border-radius: 10px;
 }
@@ -16,7 +15,7 @@
 }
 
 .msg-error {
-    color: red;
+    color: rgb(180, 3, 3);
 }
 
 .slide-fade-enter-active {

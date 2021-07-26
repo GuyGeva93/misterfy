@@ -27,7 +27,7 @@
           style="width: 105px; max-height: 78.72px; object-fit: contain"
         />
         <span v-if="!newStation.imgUrl">Upload file</span>
-        <input type="file" @change="handleImg" />
+        <input type="file" @change="handleImg"/>
       </label>
       <input
         type="url"

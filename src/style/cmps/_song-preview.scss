@@ -3,7 +3,7 @@
     width: 100%;
     height: 51px;
     display: grid;
-    grid-template-columns: 1fr 2fr 5fr 15% 5% 1fr;
+    grid-template-columns: 1fr 1fr 5fr 15% 5% 1fr;
     justify-content: space-around;
     align-items: center;
     background-color: darken($clr1, 6%);
@@ -22,6 +22,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        justify-self: flex-start;
     }
     .song-preview-play-btn,
     .song-preview-pause-btn {
