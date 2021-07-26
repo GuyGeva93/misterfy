@@ -40,6 +40,10 @@
         grid-row: 2/3;
         grid-auto-rows: 330px;
         gap: 2%;
+        .no-stations-msg {
+            grid-column: 2/5;
+            text-align: center;
+        }
         div {
             display: flex;
             flex-direction: column;
@@ -139,10 +143,6 @@
             margin: 20px;
             align-self: flex-end;
         }
-    }
-    .no-stations-msg {
-        margin-top: 10px;
-        text-align: center;
     }
 }
 
