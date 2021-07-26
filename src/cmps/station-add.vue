@@ -2,6 +2,20 @@
   <section class="station-add">
     <button class="close" @click="closeModal">X</button>
     <h2>Create your new station</h2>
+    <form @submit.prevent.stop="addUnsplashImg">
+      <input
+        class="unsplash"
+        type="search"
+        v-model="query"
+        placeholder="Look for an image in the web"
+      />
+    </form>
+    <img-results
+      v-if="imgs.length"
+      @deleteResults="deleteResults"
+      @chosenImg="setImgFromUnsplash"
+      :imgs="imgs"
+    />
     <form @submit.prevent="createStation">
       <label class="choose-file">
         <svg
@@ -27,7 +41,7 @@
           style="width: 105px; max-height: 78.72px; object-fit: contain"
         />
         <span v-if="!newStation.imgUrl">Upload file</span>
-        <input type="file" @change="handleImg"/>
+        <input type="file" @change="handleImg" />
       </label>
       <input
         type="url"
@@ -50,7 +64,6 @@
         type="text"
         v-model="selectedTag"
         list="tags"
-        @change="tagsShow"
         placeholder="Genre"
         required
       />
@@ -67,6 +80,8 @@
 <script>
 import { stationService } from "@/services/station-service.js";
 import { uploadImg } from "@/services/img-upload-service.js";
+import { unsplashService } from "@/services/unsplash-service.js";
+import imgResults from "@/cmps/img-results";
 export default {
   created() {
     this.newStation = stationService.getEmptyStation();
@@ -82,6 +97,8 @@ export default {
       newStation: {},
       selectedTag: "",
       isDisabled: false,
+      query: "",
+      imgs: [],
     };
   },
   computed: {
@@ -96,6 +113,21 @@ export default {
     },
   },
   methods: {
+    deleteResults() {
+      this.imgs = [];
+    },
+    setImgFromUnsplash(img) {
+      this.imgUrl = img;
+    },
+    async addUnsplashImg() {
+      const { results } = await unsplashService.fetchResults(this.query);
+      return results.map((res) => {
+        this.imgs.push({
+          id: res.id,
+          url: res.urls.thumb,
+        });
+      });
+    },
     async handleImg(ev) {
       if (!ev.target.files[0]) return;
       const file = ev.target.files[0];
@@ -118,7 +150,7 @@ export default {
       if (this.selectedTag) {
         this.newStation.tags.push(this.selectedTag);
       }
-         let creator = null;
+      let creator = null;
       if (this.loggedinUser) {
         const { _id, username } = this.loggedinUser;
         creator = {
@@ -131,7 +163,7 @@ export default {
           username: "guest" + this.currUserId,
         };
       }
-      this.newStation.createdBy =creator
+      this.newStation.createdBy = creator;
 
       let userMsg = {};
       try {
@@ -161,6 +193,9 @@ export default {
     closeModal() {
       this.$emit("closeModal");
     },
+  },
+  components: {
+    imgResults,
   },
 };
 </script>
