@@ -59,6 +59,8 @@
                     // margin: 0 7px 0 7px;
                     .card-container {
                         height: 60%;
+                        overflow: hidden;
+                        border-radius: 3px;
                         .station-preview-card {
                             align-self: center;
                             position: relative;
@@ -68,7 +70,7 @@
                             display: grid;
                             grid-template-columns: 1fr 1fr 1fr;
                             grid-template-rows: 1fr 1fr;
-                            border-radius: 10px;
+                            border-radius: 3px;
                             transition: transform 0.5s;
                             overflow: hidden;
                             &:hover {
@@ -77,7 +79,7 @@
                             .station-preview-img-container {
                                 grid-column: 1/-1;
                                 grid-row: 1/-1;
-                                border-radius: 10px;
+                                border-radius: 3px;
                                 overflow: hidden;
                                 img {
                                     width: 100%;

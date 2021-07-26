@@ -2,6 +2,20 @@
 	<section class="station-add">
 		<button class="close" @click="closeModal">X</button>
 		<h2>Create your new station</h2>
+		<form @submit.prevent.stop="addUnsplashImg">
+			<input
+				class="unsplash"
+				type="search"
+				v-model="query"
+				placeholder="Look for an image in the web"
+			/>
+		</form>
+		<img-results
+			v-if="imgs.length"
+			@deleteResults="deleteResults"
+			@chosenImg="setImgFromUnsplash"
+			:imgs="imgs"
+		/>
 		<form @submit.prevent="createStation">
 			<label class="choose-file">
 				<svg
@@ -66,6 +80,8 @@
 <script>
 import { stationService } from "@/services/station-service.js";
 import { uploadImg } from "@/services/img-upload-service.js";
+import { unsplashService } from "@/services/unsplash-service.js";
+import imgResults from "@/cmps/img-results";
 export default {
 	created() {
 		this.newStation = stationService.getEmptyStation();
@@ -81,6 +97,8 @@ export default {
 			newStation: {},
 			selectedTag: "",
 			isDisabled: false,
+			query: "",
+			imgs: [],
 		};
 	},
 	computed: {
@@ -95,6 +113,21 @@ export default {
 		},
 	},
 	methods: {
+		deleteResults() {
+			this.imgs = [];
+		},
+		setImgFromUnsplash(img) {
+			this.imgUrl = img;
+		},
+		async addUnsplashImg() {
+			const { results } = await unsplashService.fetchResults(this.query);
+			return results.map((res) => {
+				this.imgs.push({
+					id: res.id,
+					url: res.urls.thumb,
+				});
+			});
+		},
 		async handleImg(ev) {
 			if (!ev.target.files[0]) return;
 			const file = ev.target.files[0];
@@ -108,7 +141,7 @@ export default {
 				setTimeout(() => {
 					this.$store.commit({ type: "deleteMsg" })
 				}, 2000)
-        return
+				return
 			}
 			try {
 				this.imgLoaded = false;
@@ -182,6 +215,9 @@ export default {
 		closeModal() {
 			this.$emit("closeModal");
 		},
+	},
+	components: {
+		imgResults,
 	},
 };
 </script>

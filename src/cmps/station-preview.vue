@@ -4,9 +4,9 @@
       <div class="card-container">
         <div class="station-preview-card">
           <div class="station-preview-img-container">
-            <img :src="station.imgUrl" />
+            <img :src="station.imgUrl" v-if="station.imgUrl" />
+            <img v-else src="../assets/img/station-img.jpg"/>
           </div>
-          <!-- :style="stationImg" -->
           <div class="first-song-preview-container">
             <img
               v-if="station.songs && station.songs.length"
@@ -39,13 +39,6 @@ export default {
     },
   },
   computed: {
-    stationImg() {
-      const style = {
-        "background-repeat": "no-repeat",
-        "background-size": "cover",
-      };
-      return style;
-    },
     likedByUsers() {
       let likesCount = this.station.likedByUsers;
       if (likesCount < 1000) return likesCount;

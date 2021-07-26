@@ -10,7 +10,7 @@
       <img v-if="loggedinUser.imgUrl" class="user-img" :src="loggedinUser.imgUrl">
       <img v-else src="../assets/icons/user.png" >
     <h3>  Hello
-      <span class="user-name">{{ getFirstName }}</span> !</h3>
+      <span class="user-name">{{ getFirstName }}</span>!</h3>
     <!-- <h2 class="user-greeting" >Hello {{ getFirstName }}</h2> -->
     </div>
     <div class="hamburger-container">
