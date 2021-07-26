@@ -102,28 +102,29 @@ import chat from "@/cmps/chat";
 import modal from "@/cmps/modal";
 import { socketService } from "@/services/socket-service.js";
 export default {
-  async created() {
-    socketService.on("station updated", this.updateStation);
-    const { stationId } = this.$route.params;
-    try {
-      await this.$store.dispatch({ type: "currStation", stationId });
-      socketService.emit("station watch", stationId);
-      eventBusService.$on("removeSong", this.openModal);
-    } catch (err) {
-      console.log("Error on curr station dispatch =>", err);
-    }
-  },
-  data() {
-    return {
-      isSearch: false,
-      isOpen: false,
-      mainColor: null,
-      likedStations: [],
-      confirmMsg: null,
-      isSharing: false,
-      isChatOpened: false,
-    };
-  },
+	async created() {
+		socketService.on("station updated", this.updateStation);
+		const { stationId } = this.$route.params;
+		try {
+			await this.$store.dispatch({ type: "currStation", stationId });
+			socketService.emit("station watch", stationId);
+			eventBusService.$on("removeSong", this.openModal)
+			eventBusService.$on("loginMsg", this.openModal)
+		} catch (err) {
+			console.log("Error on curr station dispatch =>", err);
+		}
+	},
+	data() {
+		return {
+			isSearch: false,
+			isOpen: false,
+			mainColor: null,
+			likedStations: [],
+			confirmMsg: null,
+			isSharing: false,
+			isChatOpened: false,
+		};
+	},
 
   computed: {
     getUrl() {
@@ -242,25 +243,11 @@ export default {
   //   currStation: {
   //      handler() {
   //       const {currSong}=this.$store.getters;
-
-  //       if(!currSong){
-  //         if(!this.currStation.songs||!this.currStation.songs.length)return;
-  //         const songId=this.currStation.songs[0].id;
-  //         this.$store.commit({type:'loadSongToPlayer',songId})
-  //         this.$store.commit({type:'setCurrSong'});
-  //         this.$store.commit({ type: "isPlaying", action: false });
-  //         eventBusService.$emit("togglePlay");
-  //       }
-  //     },
-  //   },
-  //   deep: true,
-  //   immediate: true,
-  // },
-  components: {
-    songList,
-    chat,
-    modal,
-    songListOptions,
-  },
+	components: {
+		songList,
+		chat,
+		modal,
+		songListOptions,
+	},
 };
 </script>
