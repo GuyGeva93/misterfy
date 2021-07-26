@@ -30,7 +30,7 @@
       </button>
     </form>
  
-    <!-- <button @click.stop="clearChatMsgs">Clear messages</button> -->
+    <button @click.stop="clearChatMsgs">Clear messages</button>
   </section>
 </template>
 

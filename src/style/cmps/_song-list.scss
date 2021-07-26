@@ -75,3 +75,15 @@
         filter: invert(94%) sepia(0%) saturate(0%) hue-rotate(194deg) brightness(82%) contrast(90%);
     }
 }
+
+@include for-narrow-layout {
+    .songs-list {
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none; //IE and Edge
+        --scrollbar-width: none; //Firefox
+        // Hide scrollbar for Chrome, Safari and Opera /
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
