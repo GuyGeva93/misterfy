@@ -41,6 +41,14 @@
         .tags {
             font-size: 1rem;
         }
+        .station-details-extras {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .station-info-extras {
+            display: none;
+        }
         .share-options {
             padding: 5px;
             display: flex;
@@ -295,9 +303,10 @@
             display: block;
             position: absolute;
             top: 0;
-            right: 0;
+            right: 1%;
             z-index: 1;
             font-size: 1.1rem;
+            text-align: right;
             background-color: transparent;
             border: none;
             filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(323deg) brightness(105%) contrast(101%);
@@ -464,14 +473,30 @@
     }
     .station-details .station-details-info {
         grid-row: 2;
+        .station-info-extras {
+            display: block;
+            cursor: pointer;
+            filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
+            width: 24px;
+            position: absolute;
+            right: 3%;
+            &:hover {
+                filter: invert(84%) sepia(45%) saturate(3393%) hue-rotate(3deg) brightness(106%) contrast(105%);
+            }
+        }
         .title {
             line-height: normal;
             font-size: 1.5rem;
+            padding-left: 30px;
         }
-        .author,
-        .listeners,
-        .tags {
+        .station-details-extras {
             display: none;
+            &.opened {
+                display: flex;
+                position: absolute;
+                bottom: 110px;
+                left: 45%;
+            }
         }
     }
     .song-list-options {

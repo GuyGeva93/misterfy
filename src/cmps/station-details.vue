@@ -5,7 +5,7 @@
       class="station-details"
       v-if="currStation && stationId === currStation._id"
     >
-      <button
+      <button title="Chat with others who view this station"
         class="btn-open-chat"
         v-if="!isChatOpened"
         @click="isChatOpened = true"
@@ -23,14 +23,16 @@
       <img ref="img" class="station-details-img" src="../assets/img/station-img.jpg" v-else  />
       <section v-if="currStation" class="station-details-info">
         <h2 class="title">{{ currStation.name }}</h2>
-        <h4 class="tags">Genres: {{ getTags }}</h4>
+     <section class="station-details-extras" :class="{opened:isInfoExtrasOpen}">
+          <h4 class="tags">Genres: {{ getTags }}</h4>
         <h4 class="author">
           Created By: <span>{{ currStation.createdBy.username }}</span>
         </h4>
         <h4 class="listeners">Listeners: {{ formatNumber(currStation.likedByUsers+getRandNum) }}</h4>
         <h4 class="details-likes-count"><img class="details-like-count-heart" src="../assets/icons/like.png" />
        {{ formatNumber(currStation.likedByUsers) }}</h4>
-        <!-- <img @click="toggleSharing" class="share" src="../assets/icons/share.png"> -->
+     </section>
+        <img  class="station-info-extras" title="Display more" src="../assets/icons/info.png" @click="toggleInfoExtras">
         <div class="share-options">
           <ShareNetwork
             network="facebook"
@@ -124,6 +126,7 @@ export default {
 			confirmMsg: null,
 			isSharing: false,
 			isChatOpened: false,
+      isInfoExtrasOpen:false
 		};
 	},
 
@@ -239,6 +242,9 @@ export default {
       count /= 1000;
       return Math.round(count * 10) / 10 + "M";
     },
+    toggleInfoExtras(){
+      this.isInfoExtrasOpen=!this.isInfoExtrasOpen;
+    }
   },
   // watch: {
   //   currStation: {
