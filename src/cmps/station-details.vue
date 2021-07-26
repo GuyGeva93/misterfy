@@ -243,8 +243,6 @@ export default {
   //   currStation: {
   //      handler() {
   //       const {currSong}=this.$store.getters;
-
-	},
 	components: {
 		songList,
 		chat,
