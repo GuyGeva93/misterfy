@@ -3,7 +3,7 @@ import { httpService } from './http-service'
 import { socketService } from './socket-service'
 
 // const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-var gWatchedUser = null;
+// var gWatchedUser = null;
 
 export const userService = {
     saveUserId,
@@ -40,7 +40,7 @@ function getUsers() {
 
 async function getById(userId) {
     const user = await storageService.get('user', userId)
-    gWatchedUser = user;
+        // gWatchedUser = user;
     return user
 }
 
@@ -49,7 +49,7 @@ function remove(userId) {
 }
 async function update(user) {
     user = await httpService.put(`user/${user._id}`, user)
-    // Handle case in which admin updates other user's details
+        // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
     return user;
 }
@@ -75,22 +75,22 @@ function getLoggedinUser() {
 }
 // This IIFE functions for Dev purposes 
 // It allows testing of real time updates (such as sockets) by listening to storage events
-(async () => {
-    // var user = getLoggedinUser()
-    // Dev Helper: Listens to when localStorage changes in OTHER browser
+// (async () => {
+//     // var user = getLoggedinUser()
+//     // Dev Helper: Listens to when localStorage changes in OTHER browser
 
-    // Here we are listening to changes for the watched user (coming from other browsers)
-    window.addEventListener('storage', async () => {
-        if (!gWatchedUser) return;
-        const freshUsers = await storageService.query('user')
-        const watchedUser = freshUsers.find(u => u._id === gWatchedUser._id)
-        if (!watchedUser) return;
-        gWatchedUser = watchedUser
-    })
-})();
+//     // Here we are listening to changes for the watched user (coming from other browsers)
+//     window.addEventListener('storage', async () => {
+//         if (!gWatchedUser) return;
+//         const freshUsers = await storageService.query('user')
+//         const watchedUser = freshUsers.find(u => u._id === gWatchedUser._id)
+//         if (!watchedUser) return;
+//         gWatchedUser = watchedUser
+//     })
+// })();
 
 // This is relevant when backend is connected
-(async () => {
+(async() => {
     //TODO: How that works?
 
     var user = getLoggedinUser()

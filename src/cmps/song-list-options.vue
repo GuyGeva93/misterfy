@@ -1,8 +1,10 @@
 <template>
 	<section class="song-list-options">
+		
 		<svg
 			@click.stop="like"
 			:class="{ liked: isLiked }"
+			v-if="!isLiked"
 			class="like-station-btn"
 			xmlns="http://www.w3.org/2000/svg"
 			xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -17,6 +19,7 @@
 				/>
 			</g>
 		</svg>
+		<img @click.stop="like" src="../assets/icons/heart.png" v-else>
 		<img
 			:class="{ open: isSearch }"
 			class="plus-btn"
