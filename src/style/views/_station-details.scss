@@ -23,6 +23,14 @@
         flex-direction: column;
         justify-content: flex-start;
         margin-left: 20px;
+        .details-likes-count {
+            display: flex;
+            gap: 5px;
+            .details-like-count-heart {
+                // padding-top: 2px;
+                filter: invert(14%) sepia(96%) saturate(7064%) hue-rotate(4deg) brightness(110%) contrast(115%);
+            }
+        }
         &>*:not(:last-child) {
             margin-bottom: 10px;
         }
@@ -43,11 +51,14 @@
             border-bottom: 1px white solid;
             .facebook-icon,
             .whatsapp-icon {
+                cursor: pointer;
                 filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
-                &:hover {
-                    cursor: pointer;
-                    filter: invert(76%) sepia(87%) saturate(974%) hue-rotate(358deg) brightness(102%) contrast(106%);
-                }
+            }
+            .facebook-icon:hover {
+                filter: invert(34%) sepia(6%) saturate(7081%) hue-rotate(185deg) brightness(106%) contrast(79%);
+            }
+            .whatsapp-icon:hover {
+                filter: invert(66%) sepia(73%) saturate(466%) hue-rotate(86deg) brightness(88%) contrast(96%);
             }
         }
     }
@@ -417,10 +428,19 @@
 
 @include for-mobile-layout {
     .station-details .station-details-info .share-options {
+        display: flex;
+        flex-direction: column;
+        border: none;
         left: initial;
         right: 3%;
         padding: 5px;
-        bottom: 120%
+        bottom: 120%;
+        .whatsapp-icon,
+        .facebook-icon {
+            &:hover {
+                filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(183deg) brightness(106%) contrast(102%);
+            }
+        }
     }
     .songs-list-container .songs-list .list-group li {
         height: 45px;
@@ -479,5 +499,8 @@
     }
     .song-list-options .song-list-search.open {
         grid-column: 1/-1;
+    }
+    .player-container .player .player-controls {
+        height: 55px;
     }
 }

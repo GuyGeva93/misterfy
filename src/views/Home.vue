@@ -67,17 +67,17 @@ export default {
 			return stations;
 		},
 		topPicks() {
-			return this.stations.slice(0, 6);
+			return this.stations.slice(0, 10);
 		},
 		yourPicks() {
 			let favoritesStations = []
 			const user = this.$store.getters.loggedinUser
-			if (!user || !user.likedStations) return this.stations.slice(6, 11)
+			if (!user || !user.likedStations) return this.stations.slice(10, 20)
 			if (user.likedStations) {
 				favoritesStations.push(...user.likedStations)
 				return favoritesStations
 			}
-			else return this.stations.slice(6, 11)
+			else return this.stations.slice(15)
 		},
 	recomended() {
 		return this.stations.slice(11);

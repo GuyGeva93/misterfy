@@ -1,5 +1,13 @@
 <template>
   <main class="explore-container">
+     <div v-show="!loaded" class="loader">
+      <div class="loaderbar"></div>
+      <div class="loaderbar"></div>
+      <div class="loaderbar"></div>
+      <div class="loaderbar"></div>
+      <div class="loaderbar"></div>
+      <div class="loaderball"></div>
+    </div>
     <section class="explore">
       <ul class="tags-list">
         <!-- <li class="tag-preview">
@@ -12,24 +20,23 @@
         </li>
       </ul>
     </section>
-    <template v-if="!isLoading">
-      <section v-if="filteredStations" class="explore-station-list">
+    <section v-show="loaded" class="explore-station-list">
+      <template v-if="stations.length">
         <!-- <h3>{{filterTitle}}</h3> -->
-        <div v-for="station in filteredStations" :key="station._id">
+        <div v-for="station in stations" :key="station._id">
           <station-preview :station="station" />
-          <!-- <station-list :stations="stations" /> -->
         </div>
-      <!-- <div v-if="!noFilter" class="more-stations"> -->
+        <!-- <div v-if="!noFilter" class="more-stations"> -->
         <!-- <h2 class="more-stations-title">More stations:</h2> -->
-          <!-- <div v-for="station in stations" :key="'a'+station._id"> -->
-          <!-- <station-preview :station="station" /> -->
-          <!-- <station-list :stations="stations" /> -->
+        <!-- <div v-for="station in stations" :key="'a'+station._id"> -->
+        <!-- <station-preview :station="station" /> -->
+        <!-- <station-list :stations="stations" /> -->
         <!-- </div> -->
-      <!-- </div> -->
-      </section>
-      <h2 v-else>No stations found</h2>
-    </template>
-    <h2 v-else>Loading...</h2>
+        <!-- </div> -->
+      </template>
+      <h3 class="no-stations-msg" v-else>No stations found!</h3>
+    </section>
+   
   </main>
 </template>
 
@@ -38,18 +45,20 @@
 import stationPreview from "@/cmps/station-preview";
 import stationTag from "@/cmps/station-tag";
 export default {
+  name: "explore",
   created() {
-    if(this.name||this.tag)
-    this.$router.push("/explore").catch((err) => {
-        //When same route appears
-        if (err.name != "NavigationDuplicated") {
-          throw err;
-        }
-      });
+    // if(this.name||this.tag)
+    // this.$router.push("/explore").catch((err) => {
+    //     //When same route appears
+    //     if (err.name != "NavigationDuplicated") {
+    //       throw err;
+    //     }
+    //   });
   },
   data() {
     return {
-      isLoading: false,
+      loaded: false,
+      stations: [],
     };
   },
   methods: {
@@ -74,33 +83,31 @@ export default {
     name() {
       return this.$route.params.name;
     },
-    stations() {
-      return this.$store.getters.allStations;
-    },
-    filteredStations(){
-      return this.$store.getters.stationsToDisplay
+    filteredStations() {
+      return this.$store.getters.stationsToDisplay;
     },
     tags() {
       // console.log(this.$store.getters.tags);
       const tags = this.$store.getters.tags;
       return ["All", ...tags];
     },
-    filterTitle(){
-      let {name,tag}=this.$route.params;
-      if(!name||name==='*')if(!tag)name='All';
-      else name='';
-      if(!tag){
-        if(name==='All')tag='';
-        else tag='All';
+    filterTitle() {
+      let { name, tag } = this.$route.params;
+      if (!name || name === "*")
+        if (!tag) name = "All";
+        else name = "";
+      if (!tag) {
+        if (name === "All") tag = "";
+        else tag = "All";
       }
-      name+=' ';
+      name += " ";
       // return tag;
-      return name+tag;
+      return name + tag;
     },
-    noFilter(){
-          const {name,tag}=this.$route.params;
-          return (!name||name==='*') && !tag
-    }
+    noFilter() {
+      const { name, tag } = this.$route.params;
+      return (!name || name === "*") && !tag;
+    },
   },
 
   components: {
@@ -113,7 +120,6 @@ export default {
       immediate: true,
       async handler() {
         const { name, tag = "" } = this.$route.params;
-        if(!name)return;
         const filterBy = {
           name,
           tag,
@@ -121,7 +127,9 @@ export default {
         if (!name || name === "*") filterBy.name = "";
         try {
           this.$store.commit({ type: "setFilter", filterBy });
-          await this.$store.dispatch({ type: "loadStations" });
+          const data = await this.$store.dispatch({ type: "loadStations" });
+          this.stations = data.filteredStations;
+          this.loaded = true;
         } catch (err) {
           console.log("Error on set filter =>", err);
         }

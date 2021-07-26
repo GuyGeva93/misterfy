@@ -1,18 +1,5 @@
 <template>
   <section class="signup-login">
-    <section class="login">
-      <h2 class="title">Log in</h2>
-      <form @submit.prevent="login">
-        <select v-model="loginCred.username">
-          <option value="">Select User</option>
-          <option v-for="user in users" :key="user._id" :value="user.username">
-            {{ user.fullname }}
-          </option>
-        </select>
-        <button>Login</button>
-      </form>
-    </section>
-
     <section class="signup">
       <h2 class="title">Sign up</h2>
       <form @submit.prevent="signup">
@@ -37,6 +24,19 @@
           v-model="signupCreds.password"
         />
         <button>Sign up</button>
+      </form>
+    </section>
+    <section class="login">
+      <h2 class="title">Already a user?</h2>
+      <h2 class="log-in"> Log in</h2>
+      <form @submit.prevent="login">
+        <select v-model="loginCred.username">
+          <option value="">Select User</option>
+          <option v-for="user in users" :key="user._id" :value="user.username">
+            {{ user.fullname }}
+          </option>
+        </select>
+        <button>Login</button>
       </form>
     </section>
   </section>

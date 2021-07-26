@@ -40,6 +40,10 @@
         grid-row: 2/3;
         grid-auto-rows: 330px;
         gap: 2%;
+        .no-stations-msg {
+            grid-column: 2/5;
+            text-align: center;
+        }
         div {
             display: flex;
             flex-direction: column;
@@ -119,8 +123,11 @@
                     }
                 }
                 .station-likes-count {
-                    display: inline-block;
-                    align-items: center;
+                    // display: inline-block;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-end;
+                    gap: 5px;
                     .card-like-count-heart {
                         width: 20px;
                         padding-top: 10px;
