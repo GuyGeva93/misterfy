@@ -132,7 +132,17 @@ export default {
       if (!ev.target.files[0]) return;
       const file = ev.target.files[0];
       const fileType = file["type"];
-      if (!fileType.includes("image")) return;
+      if (!fileType.includes("image")) {
+        const userMsg = {
+          txt: "Not a valid IMG file!",
+          type: "error",
+        };
+        this.$store.commit({ type: "updateUserMsg", userMsg });
+        setTimeout(() => {
+          this.$store.commit({ type: "deleteMsg" });
+        }, 2000);
+        return;
+      }
       try {
         this.imgLoaded = false;
         const savedImg = await uploadImg(file);
@@ -145,6 +155,20 @@ export default {
     },
     async createStation() {
       if (!this.newStation.imgUrl && this.imgUrl) {
+        const unsplashImgsVersion = "images.unsplash.com";
+        const isUnsplash = this.imgUrl.match(unsplashImgsVersion) !== null;
+        console.log(isUnsplash);
+        if (!isUnsplash && this.imgUrl.match(/.(jpeg|jpg|gif|png)$/) === null) {
+          const userMsg = {
+            txt: "Not a valid IMG link!",
+            type: "error",
+          };
+          this.$store.commit({ type: "updateUserMsg", userMsg });
+          setTimeout(() => {
+            this.$store.commit({ type: "deleteMsg" });
+          }, 2000);
+          return;
+        }
         this.newStation.imgUrl = this.imgUrl;
       }
       if (this.selectedTag) {

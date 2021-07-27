@@ -67,7 +67,8 @@ export default {
 			return stations;
 		},
 		topPicks() {
-			return this.stations.slice(0, 10);
+			const sortedStations=this.stations.slice().sort((a,b)=>b.likedByUsers-a.likedByUsers)
+			return sortedStations.slice(0, 10);
 		},
 		yourPicks() {
 			let favoritesStations = []

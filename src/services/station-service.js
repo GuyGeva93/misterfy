@@ -1,5 +1,6 @@
 // import axios from 'axios'
 import { httpService } from './http-service.js'
+import { utilService } from './util-service.js';
 // import { storageService } from './async-storage-service.js'
 
 // const STATION_KEY = 'station'
@@ -97,7 +98,7 @@ function getEmptyStation() {
         tags: [],
         createdAt: Date.now(),
         // createdBy: {},
-        likedByUsers: 0,
+        likedByUsers: _getRandNum(),
         songs: []
     }
     return station
@@ -146,4 +147,8 @@ async function saveSongList(list, stationId) {
     } catch (err) {
         console.log('Error on station service =>', err)
     }
+}
+
+function _getRandNum() {
+    return utilService.getRandomInt(1000, 59999);
 }
