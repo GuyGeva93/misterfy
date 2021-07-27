@@ -38,6 +38,9 @@
             align-self: flex-start;
             text-align: center;
             height: 10vw;
+            img {
+                padding: 5px;
+            }
             .img-container {
                 position: relative;
                 overflow: hidden;
@@ -47,9 +50,9 @@
                 width: 15vw;
                 margin-bottom: 10px;
                 img {
-                    height: 30vw;
+                    height: 20vw;
                     position: absolute;
-                    left: -4vw;
+                    left: -1vw;
                 }
                 .gilead {
                     height: 20vw;
