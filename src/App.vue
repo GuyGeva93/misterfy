@@ -9,6 +9,7 @@
         <player :key="this.$store.getters.currSongId" />
       </section>
     </template>
+<app-footer v-if="isAbout"/>
   </div>
 </template>
 
@@ -17,13 +18,14 @@ import appHeader from "@/cmps/app-header";
 import playerImg from "@/cmps/player-img";
 import player from "@/cmps/player";
 import userMsg from "@/cmps/user-msg";
+import appFooter from '@/cmps/app-footer'
 export default {
   components: {
     appHeader,
-    // appFooter,
     playerImg,
     player,
     userMsg,
+    appFooter,
   },
   async created() {
    await this.$store.dispatch({ type: "loadStations" });
@@ -32,6 +34,9 @@ export default {
     currSong() {
       return this.$store.getters.currSong;
     },
+    isAbout(){
+      return this.$route.name === 'About'
+    }
 
   },
 

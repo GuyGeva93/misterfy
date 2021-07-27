@@ -163,10 +163,11 @@ header {
             }
             .filter-search-container {
                 display: flex;
-                width: 200px;
+                width: 180px;
                 padding-bottom: 15px;
                 overflow: hidden;
                 .main-search {
+                    font-size: 1rem;
                     padding: 10px 80px 10px 10px;
                 }
             }
