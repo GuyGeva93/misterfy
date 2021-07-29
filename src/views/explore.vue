@@ -20,7 +20,7 @@
         </li>
       </ul>
     </section>
-    <section v-show="loaded" class="explore-station-list">
+    <section ref="esl" v-show="loaded" class="explore-station-list">
       <template v-if="stations.length">
         <!-- <h3>{{filterTitle}}</h3> -->
         <div v-for="station in stations" :key="station._id">
@@ -46,14 +46,8 @@ import stationPreview from "@/cmps/station-preview";
 import stationTag from "@/cmps/station-tag";
 export default {
   name: "explore",
-  created() {
-    // if(this.name||this.tag)
-    // this.$router.push("/explore").catch((err) => {
-    //     //When same route appears
-    //     if (err.name != "NavigationDuplicated") {
-    //       throw err;
-    //     }
-    //   });
+  mounted() {
+    
   },
   data() {
     return {
