@@ -1,6 +1,11 @@
 <template>
   <section class="signup-login">
-    <section class="signup">
+<vue-particles
+        style="z-index: 0; height: 100%; width: 100%; position: absolute; left: 0; top: 0"
+        color="#dedede"
+      ></vue-particles>
+    <template class="wraper" >
+    <section class="signup" style="z-index: 1;">
       <h2 class="title">Sign up</h2>
       <form @submit.prevent="signup">
         Upload your profile picture
@@ -26,7 +31,7 @@
         <button>Sign up</button>
       </form>
     </section>
-    <section class="login">
+    <section class="login" style="z-index: 1;">
       <h2 class="title">Already a user?</h2>
       <h2 class="log-in"> Log in</h2>
       <form @submit.prevent="login">
@@ -39,7 +44,9 @@
         <button>Login</button>
       </form>
     </section>
-  </section>
+  </template>
+    </section>
+
 </template>
 
 <script>
@@ -102,6 +109,8 @@ export default {
       await this.$store.dispatch({ type: "login", userCred: this.loginCred });
       this.$router.push("/");
     },
+  },
+  components: {
   },
 };
 </script>
