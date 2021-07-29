@@ -28,14 +28,24 @@
     </section>
     <section class="login">
       <h2 class="title">Already a user?</h2>
-      <h2 class="log-in"> Log in</h2>
+      <h2 class="log-in">Log in</h2>
       <form @submit.prevent="login">
-        <select v-model="loginCred.username">
+        <input
+          type="text"
+          placeholder="username"
+          v-model="loginCred.username"
+        />
+        <input
+          type="password"
+          autocomplete="false"
+          v-model="loginCred.password"
+        />
+        <!-- <select v-model="loginCred.username">
           <option value="">Select User</option>
           <option v-for="user in users" :key="user._id" :value="user.username">
             {{ user.fullname }}
           </option>
-        </select>
+        </select> -->
         <button>Login</button>
       </form>
     </section>
@@ -48,16 +58,16 @@ export default {
   data() {
     return {
       signupCreds: {
-		  imgUrl:"",
+        imgUrl: "",
         fullname: "",
         username: "",
         password: "",
       },
       loginCred: {
         username: "",
-        password: "12345",
+        password: "",
       },
-	        imgLoaded: true,
+      imgLoaded: true,
     };
   },
   created() {
@@ -81,7 +91,7 @@ export default {
       try {
         this.imgLoaded = false;
         const savedImg = await uploadImg(file);
-		console.log(savedImg.url);
+        console.log(savedImg.url);
         this.signupCreds.imgUrl = savedImg.url;
         this.imgLoaded = true;
       } catch (err) {
@@ -96,11 +106,38 @@ export default {
         type: "signup",
         userCred: this.signupCreds,
       });
-      this.$router.push("/");
+      this.$router.push("/").catch((err) => {
+        //When same route appears
+        if (err.name != "NavigationDuplicated") {
+          throw err;
+        }
+      });
     },
     async login() {
-      await this.$store.dispatch({ type: "login", userCred: this.loginCred });
-      this.$router.push("/");
+      try {
+        await this.$store.dispatch({ type: "login", userCred: this.loginCred });
+        this.$router.push("/").catch((err) => {
+        //When same route appears
+        if (err.name != "NavigationDuplicated") {
+          throw err;
+        }
+      });
+      } catch (err) {
+        let userMsg = {};
+        if (err.request.status === 401) {
+          userMsg = { txt: "Invalid username and/or password!", type: "error" };
+        } else {
+          userMsg = {
+            txt: "We are having some issues, please try again later!",
+            type: "error",
+          };
+        }
+          this.$store.commit({ type: "updateUserMsg", userMsg });
+        setTimeout(() => {
+          this.$store.commit({ type: "deleteMsg" });
+        }, 2000);
+
+      }
     },
   },
 };
