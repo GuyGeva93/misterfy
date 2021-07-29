@@ -17,7 +17,7 @@
 			<section class="names-container">
 				<div class="dev-container">
 					<a href="https://github.com/GuyGeva93">
-						<img src="@/assets/img/github.png" />
+						<img class="github-img" src="@/assets/img/github.png" />
 					</a>
 					<a href="https://www.linkedin.com/in/guy-geva/">
 						<img src="@/assets/img/linkedin.png" />
@@ -29,7 +29,7 @@
 				</div>
 				<div class="dev-container">
 					<a href="https://github.com/WordChained">
-						<img src="@/assets/img/github.png" />
+						<img class="github-img" src="@/assets/img/github.png" />
 					</a>
 					<a href="https://www.linkedin.com/in/tal-ben-david/">
 						<img src="@/assets/img/linkedin.png" />
@@ -41,7 +41,7 @@
 				</div>
 				<div class="dev-container">
 					<a href="https://github.com/GileadGaf">
-						<img src="@/assets/img/github.png" />
+						<img class="github-img" src="@/assets/img/github.png" />
 					</a>
 					<a href="https://www.linkedin.com/in/gilead-gafni-330124217/">
 						<img src="@/assets/img/linkedin.png" />
